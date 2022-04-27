@@ -137,10 +137,116 @@ test10CanNotTopWhenThereAreNoObjectsInTheStack
 
 !classDefinition: #SentenceFinderByPrefixTest category: 'Stack-Exercise'!
 TestCase subclass: #SentenceFinderByPrefixTest
-	instanceVariableNames: ''
+	instanceVariableNames: 'finder'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Stack-Exercise'!
+
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'lk 4/27/2022 19:44:45'!
+test01shouldReturnEmptyCollectionOnEmptyStack
+
+	|stack finders|
+	finders:= SentenceFinderByPrefix new.
+	stack:= OOStack new.
+	
+	self assert: ((finders findInStack: stack thePrefix: 'something' )= OrderedCollection new).
+	 ! !
+
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'lk 4/27/2022 19:56:01'!
+test02shouldReturnEmptyCollectionWhenNotFoundInStackWithOneElement
+
+	|stack finders|
+	finders:= SentenceFinderByPrefix new.
+	stack:= OOStack new.
+	stack push: 'notSomething'.
+	
+	self assert: ((finders findInStack: stack thePrefix: 'something' )= OrderedCollection new).
+	 ! !
+
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'lk 4/27/2022 19:51:54'!
+test03shouldReturnEmptyCollectionWhenNotFoundInStackWithMoreThanOneElement
+
+	|stack finders|
+	finders:= SentenceFinderByPrefix new.
+	stack:= OOStack new.
+	stack push: 'notSomething'.
+	stack push: 'notSomethingElse'.	
+	self assert: ((finders findInStack: stack thePrefix: 'something' )= OrderedCollection new).
+	 ! !
+
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'lk 4/27/2022 19:58:50'!
+test04shouldReturnCollectionWhenFoundInStackWithOneElement
+
+	|stack finders collection|
+	finders:= SentenceFinderByPrefix new.
+	stack:= OOStack new.
+	collection:= OrderedCollection new.
+	stack push: 'something'.
+	collection  add: 'something'.
+	
+	self assert: (finders findInStack: stack thePrefix: 'something') = collection .! !
+
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'lk 4/27/2022 19:58:14'!
+test05shouldReturnCollectionWhenFoundInStackWithMoreThanOneElement
+
+	|stack finders collection|
+	finders:= SentenceFinderByPrefix new.
+	stack:= OOStack new.
+	collection:= OrderedCollection new.
+	stack push: 'notSomething'.
+	stack push: 'something'.
+	collection  add: 'something'.
+	
+	self assert: (finders findInStack: stack thePrefix: 'something') = collection .! !
+
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'lk 4/27/2022 20:16:43'!
+test06shouldReturnCollectionWhenFoundMoreThanOnePrefix
+
+	|stack finders collection|
+	finders:= SentenceFinderByPrefix new.
+	stack:= OOStack new.
+	collection:= OrderedCollection new.
+	stack push: 'somethingElse'.
+	stack push: 'notsomething'.
+	stack push: 'something'.
+	collection  add: 'something'.
+	collection  add: 'somethingElse'.
+	
+	self assert: (finders findInStack: stack thePrefix: 'something') = collection .! !
+
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'lk 4/27/2022 20:02:47'!
+test07shouldReturnEmptyCollectionOnCaseSensitiveDifference
+
+	|stack finders|
+	finders:= SentenceFinderByPrefix new.
+	stack:= OOStack new.
+	stack push: 'Something'.
+	stack push: 'someThing'.
+	
+	self assert: ((finders findInStack: stack thePrefix: 'something' )= OrderedCollection new).
+	 ! !
+
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'lk 4/27/2022 20:04:09'!
+test08shouldReturnEmptyCollectionOnSpaceDifference
+
+	|stack finders|
+	finders:= SentenceFinderByPrefix new.
+	stack:= OOStack new.
+	stack push: 'some thing'.
+	
+	self assert: ((finders findInStack: stack thePrefix: 'something' )= OrderedCollection new).
+	 ! !
+
+!SentenceFinderByPrefixTest methodsFor: 'test' stamp: 'lk 4/27/2022 20:12:15'!
+test09shouldReturnEmptyCollectionOnEmptyPrefix
+
+	|stack finders|
+	finders:= SentenceFinderByPrefix new.
+	stack:= OOStack new.
+	stack push: 'some thing'.
+	
+	self assert: ((finders findInStack: stack thePrefix: '' )= OrderedCollection new).
+	 ! !
 
 
 !classDefinition: #OOStack category: 'Stack-Exercise'!
@@ -150,24 +256,24 @@ Object subclass: #OOStack
 	poolDictionaries: ''
 	category: 'Stack-Exercise'!
 
-!OOStack methodsFor: 'as yet unclassified' stamp: 'lk 4/26/2022 20:13:05'!
+!OOStack methodsFor: 'operations' stamp: 'lk 4/26/2022 20:13:05'!
 initialize
 
 	stackState:= OOStackStateEmpty new.
 	size:=0! !
 
-!OOStack methodsFor: 'as yet unclassified' stamp: 'lk 4/26/2022 20:13:01'!
+!OOStack methodsFor: 'operations' stamp: 'lk 4/26/2022 20:13:01'!
 isEmpty
 
 	^ stackState isEmpty.! !
 
-!OOStack methodsFor: 'as yet unclassified' stamp: 'lk 4/26/2022 20:12:57'!
+!OOStack methodsFor: 'operations' stamp: 'lk 4/26/2022 20:12:57'!
 modifyStackState: newStackState
 
 	stackState:= newStackState
 	! !
 
-!OOStack methodsFor: 'as yet unclassified' stamp: 'lk 4/26/2022 19:59:07'!
+!OOStack methodsFor: 'operations' stamp: 'lk 4/26/2022 19:59:07'!
 pop
 	
 	|value|
@@ -176,19 +282,30 @@ pop
 	size:= size -1.
 	^value! !
 
-!OOStack methodsFor: 'as yet unclassified' stamp: 'lk 4/26/2022 20:12:11'!
+!OOStack methodsFor: 'operations' stamp: 'lk 4/26/2022 20:12:11'!
 push: aValue
 	
 	stackState := stackState push: aValue.
 	size:= size +1.! !
 
-!OOStack methodsFor: 'as yet unclassified' stamp: 'lk 4/26/2022 20:12:19'!
+!OOStack methodsFor: 'operations' stamp: 'lk 4/26/2022 20:12:19'!
 size 
 	^ size! !
 
-!OOStack methodsFor: 'as yet unclassified' stamp: 'lk 4/26/2022 19:56:46'!
+!OOStack methodsFor: 'operations' stamp: 'lk 4/27/2022 16:31:42'!
+stackState
+	^ stackState ! !
+
+!OOStack methodsFor: 'operations' stamp: 'lk 4/26/2022 19:56:46'!
 top
 	^ stackState value.! !
+
+!OOStack methodsFor: 'operations' stamp: 'lk 4/27/2022 18:03:03'!
+unstackToCollection
+	| aCollection |
+	aCollection := OrderedCollection new.
+	stackState addAllValuesTo: aCollection.
+	^ aCollection.! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -209,21 +326,25 @@ Object subclass: #OOStackState
 	poolDictionaries: ''
 	category: 'Stack-Exercise'!
 
-!OOStackState methodsFor: 'as yet unclassified' stamp: 'lk 4/26/2022 19:33:26'!
+!OOStackState methodsFor: 'functions' stamp: 'lk 4/27/2022 17:40:30'!
+addAllValuesTo: aCollection
+	self subclassResponsibility.! !
+
+!OOStackState methodsFor: 'functions' stamp: 'lk 4/26/2022 19:33:26'!
 isEmpty
 
 	self subclassResponsibility.! !
 
-!OOStackState methodsFor: 'as yet unclassified' stamp: 'lk 4/26/2022 19:32:08'!
+!OOStackState methodsFor: 'functions' stamp: 'lk 4/26/2022 19:32:08'!
 push: aValue
 	^ OOStackStateNotEmpty withAValue: aValue andPreviousState: self.! !
 
-!OOStackState methodsFor: 'as yet unclassified' stamp: 'lk 4/26/2022 19:49:43'!
+!OOStackState methodsFor: 'functions' stamp: 'lk 4/26/2022 19:49:43'!
 removeTop
 
 	self subclassResponsibility.! !
 
-!OOStackState methodsFor: 'as yet unclassified' stamp: 'lk 4/26/2022 19:51:10'!
+!OOStackState methodsFor: 'functions' stamp: 'lk 4/26/2022 19:51:10'!
 returnPrevious
 
 	self subclassResponsibility.! !
@@ -235,6 +356,10 @@ OOStackState subclass: #OOStackStateEmpty
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Stack-Exercise'!
+
+!OOStackStateEmpty methodsFor: 'as yet unclassified' stamp: 'lk 4/27/2022 20:09:22'!
+addAllValuesTo: aCollection
+	! !
 
 !OOStackStateEmpty methodsFor: 'as yet unclassified' stamp: 'lk 4/26/2022 18:43:27'!
 isEmpty
@@ -258,6 +383,12 @@ OOStackState subclass: #OOStackStateNotEmpty
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Stack-Exercise'!
+
+!OOStackStateNotEmpty methodsFor: 'as yet unclassified' stamp: 'lk 4/27/2022 18:05:24'!
+addAllValuesTo: aCollection
+	aCollection add: value.
+	previousState addAllValuesTo: aCollection.
+! !
 
 !OOStackStateNotEmpty methodsFor: 'as yet unclassified' stamp: 'lk 4/26/2022 19:39:29'!
 initalizeWithAValue: aValue andPreviousState: aState
@@ -295,7 +426,43 @@ withAValue: aValue andPreviousState: aState
 
 !classDefinition: #SentenceFinderByPrefix category: 'Stack-Exercise'!
 Object subclass: #SentenceFinderByPrefix
-	instanceVariableNames: ''
+	instanceVariableNames: 'stack'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Stack-Exercise'!
+
+!SentenceFinderByPrefix methodsFor: 'functions' stamp: 'lk 4/27/2022 20:11:21'!
+findInStack: anStack thePrefix: aPrefix
+
+	| collection aPrefixSize|
+	collection:= anStack unstackToCollection.
+	aPrefixSize := aPrefix size.
+	collection := collection select: [:sentence | aPrefix size > 0  and:  aPrefixSize <= sentence size].
+	collection := collection select: [:sentence | self thePrefix: aPrefix isIn: sentence].
+	^collection.
+	
+	
+	! !
+
+!SentenceFinderByPrefix methodsFor: 'functions' stamp: 'lk 4/27/2022 19:17:41'!
+thePrefix: aPrefix isIn: sentence
+	
+	|sentenceBefore|
+	"valueBefore  := value."
+	sentenceBefore := sentence copyFrom: 1 to: aPrefix size.
+	^ sentenceBefore = aPrefix.! !
+
+!SentenceFinderByPrefix methodsFor: 'functions' stamp: 'lk 4/27/2022 18:31:06'!
+theString: anString hasThePrefix: aPrefix
+	! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'SentenceFinderByPrefix class' category: 'Stack-Exercise'!
+SentenceFinderByPrefix class
+	instanceVariableNames: ''!
+
+!SentenceFinderByPrefix class methodsFor: 'as yet unclassified' stamp: 'lk 4/27/2022 20:05:35'!
+emptyPrefixErrorDescription
+	
+	^ 'prefix is empty!!!!!!'! !
