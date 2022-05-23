@@ -1,0 +1,4643 @@
+
+
+----STARTUP---- (22 May 2022 22:34:39) as /home/winter/.CuisUniversity/CuisUniversity-5096.image!
+
+
+----End fileIn of /home/winter/Repositories/2022-1c/05-Portfolio 1/Portfolio-Ejercicio.st----!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'scb 5/22/2022 22:35:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'scb 5/22/2022 22:35:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'scb 5/22/2022 22:35:13'!
+FAILURE!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'scb 5/22/2022 22:35:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'scb 5/22/2022 22:35:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'scb 5/22/2022 22:35:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'scb 5/22/2022 22:35:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'scb 5/22/2022 22:35:13'!
+FAILURE!
+!ReceptiveAccount methodsFor: 'balance' stamp: 'scb 5/22/2022 22:38:00' prior: 50474314!
+balance
+
+	^transactions sum: [ :aTransaction | 
+		aTransaction class = #Deposit
+		ifTrue: [aTransaction]
+		ifFalse: [aTransaction negated] ]
+	ifEmpty: [ 0 ]! !
+!ReceptiveAccount methodsFor: 'balance' stamp: 'scb 5/22/2022 22:38:30' prior: 50474358!
+balance
+
+	^transactions sum: [ :aTransaction | 
+		aTransaction class = #Deposit
+		ifTrue: [aTransaction value]
+		ifFalse: [aTransaction value negated] ]
+	ifEmpty: [ 0 ]! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'scb 5/22/2022 22:38:31'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'scb 5/22/2022 22:38:31'!
+FAILURE!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'scb 5/22/2022 22:38:31'!
+FAILURE!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'scb 5/22/2022 22:38:31'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'scb 5/22/2022 22:38:31'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'scb 5/22/2022 22:38:31'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'scb 5/22/2022 22:38:31'!
+PASSED!
+
+----STARTUP---- (22 May 2022 22:40:09) as /home/winter/.CuisUniversity/CuisUniversity-5096.image!
+
+
+----End fileIn of /home/winter/Downloads/Portfolio-Ejercicio-checkpoint.st----!
+!AccountTransaction methodsFor: 'value' stamp: 'scb 5/22/2022 22:42:20'!
+addBalanceTo: sum 
+
+	self subclassResponsibility ! !
+!Deposit methodsFor: 'value' stamp: 'scb 5/22/2022 22:42:32' overrides: 50474401!
+addBalanceTo: sum 
+
+	self subclassResponsibility ! !
+!Withdraw methodsFor: 'value' stamp: 'scb 5/22/2022 22:42:32' overrides: 50474401!
+addBalanceTo: sum 
+
+	self subclassResponsibility ! !
+
+!methodRemoval: AccountTransaction #addBalanceTo: stamp: 'scb 5/22/2022 22:42:32'!
+addBalanceTo: sum 
+
+	self subclassResponsibility !
+!AccountTransaction methodsFor: 'value' stamp: 'scb 5/22/2022 22:42:41'!
+addBalanceTo: sum 
+
+	self subclassResponsibility ! !
+!Withdraw methodsFor: 'value' stamp: 'scb 5/22/2022 22:42:58' prior: 50474411 overrides: 50474420!
+addBalanceTo: sum 
+
+	^ sum - value! !
+!Deposit methodsFor: 'value' stamp: 'scb 5/22/2022 22:43:26' prior: 50474406 overrides: 50474420!
+addBalanceTo: sum 
+
+	^ sum + value. ! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'scb 5/22/2022 22:43:47'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'scb 5/22/2022 22:43:47'!
+FAILURE!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'scb 5/22/2022 22:43:47'!
+FAILURE!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'scb 5/22/2022 22:43:47'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'scb 5/22/2022 22:43:47'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'scb 5/22/2022 22:43:47'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'scb 5/22/2022 22:43:47'!
+PASSED!
+!ReceptiveAccount methodsFor: 'balance' stamp: 'scb 5/22/2022 22:44:16' prior: 50474366!
+balance
+
+	^transactions sum: [ :aTransaction | 
+		aTransaction class = #Deposit
+		ifTrue: [aTransaction value]
+		ifFalse: [(aTransaction value) negated] ]
+	ifEmpty: [ 0 ]! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'scb 5/22/2022 22:44:17'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'scb 5/22/2022 22:44:17'!
+FAILURE!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'scb 5/22/2022 22:44:17'!
+FAILURE!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'scb 5/22/2022 22:44:17'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'scb 5/22/2022 22:44:17'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'scb 5/22/2022 22:44:17'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'scb 5/22/2022 22:44:17'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'scb 5/22/2022 22:44:19'!
+FAILURE!
+!ReceptiveAccount methodsFor: 'balance' stamp: 'scb 5/22/2022 22:45:07' prior: 50474461!
+balance
+
+	^transactions sum: [ :aTransaction | 
+		aTransaction class = Deposit
+		ifTrue: [aTransaction value]
+		ifFalse: [(aTransaction value) negated] ]
+	ifEmpty: [ 0 ]! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'scb 5/22/2022 22:45:08'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'scb 5/22/2022 22:45:08'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'scb 5/22/2022 22:45:08'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'scb 5/22/2022 22:45:08'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'scb 5/22/2022 22:45:08'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'scb 5/22/2022 22:45:08'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'scb 5/22/2022 22:45:08'!
+PASSED!
+!ReceptiveAccount methodsFor: 'balance' stamp: 'scb 5/22/2022 22:46:54' prior: 50474500!
+balance
+
+	| sum |
+	
+	^transactions sum: [ :aTransaction | sum := aTransaction addBalanceTo: sum ] ifEmpty: [ 0 ]! !
+!ReceptiveAccount methodsFor: 'balance' stamp: 'scb 5/22/2022 22:47:16' prior: 50474535!
+balance
+
+	| sum |
+	
+	sum := 0.
+	transactions sum: [ :aTransaction | sum := aTransaction addBalanceTo: sum ] ifEmpty: [ 0 ].
+	^ sum.! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'scb 5/22/2022 22:47:17'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'scb 5/22/2022 22:47:17'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'scb 5/22/2022 22:47:17'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'scb 5/22/2022 22:47:17'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'scb 5/22/2022 22:47:17'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'scb 5/22/2022 22:47:17'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'scb 5/22/2022 22:47:17'!
+PASSED!
+
+TestCase subclass: #PortfolioTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #PortfolioTest category: 'Portfolio-Ejercicio' stamp: 'scb 5/22/2022 22:47:40'!
+TestCase subclass: #PortfolioTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+Object subclass: #Portfolio
+	instanceVariableNames: 'transactions'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #Portfolio category: 'Portfolio-Ejercicio' stamp: 'scb 5/22/2022 22:47:49'!
+Object subclass: #Portfolio
+	instanceVariableNames: 'transactions'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!Portfolio methodsFor: 'no messages' stamp: 'scb 5/22/2022 22:48:44'!
+test01BalanceOfNewPortfolioIsEqualToZero
+
+	| aPortfolio |
+	
+	aPortfolio := Portfolio new.
+	self assert: aPortfolio balance = 0.! !
+
+!methodRemoval: Portfolio #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/22/2022 22:49:18'!
+test01BalanceOfNewPortfolioIsEqualToZero
+
+	| aPortfolio |
+	
+	aPortfolio := Portfolio new.
+	self assert: aPortfolio balance = 0.!
+!PortfolioTest methodsFor: 'no messages' stamp: 'scb 5/22/2022 22:49:31'!
+test01BalanceOfNewPortfolioIsEqualToZero
+
+	| aPortfolio |
+	
+	aPortfolio := Portfolio new.
+	self assert: aPortfolio balance = 0! !
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/22/2022 22:49:32'!
+ERROR!
+!Portfolio methodsFor: 'no messages' stamp: 'scb 5/22/2022 22:50:02'!
+balance
+	
+	^0! !
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/22/2022 22:50:04'!
+PASSED!
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/22/2022 22:50:49' prior: 50474614!
+test01BalanceOfNewPortfolioIsEqualToZero
+
+	| aPortfolio |
+	
+	aPortfolio := Portfolio new.
+	self assert: aPortfolio balance = 0.! !
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/22/2022 22:50:52'!
+test02PorfolioBalanceIncreasesAfterAddingAccount 
+
+	| aPortfolio anAccount |
+	
+	aPortfolio := Portfolio new.
+	anAccount := ReceptiveAccount new.
+	Deposit register: 100 on: anAccount.
+	
+	self assert: (aPortfolio add: anAccount) balance = anAccount balance.! !
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/22/2022 22:50:54'!
+ERROR!
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/22/2022 22:51:07' prior: 50474638!
+test02PorfolioBalanceIncreasesAfterAddingAccount 
+
+	| aPortfolio anAccount |
+	
+	aPortfolio := Portfolio new.
+	anAccount := ReceptiveAccount new.
+	Deposit register: 100 on: anAccount.
+	
+	self assert: (aPortfolio register: anAccount) balance = anAccount balance.! !
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/22/2022 22:51:08'!
+ERROR!
+!Portfolio methodsFor: 'transactions' stamp: 'scb 5/22/2022 22:52:29'!
+register: anItem! !
+
+Object subclass: #Portfolio
+	instanceVariableNames: 'accounts'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #Portfolio category: 'Portfolio-Ejercicio' stamp: 'scb 5/22/2022 22:52:47'!
+Object subclass: #Portfolio
+	instanceVariableNames: 'accounts'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!Portfolio methodsFor: 'transactions' stamp: 'scb 5/22/2022 22:53:40' prior: 50474668!
+register: anItem
+	
+	accounts add: anItem! !
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/22/2022 22:53:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/22/2022 22:53:42'!
+ERROR!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/22/2022 22:53:42'!
+ERROR!
+!Portfolio methodsFor: 'initialization' stamp: 'scb 5/22/2022 22:54:22' overrides: 16920235!
+initialize
+
+	accounts := OrderedCollection new.! !
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/22/2022 22:54:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/22/2022 22:54:23'!
+FAILURE!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/22/2022 22:54:23'!
+FAILURE!
+!Portfolio methodsFor: 'balance' stamp: 'scb 5/22/2022 22:55:03' prior: 50474624!
+balance
+	
+	^ accounts sum: [ :anAccount | anAccount balance].! !
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/22/2022 22:55:04'!
+ERROR!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/22/2022 22:55:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/22/2022 22:55:04'!
+ERROR!
+!Portfolio methodsFor: 'balance' stamp: 'scb 5/22/2022 22:55:17' prior: 50474714!
+balance
+	
+	^ accounts sum: [ :anAccount | anAccount balance] ifEmpty: [0].! !
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/22/2022 22:55:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/22/2022 22:55:18'!
+PASSED!
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/22/2022 22:55:31'!
+test03PorfolioBalanceIncreasesAfterAddingPortfolio
+
+	| aPortfolio aSecondPortfolio anAccount |
+	
+	aPortfolio := Portfolio new.
+	aSecondPortfolio := Portfolio new.
+	anAccount := ReceptiveAccount new.
+	Deposit register: 100 on: anAccount.
+	
+	self assert: (aSecondPortfolio add: (aPortfolio add: anAccount)) balance = aPortfolio balance.! !
+
+Object subclass: #Portfolio
+	instanceVariableNames: 'accounts portfolios'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #Portfolio category: 'Portfolio-Ejercicio' stamp: 'scb 5/22/2022 22:55:43'!
+Object subclass: #Portfolio
+	instanceVariableNames: 'accounts portfolios'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+Object subclass: #AccountTransaction
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #AccountTransaction category: 'Portfolio-Ejercicio' stamp: 'scb 5/22/2022 22:56:25'!
+Object subclass: #AccountTransaction
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!Portfolio methodsFor: 'initialization' stamp: 'scb 5/22/2022 22:56:48' prior: 50474699 overrides: 16920235!
+initialize
+
+	accounts := OrderedCollection new.
+	portfolios := OrderedCollection new.! !
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/22/2022 22:56:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/22/2022 22:56:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/22/2022 22:56:49'!
+ERROR!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/22/2022 22:56:49'!
+ERROR!
+!Portfolio methodsFor: 'balance' stamp: 'scb 5/22/2022 22:58:01' prior: 50474729!
+balance
+	
+	^ (accounts sum: [ :anAccount | anAccount balance] ifEmpty: [0]) + (portfolios sum: [ :aPortfolio | aPortfolio balance] ifEmpty: [0]).! !
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/22/2022 22:58:02'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/22/2022 22:58:02'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/22/2022 22:58:02'!
+ERROR!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/22/2022 22:58:02'!
+ERROR!
+!Portfolio methodsFor: 'transactions' stamp: 'scb 5/22/2022 22:59:03' prior: 50474684!
+register: anItem
+	
+	(anItem class: Portfolio) ifTrue: [portfolios add: anItem].
+	accounts add: anItem! !
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/22/2022 22:59:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/22/2022 22:59:04'!
+ERROR!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/22/2022 22:59:04'!
+ERROR!
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/22/2022 22:59:27'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/22/2022 22:59:27'!
+ERROR!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/22/2022 22:59:27'!
+ERROR!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/22/2022 22:59:29'!
+ERROR!
+!Portfolio methodsFor: 'transactions' stamp: 'scb 5/22/2022 22:59:47' prior: 50474822!
+register: anItem
+	
+	(anItem class = Portfolio) ifTrue: [portfolios add: anItem].
+	accounts add: anItem! !
+!Portfolio methodsFor: 'transactions' stamp: 'scb 5/22/2022 22:59:54' prior: 50474854!
+register: anItem
+	
+	anItem class = Portfolio ifTrue: [portfolios add: anItem].
+	accounts add: anItem! !
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/22/2022 22:59:55'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/22/2022 22:59:55'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/22/2022 22:59:55'!
+ERROR!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/22/2022 22:59:55'!
+ERROR!
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/22/2022 23:00:11' prior: 50474741!
+test03PorfolioBalanceIncreasesAfterAddingPortfolio
+
+	| aPortfolio aSecondPortfolio anAccount |
+	
+	aPortfolio := Portfolio new.
+	aSecondPortfolio := Portfolio new.
+	anAccount := ReceptiveAccount new.
+	Deposit register: 100 on: anAccount.
+	
+	self assert: (aSecondPortfolio add: (aPortfolio register: anAccount)) balance = aPortfolio balance.! !
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/22/2022 23:00:18' prior: 50474882!
+test03PorfolioBalanceIncreasesAfterAddingPortfolio
+
+	| aPortfolio aSecondPortfolio anAccount |
+	
+	aPortfolio := Portfolio new.
+	aSecondPortfolio := Portfolio new.
+	anAccount := ReceptiveAccount new.
+	Deposit register: 100 on: anAccount.
+	
+	self assert: (aSecondPortfolio register: (aPortfolio register: anAccount)) balance = aPortfolio balance.! !
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/22/2022 23:00:20'!
+FAILURE!
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/22/2022 23:00:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/22/2022 23:00:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/22/2022 23:00:35'!
+FAILURE!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/22/2022 23:00:35'!
+FAILURE!
+!Portfolio methodsFor: 'transactions' stamp: 'scb 5/22/2022 23:01:29' prior: 50474861!
+register: anItem
+	
+	anItem class = Portfolio
+	ifTrue: [portfolios add: anItem]
+	ifFalse: [accounts add: anItem]! !
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/22/2022 23:01:30'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/22/2022 23:01:30'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/22/2022 23:01:30'!
+PASSED!
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/22/2022 23:03:26'!
+test04EmptyPortfolioHasNoRegisteredTransaction
+
+	| aPortfolio aDeposit|
+	
+	aPortfolio := Portfolio new.
+	aDeposit := Deposit register: 100.
+	
+	self assert: (aPortfolio hasRegistered: aDeposit) = false! !
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/22/2022 23:03:27'!
+ERROR!
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/22/2022 23:04:12' prior: 50474945!
+test04EmptyPortfolioHasNoRegisteredTransaction
+
+	| aPortfolio aDeposit|
+	
+	aPortfolio := Portfolio new.
+	aDeposit := Deposit for: 100.
+	
+	self assert: (aPortfolio hasRegistered: aDeposit) = false! !
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/22/2022 23:04:13'!
+ERROR!
+!Portfolio methodsFor: 'transactions' stamp: 'scb 5/22/2022 23:07:38'!
+hasRegistered: aTransaction
+	
+	^ (accounts anySatisfy: [ :anAccount | anAccount transactions includes: aTransaction]) or: (portfolios anySatisfy: [ :aPortfolio | aPortfolio hasRegistered: aTransaction])! !
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/22/2022 23:07:39'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/22/2022 23:07:39'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/22/2022 23:07:39'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/22/2022 23:07:39'!
+PASSED!
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/22/2022 23:08:07'!
+test05PortfolioKnowsRegisteredTransactionsOnAccounts
+
+	| aPortfolio anAccount aDeposit|
+	
+	aPortfolio := Portfolio new.
+	anAccount := ReceptiveAccount new.
+	aDeposit := Deposit register: 100 on: anAccount.
+	
+	self assert: ((aPortfolio register: anAccount) hasRegistered: aDeposit)! !
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/22/2022 23:08:09'!
+PASSED!
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/22/2022 23:08:09'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/22/2022 23:08:09'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/22/2022 23:08:09'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/22/2022 23:08:09'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/22/2022 23:08:09'!
+PASSED!
+
+!methodRemoval: PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/22/2022 23:08:23'!
+test05PortfolioKnowsRegisteredTransactionsOnAccounts
+
+	| aPortfolio anAccount aDeposit|
+	
+	aPortfolio := Portfolio new.
+	anAccount := ReceptiveAccount new.
+	aDeposit := Deposit register: 100 on: anAccount.
+	
+	self assert: ((aPortfolio register: anAccount) hasRegistered: aDeposit)!
+!Portfolio methodsFor: 'transactions' stamp: 'scb 5/22/2022 23:08:52' prior: 50474970!
+hasRegistered: aTransaction
+	
+	^ false! !
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/22/2022 23:08:54'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/22/2022 23:08:54'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/22/2022 23:08:54'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/22/2022 23:08:54'!
+PASSED!
+!Portfolio methodsFor: 'transactions' stamp: 'scb 5/22/2022 23:09:11' prior: 50475040!
+hasRegistered: aTransaction
+	
+	^ false! !
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/22/2022 23:09:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/22/2022 23:09:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/22/2022 23:09:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/22/2022 23:09:13'!
+PASSED!
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/22/2022 23:09:23'!
+test05PortfolioKnowsRegisteredTransactionsOnAccounts
+
+	| aPortfolio anAccount aDeposit|
+	
+	aPortfolio := Portfolio new.
+	anAccount := ReceptiveAccount new.
+	aDeposit := Deposit register: 100 on: anAccount.
+	
+	self assert: ((aPortfolio register: anAccount) hasRegistered: aDeposit)! !
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/22/2022 23:09:24'!
+FAILURE!
+!Portfolio methodsFor: 'transactions' stamp: 'scb 5/22/2022 23:10:11' prior: 50475059!
+hasRegistered: aTransaction
+	
+	^ (accounts anySatisfy: [ :anAccount | anAccount hasRegistered: aTransaction])! !
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/22/2022 23:10:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/22/2022 23:10:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/22/2022 23:10:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/22/2022 23:10:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/22/2022 23:10:12'!
+PASSED!
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/22/2022 23:10:41'!
+test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios
+
+	| aPortfolio aSecondPortfolio anAccount aTransaction |
+	
+	aPortfolio := Portfolio new.
+	aSecondPortfolio := Portfolio new.
+	anAccount := ReceptiveAccount new.
+	aTransaction := Deposit register: 100 on: anAccount.
+	
+	self assert: ((aSecondPortfolio register: (aPortfolio register: anAccount)) hasRegistered: aTransaction).! !
+!Portfolio methodsFor: 'transactions' stamp: 'scb 5/22/2022 23:11:19' prior: 50475093!
+hasRegistered: aTransaction
+	
+	^ (accounts anySatisfy: [ :anAccount | anAccount hasRegistered: aTransaction]) or: (portfolios anySatisfy: [ :aPortfolio | aPortfolio hasRegistered: aTransaction])! !
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/22/2022 23:11:20'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/22/2022 23:11:20'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/22/2022 23:11:20'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/22/2022 23:11:20'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/22/2022 23:11:20'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/22/2022 23:11:20'!
+PASSED!
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/22/2022 23:12:02'!
+test07EmptyPortfolioHasNoTransactions
+
+	| aPortfolio |
+	
+	aPortfolio := Portfolio new.
+	
+	self assert: (aPortfolio transactions = OrderedCollection new).! !
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/22/2022 23:12:04'!
+ERROR!
+!Portfolio methodsFor: 'transactions' stamp: 'scb 5/22/2022 23:12:47'!
+transactions
+
+	^ OrderedCollection new.! !
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/22/2022 23:12:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/22/2022 23:12:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/22/2022 23:12:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/22/2022 23:12:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/22/2022 23:12:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/22/2022 23:12:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/22/2022 23:12:48'!
+PASSED!
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/22/2022 23:13:12'!
+test08PortfolioKnowsTransactionsRegisteredOnASingleAccount
+
+	| aPortfolio anAccount aDeposit transactions |
+	
+	aPortfolio := Portfolio new.
+	anAccount := ReceptiveAccount new.
+	aDeposit := Deposit register: 100 on: anAccount.
+	transactions := OrderedCollection with: aDeposit.
+	
+	self assert: (aPortfolio register: anAccount) transactions = transactions.! !
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnASingleAccount stamp: 'scb 5/22/2022 23:13:13'!
+FAILURE!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnASingleAccount stamp: 'scb 5/22/2022 23:13:57'!
+FAILURE!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnASingleAccount stamp: 'scb 5/22/2022 23:13:57'!
+FAILURE!
+!Portfolio methodsFor: 'transactions' stamp: 'scb 5/22/2022 23:15:48' prior: 50475174!
+transactions
+	
+	| transactions |
+	
+	transactions := OrderedCollection new.
+	^ accounts select: [ :anAccount | transactions := transactions, anAccount transactions ]! !
+!Portfolio methodsFor: 'transactions' stamp: 'scb 5/22/2022 23:15:59' prior: 50475229!
+transactions
+	
+	| transactions |
+	
+	transactions := OrderedCollection new.
+	^ accounts do: [ :anAccount | transactions := transactions, anAccount transactions ]! !
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/22/2022 23:16:00'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/22/2022 23:16:00'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/22/2022 23:16:00'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/22/2022 23:16:00'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/22/2022 23:16:00'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/22/2022 23:16:00'!
+PASSED!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/22/2022 23:16:00'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnASingleAccount stamp: 'scb 5/22/2022 23:16:00'!
+FAILURE!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnASingleAccount stamp: 'scb 5/22/2022 23:16:00'!
+FAILURE!
+!Portfolio methodsFor: 'transactions' stamp: 'scb 5/22/2022 23:16:16' prior: 50475237!
+transactions
+	
+	| transactions |
+	
+	transactions := OrderedCollection new.
+	accounts do: [ :anAccount | transactions := transactions, anAccount transactions ].
+	^transactions.! !
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/22/2022 23:16:17'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/22/2022 23:16:17'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/22/2022 23:16:17'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/22/2022 23:16:17'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/22/2022 23:16:17'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/22/2022 23:16:17'!
+PASSED!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/22/2022 23:16:17'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnASingleAccount stamp: 'scb 5/22/2022 23:16:17'!
+PASSED!
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/22/2022 23:16:45'!
+test09PortfolioKnowsTransactionsRegisteredOnMultipleAccounts
+
+	| aPortfolio anAccount anotherAccount aDeposit anotherDeposit transactions |
+	
+	aPortfolio := Portfolio new.
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	aDeposit := Deposit register: 100 on: anAccount.
+	anotherDeposit := Deposit register: 100 on: anotherAccount.
+	transactions := OrderedCollection with: aDeposit with: anotherDeposit.
+	
+	self assert: ((aPortfolio register: anAccount) register:anotherAccount) transactions = transactions.! !
+
+!methodRemoval: PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnMultipleAccounts stamp: 'scb 5/22/2022 23:17:25'!
+test09PortfolioKnowsTransactionsRegisteredOnMultipleAccounts
+
+	| aPortfolio anAccount anotherAccount aDeposit anotherDeposit transactions |
+	
+	aPortfolio := Portfolio new.
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	aDeposit := Deposit register: 100 on: anAccount.
+	anotherDeposit := Deposit register: 100 on: anotherAccount.
+	transactions := OrderedCollection with: aDeposit with: anotherDeposit.
+	
+	self assert: ((aPortfolio register: anAccount) register:anotherAccount) transactions = transactions.!
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/22/2022 23:17:44'!
+test08PortfolioKnowsTransactionsRegisteredOnAccounts
+
+	| aPortfolio anAccount aDeposit transactions |
+	
+	aPortfolio := Portfolio new.
+	anAccount := ReceptiveAccount new.
+	aDeposit := Deposit register: 100 on: anAccount.
+	transactions := OrderedCollection with: aDeposit.
+	
+	self assert: (aPortfolio register: anAccount) transactions = transactions.! !
+
+!methodRemoval: PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnASingleAccount stamp: 'scb 5/22/2022 23:17:44'!
+test08PortfolioKnowsTransactionsRegisteredOnASingleAccount
+
+	| aPortfolio anAccount aDeposit transactions |
+	
+	aPortfolio := Portfolio new.
+	anAccount := ReceptiveAccount new.
+	aDeposit := Deposit register: 100 on: anAccount.
+	transactions := OrderedCollection with: aDeposit.
+	
+	self assert: (aPortfolio register: anAccount) transactions = transactions.!
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/22/2022 23:18:32'!
+test9PortfolioKnowsTransactionsRegisteredOnPorfolios
+
+	| aPortfolio anotherPortfolio anAccount aDeposit transactions |
+	
+	aPortfolio := Portfolio new.
+	anotherPortfolio := Portfolio new.
+	anAccount := ReceptiveAccount new.
+	aDeposit := Deposit register: 100 on: anAccount.
+	transactions := OrderedCollection with: aDeposit.
+	
+	self assert: (anotherPortfolio register: (aPortfolio register: anAccount)) transactions = transactions.! !
+
+!testRun: #PortfolioTest #test9PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/22/2022 23:18:33'!
+FAILURE!
+!Portfolio methodsFor: 'transactions' stamp: 'scb 5/22/2022 23:19:18' prior: 50475279!
+transactions
+	
+	| transactions |
+	
+	transactions := OrderedCollection new.
+	accounts do: [ :anAccount | transactions := transactions, anAccount transactions ].
+	portfolios do: [ :aPortfolio | transactions := transactions, aPortfolio transactions ].
+	^transactions.! !
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/22/2022 23:19:19'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/22/2022 23:19:19'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/22/2022 23:19:19'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/22/2022 23:19:19'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/22/2022 23:19:19'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/22/2022 23:19:19'!
+PASSED!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/22/2022 23:19:19'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnAccounts stamp: 'scb 5/22/2022 23:19:19'!
+PASSED!
+
+!testRun: #PortfolioTest #test9PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/22/2022 23:19:19'!
+PASSED!
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/22/2022 23:19:57'!
+test09PortfolioKnowsTransactionsRegisteredOnPorfolios
+
+	| aPortfolio anotherPortfolio anAccount aDeposit transactions |
+	
+	aPortfolio := Portfolio new.
+	anotherPortfolio := Portfolio new.
+	anAccount := ReceptiveAccount new.
+	aDeposit := Deposit register: 100 on: anAccount.
+	transactions := OrderedCollection with: aDeposit.
+	
+	self assert: (anotherPortfolio register: (aPortfolio register: anAccount)) transactions = transactions.! !
+
+!methodRemoval: PortfolioTest #test9PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/22/2022 23:19:57'!
+test9PortfolioKnowsTransactionsRegisteredOnPorfolios
+
+	| aPortfolio anotherPortfolio anAccount aDeposit transactions |
+	
+	aPortfolio := Portfolio new.
+	anotherPortfolio := Portfolio new.
+	anAccount := ReceptiveAccount new.
+	aDeposit := Deposit register: 100 on: anAccount.
+	transactions := OrderedCollection with: aDeposit.
+	
+	self assert: (anotherPortfolio register: (aPortfolio register: anAccount)) transactions = transactions.!
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/22/2022 23:21:23'!
+test10PortfolioCantAddAccountWithRepeatedAccount
+
+	| aPortfolio anAccount anotherAccount aDeposit |
+	
+	aPortfolio := Portfolio new.
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	aDeposit := Deposit register: 100 on: anAccount.
+	anotherAccount register: aDeposit.
+	
+	self should: [ ((aPortfolio add: anAccount) add: anotherAccount ) ]
+		raise: Error
+		withExceptionDo: [:anError |
+			self assert: anError messageText = Portfolio repeatedTransactionErrorDescription ].! !
+
+!testRun: #PortfolioTest #test10PortfolioCantAddAccountWithRepeatedAccount stamp: 'scb 5/22/2022 23:21:25'!
+ERROR!
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/22/2022 23:21:56' prior: 50475484!
+test10PortfolioCantAddAccountWithRepeatedAccount
+
+	| aPortfolio anAccount anotherAccount aDeposit |
+	
+	aPortfolio := Portfolio new.
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	aDeposit := Deposit register: 100 on: anAccount.
+	anotherAccount register: aDeposit.
+	
+	self should: [ ((aPortfolio register: anAccount) register: anotherAccount ) ]
+		raise: Error
+		withExceptionDo: [:anError |
+			self assert: anError messageText = Portfolio repeatedItemErrorDescription ].! !
+!Portfolio class methodsFor: 'no messages' stamp: 'scb 5/22/2022 23:23:26'!
+repeatedItemErrorDescription
+
+	^ 'An item was already registered in this portfolio'! !
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/22/2022 23:23:28'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/22/2022 23:23:28'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/22/2022 23:23:28'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/22/2022 23:23:28'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/22/2022 23:23:28'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/22/2022 23:23:28'!
+PASSED!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/22/2022 23:23:28'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnAccounts stamp: 'scb 5/22/2022 23:23:28'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/22/2022 23:23:28'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddAccountWithRepeatedAccount stamp: 'scb 5/22/2022 23:23:28'!
+FAILURE!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddAccountWithRepeatedAccount stamp: 'scb 5/22/2022 23:23:28'!
+FAILURE!
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/22/2022 23:23:53'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/22/2022 23:23:53'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/22/2022 23:23:53'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/22/2022 23:23:53'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/22/2022 23:23:53'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/22/2022 23:23:53'!
+PASSED!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/22/2022 23:23:53'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnAccounts stamp: 'scb 5/22/2022 23:23:53'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/22/2022 23:23:53'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddAccountWithRepeatedAccount stamp: 'scb 5/22/2022 23:23:53'!
+FAILURE!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddAccountWithRepeatedAccount stamp: 'scb 5/22/2022 23:23:53'!
+FAILURE!
+!Portfolio methodsFor: 'transactions' stamp: 'scb 5/22/2022 23:26:19' prior: 50474928!
+register: anItem
+	
+	anItem class = Portfolio
+	ifTrue: [portfolios add: anItem]
+	ifFalse: [
+		(accounts includes: anItem) 
+		ifTrue: [self ].
+		accounts add: anItem]! !
+!Portfolio methodsFor: 'transactions' stamp: 'scb 5/22/2022 23:29:12' prior: 50475612!
+register: anItem
+	
+	(accounts includes: anItem) ifTrue: [  ].
+	
+	anItem class = Portfolio
+	ifTrue: [portfolios add: anItem]
+	ifFalse: [accounts add: anItem]! !
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/22/2022 23:29:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/22/2022 23:29:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/22/2022 23:29:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/22/2022 23:29:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/22/2022 23:29:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/22/2022 23:29:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/22/2022 23:29:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnAccounts stamp: 'scb 5/22/2022 23:29:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/22/2022 23:29:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddAccountWithRepeatedAccount stamp: 'scb 5/22/2022 23:29:12'!
+FAILURE!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddAccountWithRepeatedAccount stamp: 'scb 5/22/2022 23:29:12'!
+FAILURE!
+!Portfolio methodsFor: 'transactions' stamp: 'scb 5/22/2022 23:31:03' prior: 50475620!
+register: anItem
+	
+	(accounts includes: anItem) ifTrue: [ self error: (Portfolio repeatedItemErrorDescription) ].
+	
+	anItem class = Portfolio
+	ifTrue: [portfolios add: anItem]
+	ifFalse: [accounts add: anItem]! !
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/22/2022 23:31:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/22/2022 23:31:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/22/2022 23:31:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/22/2022 23:31:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/22/2022 23:31:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/22/2022 23:31:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/22/2022 23:31:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnAccounts stamp: 'scb 5/22/2022 23:31:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/22/2022 23:31:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddAccountWithRepeatedAccount stamp: 'scb 5/22/2022 23:31:04'!
+FAILURE!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddAccountWithRepeatedAccount stamp: 'scb 5/22/2022 23:31:04'!
+FAILURE!
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/22/2022 23:32:11'!
+test10PortfolioCantAddRepeatedAccount
+
+	| aPortfolio anAccount anotherAccount aDeposit |
+	
+	aPortfolio := Portfolio new.
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	aDeposit := Deposit register: 100 on: anAccount.
+	anotherAccount register: aDeposit.
+	
+	self should: [ ((aPortfolio register: anAccount) register: anotherAccount ) ]
+		raise: Error
+		withExceptionDo: [:anError |
+			self assert: anError messageText = Portfolio repeatedItemErrorDescription ].! !
+
+!methodRemoval: PortfolioTest #test10PortfolioCantAddAccountWithRepeatedAccount stamp: 'scb 5/22/2022 23:32:11'!
+test10PortfolioCantAddAccountWithRepeatedAccount
+
+	| aPortfolio anAccount anotherAccount aDeposit |
+	
+	aPortfolio := Portfolio new.
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	aDeposit := Deposit register: 100 on: anAccount.
+	anotherAccount register: aDeposit.
+	
+	self should: [ ((aPortfolio register: anAccount) register: anotherAccount ) ]
+		raise: Error
+		withExceptionDo: [:anError |
+			self assert: anError messageText = Portfolio repeatedItemErrorDescription ].!
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/22/2022 23:32:46' prior: 50475719!
+test10PortfolioCantAddRepeatedAccount
+
+	| aPortfolio anAccount aDeposit |
+	
+	aPortfolio := Portfolio new.
+	anAccount := ReceptiveAccount new.
+	aDeposit := Deposit register: 100 on: anAccount.
+	
+	self should: [ ((aPortfolio register: anAccount) register: anAccount ) ]
+		raise: Error
+		withExceptionDo: [:anError |
+			self assert: anError messageText = Portfolio repeatedItemErrorDescription ].! !
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/22/2022 23:32:57' prior: 50475757!
+test10PortfolioCantAddRepeatedAccount
+
+	| aPortfolio anAccount |
+	
+	aPortfolio := Portfolio new.
+	anAccount := ReceptiveAccount new.
+	Deposit register: 100 on: anAccount.
+	
+	self should: [ ((aPortfolio register: anAccount) register: anAccount ) ]
+		raise: Error
+		withExceptionDo: [:anError |
+			self assert: anError messageText = Portfolio repeatedItemErrorDescription ].! !
+!Portfolio methodsFor: 'transactions' stamp: 'scb 5/22/2022 23:33:12' prior: 50475669!
+register: anItem
+	
+	
+	
+	anItem class = Portfolio
+	ifTrue: [portfolios add: anItem]
+	ifFalse: [accounts add: anItem]! !
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/22/2022 23:33:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/22/2022 23:33:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/22/2022 23:33:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/22/2022 23:33:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/22/2022 23:33:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/22/2022 23:33:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/22/2022 23:33:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnAccounts stamp: 'scb 5/22/2022 23:33:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/22/2022 23:33:13'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddRepeatedAccount stamp: 'scb 5/22/2022 23:33:13'!
+FAILURE!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddRepeatedAccount stamp: 'scb 5/22/2022 23:33:13'!
+FAILURE!
+!Portfolio methodsFor: 'transactions' stamp: 'scb 5/22/2022 23:33:17' prior: 50475787!
+register: anItem
+	
+	(accounts includes: anItem) ifTrue: [ self error: (Portfolio repeatedItemErrorDescription) ].
+	
+	anItem class = Portfolio
+	ifTrue: [portfolios add: anItem]
+	ifFalse: [accounts add: anItem]! !
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/22/2022 23:33:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/22/2022 23:33:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/22/2022 23:33:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/22/2022 23:33:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/22/2022 23:33:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/22/2022 23:33:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/22/2022 23:33:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnAccounts stamp: 'scb 5/22/2022 23:33:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/22/2022 23:33:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddRepeatedAccount stamp: 'scb 5/22/2022 23:33:18'!
+PASSED!
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/22/2022 23:33:36'!
+test10PortfolioCantAddRepeatedPortfolio
+
+	| aPortfolio anAccount |
+	
+	aPortfolio := Portfolio new.
+	anAccount := ReceptiveAccount new.
+	Deposit register: 100 on: anAccount.
+	
+	self should: [ ((aPortfolio register: anAccount) register: anAccount ) ]
+		raise: Error
+		withExceptionDo: [:anError |
+			self assert: anError messageText = Portfolio repeatedItemErrorDescription ].! !
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/22/2022 23:34:18'!
+test11PortfolioCantAddRepeatedPortfolio
+
+	| aPortfolio anAccount |
+	
+	aPortfolio := Portfolio new.
+	anAccount := ReceptiveAccount new.
+	Deposit register: 100 on: anAccount.
+	
+	self should: [ ((aPortfolio register: anAccount) register: anAccount ) ]
+		raise: Error
+		withExceptionDo: [:anError |
+			self assert: anError messageText = Portfolio repeatedItemErrorDescription ].! !
+
+!methodRemoval: PortfolioTest #test10PortfolioCantAddRepeatedPortfolio stamp: 'scb 5/22/2022 23:34:18'!
+test10PortfolioCantAddRepeatedPortfolio
+
+	| aPortfolio anAccount |
+	
+	aPortfolio := Portfolio new.
+	anAccount := ReceptiveAccount new.
+	Deposit register: 100 on: anAccount.
+	
+	self should: [ ((aPortfolio register: anAccount) register: anAccount ) ]
+		raise: Error
+		withExceptionDo: [:anError |
+			self assert: anError messageText = Portfolio repeatedItemErrorDescription ].!
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/22/2022 23:35:11' prior: 50475894!
+test11PortfolioCantAddRepeatedPortfolio
+
+	| aPortfolio anotherPortfolio |
+	
+	aPortfolio := Portfolio new.
+	anotherPortfolio := Portfolio new.
+	
+	self should: [ ((aPortfolio register: anotherPortfolio) register: anotherPortfolio ) ]
+		raise: Error
+		withExceptionDo: [:anError |
+			self assert: anError messageText = Portfolio repeatedItemErrorDescription ].! !
+
+!testRun: #PortfolioTest #test11PortfolioCantAddRepeatedPortfolio stamp: 'scb 5/22/2022 23:35:12'!
+FAILURE!
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/22/2022 23:35:21' prior: 50475772!
+test10PortfolioCantAddRepeatedAccount
+
+	| aPortfolio anAccount |
+	
+	aPortfolio := Portfolio new.
+	anAccount := ReceptiveAccount new.
+	
+	self should: [ ((aPortfolio register: anAccount) register: anAccount ) ]
+		raise: Error
+		withExceptionDo: [:anError |
+			self assert: anError messageText = Portfolio repeatedItemErrorDescription ].! !
+!Portfolio methodsFor: 'transactions' stamp: 'scb 5/22/2022 23:39:04' prior: 50475834!
+register: anItem
+	
+	(anItem class = Portfolio
+	ifTrue: [portfolios contains: anItem]
+	ifFalse: [accounts includes: anItem])
+	ifTrue: [ self error: (Portfolio repeatedItemErrorDescription) ].
+	
+	anItem class = Portfolio
+	ifTrue: [portfolios add: anItem]
+	ifFalse: [accounts add: anItem]! !
+!Portfolio methodsFor: 'transactions' stamp: 'scb 5/22/2022 23:39:59' prior: 50475956!
+register: anItem
+	
+	(self contains: anItem) ifTrue: [ self error: (Portfolio repeatedItemErrorDescription) ].
+	
+	anItem class = Portfolio
+	ifTrue: [portfolios add: anItem]
+	ifFalse: [accounts add: anItem]! !
+!Portfolio methodsFor: 'testing' stamp: 'scb 5/22/2022 23:40:33'!
+contains: aTransaction
+	
+	^ (accounts anySatisfy: [ :anAccount | anAccount hasRegistered: aTransaction]) or: (portfolios anySatisfy: [ :aPortfolio | aPortfolio hasRegistered: aTransaction])! !
+!Portfolio methodsFor: 'testing' stamp: 'scb 5/22/2022 23:41:20' prior: 50475977!
+contains: anItem
+	
+	^ accounts includes: anItem ! !
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/22/2022 23:41:22'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/22/2022 23:41:22'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/22/2022 23:41:22'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/22/2022 23:41:22'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/22/2022 23:41:22'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/22/2022 23:41:22'!
+PASSED!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/22/2022 23:41:22'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnAccounts stamp: 'scb 5/22/2022 23:41:22'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/22/2022 23:41:22'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddRepeatedAccount stamp: 'scb 5/22/2022 23:41:22'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCantAddRepeatedPortfolio stamp: 'scb 5/22/2022 23:41:22'!
+FAILURE!
+
+!testRun: #PortfolioTest #test11PortfolioCantAddRepeatedPortfolio stamp: 'scb 5/22/2022 23:41:22'!
+FAILURE!
+!Portfolio methodsFor: 'testing' stamp: 'scb 5/22/2022 23:41:29' prior: 50475986!
+contains: anItem
+	
+	^ (accounts includes: anItem)! !
+!Portfolio methodsFor: 'testing' stamp: 'scb 5/22/2022 23:42:31' prior: 50476034!
+contains: anItem
+	
+	^ (accounts includes: anItem) or: (portfolios do: [ :aPortfolio | aPortfolio contains: anItem])! !
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/22/2022 23:42:32'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/22/2022 23:42:32'!
+ERROR!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/22/2022 23:42:32'!
+ERROR!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/22/2022 23:42:32'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/22/2022 23:42:32'!
+ERROR!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/22/2022 23:42:32'!
+ERROR!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/22/2022 23:42:32'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnAccounts stamp: 'scb 5/22/2022 23:42:32'!
+ERROR!
+
+!testRun: #PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/22/2022 23:42:32'!
+ERROR!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddRepeatedAccount stamp: 'scb 5/22/2022 23:42:32'!
+FAILURE!
+
+!testRun: #PortfolioTest #test11PortfolioCantAddRepeatedPortfolio stamp: 'scb 5/22/2022 23:42:32'!
+FAILURE!
+!Portfolio methodsFor: 'testing' stamp: 'scb 5/22/2022 23:42:43' prior: 50476039!
+contains: anItem
+	
+	^ (accounts includes: anItem) or: (portfolios anySatisfy: [ :aPortfolio | aPortfolio contains: anItem])! !
+!Portfolio methodsFor: 'testing' stamp: 'scb 5/22/2022 23:43:48' prior: 50476085!
+contains: anItem
+	
+	^ (accounts includes: anItem) or: (portfolios includes: anItem)! !
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/22/2022 23:44:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/22/2022 23:44:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/22/2022 23:44:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/22/2022 23:44:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/22/2022 23:44:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/22/2022 23:44:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/22/2022 23:44:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnAccounts stamp: 'scb 5/22/2022 23:44:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/22/2022 23:44:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddRepeatedAccount stamp: 'scb 5/22/2022 23:44:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCantAddRepeatedPortfolio stamp: 'scb 5/22/2022 23:44:18'!
+PASSED!
+!Portfolio methodsFor: 'accessing' stamp: 'scb 5/22/2022 23:45:16'!
+accounts
+	^accounts! !
+!Portfolio methodsFor: 'accessing' stamp: 'scb 5/22/2022 23:45:20' prior: 50476137!
+accounts
+
+	^accounts! !
+
+!methodRemoval: Portfolio #accounts stamp: 'scb 5/22/2022 23:45:48'!
+accounts
+
+	^accounts!
+!Portfolio methodsFor: 'testing' stamp: 'scb 5/22/2022 23:48:06' prior: 50476092!
+contains: anItem
+	
+	^ (accounts includes: anItem) or: (portfolios includes: anItem)! !
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/22/2022 23:49:25'!
+test12PortfolioCantAddPortfolioWithRepeatedAccounts
+
+	| aPortfolio anotherPortfolio anAccount |
+	
+	aPortfolio := Portfolio new.
+	anotherPortfolio := Portfolio new.
+	anAccount := ReceptiveAccount new.
+	
+	self should: [ ((aPortfolio register: anAccount) register: (anotherPortfolio register: anAccount) ) ]
+		raise: Error
+		withExceptionDo: [:anError |
+			self assert: anError messageText = Portfolio repeatedItemErrorDescription ].! !
+
+!testRun: #PortfolioTest #test12PortfolioCantAddPortfolioWithRepeatedAccounts stamp: 'scb 5/22/2022 23:49:27'!
+FAILURE!
+!Portfolio methodsFor: 'testing' stamp: 'scb 5/22/2022 23:50:58' prior: 50476148!
+contains: anItem
+	
+	^ anItem accountsAndPortfolios anySatisfy: [ :aRegisteredItem | (accounts includes: aRegisteredItem) or: (portfolios includes: aRegisteredItem)]! !
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/22/2022 23:51:00'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/22/2022 23:51:00'!
+ERROR!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/22/2022 23:51:00'!
+ERROR!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/22/2022 23:51:00'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/22/2022 23:51:00'!
+ERROR!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/22/2022 23:51:00'!
+ERROR!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/22/2022 23:51:00'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnAccounts stamp: 'scb 5/22/2022 23:51:00'!
+ERROR!
+
+!testRun: #PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/22/2022 23:51:00'!
+ERROR!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddRepeatedAccount stamp: 'scb 5/22/2022 23:51:00'!
+FAILURE!
+
+!testRun: #PortfolioTest #test11PortfolioCantAddRepeatedPortfolio stamp: 'scb 5/22/2022 23:51:00'!
+FAILURE!
+
+!testRun: #PortfolioTest #test12PortfolioCantAddPortfolioWithRepeatedAccounts stamp: 'scb 5/22/2022 23:51:00'!
+FAILURE!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/22/2022 23:51:04'!
+ERROR!
+!Portfolio methodsFor: 'testing' stamp: 'scb 5/22/2022 23:51:57' prior: 50476173!
+contains: anItem
+	
+	^ anItem registeredServices anySatisfy: [ :aRegisteredItem | (accounts includes: aRegisteredItem) or: (portfolios includes: aRegisteredItem)]! !
+!ReceptiveAccount methodsFor: 'accessing' stamp: 'scb 5/22/2022 23:52:44'!
+registeredServices
+	^ self! !
+!ReceptiveAccount methodsFor: 'accessing' stamp: 'scb 5/22/2022 23:52:48' prior: 50476236!
+registeredServices
+	
+	^ self! !
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/22/2022 23:53:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/22/2022 23:53:04'!
+ERROR!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/22/2022 23:53:04'!
+ERROR!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/22/2022 23:53:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/22/2022 23:53:04'!
+ERROR!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/22/2022 23:53:04'!
+ERROR!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/22/2022 23:53:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnAccounts stamp: 'scb 5/22/2022 23:53:04'!
+ERROR!
+
+!testRun: #PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/22/2022 23:53:04'!
+ERROR!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddRepeatedAccount stamp: 'scb 5/22/2022 23:53:04'!
+FAILURE!
+
+!testRun: #PortfolioTest #test11PortfolioCantAddRepeatedPortfolio stamp: 'scb 5/22/2022 23:53:04'!
+FAILURE!
+
+!testRun: #PortfolioTest #test12PortfolioCantAddPortfolioWithRepeatedAccounts stamp: 'scb 5/22/2022 23:53:04'!
+FAILURE!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/22/2022 23:53:10'!
+ERROR!
+!Portfolio methodsFor: 'testing' stamp: 'scb 5/22/2022 23:53:31' prior: 50476228!
+contains: anItem
+	
+	^ (anItem registeredServices) anySatisfy: [ :aRegisteredItem | (accounts includes: aRegisteredItem) or: (portfolios includes: aRegisteredItem)]! !
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/22/2022 23:53:32'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/22/2022 23:53:32'!
+ERROR!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/22/2022 23:53:32'!
+ERROR!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/22/2022 23:53:32'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/22/2022 23:53:32'!
+ERROR!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/22/2022 23:53:32'!
+ERROR!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/22/2022 23:53:32'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnAccounts stamp: 'scb 5/22/2022 23:53:32'!
+ERROR!
+
+!testRun: #PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/22/2022 23:53:32'!
+ERROR!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddRepeatedAccount stamp: 'scb 5/22/2022 23:53:32'!
+FAILURE!
+
+!testRun: #PortfolioTest #test11PortfolioCantAddRepeatedPortfolio stamp: 'scb 5/22/2022 23:53:32'!
+FAILURE!
+
+!testRun: #PortfolioTest #test12PortfolioCantAddPortfolioWithRepeatedAccounts stamp: 'scb 5/22/2022 23:53:32'!
+FAILURE!
+!ReceptiveAccount methodsFor: 'accessing' stamp: 'scb 5/22/2022 23:54:25' prior: 50476240!
+registeredServices
+	
+	^ OrderedCollection with: self! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'scb 5/22/2022 23:54:26'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'scb 5/22/2022 23:54:26'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'scb 5/22/2022 23:54:26'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'scb 5/22/2022 23:54:26'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'scb 5/22/2022 23:54:26'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'scb 5/22/2022 23:54:26'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'scb 5/22/2022 23:54:26'!
+PASSED!
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/22/2022 23:54:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/22/2022 23:54:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/22/2022 23:54:31'!
+ERROR!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/22/2022 23:54:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/22/2022 23:54:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/22/2022 23:54:31'!
+ERROR!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/22/2022 23:54:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnAccounts stamp: 'scb 5/22/2022 23:54:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/22/2022 23:54:31'!
+ERROR!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddRepeatedAccount stamp: 'scb 5/22/2022 23:54:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCantAddRepeatedPortfolio stamp: 'scb 5/22/2022 23:54:31'!
+FAILURE!
+
+!testRun: #PortfolioTest #test12PortfolioCantAddPortfolioWithRepeatedAccounts stamp: 'scb 5/22/2022 23:54:31'!
+FAILURE!
+!Portfolio methodsFor: 'accessing' stamp: 'scb 5/22/2022 23:55:48'!
+registeredServices
+	
+	^ OrderedCollection with: self! !
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/22/2022 23:55:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/22/2022 23:55:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/22/2022 23:55:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/22/2022 23:55:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/22/2022 23:55:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/22/2022 23:55:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/22/2022 23:55:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnAccounts stamp: 'scb 5/22/2022 23:55:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/22/2022 23:55:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddRepeatedAccount stamp: 'scb 5/22/2022 23:55:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCantAddRepeatedPortfolio stamp: 'scb 5/22/2022 23:55:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCantAddPortfolioWithRepeatedAccounts stamp: 'scb 5/22/2022 23:55:48'!
+FAILURE!
+
+!testRun: #PortfolioTest #test12PortfolioCantAddPortfolioWithRepeatedAccounts stamp: 'scb 5/22/2022 23:55:48'!
+FAILURE!
+!Portfolio methodsFor: 'accessing' stamp: 'scb 5/22/2022 23:58:53' prior: 50476417!
+registeredServices
+	
+	| services |
+	
+	services := OrderedCollection with: self.
+	accounts do: [ :anAccount | services := services, anAccount registeredServices].
+	portfolios do: [ :aPortfolio | services := services, aPortfolio registeredServices].! !
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/22/2022 23:58:54'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/22/2022 23:58:54'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/22/2022 23:58:54'!
+ERROR!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/22/2022 23:58:54'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/22/2022 23:58:54'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/22/2022 23:58:54'!
+ERROR!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/22/2022 23:58:54'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnAccounts stamp: 'scb 5/22/2022 23:58:54'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/22/2022 23:58:54'!
+ERROR!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddRepeatedAccount stamp: 'scb 5/22/2022 23:58:54'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCantAddRepeatedPortfolio stamp: 'scb 5/22/2022 23:58:54'!
+FAILURE!
+
+!testRun: #PortfolioTest #test12PortfolioCantAddPortfolioWithRepeatedAccounts stamp: 'scb 5/22/2022 23:58:54'!
+FAILURE!
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/22/2022 23:59:16'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/22/2022 23:59:16'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/22/2022 23:59:16'!
+ERROR!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/22/2022 23:59:16'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/22/2022 23:59:16'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/22/2022 23:59:16'!
+ERROR!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/22/2022 23:59:16'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnAccounts stamp: 'scb 5/22/2022 23:59:16'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/22/2022 23:59:16'!
+ERROR!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddRepeatedAccount stamp: 'scb 5/22/2022 23:59:16'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCantAddRepeatedPortfolio stamp: 'scb 5/22/2022 23:59:16'!
+FAILURE!
+
+!testRun: #PortfolioTest #test12PortfolioCantAddPortfolioWithRepeatedAccounts stamp: 'scb 5/22/2022 23:59:16'!
+FAILURE!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/22/2022 23:59:22'!
+ERROR!
+!Portfolio methodsFor: 'accessing' stamp: 'scb 5/22/2022 23:59:51' prior: 50476469!
+registeredServices
+	
+	| services |
+	
+	services := OrderedCollection with: self.
+	accounts do: [ :anAccount | services := services, anAccount registeredServices].
+	portfolios do: [ :aPortfolio | services := services, aPortfolio registeredServices].
+	^ services.! !
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/22/2022 23:59:52'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/22/2022 23:59:52'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/22/2022 23:59:52'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/22/2022 23:59:52'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/22/2022 23:59:52'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/22/2022 23:59:52'!
+PASSED!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/22/2022 23:59:52'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnAccounts stamp: 'scb 5/22/2022 23:59:52'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/22/2022 23:59:52'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddRepeatedAccount stamp: 'scb 5/22/2022 23:59:52'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCantAddRepeatedPortfolio stamp: 'scb 5/22/2022 23:59:52'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCantAddPortfolioWithRepeatedAccounts stamp: 'scb 5/22/2022 23:59:52'!
+PASSED!
+!Portfolio methodsFor: 'accessing' stamp: 'scb 5/23/2022 00:00:29' prior: 50476571!
+registeredServices
+	
+	| services |
+	
+	services := OrderedCollection with: self.
+	accounts do: [ :anAccount | services := services, anAccount registeredServices].
+	^ services.! !
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/23/2022 00:00:30'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/23/2022 00:00:30'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/23/2022 00:00:30'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/23/2022 00:00:30'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/23/2022 00:00:30'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/23/2022 00:00:30'!
+PASSED!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/23/2022 00:00:30'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnAccounts stamp: 'scb 5/23/2022 00:00:30'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/23/2022 00:00:30'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddRepeatedAccount stamp: 'scb 5/23/2022 00:00:30'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCantAddRepeatedPortfolio stamp: 'scb 5/23/2022 00:00:30'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCantAddPortfolioWithRepeatedAccounts stamp: 'scb 5/23/2022 00:00:30'!
+PASSED!
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/23/2022 00:01:33'!
+test10PortfolioCantAddSelf
+
+	| aPortfolio |
+	
+	aPortfolio := Portfolio new.
+	
+	self should: [ (aPortfolio register: aPortfolio) ]
+		raise: Error
+		withExceptionDo: [:anError |
+			self assert: anError messageText = Portfolio repeatedItemErrorDescription ].! !
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/23/2022 00:01:39'!
+test11PortfolioCantAddRepeatedAccount
+
+	| aPortfolio anAccount |
+	
+	aPortfolio := Portfolio new.
+	anAccount := ReceptiveAccount new.
+	
+	self should: [ ((aPortfolio register: anAccount) register: anAccount ) ]
+		raise: Error
+		withExceptionDo: [:anError |
+			self assert: anError messageText = Portfolio repeatedItemErrorDescription ].! !
+
+!methodRemoval: PortfolioTest #test10PortfolioCantAddRepeatedAccount stamp: 'scb 5/23/2022 00:01:39'!
+test10PortfolioCantAddRepeatedAccount
+
+	| aPortfolio anAccount |
+	
+	aPortfolio := Portfolio new.
+	anAccount := ReceptiveAccount new.
+	
+	self should: [ ((aPortfolio register: anAccount) register: anAccount ) ]
+		raise: Error
+		withExceptionDo: [:anError |
+			self assert: anError messageText = Portfolio repeatedItemErrorDescription ].!
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/23/2022 00:01:52'!
+test12PortfolioCantAddRepeatedPortfolio
+
+	| aPortfolio anotherPortfolio |
+	
+	aPortfolio := Portfolio new.
+	anotherPortfolio := Portfolio new.
+	
+	self should: [ ((aPortfolio register: anotherPortfolio) register: anotherPortfolio ) ]
+		raise: Error
+		withExceptionDo: [:anError |
+			self assert: anError messageText = Portfolio repeatedItemErrorDescription ].! !
+
+!methodRemoval: PortfolioTest #test11PortfolioCantAddRepeatedPortfolio stamp: 'scb 5/23/2022 00:01:52'!
+test11PortfolioCantAddRepeatedPortfolio
+
+	| aPortfolio anotherPortfolio |
+	
+	aPortfolio := Portfolio new.
+	anotherPortfolio := Portfolio new.
+	
+	self should: [ ((aPortfolio register: anotherPortfolio) register: anotherPortfolio ) ]
+		raise: Error
+		withExceptionDo: [:anError |
+			self assert: anError messageText = Portfolio repeatedItemErrorDescription ].!
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/23/2022 00:02:00'!
+test13PortfolioCantAddRepeatedPortfolio
+
+	| aPortfolio anotherPortfolio |
+	
+	aPortfolio := Portfolio new.
+	anotherPortfolio := Portfolio new.
+	
+	self should: [ ((aPortfolio register: anotherPortfolio) register: anotherPortfolio ) ]
+		raise: Error
+		withExceptionDo: [:anError |
+			self assert: anError messageText = Portfolio repeatedItemErrorDescription ].! !
+
+!methodRemoval: PortfolioTest #test12PortfolioCantAddRepeatedPortfolio stamp: 'scb 5/23/2022 00:02:00'!
+test12PortfolioCantAddRepeatedPortfolio
+
+	| aPortfolio anotherPortfolio |
+	
+	aPortfolio := Portfolio new.
+	anotherPortfolio := Portfolio new.
+	
+	self should: [ ((aPortfolio register: anotherPortfolio) register: anotherPortfolio ) ]
+		raise: Error
+		withExceptionDo: [:anError |
+			self assert: anError messageText = Portfolio repeatedItemErrorDescription ].!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddSelf stamp: 'scb 5/23/2022 00:02:05'!
+FAILURE!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddSelf stamp: 'scb 5/23/2022 00:02:05'!
+FAILURE!
+!Portfolio methodsFor: 'testing' stamp: 'scb 5/23/2022 00:02:36' prior: 50476291!
+contains: anItem
+	
+	^ (anItem registeredServices) anySatisfy: [ :aRegisteredItem | (self = anItem) or: (accounts includes: aRegisteredItem) or: (portfolios includes: aRegisteredItem)]! !
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/23/2022 00:02:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/23/2022 00:02:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/23/2022 00:02:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/23/2022 00:02:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/23/2022 00:02:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/23/2022 00:02:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/23/2022 00:02:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnAccounts stamp: 'scb 5/23/2022 00:02:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/23/2022 00:02:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddSelf stamp: 'scb 5/23/2022 00:02:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCantAddRepeatedAccount stamp: 'scb 5/23/2022 00:02:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCantAddPortfolioWithRepeatedAccounts stamp: 'scb 5/23/2022 00:02:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test13PortfolioCantAddRepeatedPortfolio stamp: 'scb 5/23/2022 00:02:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/23/2022 00:02:45'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/23/2022 00:02:45'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/23/2022 00:02:45'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/23/2022 00:02:45'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/23/2022 00:02:45'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/23/2022 00:02:45'!
+PASSED!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/23/2022 00:02:45'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnAccounts stamp: 'scb 5/23/2022 00:02:45'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/23/2022 00:02:45'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddSelf stamp: 'scb 5/23/2022 00:02:45'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCantAddRepeatedAccount stamp: 'scb 5/23/2022 00:02:45'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCantAddPortfolioWithRepeatedAccounts stamp: 'scb 5/23/2022 00:02:45'!
+PASSED!
+
+!testRun: #PortfolioTest #test13PortfolioCantAddRepeatedPortfolio stamp: 'scb 5/23/2022 00:02:45'!
+PASSED!
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/23/2022 00:03:08'!
+test1PortfolioCantAddRepeatedPortfolio
+
+	| aPortfolio anotherPortfolio |
+	
+	aPortfolio := Portfolio new.
+	anotherPortfolio := Portfolio new.
+	
+	self should: [ ((aPortfolio register: anotherPortfolio) register: anotherPortfolio ) ]
+		raise: Error
+		withExceptionDo: [:anError |
+			self assert: anError messageText = Portfolio repeatedItemErrorDescription ].! !
+
+!methodRemoval: PortfolioTest #test13PortfolioCantAddRepeatedPortfolio stamp: 'scb 5/23/2022 00:03:08'!
+test13PortfolioCantAddRepeatedPortfolio
+
+	| aPortfolio anotherPortfolio |
+	
+	aPortfolio := Portfolio new.
+	anotherPortfolio := Portfolio new.
+	
+	self should: [ ((aPortfolio register: anotherPortfolio) register: anotherPortfolio ) ]
+		raise: Error
+		withExceptionDo: [:anError |
+			self assert: anError messageText = Portfolio repeatedItemErrorDescription ].!
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/23/2022 00:03:12'!
+test12PortfolioCantAddRepeatedPortfolio
+
+	| aPortfolio anotherPortfolio |
+	
+	aPortfolio := Portfolio new.
+	anotherPortfolio := Portfolio new.
+	
+	self should: [ ((aPortfolio register: anotherPortfolio) register: anotherPortfolio ) ]
+		raise: Error
+		withExceptionDo: [:anError |
+			self assert: anError messageText = Portfolio repeatedItemErrorDescription ].! !
+
+!methodRemoval: PortfolioTest #test1PortfolioCantAddRepeatedPortfolio stamp: 'scb 5/23/2022 00:03:12'!
+test1PortfolioCantAddRepeatedPortfolio
+
+	| aPortfolio anotherPortfolio |
+	
+	aPortfolio := Portfolio new.
+	anotherPortfolio := Portfolio new.
+	
+	self should: [ ((aPortfolio register: anotherPortfolio) register: anotherPortfolio ) ]
+		raise: Error
+		withExceptionDo: [:anError |
+			self assert: anError messageText = Portfolio repeatedItemErrorDescription ].!
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/23/2022 00:03:30'!
+test13PortfolioCantAddPortfolioWithRepeatedAccounts
+
+	| aPortfolio anotherPortfolio anAccount |
+	
+	aPortfolio := Portfolio new.
+	anotherPortfolio := Portfolio new.
+	anAccount := ReceptiveAccount new.
+	
+	self should: [ ((aPortfolio register: anAccount) register: (anotherPortfolio register: anAccount) ) ]
+		raise: Error
+		withExceptionDo: [:anError |
+			self assert: anError messageText = Portfolio repeatedItemErrorDescription ].! !
+
+!methodRemoval: PortfolioTest #test12PortfolioCantAddPortfolioWithRepeatedAccounts stamp: 'scb 5/23/2022 00:03:30'!
+test12PortfolioCantAddPortfolioWithRepeatedAccounts
+
+	| aPortfolio anotherPortfolio anAccount |
+	
+	aPortfolio := Portfolio new.
+	anotherPortfolio := Portfolio new.
+	anAccount := ReceptiveAccount new.
+	
+	self should: [ ((aPortfolio register: anAccount) register: (anotherPortfolio register: anAccount) ) ]
+		raise: Error
+		withExceptionDo: [:anError |
+			self assert: anError messageText = Portfolio repeatedItemErrorDescription ].!
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/23/2022 00:03:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/23/2022 00:03:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/23/2022 00:03:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/23/2022 00:03:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/23/2022 00:03:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/23/2022 00:03:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/23/2022 00:03:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnAccounts stamp: 'scb 5/23/2022 00:03:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/23/2022 00:03:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddSelf stamp: 'scb 5/23/2022 00:03:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCantAddRepeatedAccount stamp: 'scb 5/23/2022 00:03:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCantAddRepeatedPortfolio stamp: 'scb 5/23/2022 00:03:34'!
+PASSED!
+
+!testRun: #PortfolioTest #test13PortfolioCantAddPortfolioWithRepeatedAccounts stamp: 'scb 5/23/2022 00:03:34'!
+PASSED!
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/23/2022 00:05:18'!
+test14PortfolioCantAddPortfolioWithRepeatedPortfolios
+
+	| aPortfolio anotherPortfolio evenAnotherPortfolio |
+	
+	aPortfolio := Portfolio new.
+	anotherPortfolio := Portfolio new.
+	evenAnotherPortfolio := Portfolio new.
+	
+	self should: [ ((aPortfolio register: anotherPortfolio) register: (evenAnotherPortfolio register: anotherPortfolio) ) ]
+		raise: Error
+		withExceptionDo: [:anError |
+			self assert: anError messageText = Portfolio repeatedItemErrorDescription ].! !
+
+!testRun: #PortfolioTest #test14PortfolioCantAddPortfolioWithRepeatedPortfolios stamp: 'scb 5/23/2022 00:05:18'!
+FAILURE!
+!Portfolio methodsFor: 'accessing' stamp: 'scb 5/23/2022 00:06:14' prior: 50476626!
+registeredServices
+	
+	| services |
+	
+	services := OrderedCollection with: self.
+	accounts do: [ :anAccount | services := services, anAccount registeredServices].
+	portfolios do: [ :aPortfolio | services := services, aPortfolio registeredServices].
+	^ services.! !
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/23/2022 00:06:15'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/23/2022 00:06:15'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/23/2022 00:06:15'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/23/2022 00:06:15'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/23/2022 00:06:15'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/23/2022 00:06:15'!
+PASSED!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/23/2022 00:06:15'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnAccounts stamp: 'scb 5/23/2022 00:06:15'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/23/2022 00:06:15'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddSelf stamp: 'scb 5/23/2022 00:06:15'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCantAddRepeatedAccount stamp: 'scb 5/23/2022 00:06:15'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCantAddRepeatedPortfolio stamp: 'scb 5/23/2022 00:06:15'!
+PASSED!
+
+!testRun: #PortfolioTest #test13PortfolioCantAddPortfolioWithRepeatedAccounts stamp: 'scb 5/23/2022 00:06:15'!
+PASSED!
+
+!testRun: #PortfolioTest #test14PortfolioCantAddPortfolioWithRepeatedPortfolios stamp: 'scb 5/23/2022 00:06:15'!
+PASSED!
+
+AccountTransaction subclass: #Deposit
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #Deposit category: 'Portfolio-Ejercicio' stamp: 'scb 5/23/2022 00:09:02'!
+AccountTransaction subclass: #Deposit
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+AccountTransaction subclass: #Withdraw
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #Withdraw category: 'Portfolio-Ejercicio' stamp: 'scb 5/23/2022 00:09:08'!
+AccountTransaction subclass: #Withdraw
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/23/2022 00:09:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/23/2022 00:09:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/23/2022 00:09:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/23/2022 00:09:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/23/2022 00:09:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/23/2022 00:09:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/23/2022 00:09:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnAccounts stamp: 'scb 5/23/2022 00:09:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/23/2022 00:09:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddSelf stamp: 'scb 5/23/2022 00:09:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCantAddRepeatedAccount stamp: 'scb 5/23/2022 00:09:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCantAddRepeatedPortfolio stamp: 'scb 5/23/2022 00:09:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test13PortfolioCantAddPortfolioWithRepeatedAccounts stamp: 'scb 5/23/2022 00:09:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test14PortfolioCantAddPortfolioWithRepeatedPortfolios stamp: 'scb 5/23/2022 00:09:12'!
+PASSED!
+!AccountTransaction methodsFor: 'value' stamp: 'scb 5/23/2022 00:09:23' prior: 50474199 overrides: 16902254!
+value
+
+	^ value! !
+
+!methodRemoval: Deposit #value stamp: 'scb 5/23/2022 00:09:23'!
+value
+
+	^ value!
+!AccountTransaction methodsFor: 'initialization' stamp: 'scb 5/23/2022 00:09:37'!
+initializeFor: aValue
+
+	value := aValue ! !
+
+!methodRemoval: Deposit #initializeFor: stamp: 'scb 5/23/2022 00:09:37'!
+initializeFor: aValue
+
+	value := aValue !
+
+!methodRemoval: Withdraw #initializeFor: stamp: 'scb 5/23/2022 00:09:44'!
+initializeFor: aValue
+
+	value := aValue !
+
+!methodRemoval: Withdraw #value stamp: 'scb 5/23/2022 00:09:47'!
+value
+
+	^ value!
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/23/2022 00:09:55'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/23/2022 00:09:55'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/23/2022 00:09:55'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/23/2022 00:09:55'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/23/2022 00:09:55'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/23/2022 00:09:55'!
+PASSED!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/23/2022 00:09:55'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnAccounts stamp: 'scb 5/23/2022 00:09:55'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/23/2022 00:09:55'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddSelf stamp: 'scb 5/23/2022 00:09:55'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCantAddRepeatedAccount stamp: 'scb 5/23/2022 00:09:55'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCantAddRepeatedPortfolio stamp: 'scb 5/23/2022 00:09:55'!
+PASSED!
+
+!testRun: #PortfolioTest #test13PortfolioCantAddPortfolioWithRepeatedAccounts stamp: 'scb 5/23/2022 00:09:55'!
+PASSED!
+
+!testRun: #PortfolioTest #test14PortfolioCantAddPortfolioWithRepeatedPortfolios stamp: 'scb 5/23/2022 00:09:55'!
+PASSED!
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/23/2022 01:50:13'!
+test15PortfolioCantAddPortfolioWithRepeatedSubPortfolios
+
+	| aPortfolio anotherPortfolio evenAnotherPortfolio anAccount |
+	
+	aPortfolio := Portfolio new.
+	anotherPortfolio := Portfolio new.
+	evenAnotherPortfolio := Portfolio new.
+	anAccount := ReceptiveAccount new.
+	
+	self should: [ ((aPortfolio register: (anotherPortfolio register: anAccount)) register: (evenAnotherPortfolio register: anAccount)) ]
+		raise: Error
+		withExceptionDo: [:anError |
+			self assert: anError messageText = Portfolio repeatedItemErrorDescription ].! !
+
+!testRun: #PortfolioTest #test15PortfolioCantAddPortfolioWithRepeatedSubPortfolios stamp: 'scb 5/23/2022 01:50:14'!
+FAILURE!
+!Portfolio methodsFor: 'testing' stamp: 'scb 5/23/2022 01:51:22' prior: 50476779!
+contains: anItem
+	
+	^ (anItem registeredServices) anySatisfy: [ :aRegisteredItem | (self registeredServices) includes: anItem]! !
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/23/2022 01:51:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/23/2022 01:51:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/23/2022 01:51:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/23/2022 01:51:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/23/2022 01:51:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/23/2022 01:51:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/23/2022 01:51:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnAccounts stamp: 'scb 5/23/2022 01:51:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/23/2022 01:51:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddSelf stamp: 'scb 5/23/2022 01:51:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCantAddRepeatedAccount stamp: 'scb 5/23/2022 01:51:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCantAddRepeatedPortfolio stamp: 'scb 5/23/2022 01:51:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test13PortfolioCantAddPortfolioWithRepeatedAccounts stamp: 'scb 5/23/2022 01:51:23'!
+FAILURE!
+
+!testRun: #PortfolioTest #test14PortfolioCantAddPortfolioWithRepeatedPortfolios stamp: 'scb 5/23/2022 01:51:23'!
+FAILURE!
+
+!testRun: #PortfolioTest #test15PortfolioCantAddPortfolioWithRepeatedSubPortfolios stamp: 'scb 5/23/2022 01:51:23'!
+FAILURE!
+!Portfolio methodsFor: 'testing' stamp: 'scb 5/23/2022 01:51:45' prior: 50477269!
+contains: anItem
+	
+	^ (anItem registeredServices) anySatisfy: [ :aRegisteredItem | (self registeredServices) includes: aRegisteredItem]! !
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/23/2022 01:51:46'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/23/2022 01:51:46'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/23/2022 01:51:46'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/23/2022 01:51:46'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/23/2022 01:51:46'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/23/2022 01:51:46'!
+PASSED!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/23/2022 01:51:46'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnAccounts stamp: 'scb 5/23/2022 01:51:46'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/23/2022 01:51:46'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddSelf stamp: 'scb 5/23/2022 01:51:46'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCantAddRepeatedAccount stamp: 'scb 5/23/2022 01:51:46'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCantAddRepeatedPortfolio stamp: 'scb 5/23/2022 01:51:46'!
+PASSED!
+
+!testRun: #PortfolioTest #test13PortfolioCantAddPortfolioWithRepeatedAccounts stamp: 'scb 5/23/2022 01:51:46'!
+PASSED!
+
+!testRun: #PortfolioTest #test14PortfolioCantAddPortfolioWithRepeatedPortfolios stamp: 'scb 5/23/2022 01:51:46'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCantAddPortfolioWithRepeatedSubPortfolios stamp: 'scb 5/23/2022 01:51:46'!
+PASSED!
+
+----End fileIn of /home/winter/.CuisUniversity/Packages/TerseGuide.pck.st----!
+!Portfolio methodsFor: 'accessing' stamp: 'scb 5/23/2022 01:53:17'!
+asOrderedCollection
+	
+	| services |
+	
+	services := OrderedCollection with: self.
+	accounts do: [ :anAccount | services := services, anAccount registeredServices].
+	portfolios do: [ :aPortfolio | services := services, aPortfolio registeredServices].
+	^ services.! !
+!ReceptiveAccount methodsFor: 'accessing' stamp: 'scb 5/23/2022 01:53:17'!
+asOrderedCollection
+	
+	^ OrderedCollection with: self! !
+!Portfolio methodsFor: 'as yet unclassified' stamp: 'scb 5/23/2022 01:53:17' prior: 50477330!
+contains: anItem
+	
+	^ (anItem asOrderedCollection) anySatisfy: [ :aRegisteredItem | (self asOrderedCollection) includes: aRegisteredItem]! !
+!Portfolio methodsFor: 'as yet unclassified' stamp: 'scb 5/23/2022 01:53:17' prior: 50477038!
+registeredServices
+	
+	| services |
+	
+	services := OrderedCollection with: self.
+	accounts do: [ :anAccount | services := services, anAccount asOrderedCollection].
+	portfolios do: [ :aPortfolio | services := services, aPortfolio asOrderedCollection].
+	^ services.! !
+!Portfolio methodsFor: 'as yet unclassified' stamp: 'scb 5/23/2022 01:53:17' prior: 50480310!
+asOrderedCollection
+	
+	| services |
+	
+	services := OrderedCollection with: self.
+	accounts do: [ :anAccount | services := services, anAccount asOrderedCollection].
+	portfolios do: [ :aPortfolio | services := services, aPortfolio asOrderedCollection].
+	^ services.! !
+
+!methodRemoval: Portfolio #registeredServices stamp: 'scb 5/23/2022 01:53:17'!
+registeredServices
+	
+	| services |
+	
+	services := OrderedCollection with: self.
+	accounts do: [ :anAccount | services := services, anAccount asOrderedCollection].
+	portfolios do: [ :aPortfolio | services := services, aPortfolio asOrderedCollection].
+	^ services.!
+
+!methodRemoval: ReceptiveAccount #registeredServices stamp: 'scb 5/23/2022 01:53:17'!
+registeredServices
+	
+	^ OrderedCollection with: self!
+
+Object subclass: #Portfolio
+	instanceVariableNames: 'register'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #Portfolio category: 'Portfolio-Ejercicio' stamp: 'scb 5/23/2022 01:56:29'!
+Object subclass: #Portfolio
+	instanceVariableNames: 'register'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!Portfolio methodsFor: 'accessing' stamp: 'scb 5/23/2022 01:57:19' prior: 50480346!
+asOrderedCollection
+	
+	| services |
+	
+	services := OrderedCollection with: self.
+	register do: [ :aRegisteredItem | services := services, aRegisteredItem asOrderedCollection].
+	^ services.! !
+!Portfolio methodsFor: 'balance' stamp: 'scb 5/23/2022 01:58:00' prior: 50474800!
+balance
+	
+	^ register sum: [ :aRegisteredItem | aRegisteredItem balance] ifEmpty: [0]! !
+!Portfolio methodsFor: 'initialization' stamp: 'scb 5/23/2022 01:58:28' prior: 50474780 overrides: 16920235!
+initialize
+
+	register := OrderedCollection new.! !
+!Portfolio methodsFor: 'testing' stamp: 'scb 5/23/2022 01:59:00' prior: 50475132!
+hasRegistered: aTransaction
+	
+	^ register anySatisfy: [ :aRegisteredItem | aRegisteredItem hasRegistered: aTransaction]! !
+!Portfolio methodsFor: 'transactions' stamp: 'scb 5/23/2022 01:59:56' prior: 50475407!
+transactions
+	
+	| transactions |
+	
+	transactions := OrderedCollection new.
+	register do: [ :aRegisteredItem | transactions := transactions, aRegisteredItem transactions ].
+	^transactions.! !
+!Portfolio methodsFor: 'transactions' stamp: 'scb 5/23/2022 02:00:19' prior: 50475968!
+register: anItem
+	
+	(self contains: anItem) ifTrue: [ self error: (Portfolio repeatedItemErrorDescription) ].
+	register add: anItem! !
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/23/2022 02:00:21'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/23/2022 02:00:21'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/23/2022 02:00:21'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/23/2022 02:00:21'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/23/2022 02:00:21'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/23/2022 02:00:21'!
+PASSED!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/23/2022 02:00:21'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnAccounts stamp: 'scb 5/23/2022 02:00:21'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/23/2022 02:00:21'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddSelf stamp: 'scb 5/23/2022 02:00:21'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCantAddRepeatedAccount stamp: 'scb 5/23/2022 02:00:21'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCantAddRepeatedPortfolio stamp: 'scb 5/23/2022 02:00:21'!
+PASSED!
+
+!testRun: #PortfolioTest #test13PortfolioCantAddPortfolioWithRepeatedAccounts stamp: 'scb 5/23/2022 02:00:21'!
+PASSED!
+
+!testRun: #PortfolioTest #test14PortfolioCantAddPortfolioWithRepeatedPortfolios stamp: 'scb 5/23/2022 02:00:21'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCantAddPortfolioWithRepeatedSubPortfolios stamp: 'scb 5/23/2022 02:00:21'!
+PASSED!
+!Portfolio methodsFor: 'testing' stamp: 'scb 5/23/2022 02:02:29' prior: 50480326!
+contains: anItem
+	
+	^ (anItem asOrderedCollection) anySatisfy: [ :aRegisteredItem | (self asOrderedCollection) includes: aRegisteredItem]! !
+!Portfolio methodsFor: 'testing' stamp: 'scb 5/23/2022 02:03:23'!
+hasIntersectionWith: anItem
+	
+	^ (anItem asOrderedCollection) anySatisfy: [ :aRegisteredItem | (self asOrderedCollection) includes: aRegisteredItem]! !
+!Portfolio methodsFor: 'as yet unclassified' stamp: 'scb 5/23/2022 02:03:23' prior: 50480422!
+register: anItem
+	
+	(self hasIntersectionWith: anItem) ifTrue: [ self error: (Portfolio repeatedItemErrorDescription) ].
+	register add: anItem! !
+
+!methodRemoval: Portfolio #contains: stamp: 'scb 5/23/2022 02:03:23'!
+contains: anItem
+	
+	^ (anItem asOrderedCollection) anySatisfy: [ :aRegisteredItem | (self asOrderedCollection) includes: aRegisteredItem]!
+!Portfolio methodsFor: 'testing' stamp: 'scb 5/23/2022 02:03:48'!
+contains: aRegisteredItem
+
+	^ (self asOrderedCollection) includes: aRegisteredItem! !
+!Portfolio methodsFor: 'testing' stamp: 'scb 5/23/2022 02:03:48' prior: 50480490!
+hasIntersectionWith: anItem
+	
+	^ (anItem asOrderedCollection) anySatisfy: [ :aRegisteredItem | self contains: aRegisteredItem]! !
+!Portfolio methodsFor: 'transactions' stamp: 'scb 5/23/2022 02:05:05'!
+repeatedItemError
+
+	^ self error: (Portfolio repeatedItemErrorDescription)! !
+!Portfolio methodsFor: 'transactions' stamp: 'scb 5/23/2022 02:05:05' prior: 50480498!
+register: anItem
+	
+	(self hasIntersectionWith: anItem) ifTrue: [ self repeatedItemError ].
+	register add: anItem! !
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/23/2022 02:06:41'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/23/2022 02:06:41'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/23/2022 02:06:41'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/23/2022 02:06:41'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/23/2022 02:06:41'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/23/2022 02:06:41'!
+PASSED!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/23/2022 02:06:41'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnAccounts stamp: 'scb 5/23/2022 02:06:41'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/23/2022 02:06:41'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddSelf stamp: 'scb 5/23/2022 02:06:41'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCantAddRepeatedAccount stamp: 'scb 5/23/2022 02:06:41'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCantAddRepeatedPortfolio stamp: 'scb 5/23/2022 02:06:41'!
+PASSED!
+
+!testRun: #PortfolioTest #test13PortfolioCantAddPortfolioWithRepeatedAccounts stamp: 'scb 5/23/2022 02:06:41'!
+PASSED!
+
+!testRun: #PortfolioTest #test14PortfolioCantAddPortfolioWithRepeatedPortfolios stamp: 'scb 5/23/2022 02:06:41'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCantAddPortfolioWithRepeatedSubPortfolios stamp: 'scb 5/23/2022 02:06:41'!
+PASSED!
+
+Object subclass: #ReceptiveAccount
+	instanceVariableNames: 'register'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #ReceptiveAccount category: 'Portfolio-Ejercicio' stamp: 'scb 5/23/2022 02:07:08'!
+Object subclass: #ReceptiveAccount
+	instanceVariableNames: 'register'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!ReceptiveAccount methodsFor: 'balance' stamp: 'scb 5/23/2022 02:07:48' prior: 50474542!
+balance
+
+	| sum |
+	
+	sum := 0.
+	register sum: [ :aTransaction | sum := aTransaction addBalanceTo: sum ] ifEmpty: [ 0 ].
+	^ sum.! !
+!ReceptiveAccount methodsFor: 'initialization' stamp: 'scb 5/23/2022 02:08:07' prior: 50474300 overrides: 16920235!
+initialize
+
+	register := OrderedCollection new.! !
+!ReceptiveAccount methodsFor: 'testing' stamp: 'scb 5/23/2022 02:08:26' prior: 50474319!
+hasRegistered: aTransaction
+
+	^ register includes: aTransaction 
+! !
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'scb 5/23/2022 02:08:42' prior: 50474305!
+register: aTransaction
+
+	register add: aTransaction 
+! !
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'scb 5/23/2022 02:08:51' prior: 50474310!
+transactions 
+
+	^ register copy! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'scb 5/23/2022 02:08:59'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'scb 5/23/2022 02:08:59'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'scb 5/23/2022 02:08:59'!
+FAILURE!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'scb 5/23/2022 02:08:59'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'scb 5/23/2022 02:08:59'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'scb 5/23/2022 02:08:59'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'scb 5/23/2022 02:08:59'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'scb 5/23/2022 02:08:59'!
+FAILURE!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'scb 5/23/2022 02:09:15'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'scb 5/23/2022 02:09:15'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'scb 5/23/2022 02:09:15'!
+FAILURE!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'scb 5/23/2022 02:09:15'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'scb 5/23/2022 02:09:15'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'scb 5/23/2022 02:09:15'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'scb 5/23/2022 02:09:15'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'scb 5/23/2022 02:09:15'!
+FAILURE!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'scb 5/23/2022 02:11:15'!
+ERROR!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'scb 5/23/2022 02:11:24'!
+ERROR!
+
+Object subclass: #AccountTransaction
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #AccountTransaction category: 'Portfolio-Ejercicio' stamp: 'scb 5/23/2022 02:12:32'!
+Object subclass: #AccountTransaction
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'scb 5/23/2022 02:12:37'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'scb 5/23/2022 02:12:37'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'scb 5/23/2022 02:12:37'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'scb 5/23/2022 02:12:37'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'scb 5/23/2022 02:12:37'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'scb 5/23/2022 02:12:37'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'scb 5/23/2022 02:12:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/23/2022 02:12:40'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/23/2022 02:12:40'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/23/2022 02:12:40'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/23/2022 02:12:40'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/23/2022 02:12:40'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/23/2022 02:12:40'!
+PASSED!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/23/2022 02:12:40'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnAccounts stamp: 'scb 5/23/2022 02:12:40'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/23/2022 02:12:40'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddSelf stamp: 'scb 5/23/2022 02:12:40'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCantAddRepeatedAccount stamp: 'scb 5/23/2022 02:12:40'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCantAddRepeatedPortfolio stamp: 'scb 5/23/2022 02:12:40'!
+PASSED!
+
+!testRun: #PortfolioTest #test13PortfolioCantAddPortfolioWithRepeatedAccounts stamp: 'scb 5/23/2022 02:12:40'!
+PASSED!
+
+!testRun: #PortfolioTest #test14PortfolioCantAddPortfolioWithRepeatedPortfolios stamp: 'scb 5/23/2022 02:12:40'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCantAddPortfolioWithRepeatedSubPortfolios stamp: 'scb 5/23/2022 02:12:40'!
+PASSED!
+
+!classDefinition: #Services category: 'Portfolio-Ejercicio' stamp: 'scb 5/23/2022 02:13:16'!
+Object subclass: #Services
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #Portfolio category: 'Portfolio-Ejercicio' stamp: 'scb 5/23/2022 02:13:16'!
+Services subclass: #Portfolio
+	instanceVariableNames: 'register'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+Services subclass: #ReceptiveAccount
+	instanceVariableNames: 'register'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #ReceptiveAccount category: 'Portfolio-Ejercicio' stamp: 'scb 5/23/2022 02:13:28'!
+Services subclass: #ReceptiveAccount
+	instanceVariableNames: 'register'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!Services methodsFor: 'no messages' stamp: 'scb 5/23/2022 02:13:57'!
+asOrderedCollection
+
+	self subclassResponsibility.! !
+
+!classDefinition: #ServiceTest category: 'Portfolio-Ejercicio' stamp: 'scb 5/23/2022 02:14:23'!
+TestCase subclass: #ServiceTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #PortfolioTest category: 'Portfolio-Ejercicio' stamp: 'scb 5/23/2022 02:14:23'!
+ServiceTest subclass: #PortfolioTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/23/2022 02:14:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/23/2022 02:14:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/23/2022 02:14:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/23/2022 02:14:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/23/2022 02:14:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/23/2022 02:14:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/23/2022 02:14:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnAccounts stamp: 'scb 5/23/2022 02:14:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/23/2022 02:14:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddSelf stamp: 'scb 5/23/2022 02:14:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCantAddRepeatedAccount stamp: 'scb 5/23/2022 02:14:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCantAddRepeatedPortfolio stamp: 'scb 5/23/2022 02:14:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test13PortfolioCantAddPortfolioWithRepeatedAccounts stamp: 'scb 5/23/2022 02:14:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test14PortfolioCantAddPortfolioWithRepeatedPortfolios stamp: 'scb 5/23/2022 02:14:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCantAddPortfolioWithRepeatedSubPortfolios stamp: 'scb 5/23/2022 02:14:38'!
+PASSED!
+
+!classRenamed: #ServiceTest as: #ServicesTest stamp: 'scb 5/23/2022 02:14:48'!
+Smalltalk renameClassNamed: #ServiceTest as: #ServicesTest!
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/23/2022 02:15:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/23/2022 02:15:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/23/2022 02:15:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/23/2022 02:15:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/23/2022 02:15:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/23/2022 02:15:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/23/2022 02:15:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnAccounts stamp: 'scb 5/23/2022 02:15:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/23/2022 02:15:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddSelf stamp: 'scb 5/23/2022 02:15:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCantAddRepeatedAccount stamp: 'scb 5/23/2022 02:15:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCantAddRepeatedPortfolio stamp: 'scb 5/23/2022 02:15:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test13PortfolioCantAddPortfolioWithRepeatedAccounts stamp: 'scb 5/23/2022 02:15:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test14PortfolioCantAddPortfolioWithRepeatedPortfolios stamp: 'scb 5/23/2022 02:15:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCantAddPortfolioWithRepeatedSubPortfolios stamp: 'scb 5/23/2022 02:15:06'!
+PASSED!
+
+ServicesTest subclass: #ReceptiveAccountTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #ReceptiveAccountTest category: 'Portfolio-Ejercicio' stamp: 'scb 5/23/2022 02:15:21'!
+ServicesTest subclass: #ReceptiveAccountTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!Services methodsFor: 'as yet unclassified' stamp: 'scb 5/23/2022 02:16:40'!
+balance
+
+	self subclassResponsibility.! !
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/23/2022 02:16:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/23/2022 02:16:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/23/2022 02:16:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/23/2022 02:16:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/23/2022 02:16:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/23/2022 02:16:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/23/2022 02:16:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnAccounts stamp: 'scb 5/23/2022 02:16:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/23/2022 02:16:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddSelf stamp: 'scb 5/23/2022 02:16:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCantAddRepeatedAccount stamp: 'scb 5/23/2022 02:16:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCantAddRepeatedPortfolio stamp: 'scb 5/23/2022 02:16:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test13PortfolioCantAddPortfolioWithRepeatedAccounts stamp: 'scb 5/23/2022 02:16:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test14PortfolioCantAddPortfolioWithRepeatedPortfolios stamp: 'scb 5/23/2022 02:16:44'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCantAddPortfolioWithRepeatedSubPortfolios stamp: 'scb 5/23/2022 02:16:44'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'scb 5/23/2022 02:16:46'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'scb 5/23/2022 02:16:46'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'scb 5/23/2022 02:16:46'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'scb 5/23/2022 02:16:46'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'scb 5/23/2022 02:16:46'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'scb 5/23/2022 02:16:46'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'scb 5/23/2022 02:16:46'!
+PASSED!
+!Services methodsFor: 'as yet unclassified' stamp: 'scb 5/23/2022 02:17:11'!
+hasRegistered: anItem
+
+	self subclassResponsibility.! !
+
+Services subclass: #Portfolio
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #Portfolio category: 'Portfolio-Ejercicio' stamp: 'scb 5/23/2022 02:17:23'!
+Services subclass: #Portfolio
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+Services subclass: #ReceptiveAccount
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #ReceptiveAccount category: 'Portfolio-Ejercicio' stamp: 'scb 5/23/2022 02:17:27'!
+Services subclass: #ReceptiveAccount
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+Object subclass: #Services
+	instanceVariableNames: 'register'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #Services category: 'Portfolio-Ejercicio' stamp: 'scb 5/23/2022 02:17:34'!
+Object subclass: #Services
+	instanceVariableNames: 'register'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/23/2022 02:17:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/23/2022 02:17:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/23/2022 02:17:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/23/2022 02:17:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/23/2022 02:17:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/23/2022 02:17:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/23/2022 02:17:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnAccounts stamp: 'scb 5/23/2022 02:17:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/23/2022 02:17:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddSelf stamp: 'scb 5/23/2022 02:17:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCantAddRepeatedAccount stamp: 'scb 5/23/2022 02:17:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCantAddRepeatedPortfolio stamp: 'scb 5/23/2022 02:17:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test13PortfolioCantAddPortfolioWithRepeatedAccounts stamp: 'scb 5/23/2022 02:17:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test14PortfolioCantAddPortfolioWithRepeatedPortfolios stamp: 'scb 5/23/2022 02:17:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCantAddPortfolioWithRepeatedSubPortfolios stamp: 'scb 5/23/2022 02:17:37'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'scb 5/23/2022 02:17:39'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'scb 5/23/2022 02:17:39'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'scb 5/23/2022 02:17:39'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'scb 5/23/2022 02:17:39'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'scb 5/23/2022 02:17:39'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'scb 5/23/2022 02:17:39'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'scb 5/23/2022 02:17:39'!
+PASSED!
+!Services methodsFor: 'initialization' stamp: 'scb 5/23/2022 02:17:50' overrides: 16920235!
+initialize
+
+	register := OrderedCollection new.! !
+
+!methodRemoval: ReceptiveAccount #initialize stamp: 'scb 5/23/2022 02:17:50'!
+initialize
+
+	register := OrderedCollection new.!
+
+!methodRemoval: Portfolio #initialize stamp: 'scb 5/23/2022 02:17:59'!
+initialize
+
+	register := OrderedCollection new.!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'scb 5/23/2022 02:18:02'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'scb 5/23/2022 02:18:02'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'scb 5/23/2022 02:18:02'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'scb 5/23/2022 02:18:02'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'scb 5/23/2022 02:18:02'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'scb 5/23/2022 02:18:02'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'scb 5/23/2022 02:18:02'!
+PASSED!
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/23/2022 02:18:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/23/2022 02:18:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/23/2022 02:18:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/23/2022 02:18:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/23/2022 02:18:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/23/2022 02:18:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/23/2022 02:18:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnAccounts stamp: 'scb 5/23/2022 02:18:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/23/2022 02:18:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddSelf stamp: 'scb 5/23/2022 02:18:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCantAddRepeatedAccount stamp: 'scb 5/23/2022 02:18:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCantAddRepeatedPortfolio stamp: 'scb 5/23/2022 02:18:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test13PortfolioCantAddPortfolioWithRepeatedAccounts stamp: 'scb 5/23/2022 02:18:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test14PortfolioCantAddPortfolioWithRepeatedPortfolios stamp: 'scb 5/23/2022 02:18:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCantAddPortfolioWithRepeatedSubPortfolios stamp: 'scb 5/23/2022 02:18:04'!
+PASSED!
+!Services methodsFor: 'as yet unclassified' stamp: 'scb 5/23/2022 02:18:57'!
+register: aTransaction
+
+	self subclassResponsibility.! !
+!Services methodsFor: 'as yet unclassified' stamp: 'scb 5/23/2022 02:19:50'!
+transactions
+
+	self subclassResponsibility.! !
+!ReceptiveAccount methodsFor: 'balance' stamp: 'scb 5/23/2022 02:22:50' prior: 50480605 overrides: 50480967!
+balance
+
+	| sum |
+	
+	sum := 0.
+	register sum: [ :aTransaction | sum := aTransaction balance ] ifEmpty: [ 0 ].
+	^ sum.! !
+!Withdraw methodsFor: 'value' stamp: 'scb 5/23/2022 02:23:11'!
+balance
+
+	^ value negated! !
+
+!methodRemoval: Withdraw #addBalanceTo: stamp: 'scb 5/23/2022 02:23:24'!
+addBalanceTo: sum 
+
+	^ sum - value!
+!Deposit methodsFor: 'value' stamp: 'scb 5/23/2022 02:23:46'!
+balance
+	^ value! !
+!AccountTransaction methodsFor: 'value' stamp: 'scb 5/23/2022 02:24:08'!
+balance
+	self subclassResponsibility ! !
+
+!methodRemoval: AccountTransaction #addBalanceTo: stamp: 'scb 5/23/2022 02:24:17'!
+addBalanceTo: sum 
+
+	self subclassResponsibility !
+!ReceptiveAccount methodsFor: 'balance' stamp: 'scb 5/23/2022 02:24:56' prior: 50481276 overrides: 50480967!
+balance
+
+	register sum: [ :aTransaction | aTransaction balance ] ifEmpty: [ 0 ].! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'scb 5/23/2022 02:24:58'!
+FAILURE!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'scb 5/23/2022 02:24:58'!
+FAILURE!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'scb 5/23/2022 02:24:58'!
+FAILURE!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'scb 5/23/2022 02:24:58'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'scb 5/23/2022 02:24:58'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'scb 5/23/2022 02:24:58'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'scb 5/23/2022 02:24:58'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'scb 5/23/2022 02:25:09'!
+FAILURE!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'scb 5/23/2022 02:25:09'!
+FAILURE!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'scb 5/23/2022 02:25:09'!
+FAILURE!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'scb 5/23/2022 02:25:09'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'scb 5/23/2022 02:25:09'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'scb 5/23/2022 02:25:09'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'scb 5/23/2022 02:25:09'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'scb 5/23/2022 02:25:12'!
+FAILURE!
+!ReceptiveAccount methodsFor: 'balance' stamp: 'scb 5/23/2022 02:25:51' prior: 50481301 overrides: 50480967!
+balance
+
+	^register sum: [ :aTransaction | aTransaction balance ] ifEmpty: [ 0 ].! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'scb 5/23/2022 02:25:52'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'scb 5/23/2022 02:25:52'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'scb 5/23/2022 02:25:52'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'scb 5/23/2022 02:25:52'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'scb 5/23/2022 02:25:52'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'scb 5/23/2022 02:25:52'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'scb 5/23/2022 02:25:52'!
+PASSED!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'scb 5/23/2022 02:27:29'!
+initiateAccountWith100Deposit
+
+	| account |
+	
+	account := ReceptiveAccount  new.
+	Deposit register: 100 on: account.
+	^account
+! !
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'scb 5/23/2022 02:27:56' prior: 50474121!
+test02DepositIncreasesBalanceOnTransactionValue 
+
+	| account |
+	
+	account := self initiateAccountWith100Deposit 
+		
+	self assert: 100 equals: account balance.
+! !
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'scb 5/23/2022 02:28:05' prior: 50481404!
+test02DepositIncreasesBalanceOnTransactionValue 
+
+	| account |
+	
+	account := self initiateAccountWith100Deposit.
+		
+	self assert: 100 equals: account balance.
+! !
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'scb 5/23/2022 02:28:06'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'scb 5/23/2022 02:28:06'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'scb 5/23/2022 02:28:06'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'scb 5/23/2022 02:28:06'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'scb 5/23/2022 02:28:06'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'scb 5/23/2022 02:28:06'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'scb 5/23/2022 02:28:06'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'scb 5/23/2022 02:28:06'!
+PASSED!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'scb 5/23/2022 02:28:18' prior: 50474130!
+test03WithdrawDecreasesBalanceOnTransactionValue 
+
+	| account |
+	
+	account := self initiateAccountWith100Deposit.
+	Withdraw register: 50 on: account.
+		
+	self assert: 50 equals: account balance.
+! !
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'scb 5/23/2022 02:28:19'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'scb 5/23/2022 02:28:19'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'scb 5/23/2022 02:28:19'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'scb 5/23/2022 02:28:19'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'scb 5/23/2022 02:28:19'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'scb 5/23/2022 02:28:19'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'scb 5/23/2022 02:28:19'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'scb 5/23/2022 02:28:19'!
+PASSED!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'scb 5/23/2022 02:28:43' prior: 50474150!
+test05ReceptiveAccountKnowsRegisteredTransactions 
+
+	| account deposit withdraw |
+	
+	account := self initiateAccountWith100Deposit.
+	withdraw := Withdraw register: 50 on: account.
+		
+	self assert: (account hasRegistered: deposit).
+	self assert: (account hasRegistered: withdraw).
+! !
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'scb 5/23/2022 02:28:50' prior: 50481491!
+test05ReceptiveAccountKnowsRegisteredTransactions 
+
+	| account deposit withdraw |
+	
+	account := ReceptiveAccount new.
+	deposit := Deposit register: 100 on: account.
+	withdraw := Withdraw register: 50 on: account.
+		
+	self assert: (account hasRegistered: deposit).
+	self assert: (account hasRegistered: withdraw).
+! !
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'scb 5/23/2022 02:29:12' prior: 50474175!
+test07AccountKnowsItsTransactions 
+
+	| account1 deposit1 |
+	
+	account1 := ReceptiveAccount new.
+	
+	deposit1 := Deposit register: 50 on: account1.
+		
+	self assert: 1 equals: account1 transactions size.
+	self assert: (account1 transactions includes: deposit1).
+! !
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'scb 5/23/2022 02:29:15' prior: 50481516!
+test07AccountKnowsItsTransactions 
+
+	| anAccount deposit1 |
+	
+	anAccount := ReceptiveAccount new.
+	
+	deposit1 := Deposit register: 50 on: anAccount.
+		
+	self assert: 1 equals: anAccount transactions size.
+	self assert: (anAccount transactions includes: deposit1).
+! !
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'scb 5/23/2022 02:29:32' prior: 50481528!
+test07AccountKnowsItsTransactions 
+
+	| anAccount aDeposit |
+	
+	anAccount := ReceptiveAccount new.
+	
+	aDeposit := Deposit register: 50 on: anAccount.
+		
+	self assert: 1 equals: anAccount transactions size.
+	self assert: (anAccount transactions includes: aDeposit).
+! !
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'scb 5/23/2022 02:30:06' prior: 50481503!
+test05ReceptiveAccountKnowsRegisteredTransactions 
+
+	| account deposit withdraw |
+	
+	account := self initiateAccountWith100Deposit.
+	withdraw := Withdraw register: 50 on: account.
+		
+	self assert: (account hasRegistered: deposit).
+	self assert: (account hasRegistered: withdraw).
+! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'scb 5/23/2022 02:30:29'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'scb 5/23/2022 02:30:29'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'scb 5/23/2022 02:30:29'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'scb 5/23/2022 02:30:29'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'scb 5/23/2022 02:30:29'!
+FAILURE!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'scb 5/23/2022 02:30:29'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'scb 5/23/2022 02:30:29'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'scb 5/23/2022 02:30:29'!
+FAILURE!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'scb 5/23/2022 02:28:50' prior: 50481552!
+test05ReceptiveAccountKnowsRegisteredTransactions 
+
+	| account deposit withdraw |
+	
+	account := ReceptiveAccount new.
+	deposit := Deposit register: 100 on: account.
+	withdraw := Withdraw register: 50 on: account.
+		
+	self assert: (account hasRegistered: deposit).
+	self assert: (account hasRegistered: withdraw).
+! !
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'scb 5/23/2022 02:30:53'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'scb 5/23/2022 02:30:53'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'scb 5/23/2022 02:30:53'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'scb 5/23/2022 02:30:53'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'scb 5/23/2022 02:30:53'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'scb 5/23/2022 02:30:53'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'scb 5/23/2022 02:30:53'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'scb 5/23/2022 02:30:53'!
+PASSED!
+
+TestCase subclass: #PortfolioTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #PortfolioTest category: 'Portfolio-Ejercicio' stamp: 'scb 5/23/2022 02:31:20'!
+TestCase subclass: #PortfolioTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+TestCase subclass: #ReceptiveAccountTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #ReceptiveAccountTest category: 'Portfolio-Ejercicio' stamp: 'scb 5/23/2022 02:31:28'!
+TestCase subclass: #ReceptiveAccountTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classRemoval: #ServicesTest stamp: 'scb 5/23/2022 02:31:33'!
+TestCase subclass: #ServicesTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!ReceptiveAccountTest methodsFor: 'initializations' stamp: 'scb 5/23/2022 02:32:20'!
+initiateAccountWith
+
+	| account |
+	
+	account := ReceptiveAccount  new.
+	Deposit register: 100 on: account.
+	^account
+! !
+!ReceptiveAccountTest methodsFor: 'as yet unclassified' stamp: 'scb 5/23/2022 02:32:20' prior: 50481412!
+test02DepositIncreasesBalanceOnTransactionValue 
+
+	| account |
+	
+	account := self initiateAccountWith.
+		
+	self assert: 100 equals: account balance.
+! !
+!ReceptiveAccountTest methodsFor: 'as yet unclassified' stamp: 'scb 5/23/2022 02:32:20' prior: 50481451!
+test03WithdrawDecreasesBalanceOnTransactionValue 
+
+	| account |
+	
+	account := self initiateAccountWith.
+	Withdraw register: 50 on: account.
+		
+	self assert: 50 equals: account balance.
+! !
+
+!methodRemoval: ReceptiveAccountTest #initiateAccountWith100Deposit stamp: 'scb 5/23/2022 02:32:20'!
+initiateAccountWith100Deposit
+
+	| account |
+	
+	account := ReceptiveAccount  new.
+	Deposit register: 100 on: account.
+	^account
+!
+!ReceptiveAccountTest methodsFor: 'initializations' stamp: 'scb 5/23/2022 02:32:37' prior: 50481669!
+initiateAccountWith 
+
+	| account |
+	
+	account := ReceptiveAccount  new.
+	Deposit register: 100 on: account.
+	^account
+! !
+!ReceptiveAccountTest methodsFor: 'initializations' stamp: 'scb 5/23/2022 02:32:49'!
+initiateAccountWithDeposit 
+
+	| account |
+	
+	account := ReceptiveAccount  new.
+	Deposit register: 100 on: account.
+	^account
+! !
+!ReceptiveAccountTest methodsFor: 'as yet unclassified' stamp: 'scb 5/23/2022 02:32:49' prior: 50481677!
+test02DepositIncreasesBalanceOnTransactionValue 
+
+	| account |
+	
+	account := self initiateAccountWithDeposit.
+		
+	self assert: 100 equals: account balance.
+! !
+!ReceptiveAccountTest methodsFor: 'as yet unclassified' stamp: 'scb 5/23/2022 02:32:49' prior: 50481686!
+test03WithdrawDecreasesBalanceOnTransactionValue 
+
+	| account |
+	
+	account := self initiateAccountWithDeposit.
+	Withdraw register: 50 on: account.
+		
+	self assert: 50 equals: account balance.
+! !
+
+!methodRemoval: ReceptiveAccountTest #initiateAccountWith stamp: 'scb 5/23/2022 02:32:49'!
+initiateAccountWith 
+
+	| account |
+	
+	account := ReceptiveAccount  new.
+	Deposit register: 100 on: account.
+	^account
+!
+!ReceptiveAccountTest methodsFor: 'initializations' stamp: 'scb 5/23/2022 02:33:01'!
+initiateAccountWithDeposit: deposit
+
+	| account |
+	
+	account := ReceptiveAccount  new.
+	Deposit register: deposit on: account.
+	^account
+! !
+!ReceptiveAccountTest methodsFor: 'initializations' stamp: 'scb 5/23/2022 02:33:47'!
+initiateAccountWithDeposit: deposit andWithdrawl: withdrawl
+
+	| account |
+	
+	account := self initiateAccountWithDeposit: deposit.
+	Deposit register: deposit on: account.
+	^account
+! !
+!ReceptiveAccountTest methodsFor: 'initializations' stamp: 'scb 5/23/2022 02:34:12' prior: 50481751!
+initiateAccountWithDeposit: deposit andWithdrawl: withdrawl
+
+	| account |
+	
+	account := self initiateAccountWithDeposit: deposit.
+	Withdraw register: withdrawl on: account.
+	^account
+! !
+
+!methodRemoval: ReceptiveAccountTest #initiateAccountWithDeposit stamp: 'scb 5/23/2022 02:34:24'!
+initiateAccountWithDeposit 
+
+	| account |
+	
+	account := ReceptiveAccount  new.
+	Deposit register: 100 on: account.
+	^account
+!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'scb 5/23/2022 02:34:34' prior: 50481718!
+test02DepositIncreasesBalanceOnTransactionValue 
+
+	| account |
+	
+	account := self initiateAccountWithDeposit: 100.
+		
+	self assert: 100 equals: account balance.
+! !
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'scb 5/23/2022 02:35:08' prior: 50481727!
+test03WithdrawDecreasesBalanceOnTransactionValue 
+
+	| account |
+	
+	account := self initiateAccountWithDeposit: 100 andWithdrawl: 50.
+		
+	self assert: 50 equals: account balance.
+! !
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'scb 5/23/2022 02:35:11'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'scb 5/23/2022 02:35:11'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'scb 5/23/2022 02:35:11'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'scb 5/23/2022 02:35:11'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'scb 5/23/2022 02:35:11'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'scb 5/23/2022 02:35:11'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'scb 5/23/2022 02:35:11'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'scb 5/23/2022 02:35:11'!
+PASSED!
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/23/2022 02:37:34' prior: 50474958!
+test04EmptyPortfolioHasNoRegisteredTransaction
+
+	| aPortfolio aDeposit|
+	
+	aPortfolio := Portfolio new.
+	aDeposit := Deposit.
+	
+	self assert: (aPortfolio hasRegistered: aDeposit) = false! !
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/23/2022 02:37:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/23/2022 02:37:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/23/2022 02:37:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/23/2022 02:37:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/23/2022 02:37:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/23/2022 02:37:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/23/2022 02:37:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/23/2022 02:37:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnAccounts stamp: 'scb 5/23/2022 02:37:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/23/2022 02:37:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddSelf stamp: 'scb 5/23/2022 02:37:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCantAddRepeatedAccount stamp: 'scb 5/23/2022 02:37:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCantAddRepeatedPortfolio stamp: 'scb 5/23/2022 02:37:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test13PortfolioCantAddPortfolioWithRepeatedAccounts stamp: 'scb 5/23/2022 02:37:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test14PortfolioCantAddPortfolioWithRepeatedPortfolios stamp: 'scb 5/23/2022 02:37:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCantAddPortfolioWithRepeatedSubPortfolios stamp: 'scb 5/23/2022 02:37:35'!
+PASSED!
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/23/2022 02:37:47' prior: 50475077!
+test05PortfolioKnowsRegisteredTransactionsOnAccounts
+
+	| aPortfolio anAccount aDeposit|
+	
+	aPortfolio := Portfolio new.
+	anAccount := ReceptiveAccount new.
+	aDeposit := Deposit new.
+	
+	self assert: ((aPortfolio register: anAccount) hasRegistered: aDeposit)! !
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/23/2022 02:37:58' prior: 50481823!
+test04EmptyPortfolioHasNoRegisteredTransaction
+
+	| aPortfolio aDeposit|
+	
+	aPortfolio := Portfolio new.
+	aDeposit := Deposit new.
+	
+	self assert: (aPortfolio hasRegistered: aDeposit) = false! !
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/23/2022 02:37:59'!
+PASSED!
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/23/2022 02:37:59'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/23/2022 02:37:59'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/23/2022 02:37:59'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/23/2022 02:37:59'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/23/2022 02:37:59'!
+FAILURE!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/23/2022 02:37:59'!
+PASSED!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/23/2022 02:37:59'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnAccounts stamp: 'scb 5/23/2022 02:37:59'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/23/2022 02:37:59'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddSelf stamp: 'scb 5/23/2022 02:37:59'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCantAddRepeatedAccount stamp: 'scb 5/23/2022 02:37:59'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCantAddRepeatedPortfolio stamp: 'scb 5/23/2022 02:37:59'!
+PASSED!
+
+!testRun: #PortfolioTest #test13PortfolioCantAddPortfolioWithRepeatedAccounts stamp: 'scb 5/23/2022 02:37:59'!
+PASSED!
+
+!testRun: #PortfolioTest #test14PortfolioCantAddPortfolioWithRepeatedPortfolios stamp: 'scb 5/23/2022 02:37:59'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCantAddPortfolioWithRepeatedSubPortfolios stamp: 'scb 5/23/2022 02:37:59'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/23/2022 02:37:59'!
+FAILURE!
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/22/2022 23:09:23' prior: 50481890!
+test05PortfolioKnowsRegisteredTransactionsOnAccounts
+
+	| aPortfolio anAccount aDeposit|
+	
+	aPortfolio := Portfolio new.
+	anAccount := ReceptiveAccount new.
+	aDeposit := Deposit register: 100 on: anAccount.
+	
+	self assert: ((aPortfolio register: anAccount) hasRegistered: aDeposit)! !
+!PortfolioTest methodsFor: 'initializations' stamp: 'scb 5/23/2022 02:39:31'!
+initiateAccountWithDeposit: deposit
+
+	| account |
+	
+	account := ReceptiveAccount  new.
+	Deposit register: deposit on: account.
+	^account! !
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/23/2022 02:39:57' prior: 50474653!
+test02PorfolioBalanceIncreasesAfterAddingAccount 
+
+	| aPortfolio anAccount |
+	
+	aPortfolio := Portfolio new.
+	anAccount := self initiateAccountWithDeposit: 100.
+	
+	self assert: (aPortfolio register: anAccount) balance = anAccount balance.! !
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/23/2022 02:39:58'!
+PASSED!
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/23/2022 02:39:58'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/23/2022 02:39:58'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/23/2022 02:39:58'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/23/2022 02:39:58'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/23/2022 02:39:58'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/23/2022 02:39:58'!
+PASSED!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/23/2022 02:39:58'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnAccounts stamp: 'scb 5/23/2022 02:39:58'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/23/2022 02:39:58'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddSelf stamp: 'scb 5/23/2022 02:39:58'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCantAddRepeatedAccount stamp: 'scb 5/23/2022 02:39:58'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCantAddRepeatedPortfolio stamp: 'scb 5/23/2022 02:39:58'!
+PASSED!
+
+!testRun: #PortfolioTest #test13PortfolioCantAddPortfolioWithRepeatedAccounts stamp: 'scb 5/23/2022 02:39:58'!
+PASSED!
+
+!testRun: #PortfolioTest #test14PortfolioCantAddPortfolioWithRepeatedPortfolios stamp: 'scb 5/23/2022 02:39:58'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCantAddPortfolioWithRepeatedSubPortfolios stamp: 'scb 5/23/2022 02:39:58'!
+PASSED!
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/23/2022 02:40:22' prior: 50474896!
+test03PorfolioBalanceIncreasesAfterAddingPortfolio
+
+	| aPortfolio aSecondPortfolio anAccount |
+	
+	aPortfolio := Portfolio new.
+	aSecondPortfolio := Portfolio new.
+	anAccount := self initiateAccountWithDeposit: 100.
+	
+	self assert: (aSecondPortfolio register: (aPortfolio register: anAccount)) balance = aPortfolio balance.! !
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/23/2022 02:40:29' prior: 50482059!
+test03PorfolioBalanceIncreasesAfterAddingPortfolio
+
+	| aPortfolio aSecondPortfolio anAccount |
+	
+	aPortfolio := Portfolio new.
+	aSecondPortfolio := Portfolio new.
+	anAccount := self initiateAccountWithDeposit: 100.
+	
+	self assert: (aSecondPortfolio register: (aPortfolio register: anAccount)) balance = 100.! !
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/23/2022 02:40:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/23/2022 02:40:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/23/2022 02:40:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/23/2022 02:40:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/23/2022 02:40:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/23/2022 02:40:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/23/2022 02:40:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/23/2022 02:40:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnAccounts stamp: 'scb 5/23/2022 02:40:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/23/2022 02:40:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddSelf stamp: 'scb 5/23/2022 02:40:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCantAddRepeatedAccount stamp: 'scb 5/23/2022 02:40:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCantAddRepeatedPortfolio stamp: 'scb 5/23/2022 02:40:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test13PortfolioCantAddPortfolioWithRepeatedAccounts stamp: 'scb 5/23/2022 02:40:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test14PortfolioCantAddPortfolioWithRepeatedPortfolios stamp: 'scb 5/23/2022 02:40:31'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCantAddPortfolioWithRepeatedSubPortfolios stamp: 'scb 5/23/2022 02:40:31'!
+PASSED!
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/23/2022 02:40:51' prior: 50481972!
+test05PortfolioKnowsRegisteredTransactionsOnAccounts
+
+	| aPortfolio anAccount aDeposit|
+	
+	aPortfolio := Portfolio new.
+	anAccount := self initiateAccountWithDeposit: 100.
+	
+	self assert: ((aPortfolio register: anAccount) hasRegistered: aDeposit)! !
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/23/2022 02:40:55'!
+FAILURE!
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/23/2022 02:41:05' prior: 50482143!
+test05PortfolioKnowsRegisteredTransactionsOnAccounts
+
+	| aPortfolio anAccount aDeposit|
+	
+	aPortfolio := Portfolio new.
+	anAccount := ReceptiveAccount new.
+	aDeposit := Deposit register: 100 on: anAccount.
+	
+	self assert: ((aPortfolio register: anAccount) hasRegistered: aDeposit)! !
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/23/2022 02:41:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/23/2022 02:41:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/23/2022 02:41:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/23/2022 02:41:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/23/2022 02:41:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/23/2022 02:41:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/23/2022 02:41:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/23/2022 02:41:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnAccounts stamp: 'scb 5/23/2022 02:41:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/23/2022 02:41:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddSelf stamp: 'scb 5/23/2022 02:41:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCantAddRepeatedAccount stamp: 'scb 5/23/2022 02:41:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCantAddRepeatedPortfolio stamp: 'scb 5/23/2022 02:41:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test13PortfolioCantAddPortfolioWithRepeatedAccounts stamp: 'scb 5/23/2022 02:41:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test14PortfolioCantAddPortfolioWithRepeatedPortfolios stamp: 'scb 5/23/2022 02:41:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCantAddPortfolioWithRepeatedSubPortfolios stamp: 'scb 5/23/2022 02:41:06'!
+PASSED!
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/23/2022 02:41:29' prior: 50475117!
+test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios
+
+	| aPortfolio anotherPortfolio anAccount aTransaction |
+	
+	aPortfolio := Portfolio new.
+	anotherPortfolio := Portfolio new.
+	anAccount := ReceptiveAccount new.
+	aTransaction := Deposit register: 100 on: anAccount.
+	
+	self assert: ((anotherPortfolio register: (aPortfolio register: anAccount)) hasRegistered: aTransaction).! !
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/23/2022 02:41:47' prior: 50482228!
+test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios
+
+	| aPortfolio anotherPortfolio anAccount aDiscount |
+	
+	aPortfolio := Portfolio new.
+	anotherPortfolio := Portfolio new.
+	anAccount := ReceptiveAccount new.
+	aDiscount := Deposit register: 100 on: anAccount.
+	
+	self assert: ((anotherPortfolio register: (aPortfolio register: anAccount)) hasRegistered: aDiscount).! !
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/23/2022 02:43:11' prior: 50475451!
+test09PortfolioKnowsTransactionsRegisteredOnPorfolios
+
+	| aPortfolio anotherPortfolio anAccount aDeposit transactions |
+	
+	aPortfolio := Portfolio new.
+	anotherPortfolio := Portfolio new.
+	anAccount := ReceptiveAccount new.
+	aDeposit := Deposit register: 100 on: anAccount.
+	transactions := OrderedCollection with: aDeposit.
+	
+	self assert: (aPortfolio register: (anotherPortfolio register: anAccount)) transactions = transactions.! !
+
+!testRun: #PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/23/2022 02:43:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/23/2022 02:43:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/23/2022 02:43:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/23/2022 02:43:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/23/2022 02:43:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/23/2022 02:43:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/23/2022 02:43:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/23/2022 02:43:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnAccounts stamp: 'scb 5/23/2022 02:43:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/23/2022 02:43:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddSelf stamp: 'scb 5/23/2022 02:43:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCantAddRepeatedAccount stamp: 'scb 5/23/2022 02:43:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCantAddRepeatedPortfolio stamp: 'scb 5/23/2022 02:43:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test13PortfolioCantAddPortfolioWithRepeatedAccounts stamp: 'scb 5/23/2022 02:43:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test14PortfolioCantAddPortfolioWithRepeatedPortfolios stamp: 'scb 5/23/2022 02:43:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCantAddPortfolioWithRepeatedSubPortfolios stamp: 'scb 5/23/2022 02:43:12'!
+PASSED!
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/23/2022 02:46:25'!
+compareReapeatedItemErrorWithErrorIn: aPortfolio
+
+	^ self should: [ (aPortfolio register: aPortfolio) ]
+		raise: Error
+		withExceptionDo: [:anError |
+			self assert: anError messageText = Portfolio repeatedItemErrorDescription ]! !
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/23/2022 02:46:25' prior: 50476678!
+test10PortfolioCantAddSelf
+
+	| aPortfolio |
+	
+	aPortfolio := Portfolio new.
+	
+	self compareReapeatedItemErrorWithErrorIn: aPortfolio.! !
+!PortfolioTest methodsFor: 'test - auxiliary' stamp: 'scb 5/23/2022 02:47:19' prior: 50482332!
+compareReapeatedItemErrorWithErrorIn: aClosure
+
+	^ self should: [ aClosure ]
+		raise: Error
+		withExceptionDo: [:anError |
+			self assert: anError messageText = Portfolio repeatedItemErrorDescription ]! !
+!PortfolioTest methodsFor: 'test - auxiliary' stamp: 'scb 5/23/2022 02:47:26' prior: 50482350!
+compareReapeatedItemErrorWithErrorIn: aClosure
+
+	^ self should: aClosure
+		raise: Error
+		withExceptionDo: [:anError |
+			self assert: anError messageText = Portfolio repeatedItemErrorDescription ]! !
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/23/2022 02:47:46' prior: 50482342!
+test10PortfolioCantAddSelf
+
+	| aPortfolio |
+	
+	aPortfolio := Portfolio new.
+	
+	self compareReapeatedItemErrorWithErrorIn: [aPortfolio register: aPortfolio].! !
+
+!testRun: #PortfolioTest #test10PortfolioCantAddSelf stamp: 'scb 5/23/2022 02:47:47'!
+PASSED!
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/23/2022 02:47:47'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/23/2022 02:47:47'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/23/2022 02:47:47'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/23/2022 02:47:47'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/23/2022 02:47:47'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/23/2022 02:47:47'!
+PASSED!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/23/2022 02:47:47'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnAccounts stamp: 'scb 5/23/2022 02:47:47'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/23/2022 02:47:47'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddSelf stamp: 'scb 5/23/2022 02:47:47'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCantAddRepeatedAccount stamp: 'scb 5/23/2022 02:47:47'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCantAddRepeatedPortfolio stamp: 'scb 5/23/2022 02:47:47'!
+PASSED!
+
+!testRun: #PortfolioTest #test13PortfolioCantAddPortfolioWithRepeatedAccounts stamp: 'scb 5/23/2022 02:47:47'!
+PASSED!
+
+!testRun: #PortfolioTest #test14PortfolioCantAddPortfolioWithRepeatedPortfolios stamp: 'scb 5/23/2022 02:47:47'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCantAddPortfolioWithRepeatedSubPortfolios stamp: 'scb 5/23/2022 02:47:47'!
+PASSED!
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/23/2022 02:48:12' prior: 50476689!
+test11PortfolioCantAddRepeatedAccount
+
+	| aPortfolio anAccount |
+	
+	aPortfolio := Portfolio new.
+	anAccount := ReceptiveAccount new.
+	
+	self compareReapeatedItemErrorWithErrorIn: [(aPortfolio register: anAccount) register: anAccount ]! !
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/23/2022 02:48:28' prior: 50476908!
+test12PortfolioCantAddRepeatedPortfolio
+
+	| aPortfolio anotherPortfolio |
+	
+	aPortfolio := Portfolio new.
+	anotherPortfolio := Portfolio new.
+	
+	self compareReapeatedItemErrorWithErrorIn: [ (aPortfolio register: anotherPortfolio) register: anotherPortfolio ]! !
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/23/2022 02:48:36' prior: 50482434!
+test11PortfolioCantAddRepeatedAccount
+
+	| aPortfolio anAccount |
+	
+	aPortfolio := Portfolio new.
+	anAccount := ReceptiveAccount new.
+	
+	self compareReapeatedItemErrorWithErrorIn: [ (aPortfolio register: anAccount) register: anAccount ]! !
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/23/2022 02:48:42' prior: 50482369!
+test10PortfolioCantAddSelf
+
+	| aPortfolio |
+	
+	aPortfolio := Portfolio new.
+	
+	self compareReapeatedItemErrorWithErrorIn: [ aPortfolio register: aPortfolio ].! !
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/23/2022 02:49:03' prior: 50476936!
+test13PortfolioCantAddPortfolioWithRepeatedAccounts
+
+	| aPortfolio anotherPortfolio anAccount |
+	
+	aPortfolio := Portfolio new.
+	anotherPortfolio := Portfolio new.
+	anAccount := ReceptiveAccount new.
+	
+	self compareReapeatedItemErrorWithErrorIn: [ (aPortfolio register: anAccount) register: (anotherPortfolio register: anAccount) ]! !
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/23/2022 02:49:18' prior: 50477016!
+test14PortfolioCantAddPortfolioWithRepeatedPortfolios
+
+	| aPortfolio anotherPortfolio evenAnotherPortfolio |
+	
+	aPortfolio := Portfolio new.
+	anotherPortfolio := Portfolio new.
+	evenAnotherPortfolio := Portfolio new.
+	
+	self compareReapeatedItemErrorWithErrorIn: [ (aPortfolio register: anotherPortfolio) register: (evenAnotherPortfolio register: anotherPortfolio) ]! !
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/23/2022 02:49:31' prior: 50477245!
+test15PortfolioCantAddPortfolioWithRepeatedSubPortfolios
+
+	| aPortfolio anotherPortfolio evenAnotherPortfolio anAccount |
+	
+	aPortfolio := Portfolio new.
+	anotherPortfolio := Portfolio new.
+	evenAnotherPortfolio := Portfolio new.
+	anAccount := ReceptiveAccount new.
+	
+	self compareReapeatedItemErrorWithErrorIn: [ (aPortfolio register: (anotherPortfolio register: anAccount)) register: (evenAnotherPortfolio register: anAccount) ]! !
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/23/2022 02:49:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/23/2022 02:49:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/23/2022 02:49:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/23/2022 02:49:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/23/2022 02:49:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/23/2022 02:49:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/23/2022 02:49:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnAccounts stamp: 'scb 5/23/2022 02:49:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/23/2022 02:49:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddSelf stamp: 'scb 5/23/2022 02:49:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCantAddRepeatedAccount stamp: 'scb 5/23/2022 02:49:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCantAddRepeatedPortfolio stamp: 'scb 5/23/2022 02:49:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test13PortfolioCantAddPortfolioWithRepeatedAccounts stamp: 'scb 5/23/2022 02:49:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test14PortfolioCantAddPortfolioWithRepeatedPortfolios stamp: 'scb 5/23/2022 02:49:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCantAddPortfolioWithRepeatedSubPortfolios stamp: 'scb 5/23/2022 02:49:38'!
+PASSED!
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/23/2022 02:51:10'!
+initiateAPortfolioWithAnAccountWithDeposit: aDeposit
+
+	| aPortfolio anAccount |
+	
+	aPortfolio := Portfolio new.
+	anAccount := self initiateAccountWithDeposit: aDeposit.
+	^ aPortfolio.! !
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/23/2022 02:51:22' prior: 50482574!
+initiateAPortfolioWithAnAccountWithDeposit: aDeposit
+
+	| aPortfolio anAccount |
+	
+	aPortfolio := Portfolio new.
+	anAccount := self initiateAccountWithDeposit: aDeposit.
+	^ aPortfolio register: anAccount.! !
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/23/2022 02:51:51' prior: 50481991!
+test02PorfolioBalanceIncreasesAfterAddingAccount 
+
+	| aPortfolio |
+	
+	aPortfolio := self initiateAPortfolioWithAnAccountWithDeposit: 100.
+	
+	self assert: aPortfolio balance = 100.! !
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/23/2022 02:51:54'!
+PASSED!
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/23/2022 02:51:54'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/23/2022 02:51:54'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/23/2022 02:51:54'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/23/2022 02:51:54'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/23/2022 02:51:54'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/23/2022 02:51:54'!
+PASSED!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/23/2022 02:51:54'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnAccounts stamp: 'scb 5/23/2022 02:51:54'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/23/2022 02:51:54'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddSelf stamp: 'scb 5/23/2022 02:51:54'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCantAddRepeatedAccount stamp: 'scb 5/23/2022 02:51:54'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCantAddRepeatedPortfolio stamp: 'scb 5/23/2022 02:51:54'!
+PASSED!
+
+!testRun: #PortfolioTest #test13PortfolioCantAddPortfolioWithRepeatedAccounts stamp: 'scb 5/23/2022 02:51:54'!
+PASSED!
+
+!testRun: #PortfolioTest #test14PortfolioCantAddPortfolioWithRepeatedPortfolios stamp: 'scb 5/23/2022 02:51:54'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCantAddPortfolioWithRepeatedSubPortfolios stamp: 'scb 5/23/2022 02:51:54'!
+PASSED!
+!PortfolioTest methodsFor: 'test' stamp: 'scb 5/23/2022 02:52:44' prior: 50482072!
+test03PorfolioBalanceIncreasesAfterAddingPortfolio
+
+	| aPortfolio aSecondPortfolio |
+	
+	aPortfolio := aPortfolio := self initiateAPortfolioWithAnAccountWithDeposit: 100.
+	aSecondPortfolio := Portfolio new.
+	
+	self assert: (aSecondPortfolio register: aPortfolio) balance = 100.! !
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/23/2022 02:52:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test01BalanceOfNewPortfolioIsEqualToZero stamp: 'scb 5/23/2022 02:52:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PorfolioBalanceIncreasesAfterAddingAccount stamp: 'scb 5/23/2022 02:52:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PorfolioBalanceIncreasesAfterAddingPortfolio stamp: 'scb 5/23/2022 02:52:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test04EmptyPortfolioHasNoRegisteredTransaction stamp: 'scb 5/23/2022 02:52:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioKnowsRegisteredTransactionsOnAccounts stamp: 'scb 5/23/2022 02:52:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioKnowsRegisteredTransactionsOnOtherPortfolios stamp: 'scb 5/23/2022 02:52:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test07EmptyPortfolioHasNoTransactions stamp: 'scb 5/23/2022 02:52:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioKnowsTransactionsRegisteredOnAccounts stamp: 'scb 5/23/2022 02:52:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioKnowsTransactionsRegisteredOnPorfolios stamp: 'scb 5/23/2022 02:52:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCantAddSelf stamp: 'scb 5/23/2022 02:52:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCantAddRepeatedAccount stamp: 'scb 5/23/2022 02:52:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCantAddRepeatedPortfolio stamp: 'scb 5/23/2022 02:52:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test13PortfolioCantAddPortfolioWithRepeatedAccounts stamp: 'scb 5/23/2022 02:52:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test14PortfolioCantAddPortfolioWithRepeatedPortfolios stamp: 'scb 5/23/2022 02:52:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCantAddPortfolioWithRepeatedSubPortfolios stamp: 'scb 5/23/2022 02:52:48'!
+PASSED!
+
+----SNAPSHOT----(23 May 2022 02:56:08) CuisUniversity-5096.image priorSource: 4557982!
