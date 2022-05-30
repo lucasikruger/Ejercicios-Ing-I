@@ -1,0 +1,4062 @@
+
+
+----STARTUP---- (27 May 2022 18:20:03) as /Users/sebascantini/Downloads/macos64/CuisUniversity-5096.image!
+
+
+----End fileIn of /Users/sebascantini/Downloads/macos64/Portfolio-Ejercicio.st----!
+
+TestCase subclass: #TransferTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferTest category: 'Portfolio-Solucion' stamp: 'scb 5/27/2022 18:22:00'!
+TestCase subclass: #TransferTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!TransferTest methodsFor: 'test' stamp: 'scb 5/27/2022 18:23:59'!
+test01TransferCanTransferMoneyFromTheSenderToTheRecipient
+	
+	| anAccount anotherAccount |
+	
+	anAccount := ReceptiveAccount ! !
+
+!classDefinition: #Transfer category: 'Portfolio-Solucion' stamp: 'scb 5/27/2022 18:25:46'!
+Object subclass: #Transfer
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!TransferTest methodsFor: 'test' stamp: 'scb 5/27/2022 18:25:40' prior: 50474824!
+test01TransferCanTransferMoneyFromTheSenderToTheRecipient
+	
+	| anAccount anotherAccount |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	
+	Transfer from: anAccount to: anotherAccount anAmmountOf: 100! !
+
+!testRun: #TransferTest #test01TransferCanTransferMoneyFromTheSenderToTheRecipient stamp: 'scb 5/27/2022 18:25:52'!
+ERROR!
+!ReceptiveAccountTest class methodsFor: 'no messages' stamp: 'scb 5/27/2022 18:28:48'!
+from: anAccount to: anotherAccount anAmmountOf: aValue
+
+	^ self new initializeFrom: anAccount to: anAccount anAmmountOf: aValue! !
+
+!methodRemoval: ReceptiveAccountTest class #from:to:anAmmountOf: stamp: 'scb 5/27/2022 18:29:37'!
+from: anAccount to: anotherAccount anAmmountOf: aValue
+
+	^ self new initializeFrom: anAccount to: anAccount anAmmountOf: aValue!
+!Transfer class methodsFor: 'no messages' stamp: 'scb 5/27/2022 18:29:44'!
+from: anAccount to: anotherAccount anAmmountOf: aValue
+
+	^ self new initializeFrom: anAccount to: anAccount anAmmountOf: aValue! !
+
+!classDefinition: #Transfer category: 'Portfolio-Solucion' stamp: 'scb 5/27/2022 18:31:24'!
+Object subclass: #Transfer
+	instanceVariableNames: 'withdraw'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #Transfer category: 'Portfolio-Solucion' stamp: 'scb 5/27/2022 18:31:25'!
+Object subclass: #Transfer
+	instanceVariableNames: 'withdraw deposit'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!Transfer methodsFor: 'no messages' stamp: 'scb 5/27/2022 18:31:20'!
+from: anAccount to: anotherAccount anAmmountOf: aValue
+
+	withdraw := Withdraw register: aValue on: anAccount.
+	deposit := Deposit register: aValue on: anotherAccount.! !
+
+!testRun: #TransferTest #test01TransferCanTransferMoneyFromTheSenderToTheRecipient stamp: 'scb 5/27/2022 18:31:29'!
+ERROR!
+
+!testRun: #TransferTest #test01TransferCanTransferMoneyFromTheSenderToTheRecipient stamp: 'scb 5/27/2022 18:31:29'!
+ERROR!
+
+!classRemoval: #TransferTest stamp: 'scb 5/27/2022 18:31:51'!
+TestCase subclass: #TransferTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+----STARTUP---- (27 May 2022 18:32:29) as /Users/sebascantini/Downloads/macos64/CuisUniversity-5096.image!
+
+
+----End fileIn of /Users/sebascantini/Downloads/macos64/Portfolio-Ejercicio.st----!
+
+TestCase subclass: #TransferTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferTest category: 'Portfolio-Solucion' stamp: 'scb 5/27/2022 18:33:37'!
+TestCase subclass: #TransferTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!TransferTest methodsFor: 'test' stamp: 'scb 5/27/2022 18:34:27'!
+test01TransferWithdrawsFromSenderAndDepositToRecipient! !
+
+!classDefinition: #Transfer category: 'Portfolio-Solucion' stamp: 'scb 5/27/2022 18:38:38'!
+Object subclass: #Transfer
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!TransferTest methodsFor: 'test' stamp: 'scb 5/27/2022 18:38:35' prior: 50474824!
+test01TransferWithdrawsFromSenderAndDepositToRecipient
+
+	| aSender aReciever |
+	
+	aSender := ReceptiveAccount new.
+	aReciever := ReceptiveAccount new.
+	Transfer from: aSender to: aReciever anAmmountOf: 100.
+	
+	self assert: ( (aSender balance = -100) and: aReciever balance = 100 )! !
+
+!testRun: #TransferTest #test01TransferWithdrawsFromSenderAndDepositToRecipient stamp: 'scb 5/27/2022 18:38:41'!
+ERROR!
+!Transfer class methodsFor: 'instance creation' stamp: 'scb 5/27/2022 18:38:49'!
+from: aReceptiveAccount to: aReceptiveAccount2 anAmmountOf: aSmallInteger 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeFrom: aReceptiveAccount to: aReceptiveAccount2 anAmmountOf: aSmallInteger ! !
+!Transfer class methodsFor: 'instance creation' stamp: 'scb 5/27/2022 18:40:01' prior: 50474852!
+from: sender to: reciever anAmmountOf: value
+
+	^self new initializeFrom: sender to: reciever anAmmountOf: value ! !
+
+!testRun: #TransferTest #test01TransferWithdrawsFromSenderAndDepositToRecipient stamp: 'scb 5/27/2022 18:40:06'!
+ERROR!
+
+!classDefinition: #Transfer category: 'Portfolio-Solucion' stamp: 'scb 5/27/2022 18:40:20'!
+Object subclass: #Transfer
+	instanceVariableNames: 'sender_CHANGE_ME'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #Transfer category: 'Portfolio-Solucion' stamp: 'scb 5/27/2022 18:40:20'!
+Object subclass: #Transfer
+	instanceVariableNames: 'sender_CHANGE_ME reciever_CHANGE_ME'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #Transfer category: 'Portfolio-Solucion' stamp: 'scb 5/27/2022 18:40:21'!
+Object subclass: #Transfer
+	instanceVariableNames: 'sender_CHANGE_ME reciever_CHANGE_ME value_CHANGE_ME'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!Transfer methodsFor: 'initialization' stamp: 'scb 5/27/2022 18:40:21'!
+initializeFrom: sender to: reciever anAmmountOf: value 
+	self shouldBeImplemented.
+	sender_CHANGE_ME := sender.
+	reciever_CHANGE_ME := reciever.
+	value_CHANGE_ME := value.! !
+
+!classDefinition: #Transfer category: 'Portfolio-Solucion' stamp: 'scb 5/27/2022 18:41:28'!
+Object subclass: #Transfer
+	instanceVariableNames: 'sender_CHANGE_ME reciever_CHANGE_ME value_CHANGE_ME withdraw'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #Transfer category: 'Portfolio-Solucion' stamp: 'scb 5/27/2022 18:41:29'!
+Object subclass: #Transfer
+	instanceVariableNames: 'sender_CHANGE_ME reciever_CHANGE_ME value_CHANGE_ME withdraw deposit'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!Transfer methodsFor: 'initialization' stamp: 'scb 5/27/2022 18:41:26' prior: 50474899!
+initializeFrom: sender to: reciever anAmmountOf: value 
+
+	withdraw := Withdraw register: value on: sender.
+	deposit := Deposit register: value on: reciever ! !
+
+!testRun: #TransferTest #test01TransferWithdrawsFromSenderAndDepositToRecipient stamp: 'scb 5/27/2022 18:41:32'!
+PASSED!
+!Transfer methodsFor: 'initialization' stamp: 'scb 5/27/2022 18:41:51' prior: 50474926!
+initializeFrom: sender to: receiver anAmmountOf: value 
+
+	withdraw := Withdraw register: value on: sender.
+	deposit := Deposit register: value on: receiver ! !
+!Transfer class methodsFor: 'instance creation' stamp: 'scb 5/27/2022 18:42:00' prior: 50474864!
+from: sender to: receiver anAmmountOf: value
+
+	^self new initializeFrom: sender to: receiver anAmmountOf: value ! !
+!TransferTest methodsFor: 'test' stamp: 'scb 5/27/2022 18:42:21' prior: 50474836!
+test01TransferWithdrawsFromSenderAndDepositToRecipient
+
+	| aSender aReceiver |
+	
+	aSender := ReceptiveAccount new.
+	aReceiver := ReceptiveAccount new.
+	Transfer from: aSender to: aReceiver anAmmountOf: 100.
+	
+	self assert: ( (aSender balance = -100) and: aReceiver balance = 100 )! !
+
+!testRun: #TransferTest #test01TransferWithdrawsFromSenderAndDepositToRecipient stamp: 'scb 5/27/2022 18:42:23'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferWithdrawsFromSenderAndDepositToRecipient stamp: 'scb 5/27/2022 18:42:23'!
+PASSED!
+!TransferTest methodsFor: 'test' stamp: 'scb 5/27/2022 18:43:47'!
+test02
+
+	| aSender aReceiver aTransfer |
+	
+	aSender := ReceptiveAccount new.
+	aReceiver := ReceptiveAccount new.
+	aTransfer := Transfer from: aSender to: aReceiver anAmmountOf: 100.
+	
+	self assert: false! !
+!TransferTest methodsFor: 'test' stamp: 'scb 5/27/2022 19:04:18'!
+test02TransferIsRegisteredInSenderAndReceiver
+
+	| aSender aReceiver aTransfer |
+	
+	aSender := ReceptiveAccount new.
+	aReceiver := ReceptiveAccount new.
+	aTransfer := Transfer from: aSender to: aReceiver anAmmountOf: 100.
+	
+	self assert: false! !
+
+!methodRemoval: TransferTest #test02 stamp: 'scb 5/27/2022 19:04:25'!
+test02
+
+	| aSender aReceiver aTransfer |
+	
+	aSender := ReceptiveAccount new.
+	aReceiver := ReceptiveAccount new.
+	aTransfer := Transfer from: aSender to: aReceiver anAmmountOf: 100.
+	
+	self assert: false!
+!TransferTest methodsFor: 'test' stamp: 'scb 5/27/2022 19:05:52' prior: 50474982!
+test02TransferIsRegisteredInSenderAndReceiver
+
+	| aSender aReceiver aTransfer |
+	
+	aSender := ReceptiveAccount new.
+	aReceiver := ReceptiveAccount new.
+	aTransfer := Transfer from: aSender to: aReceiver anAmmountOf: 100.
+	
+	self assert: (( aSender hasRegistered: aTransfer withdraw ) and: ( aReceiver hasRegistered: aTransfer deposit ))! !
+
+!testRun: #TransferTest #test02TransferIsRegisteredInSenderAndReceiver stamp: 'scb 5/27/2022 19:05:55'!
+ERROR!
+!Transfer methodsFor: 'accessing' stamp: 'scb 5/27/2022 19:06:05'!
+withdraw
+	self shouldBeImplemented.
+	^withdraw! !
+!Transfer methodsFor: 'accessing' stamp: 'scb 5/27/2022 19:06:11' prior: 50475018!
+withdraw
+	
+	^withdraw! !
+
+!testRun: #TransferTest #test02TransferIsRegisteredInSenderAndReceiver stamp: 'scb 5/27/2022 19:06:17'!
+ERROR!
+!Transfer methodsFor: 'accessing' stamp: 'scb 5/27/2022 19:06:22'!
+deposit
+	self shouldBeImplemented.
+	^deposit! !
+!Transfer methodsFor: 'accessing' stamp: 'scb 5/27/2022 19:06:28' prior: 50475030!
+deposit
+	
+	^deposit! !
+
+!testRun: #TransferTest #test02TransferIsRegisteredInSenderAndReceiver stamp: 'scb 5/27/2022 19:06:30'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferWithdrawsFromSenderAndDepositToRecipient stamp: 'scb 5/27/2022 19:06:30'!
+PASSED!
+
+!testRun: #TransferTest #test02TransferIsRegisteredInSenderAndReceiver stamp: 'scb 5/27/2022 19:06:30'!
+PASSED!
+
+!testRun: #TransferTest #test02TransferIsRegisteredInSenderAndReceiver stamp: 'scb 5/27/2022 19:06:48'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferWithdrawsFromSenderAndDepositToRecipient stamp: 'scb 5/27/2022 19:06:48'!
+PASSED!
+
+!testRun: #TransferTest #test02TransferIsRegisteredInSenderAndReceiver stamp: 'scb 5/27/2022 19:06:48'!
+PASSED!
+!TransferTest methodsFor: 'test' stamp: 'scb 5/27/2022 19:14:55'!
+test03WithdrawAndDeposit
+
+	| aSender aReceiver aTransfer |
+	
+	aSender := ReceptiveAccount new.
+	aReceiver := ReceptiveAccount new.
+	aTransfer := Transfer from: aSender to: aReceiver anAmmountOf: 100.
+	
+	self assert: false! !
+!TransferTest methodsFor: 'test' stamp: 'scb 5/27/2022 19:19:15' prior: 50475060!
+test03WithdrawAndDeposit
+
+	| aSender aReceiver aTransfer |
+	
+	aSender := ReceptiveAccount new.
+	aReceiver := ReceptiveAccount new.
+	aTransfer := Transfer from: aSender to: aReceiver anAmmountOf: 100.
+	
+	self assert: aTransfer! !
+!Deposit methodsFor: 'value' stamp: 'scb 5/27/2022 19:19:37' prior: 50474751 overrides: 50474709!
+value
+
+	^ value value.! !
+!Deposit methodsFor: 'value' stamp: 'scb 5/27/2022 19:20:08' prior: 50475081 overrides: 50474709!
+value
+
+	^ value! !
+
+4 value!
+
+lucas value!
+
+AccountTransaction subclass: #Deposit
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #Deposit category: 'Portfolio-Solucion' stamp: 'scb 5/27/2022 19:21:46'!
+AccountTransaction subclass: #Deposit
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+Object subclass: #AccountTransaction
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+AccountTransaction subclass: #Withdraw
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #Withdraw category: 'Portfolio-Solucion' stamp: 'scb 5/27/2022 19:21:58'!
+AccountTransaction subclass: #Withdraw
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+Object subclass: #AccountTransaction
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #AccountTransaction category: 'Portfolio-Solucion' stamp: 'scb 5/27/2022 19:22:03'!
+Object subclass: #AccountTransaction
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'scb 5/27/2022 19:22:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'scb 5/27/2022 19:22:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'scb 5/27/2022 19:22:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'scb 5/27/2022 19:22:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'scb 5/27/2022 19:22:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'scb 5/27/2022 19:22:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'scb 5/27/2022 19:22:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'scb 5/27/2022 19:22:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'scb 5/27/2022 19:22:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'scb 5/27/2022 19:22:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'scb 5/27/2022 19:22:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'scb 5/27/2022 19:22:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'scb 5/27/2022 19:22:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'scb 5/27/2022 19:22:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'scb 5/27/2022 19:22:10'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'scb 5/27/2022 19:22:11'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'scb 5/27/2022 19:22:11'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'scb 5/27/2022 19:22:11'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'scb 5/27/2022 19:22:11'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'scb 5/27/2022 19:22:11'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'scb 5/27/2022 19:22:11'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'scb 5/27/2022 19:22:11'!
+PASSED!
+!AccountTransaction methodsFor: 'value' stamp: 'scb 5/27/2022 19:22:18' prior: 50474709 overrides: 16902254!
+value
+
+	^ value! !
+
+!methodRemoval: Deposit #value stamp: 'scb 5/27/2022 19:22:18'!
+value
+
+	^ value!
+
+!methodRemoval: Withdraw #value stamp: 'scb 5/27/2022 19:22:23'!
+value
+
+	^ value!
+!AccountTransaction methodsFor: 'initialization' stamp: 'scb 5/27/2022 19:22:35'!
+initializeFor: aValue
+
+	value := aValue ! !
+
+!methodRemoval: Deposit #initializeFor: stamp: 'scb 5/27/2022 19:22:35'!
+initializeFor: aValue
+
+	value := aValue !
+
+!methodRemoval: Withdraw #initializeFor: stamp: 'scb 5/27/2022 19:22:41'!
+initializeFor: aValue
+
+	value := aValue !
+!AccountTransaction methodsFor: 'value' stamp: 'scb 5/27/2022 19:23:11' prior: 50475215 overrides: 16902254!
+value
+
+	^ value value! !
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'scb 5/27/2022 19:23:14'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'scb 5/27/2022 19:23:14'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'scb 5/27/2022 19:23:14'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'scb 5/27/2022 19:23:14'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'scb 5/27/2022 19:23:14'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'scb 5/27/2022 19:23:14'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'scb 5/27/2022 19:23:14'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'scb 5/27/2022 19:23:14'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'scb 5/27/2022 19:23:14'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'scb 5/27/2022 19:23:14'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'scb 5/27/2022 19:23:14'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'scb 5/27/2022 19:23:14'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'scb 5/27/2022 19:23:14'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'scb 5/27/2022 19:23:14'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'scb 5/27/2022 19:23:14'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'scb 5/27/2022 19:23:16'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'scb 5/27/2022 19:23:16'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'scb 5/27/2022 19:23:16'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'scb 5/27/2022 19:23:16'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'scb 5/27/2022 19:23:16'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'scb 5/27/2022 19:23:16'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'scb 5/27/2022 19:23:16'!
+PASSED!
+!TransferTest methodsFor: 'test' stamp: 'scb 5/27/2022 19:25:10' prior: 50475070!
+test03WithdrawAndDeposit
+
+	| aSender aReceiver aTransfer |
+	
+	aSender := ReceptiveAccount new.
+	aReceiver := ReceptiveAccount new.
+	aTransfer := Transfer from: aSender to: aReceiver anAmmountOf: 100.
+	
+	self assert: ( aTransfer withdraw )! !
+!TransferTest methodsFor: 'test' stamp: 'scb 5/27/2022 19:39:19'!
+test03TransferKnowsItsValue
+
+	| aSender aReceiver aTransfer |
+	
+	aSender := ReceptiveAccount new.
+	aReceiver := ReceptiveAccount new.
+	aTransfer := Transfer from: aSender to: aReceiver anAmmountOf: 100.
+	
+	self assert: ( aTransfer value = 100 )! !
+
+!methodRemoval: TransferTest #test03WithdrawAndDeposit stamp: 'scb 5/27/2022 19:39:24'!
+test03WithdrawAndDeposit
+
+	| aSender aReceiver aTransfer |
+	
+	aSender := ReceptiveAccount new.
+	aReceiver := ReceptiveAccount new.
+	aTransfer := Transfer from: aSender to: aReceiver anAmmountOf: 100.
+	
+	self assert: ( aTransfer withdraw )!
+
+!testRun: #TransferTest #test03TransferKnowsItsValue stamp: 'scb 5/27/2022 19:39:26'!
+FAILURE!
+
+Object subclass: #Transfer
+	instanceVariableNames: 'value withdraw deposit'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+Object subclass: #Transfer
+	instanceVariableNames: 'value withdraw deposit'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+Object subclass: #Transfer
+	instanceVariableNames: 'value2 withdraw deposit'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #Transfer category: 'Portfolio-Solucion' stamp: 'scb 5/27/2022 19:40:10'!
+Object subclass: #Transfer
+	instanceVariableNames: 'value2 withdraw deposit'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!Transfer methodsFor: 'initialization' stamp: 'scb 5/27/2022 19:40:27' prior: 50474938!
+initializeFrom: sender to: receiver anAmmountOf: aValue 
+
+	withdraw := Withdraw register: aValue on: sender.
+	deposit := Deposit register: aValue on: receiver ! !
+
+Object subclass: #Transfer
+	instanceVariableNames: 'value withdraw deposit'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #Transfer category: 'Portfolio-Solucion' stamp: 'scb 5/27/2022 19:40:35'!
+Object subclass: #Transfer
+	instanceVariableNames: 'value withdraw deposit'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!Transfer methodsFor: 'accessing' stamp: 'scb 5/27/2022 19:40:46' overrides: 16902254!
+value
+	
+	^value! !
+!Transfer methodsFor: 'initialization' stamp: 'scb 5/27/2022 19:41:15' prior: 50475382!
+initializeFrom: sender to: receiver anAmmountOf: aValue
+ 
+	value := aValue.
+	withdraw := Withdraw register: self on: sender.
+	deposit := Deposit register: self on: receiver ! !
+
+!testRun: #TransferTest #test01TransferWithdrawsFromSenderAndDepositToRecipient stamp: 'scb 5/27/2022 19:41:17'!
+ERROR!
+
+!testRun: #TransferTest #test02TransferIsRegisteredInSenderAndReceiver stamp: 'scb 5/27/2022 19:41:17'!
+PASSED!
+
+!testRun: #TransferTest #test03TransferKnowsItsValue stamp: 'scb 5/27/2022 19:41:17'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferWithdrawsFromSenderAndDepositToRecipient stamp: 'scb 5/27/2022 19:41:17'!
+ERROR!
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'scb 5/27/2022 19:41:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'scb 5/27/2022 19:41:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'scb 5/27/2022 19:41:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'scb 5/27/2022 19:41:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'scb 5/27/2022 19:41:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'scb 5/27/2022 19:41:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'scb 5/27/2022 19:41:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'scb 5/27/2022 19:41:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'scb 5/27/2022 19:41:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'scb 5/27/2022 19:41:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'scb 5/27/2022 19:41:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'scb 5/27/2022 19:41:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'scb 5/27/2022 19:41:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'scb 5/27/2022 19:41:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'scb 5/27/2022 19:41:23'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'scb 5/27/2022 19:41:25'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'scb 5/27/2022 19:41:25'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'scb 5/27/2022 19:41:25'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'scb 5/27/2022 19:41:25'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'scb 5/27/2022 19:41:25'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'scb 5/27/2022 19:41:25'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'scb 5/27/2022 19:41:25'!
+PASSED!
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'scb 5/27/2022 19:44:53'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'scb 5/27/2022 19:44:53'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'scb 5/27/2022 19:44:53'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'scb 5/27/2022 19:44:53'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'scb 5/27/2022 19:44:53'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'scb 5/27/2022 19:44:53'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'scb 5/27/2022 19:44:53'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'scb 5/27/2022 19:44:53'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'scb 5/27/2022 19:44:53'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'scb 5/27/2022 19:44:53'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'scb 5/27/2022 19:44:53'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'scb 5/27/2022 19:44:53'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'scb 5/27/2022 19:44:53'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'scb 5/27/2022 19:44:53'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'scb 5/27/2022 19:44:53'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'scb 5/27/2022 19:44:55'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'scb 5/27/2022 19:44:55'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'scb 5/27/2022 19:44:55'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'scb 5/27/2022 19:44:55'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'scb 5/27/2022 19:44:55'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'scb 5/27/2022 19:44:55'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'scb 5/27/2022 19:44:55'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferWithdrawsFromSenderAndDepositToRecipient stamp: 'scb 5/27/2022 19:45:16'!
+ERROR!
+
+!testRun: #TransferTest #test02TransferIsRegisteredInSenderAndReceiver stamp: 'scb 5/27/2022 19:45:16'!
+PASSED!
+
+!testRun: #TransferTest #test03TransferKnowsItsValue stamp: 'scb 5/27/2022 19:45:16'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferWithdrawsFromSenderAndDepositToRecipient stamp: 'scb 5/27/2022 19:45:16'!
+ERROR!
+
+!testRun: #TransferTest #test01TransferWithdrawsFromSenderAndDepositToRecipient stamp: 'scb 5/27/2022 19:45:45'!
+ERROR!
+
+!testRun: #TransferTest #test01TransferWithdrawsFromSenderAndDepositToRecipient stamp: 'scb 5/27/2022 19:45:45'!
+ERROR!
+!Deposit methodsFor: 'balance' stamp: 'scb 5/27/2022 19:47:03' prior: 50474755 overrides: 50474713!
+affectBalance: aBalance
+
+	^aBalance + value value ! !
+!Withdraw methodsFor: 'balance' stamp: 'scb 5/27/2022 19:47:09' prior: 50474793 overrides: 50474713!
+affectBalance: aBalance
+
+	^aBalance - value value! !
+
+!testRun: #TransferTest #test01TransferWithdrawsFromSenderAndDepositToRecipient stamp: 'scb 5/27/2022 19:47:18'!
+PASSED!
+
+!testRun: #TransferTest #test02TransferIsRegisteredInSenderAndReceiver stamp: 'scb 5/27/2022 19:47:18'!
+PASSED!
+
+!testRun: #TransferTest #test03TransferKnowsItsValue stamp: 'scb 5/27/2022 19:47:18'!
+PASSED!
+
+----SNAPSHOT----(27 May 2022 19:57:42) CuisUniversity-5096.image priorSource: 4557982!
+
+!classRemoval: #Transfer stamp: 'scb 5/27/2022 19:58:50'!
+Object subclass: #Transfer
+	instanceVariableNames: 'value withdraw deposit'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #Withdraw stamp: 'scb 5/27/2022 19:58:50'!
+AccountTransaction subclass: #Withdraw
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #Deposit stamp: 'scb 5/27/2022 19:58:50'!
+AccountTransaction subclass: #Deposit
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #AccountTransaction stamp: 'scb 5/27/2022 19:58:51'!
+Object subclass: #AccountTransaction
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #ReceptiveAccount stamp: 'scb 5/27/2022 19:58:51'!
+Account subclass: #ReceptiveAccount
+	instanceVariableNames: 'transactions'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #Portfolio stamp: 'scb 5/27/2022 19:58:51'!
+Account subclass: #Portfolio
+	instanceVariableNames: 'accounts parents'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #Account stamp: 'scb 5/27/2022 19:58:52'!
+Object subclass: #Account
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #TransferTest stamp: 'scb 5/27/2022 19:58:52'!
+TestCase subclass: #TransferTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #ReceptiveAccountTest stamp: 'scb 5/27/2022 19:58:52'!
+TestCase subclass: #ReceptiveAccountTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #PortfolioTest stamp: 'scb 5/27/2022 19:58:53'!
+TestCase subclass: #PortfolioTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+----End fileIn of /Users/sebascantini/Downloads/1_4929224388118577230.st----!
+
+----STARTUP---- (27 May 2022 20:01:17) as /Users/sebascantini/Downloads/macos64/CuisUniversity-5096.image!
+
+!Deposit methodsFor: 'balance' stamp: 'scb 5/27/2022 20:01:25' prior: 50475620 overrides: 50474713!
+affectBalance: aBalance
+
+	^aBalance + value! !
+!Withdraw methodsFor: 'balance' stamp: 'scb 5/27/2022 20:01:30' prior: 50475625 overrides: 50474713!
+affectBalance: aBalance
+
+	^aBalance - value! !
+!AccountTransaction methodsFor: 'value' stamp: 'scb 5/27/2022 20:01:38' prior: 50475237 overrides: 16902254!
+value
+
+	^ value! !
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'scb 5/27/2022 20:01:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'scb 5/27/2022 20:01:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'scb 5/27/2022 20:01:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'scb 5/27/2022 20:01:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'scb 5/27/2022 20:01:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'scb 5/27/2022 20:01:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'scb 5/27/2022 20:01:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'scb 5/27/2022 20:01:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'scb 5/27/2022 20:01:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'scb 5/27/2022 20:01:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'scb 5/27/2022 20:01:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'scb 5/27/2022 20:01:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'scb 5/27/2022 20:01:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'scb 5/27/2022 20:01:42'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'scb 5/27/2022 20:01:42'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'scb 5/27/2022 20:01:43'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'scb 5/27/2022 20:01:43'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'scb 5/27/2022 20:01:43'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'scb 5/27/2022 20:01:43'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'scb 5/27/2022 20:01:43'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'scb 5/27/2022 20:01:43'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'scb 5/27/2022 20:01:43'!
+PASSED!
+!Transfer methodsFor: 'initialization' stamp: 'scb 5/27/2022 20:01:55' prior: 50475407!
+initializeFrom: sender to: receiver anAmmountOf: aValue
+ 
+	value := aValue.
+	withdraw := Withdraw register: value on: sender.
+	deposit := Deposit register: self on: receiver ! !
+!Transfer methodsFor: 'initialization' stamp: 'scb 5/27/2022 20:01:59' prior: 50475745!
+initializeFrom: sender to: receiver anAmmountOf: aValue
+ 
+	value := aValue.
+	withdraw := Withdraw register: value on: sender.
+	deposit := Deposit register: value on: receiver ! !
+
+!testRun: #TransferTest #test01TransferWithdrawsFromSenderAndDepositToRecipient stamp: 'scb 5/27/2022 20:02:00'!
+PASSED!
+
+!testRun: #TransferTest #test02TransferIsRegisteredInSenderAndReceiver stamp: 'scb 5/27/2022 20:02:00'!
+PASSED!
+
+!testRun: #TransferTest #test03TransferKnowsItsValue stamp: 'scb 5/27/2022 20:02:00'!
+PASSED!
+
+----SNAPSHOT----(27 May 2022 20:03:41) CuisUniversity-5096.image priorSource: 4607646!
+
+!testRun: #TransferTest #test01TransferWithdrawsFromSenderAndDepositToRecipient stamp: 'scb 5/27/2022 20:04:17'!
+PASSED!
+
+!testRun: #TransferTest #test02TransferIsRegisteredInSenderAndReceiver stamp: 'scb 5/27/2022 20:04:17'!
+PASSED!
+
+!testRun: #TransferTest #test03TransferKnowsItsValue stamp: 'scb 5/27/2022 20:04:17'!
+PASSED!
+
+----STARTUP---- (29 May 2022 17:26:10) as /Users/sebascantini/Downloads/macos64/CuisUniversity-5096.image!
+
+
+AccountTransaction subclass: #TransferDeposit
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferDeposit category: 'Portfolio-Solucion' stamp: 'scb 5/29/2022 17:50:41'!
+AccountTransaction subclass: #TransferDeposit
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+AccountTransaction subclass: #TransferWithdraw
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferWithdraw category: 'Portfolio-Solucion' stamp: 'scb 5/29/2022 17:50:51'!
+AccountTransaction subclass: #TransferWithdraw
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!Deposit methodsFor: 'value' stamp: 'scb 5/29/2022 17:52:00' overrides: 50475657!
+value
+
+	^ value! !
+!Withdraw methodsFor: 'value' stamp: 'scb 5/29/2022 17:52:00' overrides: 50475657!
+value
+
+	^ value! !
+!TransferDeposit methodsFor: 'value' stamp: 'scb 5/29/2022 17:52:00' overrides: 50475657!
+value
+
+	^ value! !
+!TransferWithdraw methodsFor: 'value' stamp: 'scb 5/29/2022 17:52:00' overrides: 50475657!
+value
+
+	^ value! !
+
+!methodRemoval: AccountTransaction #value stamp: 'scb 5/29/2022 17:52:00'!
+value
+
+	^ value!
+!Deposit methodsFor: 'initialization' stamp: 'scb 5/29/2022 17:52:12' overrides: 50475224!
+initializeFor: aValue
+
+	value := aValue ! !
+!Withdraw methodsFor: 'initialization' stamp: 'scb 5/29/2022 17:52:12' overrides: 50475224!
+initializeFor: aValue
+
+	value := aValue ! !
+!TransferDeposit methodsFor: 'initialization' stamp: 'scb 5/29/2022 17:52:12' overrides: 50475224!
+initializeFor: aValue
+
+	value := aValue ! !
+!TransferWithdraw methodsFor: 'initialization' stamp: 'scb 5/29/2022 17:52:12' overrides: 50475224!
+initializeFor: aValue
+
+	value := aValue ! !
+
+!methodRemoval: AccountTransaction #initializeFor: stamp: 'scb 5/29/2022 17:52:12'!
+initializeFor: aValue
+
+	value := aValue !
+
+!methodRemoval: TransferDeposit #value stamp: 'scb 5/29/2022 17:52:39'!
+value
+
+	^ value!
+
+!methodRemoval: TransferDeposit #initializeFor: stamp: 'scb 5/29/2022 17:52:46'!
+initializeFor: aValue
+
+	value := aValue !
+
+!methodRemoval: TransferWithdraw #value stamp: 'scb 5/29/2022 17:52:49'!
+value
+
+	^ value!
+
+!methodRemoval: TransferWithdraw #initializeFor: stamp: 'scb 5/29/2022 17:52:51'!
+initializeFor: aValue
+
+	value := aValue !
+
+AccountTransaction subclass: #TransferWithdraw
+	instanceVariableNames: 'transfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferWithdraw category: 'Portfolio-Solucion' stamp: 'scb 5/29/2022 17:54:00'!
+AccountTransaction subclass: #TransferWithdraw
+	instanceVariableNames: 'transfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+AccountTransaction subclass: #TransferDeposit
+	instanceVariableNames: 'transfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferDeposit category: 'Portfolio-Solucion' stamp: 'scb 5/29/2022 17:54:06'!
+AccountTransaction subclass: #TransferDeposit
+	instanceVariableNames: 'transfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!Transfer methodsFor: 'initialization' stamp: 'scb 5/29/2022 17:54:59' prior: 50475754!
+initializeFrom: sender to: receiver anAmmountOf: aValue
+ 
+	value := aValue.
+	withdraw := TransferWithdraw with: self on: sender.
+	deposit := TransferDeposit with: self on: receiver ! !
+!TransferDeposit class methodsFor: 'no messages' stamp: 'scb 5/29/2022 17:56:00'!
+with: transfer on: sender
+
+	^ self new initializaWith: transfer on: sender.! !
+!TransferDeposit methodsFor: 'no messages' stamp: 'scb 5/29/2022 17:57:02'!
+initializeWith: aTransfer on: sender
+
+	transfer! !
+!TransferDeposit methodsFor: 'as yet unclassified' stamp: 'scb 5/29/2022 17:57:16' prior: 50475901!
+initializeWith: aTransfer on: sender
+
+	transfer := aTransfer 
+	! !
+
+!methodRemoval: TransferDeposit class #with:on: stamp: 'scb 5/29/2022 18:02:09'!
+with: transfer on: sender
+
+	^ self new initializaWith: transfer on: sender.!
+
+!methodRemoval: TransferDeposit #initializeWith:on: stamp: 'scb 5/29/2022 18:02:13'!
+initializeWith: aTransfer on: sender
+
+	transfer := aTransfer 
+	!
+!Transfer methodsFor: 'initialization' stamp: 'scb 5/29/2022 18:03:07' prior: 50475887!
+initializeFrom: sender to: receiver anAmmountOf: aValue
+ 
+	value := aValue.
+	withdraw := TransferWithdraw on: self.
+	deposit := TransferDeposit on: self.! !
+!Transfer methodsFor: 'initialization' stamp: 'scb 5/29/2022 18:04:14'!
+to: receiver anAmmountOf: aValue
+ 
+	value := aValue.
+	withdraw := TransferWithdraw on: self.
+	deposit := TransferDeposit on: self.! !
+!Transfer class methodsFor: 'as yet unclassified' stamp: 'scb 5/29/2022 18:04:14' prior: 50474947!
+from: sender to: receiver anAmmountOf: value
+
+	^self new to: receiver anAmmountOf: value ! !
+
+!methodRemoval: Transfer #initializeFrom:to:anAmmountOf: stamp: 'scb 5/29/2022 18:04:14'!
+initializeFrom: sender to: receiver anAmmountOf: aValue
+ 
+	value := aValue.
+	withdraw := TransferWithdraw on: self.
+	deposit := TransferDeposit on: self.!
+!Transfer methodsFor: 'initialization' stamp: 'scb 5/29/2022 18:04:23'!
+initializeWith: aValue
+ 
+	value := aValue.
+	withdraw := TransferWithdraw on: self.
+	deposit := TransferDeposit on: self.! !
+
+!methodRemoval: Transfer #to:anAmmountOf: stamp: 'scb 5/29/2022 18:04:26'!
+to: receiver anAmmountOf: aValue
+ 
+	value := aValue.
+	withdraw := TransferWithdraw on: self.
+	deposit := TransferDeposit on: self.!
+!Transfer class methodsFor: 'instance creation' stamp: 'scb 5/29/2022 18:04:40' prior: 50475937!
+from: sender to: receiver anAmmountOf: value
+
+	^self new with: value! !
+!Transfer class methodsFor: 'instance creation' stamp: 'scb 5/29/2022 18:05:31' prior: 50475964!
+from: sender to: receiver anAmmountOf: value
+
+	| transfer |
+	
+	transfer := self new with: value.
+	receiver register: transfer withdraw.! !
+!Transfer class methodsFor: 'instance creation' stamp: 'scb 5/29/2022 18:05:48' prior: 50475970!
+from: sender to: receiver anAmmountOf: value
+
+	| transfer |
+	
+	transfer := self new with: value.
+	sender register: transfer withdraw.
+	receiver register: transfer deposit.! !
+!TransferDeposit class methodsFor: 'instance creation' stamp: 'scb 5/29/2022 18:06:36'!
+on: transfer! !
+!TransferDeposit class methodsFor: 'instance creation' stamp: 'scb 5/29/2022 18:07:05'!
+for: transfer
+
+	^ self new initializeFor: transfer! !
+!TransferWithdraw class methodsFor: 'no messages' stamp: 'scb 5/29/2022 18:07:14'!
+for: transfer
+
+	^ self new initializeFor: transfer! !
+!Transfer methodsFor: 'initialization' stamp: 'scb 5/29/2022 18:07:34' prior: 50475950!
+initializeWith: aValue
+ 
+	value := aValue.
+	withdraw := TransferWithdraw for: self.
+	deposit := TransferDeposit for: self.! !
+!TransferDeposit methodsFor: 'no messages' stamp: 'scb 5/29/2022 18:08:16'!
+initiateFor: aTransfer
+
+	transfer := aTransfer! !
+!TransferWithdraw methodsFor: 'no messages' stamp: 'scb 5/29/2022 18:08:24'!
+initiateFor: aTransfer
+
+	transfer := aTransfer! !
+
+!testRun: #TransferTest #test01TransferWithdrawsFromSenderAndDepositToRecipient stamp: 'scb 5/29/2022 18:08:52'!
+ERROR!
+
+!testRun: #TransferTest #test02TransferIsRegisteredInSenderAndReceiver stamp: 'scb 5/29/2022 18:08:52'!
+ERROR!
+
+!testRun: #TransferTest #test03TransferKnowsItsValue stamp: 'scb 5/29/2022 18:08:52'!
+ERROR!
+!TransferDeposit methodsFor: 'balance' stamp: 'scb 5/29/2022 18:09:30' overrides: 50474713!
+affectBalance: aBalance
+
+	^aBalance + value! !
+!TransferDeposit methodsFor: 'balance' stamp: 'scb 5/29/2022 18:09:39' prior: 50476027 overrides: 50474713!
+affectBalance: aBalance
+
+	^aBalance + transfer value! !
+!TransferWithdraw methodsFor: 'balance' stamp: 'scb 5/29/2022 18:10:23' overrides: 50474713!
+affectBalance: aBalance
+
+	^aBalance - value! !
+
+!testRun: #TransferTest #test01TransferWithdrawsFromSenderAndDepositToRecipient stamp: 'scb 5/29/2022 18:10:27'!
+ERROR!
+
+!testRun: #TransferTest #test02TransferIsRegisteredInSenderAndReceiver stamp: 'scb 5/29/2022 18:10:27'!
+ERROR!
+
+!testRun: #TransferTest #test03TransferKnowsItsValue stamp: 'scb 5/29/2022 18:10:27'!
+ERROR!
+
+!testRun: #TransferTest #test01TransferWithdrawsFromSenderAndDepositToRecipient stamp: 'scb 5/29/2022 18:10:31'!
+ERROR!
+
+!testRun: #TransferTest #test02TransferIsRegisteredInSenderAndReceiver stamp: 'scb 5/29/2022 18:10:31'!
+ERROR!
+
+!testRun: #TransferTest #test03TransferKnowsItsValue stamp: 'scb 5/29/2022 18:10:31'!
+ERROR!
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'scb 5/29/2022 18:10:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'scb 5/29/2022 18:10:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'scb 5/29/2022 18:10:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'scb 5/29/2022 18:10:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'scb 5/29/2022 18:10:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'scb 5/29/2022 18:10:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'scb 5/29/2022 18:10:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'scb 5/29/2022 18:10:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'scb 5/29/2022 18:10:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'scb 5/29/2022 18:10:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'scb 5/29/2022 18:10:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'scb 5/29/2022 18:10:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'scb 5/29/2022 18:10:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'scb 5/29/2022 18:10:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'scb 5/29/2022 18:10:37'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'scb 5/29/2022 18:10:46'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'scb 5/29/2022 18:10:46'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'scb 5/29/2022 18:10:46'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'scb 5/29/2022 18:10:46'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'scb 5/29/2022 18:10:46'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'scb 5/29/2022 18:10:46'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'scb 5/29/2022 18:10:46'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferWithdrawsFromSenderAndDepositToRecipient stamp: 'scb 5/29/2022 18:10:49'!
+ERROR!
+
+!testRun: #TransferTest #test02TransferIsRegisteredInSenderAndReceiver stamp: 'scb 5/29/2022 18:10:49'!
+ERROR!
+
+!testRun: #TransferTest #test03TransferKnowsItsValue stamp: 'scb 5/29/2022 18:10:49'!
+ERROR!
+
+!testRun: #TransferTest #test01TransferWithdrawsFromSenderAndDepositToRecipient stamp: 'scb 5/29/2022 18:10:51'!
+ERROR!
+
+!testRun: #TransferTest #test01TransferWithdrawsFromSenderAndDepositToRecipient stamp: 'scb 5/29/2022 18:11:09'!
+ERROR!
+
+!testRun: #TransferTest #test01TransferWithdrawsFromSenderAndDepositToRecipient stamp: 'scb 5/29/2022 18:11:09'!
+ERROR!
+!Transfer class methodsFor: 'instance creation' stamp: 'scb 5/29/2022 18:11:35' prior: 50475978!
+from: sender to: receiver anAmmountOf: value
+
+	| transfer |
+	
+	transfer := self new initializeWith: value.
+	sender register: transfer withdraw.
+	receiver register: transfer deposit.! !
+
+!testRun: #TransferTest #test01TransferWithdrawsFromSenderAndDepositToRecipient stamp: 'scb 5/29/2022 18:11:36'!
+ERROR!
+
+!testRun: #TransferTest #test02TransferIsRegisteredInSenderAndReceiver stamp: 'scb 5/29/2022 18:11:36'!
+ERROR!
+
+!testRun: #TransferTest #test03TransferKnowsItsValue stamp: 'scb 5/29/2022 18:11:36'!
+ERROR!
+
+!testRun: #TransferTest #test01TransferWithdrawsFromSenderAndDepositToRecipient stamp: 'scb 5/29/2022 18:11:42'!
+ERROR!
+
+!testRun: #TransferTest #test02TransferIsRegisteredInSenderAndReceiver stamp: 'scb 5/29/2022 18:11:42'!
+ERROR!
+
+!testRun: #TransferTest #test03TransferKnowsItsValue stamp: 'scb 5/29/2022 18:11:42'!
+ERROR!
+
+!testRun: #TransferTest #test01TransferWithdrawsFromSenderAndDepositToRecipient stamp: 'scb 5/29/2022 18:11:43'!
+ERROR!
+!TransferWithdraw methodsFor: 'initialization' stamp: 'scb 5/29/2022 18:12:09'!
+initializeFor: aTransfer
+
+	transfer := aTransfer! !
+
+!methodRemoval: TransferWithdraw #initiateFor: stamp: 'scb 5/29/2022 18:12:09'!
+initiateFor: aTransfer
+
+	transfer := aTransfer!
+
+!testRun: #TransferTest #test01TransferWithdrawsFromSenderAndDepositToRecipient stamp: 'scb 5/29/2022 18:12:15'!
+ERROR!
+
+!testRun: #TransferTest #test02TransferIsRegisteredInSenderAndReceiver stamp: 'scb 5/29/2022 18:12:15'!
+ERROR!
+
+!testRun: #TransferTest #test03TransferKnowsItsValue stamp: 'scb 5/29/2022 18:12:15'!
+ERROR!
+
+!testRun: #TransferTest #test01TransferWithdrawsFromSenderAndDepositToRecipient stamp: 'scb 5/29/2022 18:12:18'!
+ERROR!
+!TransferDeposit methodsFor: 'initialization' stamp: 'scb 5/29/2022 18:12:47'!
+initializeFor: aTransfer
+
+	transfer := aTransfer! !
+
+!methodRemoval: TransferDeposit #initiateFor: stamp: 'scb 5/29/2022 18:12:47'!
+initiateFor: aTransfer
+
+	transfer := aTransfer!
+
+!testRun: #TransferTest #test01TransferWithdrawsFromSenderAndDepositToRecipient stamp: 'scb 5/29/2022 18:12:59'!
+ERROR!
+
+!testRun: #TransferTest #test02TransferIsRegisteredInSenderAndReceiver stamp: 'scb 5/29/2022 18:12:59'!
+ERROR!
+
+!testRun: #TransferTest #test03TransferKnowsItsValue stamp: 'scb 5/29/2022 18:12:59'!
+FAILURE!
+
+!testRun: #TransferTest #test01TransferWithdrawsFromSenderAndDepositToRecipient stamp: 'scb 5/29/2022 18:13:01'!
+ERROR!
+!TransferWithdraw methodsFor: 'balance' stamp: 'scb 5/29/2022 18:13:27' prior: 50476037 overrides: 50474713!
+affectBalance: aBalance
+
+	^aBalance - transfer value! !
+
+!testRun: #TransferTest #test01TransferWithdrawsFromSenderAndDepositToRecipient stamp: 'scb 5/29/2022 18:13:31'!
+PASSED!
+
+!testRun: #TransferTest #test02TransferIsRegisteredInSenderAndReceiver stamp: 'scb 5/29/2022 18:13:31'!
+ERROR!
+
+!testRun: #TransferTest #test03TransferKnowsItsValue stamp: 'scb 5/29/2022 18:13:31'!
+FAILURE!
+
+!testRun: #TransferTest #test02TransferIsRegisteredInSenderAndReceiver stamp: 'scb 5/29/2022 18:13:35'!
+ERROR!
+
+!testRun: #TransferTest #test02TransferIsRegisteredInSenderAndReceiver stamp: 'scb 5/29/2022 18:13:45'!
+ERROR!
+!Transfer class methodsFor: 'instance creation' stamp: 'scb 5/29/2022 18:14:01' prior: 50476168!
+from: sender to: receiver anAmmountOf: value
+
+	| transfer |
+	
+	transfer := self new initializeWith: value.
+	sender register: transfer withdraw.
+	receiver register: transfer deposit.
+	^ transfer.! !
+
+!testRun: #TransferTest #test01TransferWithdrawsFromSenderAndDepositToRecipient stamp: 'scb 5/29/2022 18:14:03'!
+PASSED!
+
+!testRun: #TransferTest #test02TransferIsRegisteredInSenderAndReceiver stamp: 'scb 5/29/2022 18:14:03'!
+PASSED!
+
+!testRun: #TransferTest #test03TransferKnowsItsValue stamp: 'scb 5/29/2022 18:14:03'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferWithdrawsFromSenderAndDepositToRecipient stamp: 'scb 5/29/2022 18:14:07'!
+PASSED!
+
+!testRun: #TransferTest #test02TransferIsRegisteredInSenderAndReceiver stamp: 'scb 5/29/2022 18:14:07'!
+PASSED!
+
+!testRun: #TransferTest #test03TransferKnowsItsValue stamp: 'scb 5/29/2022 18:14:07'!
+PASSED!
+!TransferTest methodsFor: 'test' stamp: 'scb 5/29/2022 18:14:33'!
+test03TransferLegsKnowTransfer
+
+	| aSender aReceiver aTransfer |
+	
+	aSender := ReceptiveAccount new.
+	aReceiver := ReceptiveAccount new.
+	aTransfer := Transfer from: aSender to: aReceiver anAmmountOf: 100.
+	
+	self assert: ( aTransfer value = 100 )! !
+!TransferTest methodsFor: 'test' stamp: 'scb 5/29/2022 18:16:49' prior: 50476300!
+test03TransferLegsKnowTransfer
+
+	| aSender aReceiver aTransfer |
+	
+	aSender := ReceptiveAccount new.
+	aReceiver := ReceptiveAccount new.
+	aTransfer := Transfer from: aSender to: aReceiver anAmmountOf: 100.
+	
+	self assert: ((aTransfer withdraw transfer = aTransfer) and: (aTransfer deposit transfer = aTransfer))! !
+
+!testRun: #TransferTest #test01TransferWithdrawsFromSenderAndDepositToRecipient stamp: 'scb 5/29/2022 18:16:59'!
+PASSED!
+
+!testRun: #TransferTest #test02TransferIsRegisteredInSenderAndReceiver stamp: 'scb 5/29/2022 18:16:59'!
+PASSED!
+
+!testRun: #TransferTest #test03TransferKnowsItsValue stamp: 'scb 5/29/2022 18:16:59'!
+PASSED!
+
+!testRun: #TransferTest #test03TransferLegsKnowTransfer stamp: 'scb 5/29/2022 18:16:59'!
+ERROR!
+
+!testRun: #TransferTest #test03TransferLegsKnowTransfer stamp: 'scb 5/29/2022 18:16:59'!
+ERROR!
+!TransferTest methodsFor: 'test' stamp: 'scb 5/29/2022 18:17:06'!
+test04TransferLegsKnowTransfer
+
+	| aSender aReceiver aTransfer |
+	
+	aSender := ReceptiveAccount new.
+	aReceiver := ReceptiveAccount new.
+	aTransfer := Transfer from: aSender to: aReceiver anAmmountOf: 100.
+	
+	self assert: ((aTransfer withdraw transfer = aTransfer) and: (aTransfer deposit transfer = aTransfer))! !
+
+!methodRemoval: TransferTest #test03TransferLegsKnowTransfer stamp: 'scb 5/29/2022 18:17:06'!
+test03TransferLegsKnowTransfer
+
+	| aSender aReceiver aTransfer |
+	
+	aSender := ReceptiveAccount new.
+	aReceiver := ReceptiveAccount new.
+	aTransfer := Transfer from: aSender to: aReceiver anAmmountOf: 100.
+	
+	self assert: ((aTransfer withdraw transfer = aTransfer) and: (aTransfer deposit transfer = aTransfer))!
+
+!testRun: #TransferTest #test04TransferLegsKnowTransfer stamp: 'scb 5/29/2022 18:17:09'!
+ERROR!
+
+!testRun: #TransferTest #test04TransferLegsKnowTransfer stamp: 'scb 5/29/2022 18:17:09'!
+ERROR!
+!TransferWithdraw methodsFor: 'accessing' stamp: 'scb 5/29/2022 18:17:22'!
+transfer
+	self shouldBeImplemented.
+	^transfer! !
+!TransferWithdraw methodsFor: 'accessing' stamp: 'scb 5/29/2022 18:17:26' prior: 50476371!
+transfer
+	
+	^transfer! !
+
+!testRun: #TransferTest #test04TransferLegsKnowTransfer stamp: 'scb 5/29/2022 18:17:37'!
+ERROR!
+!TransferDeposit methodsFor: 'accessing' stamp: 'scb 5/29/2022 18:17:44'!
+transfer
+	self shouldBeImplemented.
+	^transfer! !
+!TransferDeposit methodsFor: 'accessing' stamp: 'scb 5/29/2022 18:17:50' prior: 50476383!
+transfer
+	
+	^transfer! !
+
+!testRun: #TransferTest #test04TransferLegsKnowTransfer stamp: 'scb 5/29/2022 18:17:52'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferWithdrawsFromSenderAndDepositToRecipient stamp: 'scb 5/29/2022 18:17:52'!
+PASSED!
+
+!testRun: #TransferTest #test02TransferIsRegisteredInSenderAndReceiver stamp: 'scb 5/29/2022 18:17:52'!
+PASSED!
+
+!testRun: #TransferTest #test03TransferKnowsItsValue stamp: 'scb 5/29/2022 18:17:52'!
+PASSED!
+
+!testRun: #TransferTest #test04TransferLegsKnowTransfer stamp: 'scb 5/29/2022 18:17:52'!
+PASSED!
+
+TestCase subclass: #AccountSummeryTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #AccountSummeryTest category: 'Portfolio-Solucion' stamp: 'scb 5/29/2022 18:42:38'!
+TestCase subclass: #AccountSummeryTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRenamed: #AccountSummeryTest as: #AccountSummaryTest stamp: 'scb 5/29/2022 18:43:31'!
+Smalltalk renameClassNamed: #AccountSummeryTest as: #AccountSummaryTest!
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 18:48:28'!
+test01AccountSummaryPrintsAccountTransactionsProperly
+
+	| anAccount anotherAccount |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.! !
+
+!classDefinition: #AccountSummary category: 'Portfolio-Solucion' stamp: 'scb 5/29/2022 18:58:27'!
+Object subclass: #AccountSummary
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 18:58:19' prior: 50476425!
+test01AccountSummaryPrintsAccountTransactionsProperly
+
+	| anAccount anotherAccount anAccountSummaryRows anotherAccountSummaryRows |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	Deposit register: 100 on: anAccount.
+	Withdraw register: 50 on: anAccount.
+	Transfer from: anAccount to: anotherAccount anAmmountOf: 25.
+	anAccountSummaryRows := (AccountSummary for: anAccount) rows.
+	anotherAccountSummaryRows := (AccountSummary for: anotherAccount) rows.! !
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 19:01:20' prior: 50476441!
+test01AccountSummaryPrintsAccountTransactionsProperly
+
+	| anAccount anotherAccount anAccountSummaryRows anotherAccountSummaryRows |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	Deposit register: 100 on: anAccount.
+	Withdraw register: 50 on: anAccount.
+	Transfer from: anAccount to: anotherAccount anAmmountOf: 25.
+	anAccountSummaryRows := (AccountSummary for: anAccount) rows.
+	anotherAccountSummaryRows := (AccountSummary for: anotherAccount) rows.
+	
+	self assert: ((anAccountSummaryRows size = 3) and: 
+			(anAccountSummaryRows at: 1 = 'Deposito por 100.'))! !
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 19:04:17' prior: 50476459!
+test01AccountSummaryPrintsAccountTransactionsProperly
+
+	| anAccount anotherAccount anAccountSummaryRows anotherAccountSummaryRows |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	Deposit register: 100 on: anAccount.
+	Withdraw register: 50 on: anAccount.
+	Transfer from: anAccount to: anotherAccount anAmmountOf: 25.
+	anAccountSummaryRows := (AccountSummary for: anAccount) rows.
+	anotherAccountSummaryRows := (AccountSummary for: anotherAccount) rows.
+	
+	self assert: ((anAccountSummaryRows size = 3) and: 
+			(anAccountSummaryRows at: 1 = 'Deposito por 100.')and: 
+			(anAccountSummaryRows at: 2 = 'Extraccion por 50.')and: 
+			(anAccountSummaryRows at: 3 = 'Salida por transferencia de 25.')and: 
+			(anAccountSummaryRows at: 4 = 'Balance = 25.'))! !
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 19:04:24' prior: 50476481!
+test01AccountSummaryPrintsAccountTransactionsProperly
+
+	| anAccount anotherAccount anAccountSummaryRows anotherAccountSummaryRows |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	Deposit register: 100 on: anAccount.
+	Withdraw register: 50 on: anAccount.
+	Transfer from: anAccount to: anotherAccount anAmmountOf: 25.
+	anAccountSummaryRows := (AccountSummary for: anAccount) rows.
+	anotherAccountSummaryRows := (AccountSummary for: anotherAccount) rows.
+	
+	self assert: ((anAccountSummaryRows size = 4) and: 
+			(anAccountSummaryRows at: 1 = 'Deposito por 100.')and: 
+			(anAccountSummaryRows at: 2 = 'Extraccion por 50.')and: 
+			(anAccountSummaryRows at: 3 = 'Salida por transferencia de 25.')and: 
+			(anAccountSummaryRows at: 4 = 'Balance = 25.'))! !
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 19:05:12' prior: 50476509!
+test01AccountSummaryPrintsAccountTransactionsProperly
+
+	| anAccount anotherAccount anAccountSummaryRows anotherAccountSummaryRows |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	Deposit register: 100 on: anAccount.
+	Withdraw register: 50 on: anAccount.
+	Transfer from: anAccount to: anotherAccount anAmmountOf: 25.
+	anAccountSummaryRows := (AccountSummary for: anAccount) rows.
+	anotherAccountSummaryRows := (AccountSummary for: anotherAccount) rows.
+	
+	self assert: ((anAccountSummaryRows size = 4) and: 
+			(anAccountSummaryRows at: 1 = 'Deposito por 100.')and: 
+			(anAccountSummaryRows at: 2 = 'Extraccion por 50.')and: 
+			(anAccountSummaryRows at: 3 = 'Salida por transferencia de 25.')and: 
+			(anAccountSummaryRows at: 4 = 'Balance = 25.')).
+			
+	self assert: ((anAccountSummaryRows size = 2) and: 
+			(anAccountSummaryRows at: 1 = 'Entrada por transferencia de 25.')and: 
+			(anAccountSummaryRows at: 2 = 'Balance = 25.')).! !
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 19:05:22' prior: 50476537!
+test01AccountSummaryPrintsAccountTransactionsProperly
+
+	| anAccount anotherAccount anAccountSummaryRows anotherAccountSummaryRows |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	Deposit register: 100 on: anAccount.
+	Withdraw register: 50 on: anAccount.
+	Transfer from: anAccount to: anotherAccount anAmmountOf: 25.
+	anAccountSummaryRows := (AccountSummary for: anAccount) rows.
+	anotherAccountSummaryRows := (AccountSummary for: anotherAccount) rows.
+	
+	self assert: ((anAccountSummaryRows size = 4) and: 
+			(anAccountSummaryRows at: 1 = 'Deposito por 100.')and: 
+			(anAccountSummaryRows at: 2 = 'Extraccion por 50.')and: 
+			(anAccountSummaryRows at: 3 = 'Salida por transferencia de 25.')and: 
+			(anAccountSummaryRows at: 4 = 'Balance = 25.')).
+			
+	self assert: ((anotherAccountSummaryRows size = 2) and: 
+			(anotherAccountSummaryRows at: 1 = 'Entrada por transferencia de 25.')and: 
+			(anotherAccountSummaryRows at: 2 = 'Balance = 25.')).! !
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/29/2022 19:06:12'!
+ERROR!
+!AccountSummary class methodsFor: 'instance creation' stamp: 'scb 5/29/2022 19:07:06'!
+for: anAccount
+
+	^self new initializeFor: anAccount! !
+!AccountSummary methodsFor: 'initialization' stamp: 'scb 5/29/2022 19:07:28'!
+initializeFor: anAccount! !
+
+!classDefinition: #AccountSummary category: 'Portfolio-Solucion' stamp: 'scb 5/29/2022 19:07:55'!
+Object subclass: #AccountSummary
+	instanceVariableNames: 'account'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!AccountSummary methodsFor: 'initialization' stamp: 'scb 5/29/2022 19:07:53' prior: 50476614!
+initializeFor: anAccount
+
+	account := anAccount! !
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/29/2022 19:07:57'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/29/2022 19:07:57'!
+ERROR!
+
+!classDefinition: #AccountSummary category: 'Portfolio-Solucion' stamp: 'scb 5/29/2022 19:08:53'!
+Object subclass: #AccountSummary
+	instanceVariableNames: 'account rows'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!AccountSummary methodsFor: 'initialization' stamp: 'scb 5/29/2022 19:08:52'!
+rows
+
+	rows := OrderedCollection new.! !
+!AccountSummary methodsFor: 'initialization' stamp: 'scb 5/29/2022 19:10:03' prior: 50476646!
+rows
+
+	rows := OrderedCollection new.
+	account recordTransactionsWith: self.
+	^ rows! !
+!ReceptiveAccount methodsFor: 'recording' stamp: 'scb 5/29/2022 19:11:21'!
+recordWith: anAccountSummary! !
+!ReceptiveAccount methodsFor: 'recording' stamp: 'scb 5/29/2022 19:12:01'!
+recordTransactionsWith: anAccountSummary! !
+
+!methodRemoval: ReceptiveAccount #recordWith: stamp: 'scb 5/29/2022 19:12:01'!
+recordWith: anAccountSummary!
+!ReceptiveAccount methodsFor: 'recording' stamp: 'scb 5/29/2022 19:13:27' prior: 50476661!
+recordTransactionsWith: anAccountSummary
+
+	transactions do: [ :transaction | transaction recordOn: anAccountSummary ].! !
+!AccountTransaction methodsFor: 'recording' stamp: 'scb 5/29/2022 19:14:12'!
+recordOn: anAccountSummary! !
+!Deposit methodsFor: 'recording' stamp: 'scb 5/29/2022 19:14:24' overrides: 50476676!
+recordOn: anAccountSummary! !
+!Withdraw methodsFor: 'recording' stamp: 'scb 5/29/2022 19:14:24' overrides: 50476676!
+recordOn: anAccountSummary! !
+!TransferWithdraw methodsFor: 'recording' stamp: 'scb 5/29/2022 19:14:24' overrides: 50476676!
+recordOn: anAccountSummary! !
+!TransferDeposit methodsFor: 'recording' stamp: 'scb 5/29/2022 19:14:24' overrides: 50476676!
+recordOn: anAccountSummary! !
+
+!methodRemoval: AccountTransaction #recordOn: stamp: 'scb 5/29/2022 19:14:24'!
+recordOn: anAccountSummary!
+!AccountTransaction methodsFor: 'recording' stamp: 'scb 5/29/2022 19:15:47'!
+recordOn: anAccountSummary
+
+	self subclassResponsibility! !
+!AccountTransaction methodsFor: 'recording' stamp: 'scb 5/29/2022 19:17:19' prior: 50476699!
+recordOn: anAccountSummary
+
+	anAccountSummary record: ('Deposito por ', value, '.')! !
+!Deposit methodsFor: 'recording' stamp: 'scb 5/29/2022 19:17:37' prior: 50476680 overrides: 50476704!
+recordOn: anAccountSummary
+
+	anAccountSummary record: ('Deposito por ', value, '.')! !
+!Withdraw methodsFor: 'recording' stamp: 'scb 5/29/2022 19:17:37' prior: 50476684 overrides: 50476704!
+recordOn: anAccountSummary
+
+	anAccountSummary record: ('Deposito por ', value, '.')! !
+!TransferWithdraw methodsFor: 'recording' stamp: 'scb 5/29/2022 19:17:37' prior: 50476688 overrides: 50476704!
+recordOn: anAccountSummary
+
+	anAccountSummary record: ('Deposito por ', value, '.')! !
+!TransferDeposit methodsFor: 'recording' stamp: 'scb 5/29/2022 19:17:37' prior: 50476692 overrides: 50476704!
+recordOn: anAccountSummary
+
+	anAccountSummary record: ('Deposito por ', value, '.')! !
+
+!methodRemoval: AccountTransaction #recordOn: stamp: 'scb 5/29/2022 19:17:37'!
+recordOn: anAccountSummary
+
+	anAccountSummary record: ('Deposito por ', value, '.')!
+!AccountTransaction methodsFor: 'recording' stamp: 'scb 5/29/2022 19:17:44'!
+recordOn: anAccountSummary
+
+	self subclassResponsibility! !
+
+Object subclass: #AccountTransaction
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #AccountTransaction category: 'Portfolio-Solucion' stamp: 'scb 5/29/2022 19:18:01'!
+Object subclass: #AccountTransaction
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+AccountTransaction subclass: #Deposit
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #Deposit category: 'Portfolio-Solucion' stamp: 'scb 5/29/2022 19:18:07'!
+AccountTransaction subclass: #Deposit
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+AccountTransaction subclass: #Withdraw
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #Withdraw category: 'Portfolio-Solucion' stamp: 'scb 5/29/2022 19:18:12'!
+AccountTransaction subclass: #Withdraw
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!Withdraw methodsFor: 'recording' stamp: 'scb 5/29/2022 19:18:56' prior: 50476716 overrides: 50476741!
+recordOn: anAccountSummary
+
+	anAccountSummary record: ('Extracction por ', value, '.')! !
+!TransferDeposit methodsFor: 'recording' stamp: 'scb 5/29/2022 19:19:20' prior: 50476730 overrides: 50476741!
+recordOn: anAccountSummary
+
+	anAccountSummary record: ('Salida por transferencia por ', transfer value, '.')! !
+!TransferWithdraw methodsFor: 'recording' stamp: 'scb 5/29/2022 19:19:42' prior: 50476723 overrides: 50476741!
+recordOn: anAccountSummary
+
+	anAccountSummary record: ('Entrada por transferencia por ', transfer value, '.')! !
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/29/2022 19:19:53'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/29/2022 19:19:53'!
+ERROR!
+!Deposit methodsFor: 'recording' stamp: 'scb 5/29/2022 19:22:29' prior: 50476710 overrides: 50476741!
+recordOn: anAccountSummary
+
+	anAccountSummary record: ('Deposito por ', value asString, '.')! !
+!TransferDeposit methodsFor: 'recording' stamp: 'scb 5/29/2022 19:22:49' prior: 50476790 overrides: 50476741!
+recordOn: anAccountSummary
+
+	anAccountSummary record: ('Salida por transferencia por ', transfer value asString, '.')! !
+!TransferWithdraw methodsFor: 'recording' stamp: 'scb 5/29/2022 19:22:57' prior: 50476797 overrides: 50476741!
+recordOn: anAccountSummary
+
+	anAccountSummary record: ('Entrada por transferencia por ', transfer value asString, '.')! !
+!Withdraw methodsFor: 'recording' stamp: 'scb 5/29/2022 19:23:04' prior: 50476783 overrides: 50476741!
+recordOn: anAccountSummary
+
+	anAccountSummary record: ('Extracction por ', value asString, '.')! !
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/29/2022 19:23:09'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/29/2022 19:23:09'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/29/2022 19:23:27'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/29/2022 19:23:27'!
+ERROR!
+!AccountSummary methodsFor: 'recording' stamp: 'scb 5/29/2022 19:23:39'!
+record: aString 
+	self shouldBeImplemented.! !
+!AccountSummary methodsFor: 'recording' stamp: 'scb 5/29/2022 19:24:03' prior: 50476857!
+record: aString 
+	
+	rows := rows, aString! !
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/29/2022 19:24:05'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/29/2022 19:24:05'!
+ERROR!
+!AccountSummary methodsFor: 'recording' stamp: 'scb 5/29/2022 19:27:14'!
+recordDeposit: aString 
+	
+	rows add: aString! !
+
+!methodRemoval: AccountSummary #record: stamp: 'scb 5/29/2022 19:27:20'!
+record: aString 
+	
+	rows := rows, aString!
+!Deposit methodsFor: 'recording' stamp: 'scb 5/29/2022 19:27:44' prior: 50476812 overrides: 50476741!
+recordOn: anAccountSummary
+
+	anAccountSummary recordDeposit: value! !
+!Deposit methodsFor: 'recording' stamp: 'scb 5/29/2022 19:28:18' prior: 50476883 overrides: 50476741!
+recordOn: anAccountSummary
+
+	anAccountSummary recordDeposit: self ! !
+!AccountSummary methodsFor: 'recording' stamp: 'scb 5/29/2022 19:29:06' prior: 50476874!
+recordDeposit: aDeposit
+	
+	rows add: ('Deposito por ', aDeposit value asString, '.')! !
+!Withdraw methodsFor: 'recording' stamp: 'scb 5/29/2022 19:29:38' prior: 50476835 overrides: 50476741!
+recordOn: anAccountSummary
+
+	anAccountSummary recordWithdraw: self! !
+!AccountSummary methodsFor: 'recording' stamp: 'scb 5/29/2022 19:30:10'!
+recordWithdraw: aWithdraw
+	
+	rows add: ('Extracction por ', aWithdraw value asString, '.')! !
+!TransferDeposit methodsFor: 'recording' stamp: 'scb 5/29/2022 19:30:49' prior: 50476819 overrides: 50476741!
+recordOn: anAccountSummary
+
+	anAccountSummary recordTransferDeposit: self.! !
+!AccountSummary methodsFor: 'recording' stamp: 'scb 5/29/2022 19:31:46'!
+recordTransferDeposit: aTransferDeposit
+	
+	rows add: self! !
+!AccountSummary methodsFor: 'recording' stamp: 'scb 5/29/2022 19:31:54' prior: 50476905!
+recordWithdraw: aWithdraw
+	
+	rows add: ('Extracction por ', aWithdraw value asString, '.')! !
+!AccountSummary methodsFor: 'recording' stamp: 'scb 5/29/2022 19:32:07' prior: 50476917!
+recordTransferDeposit: aTransferDeposit
+	
+	rows add: ('Extracction por ', aTransferDeposit value asString, '.')! !
+!AccountSummary methodsFor: 'recording' stamp: 'scb 5/29/2022 19:32:27' prior: 50476928!
+recordTransferDeposit: aTransferDeposit
+	
+	rows add: ('Entrada por transferencia por ', aTransferDeposit value asString, '.')! !
+!AccountSummary methodsFor: 'recording' stamp: 'scb 5/29/2022 19:32:47'!
+recordTransferWithdraw: aTransferDeposit
+	
+	rows add: ('Salida por transferencia por ', aTransferDeposit value asString, '.')! !
+!AccountSummary methodsFor: 'recording' stamp: 'scb 5/29/2022 19:32:56' prior: 50476942!
+recordTransferWithdraw: aTransferWithdraw
+	
+	rows add: ('Salida por transferencia por ', aTransferWithdraw value asString, '.')! !
+!TransferWithdraw methodsFor: 'recording' stamp: 'scb 5/29/2022 19:33:21' prior: 50476827 overrides: 50476741!
+recordOn: anAccountSummary
+
+	anAccountSummary recordTransferWithdraw: self.! !
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/29/2022 19:33:29'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/29/2022 19:33:29'!
+ERROR!
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 19:34:20' prior: 50476571!
+test01AccountSummaryPrintsAccountTransactionsProperly
+
+	| anAccount anotherAccount anAccountSummaryRows anotherAccountSummaryRows |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	Deposit register: 100 on: anAccount.
+	Withdraw register: 50 on: anAccount.
+	Transfer from: anAccount to: anotherAccount anAmmountOf: 25.
+	anAccountSummaryRows := (AccountSummary for: anAccount) rows.
+	anotherAccountSummaryRows := (AccountSummary for: anotherAccount) rows.
+	
+	self assert: ((anAccountSummaryRows size = 4) and: 
+			((anAccountSummaryRows at: 1) = 'Deposito por 100.')and: 
+			((anAccountSummaryRows at: 2) = 'Extraccion por 50.')and: 
+			((anAccountSummaryRows at: 3) = 'Salida por transferencia de 25.')and: 
+			((anAccountSummaryRows at: 4) = 'Balance = 25.')).
+			
+	self assert: ((anotherAccountSummaryRows size = 2) and: 
+			((anotherAccountSummaryRows at: 1) = 'Entrada por transferencia de 25.')and: 
+			((anotherAccountSummaryRows at: 2) = 'Balance = 25.')).! !
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/29/2022 19:34:22'!
+ERROR!
+!AccountSummary methodsFor: 'rows' stamp: 'scb 5/29/2022 19:35:23' prior: 50476651!
+rows
+
+	rows := OrderedCollection new.
+	account recordTransactionsWith: self.
+	rows add: ('Balance = ', account balance asString)
+	^ rows! !
+!AccountSummary methodsFor: 'rows' stamp: 'scb 5/29/2022 19:35:26' prior: 50477009!
+rows
+
+	rows := OrderedCollection new.
+	account recordTransactionsWith: self.
+	rows add: ('Balance = ', account balance asString).
+	^ rows! !
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/29/2022 19:35:28'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/29/2022 19:35:28'!
+FAILURE!
+!AccountSummary methodsFor: 'rows' stamp: 'scb 5/29/2022 19:35:42' prior: 50477016!
+rows
+
+	rows := OrderedCollection new.
+	account recordTransactionsWith: self.
+	rows add: ('Balance = ', account balance asString, '.').
+	^ rows! !
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/29/2022 19:35:43'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/29/2022 19:35:43'!
+FAILURE!
+!TransferWithdraw methodsFor: 'accessing' stamp: 'scb 5/29/2022 19:38:41' overrides: 16902254!
+value
+	
+	^transfer value! !
+!TransferDeposit methodsFor: 'accessing' stamp: 'scb 5/29/2022 19:38:49' overrides: 16902254!
+value
+	
+	^transfer value! !
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/29/2022 19:38:53'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/29/2022 19:38:53'!
+FAILURE!
+!AccountSummary methodsFor: 'recording' stamp: 'scb 5/29/2022 19:39:59' prior: 50476949!
+recordTransferWithdraw: aTransferWithdraw
+	
+	rows add: ('Salida por transferencia de ', aTransferWithdraw value asString, '.')! !
+!AccountSummary methodsFor: 'recording' stamp: 'scb 5/29/2022 19:40:03' prior: 50476935!
+recordTransferDeposit: aTransferDeposit
+	
+	rows add: ('Entrada por transferencia de ', aTransferDeposit value asString, '.')! !
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/29/2022 19:40:15'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/29/2022 19:43:25'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/29/2022 19:49:45'!
+FAILURE!
+!AccountSummary methodsFor: 'recording' stamp: 'scb 5/29/2022 19:50:23' prior: 50476922!
+recordWithdraw: aWithdraw
+	
+	rows add: ('Extraccion por ', aWithdraw value asString, '.')! !
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/29/2022 19:50:26'!
+PASSED!
+
+TestCase subclass: #TransferNetTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferNetTest category: 'Portfolio-Solucion' stamp: 'scb 5/29/2022 19:51:06'!
+TestCase subclass: #TransferNetTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!TransferNetTest methodsFor: 'test' stamp: 'scb 5/29/2022 19:53:36'!
+test01! !
+!TransferNetTest methodsFor: 'test' stamp: 'scb 5/29/2022 19:57:23'!
+test01TransferNetIsUnaffectedByDepositsAndWithdraws
+
+	| anAccount |
+	
+	Deposit register: 100 on: anAccount.
+	Withdraw register: 50 on: anAccount.! !
+
+!methodRemoval: TransferNetTest #test01 stamp: 'scb 5/29/2022 19:57:30'!
+test01!
+
+!classDefinition: #TransferNet category: 'Portfolio-Solucion' stamp: 'scb 5/29/2022 19:58:56'!
+Object subclass: #TransferNet
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!TransferNetTest methodsFor: 'test' stamp: 'scb 5/29/2022 19:58:51' prior: 50477115!
+test01TransferNetIsUnaffectedByDepositsAndWithdraws
+
+	| anAccount |
+	
+	anAccount := ReceptiveAccount new.
+	Deposit register: 100 on: anAccount.
+	Withdraw register: 50 on: anAccount.
+	
+	self assert: (TransferNet for: anAccount = 0)! !
+
+!testRun: #TransferNetTest #test01TransferNetIsUnaffectedByDepositsAndWithdraws stamp: 'scb 5/29/2022 19:59:04'!
+ERROR!
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 20:02:12'!
+test02AccountSummaryPrintsPortfolioTransactionsProperly
+
+	| anAccount anotherAccount aPortfolio anAccountSummaryRows anotherAccountSummaryRows |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	Deposit register: 100 on: anAccount.
+	Withdraw register: 50 on: anAccount.
+	Transfer from: anAccount to: anotherAccount anAmmountOf: 25.
+	anAccountSummaryRows := (AccountSummary for: anAccount) rows.
+	anotherAccountSummaryRows := (AccountSummary for: anotherAccount) rows.
+	
+	self assert: ((anAccountSummaryRows size = 4) and: 
+			((anAccountSummaryRows at: 1) = 'Deposito por 100.')and: 
+			((anAccountSummaryRows at: 2) = 'Extraccion por 50.')and: 
+			((anAccountSummaryRows at: 3) = 'Salida por transferencia de 25.')and: 
+			((anAccountSummaryRows at: 4) = 'Balance = 25.')).
+			
+	self assert: ((anotherAccountSummaryRows size = 2) and: 
+			((anotherAccountSummaryRows at: 1) = 'Entrada por transferencia de 25.')and: 
+			((anotherAccountSummaryRows at: 2) = 'Balance = 25.')).! !
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 20:02:29' prior: 50477147!
+test02AccountSummaryPrintsPortfolioTransactionsProperly
+
+	| anAccount anotherAccount aPortfolio anAccountSummaryRows anotherAccountSummaryRows |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	aPortfolio := Portfolio new.
+	Deposit register: 100 on: anAccount.
+	Withdraw register: 50 on: anAccount.
+	Transfer from: anAccount to: anotherAccount anAmmountOf: 25.
+	anAccountSummaryRows := (AccountSummary for: anAccount) rows.
+	anotherAccountSummaryRows := (AccountSummary for: anotherAccount) rows.
+	
+	self assert: ((anAccountSummaryRows size = 4) and: 
+			((anAccountSummaryRows at: 1) = 'Deposito por 100.')and: 
+			((anAccountSummaryRows at: 2) = 'Extraccion por 50.')and: 
+			((anAccountSummaryRows at: 3) = 'Salida por transferencia de 25.')and: 
+			((anAccountSummaryRows at: 4) = 'Balance = 25.')).
+			
+	self assert: ((anotherAccountSummaryRows size = 2) and: 
+			((anotherAccountSummaryRows at: 1) = 'Entrada por transferencia de 25.')and: 
+			((anotherAccountSummaryRows at: 2) = 'Balance = 25.')).! !
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 20:03:12' prior: 50477182!
+test02AccountSummaryPrintsPortfolioTransactionsProperly
+
+	| anAccount anotherAccount aPortfolio anAccountSummaryRows anotherAccountSummaryRows |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	aPortfolio := Portfolio new.
+	Deposit register: 100 on: anAccount.
+	Withdraw register: 50 on: anAccount.
+	Transfer from: anAccount to: anotherAccount anAmmountOf: 25.
+	anAccountSummaryRows := (AccountSummary for: anAccount) rows.
+	anotherAccountSummaryRows := (AccountSummary for: anotherAccount) rows.
+	
+	
+	self assert: ((anAccountSummaryRows size = 4) and: 
+			((anAccountSummaryRows at: 1) = 'Deposito por 100.')and: 
+			((anAccountSummaryRows at: 2) = 'Extraccion por 50.')and: 
+			((anAccountSummaryRows at: 3) = 'Salida por transferencia de 25.')and: 
+			((anAccountSummaryRows at: 4) = 'Balance = 25.')).
+			
+	self assert: ((anotherAccountSummaryRows size = 2) and: 
+			((anotherAccountSummaryRows at: 1) = 'Entrada por transferencia de 25.')and: 
+			((anotherAccountSummaryRows at: 2) = 'Balance = 25.')).! !
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 20:04:12' prior: 50477218!
+test02AccountSummaryPrintsPortfolioTransactionsProperly
+
+	| anAccount anotherAccount aPortfolio anAccountSummaryRows anotherAccountSummaryRows |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	Deposit register: 100 on: anAccount.
+	Withdraw register: 50 on: anAccount.
+	Transfer from: anAccount to: anotherAccount anAmmountOf: 25.
+	anAccountSummaryRows := (AccountSummary for: anAccount) rows.
+	anotherAccountSummaryRows := (AccountSummary for: anotherAccount) rows.
+	aPortfolio := Portfolio with: anAccount with: anotherAccount.
+	
+	self assert: ((anAccountSummaryRows size = 4) and: 
+			((anAccountSummaryRows at: 1) = 'Deposito por 100.')and: 
+			((anAccountSummaryRows at: 2) = 'Extraccion por 50.')and: 
+			((anAccountSummaryRows at: 3) = 'Salida por transferencia de 25.')and: 
+			((anAccountSummaryRows at: 4) = 'Balance = 25.')).
+			
+	self assert: ((anotherAccountSummaryRows size = 2) and: 
+			((anotherAccountSummaryRows at: 1) = 'Entrada por transferencia de 25.')and: 
+			((anotherAccountSummaryRows at: 2) = 'Balance = 25.')).! !
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 20:06:20' prior: 50477254!
+test02AccountSummaryPrintsPortfolioTransactionsProperly
+
+	| anAccount anotherAccount aPortfolio anAccountSummaryRows |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	Deposit register: 100 on: anAccount.
+	Withdraw register: 50 on: anAccount.
+	Transfer from: anAccount to: anotherAccount anAmmountOf: 25.
+	aPortfolio := Portfolio with: anAccount with: anotherAccount.
+	anAccountSummaryRows := (AccountSummary for: aPortfolio) rows.
+	
+	self assert: (((anAccountSummaryRows size = 5) and: 
+			((anAccountSummaryRows at: 1) = 'Deposito por 100.') and: 
+			((anAccountSummaryRows at: 2) = 'Extraccion por 50.') and: 
+			((anAccountSummaryRows at: 3) = 'Salida por transferencia de 25.') and:
+			((anAccountSummaryRows at: 1) = 'Entrada por transferencia de 25.')) and: 
+			((anAccountSummaryRows at: 2) = 'Balance = 25.')).! !
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 20:07:19' prior: 50477291!
+test02AccountSummaryPrintsPortfolioTransactionsProperly
+
+	| anAccount anotherAccount aPortfolio anAccountSummaryRows |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	Deposit register: 100 on: anAccount.
+	Withdraw register: 50 on: anAccount.
+	Transfer from: anAccount to: anotherAccount anAmmountOf: 25.
+	aPortfolio := Portfolio with: anAccount with: anotherAccount.
+	anAccountSummaryRows := (AccountSummary for: aPortfolio) rows.
+	
+	self assert: (((anAccountSummaryRows size = 5) and: 
+			((anAccountSummaryRows at: 1) = 'Deposito por 100.') and: 
+			((anAccountSummaryRows at: 2) = 'Extraccion por 50.') and: 
+			((anAccountSummaryRows at: 3) = 'Salida por transferencia de 25.') and:
+			((anAccountSummaryRows at: 1) = 'Entrada por transferencia de 25.')) and: 
+			((anAccountSummaryRows at: 2) = 'Balance = 50.')).! !
+!Portfolio methodsFor: 'recording' stamp: 'scb 5/29/2022 20:10:04'!
+recordTransactionsWith: anAccountSummary
+
+	self do: [ :transaction | transaction recordOn: anAccountSummary ].! !
+!Portfolio methodsFor: 'recording' stamp: 'scb 5/29/2022 20:10:27' prior: 50477350!
+recordTransactionsWith: anAccountSummary
+
+	accounts do: [ :transaction | transaction recordTransactionsWith: anAccountSummary ].! !
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'scb 5/29/2022 20:10:29'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'scb 5/29/2022 20:10:29'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'scb 5/29/2022 20:10:29'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'scb 5/29/2022 20:10:29'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'scb 5/29/2022 20:10:29'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'scb 5/29/2022 20:10:29'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'scb 5/29/2022 20:10:29'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'scb 5/29/2022 20:10:29'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'scb 5/29/2022 20:10:29'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'scb 5/29/2022 20:10:29'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'scb 5/29/2022 20:10:29'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'scb 5/29/2022 20:10:29'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'scb 5/29/2022 20:10:29'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'scb 5/29/2022 20:10:29'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'scb 5/29/2022 20:10:29'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02AccountSummaryPrintsPortfolioTransactionsProperly stamp: 'scb 5/29/2022 20:10:48'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test02AccountSummaryPrintsPortfolioTransactionsProperly stamp: 'scb 5/29/2022 20:10:48'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test02AccountSummaryPrintsPortfolioTransactionsProperly stamp: 'scb 5/29/2022 20:12:49'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test02AccountSummaryPrintsPortfolioTransactionsProperly stamp: 'scb 5/29/2022 20:12:49'!
+FAILURE!
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 20:13:09' prior: 50477321!
+test02AccountSummaryPrintsPortfolioTransactionsProperly
+
+	| anAccount anotherAccount aPortfolio anAccountSummaryRows |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	Deposit register: 100 on: anAccount.
+	Withdraw register: 50 on: anAccount.
+	Transfer from: anAccount to: anotherAccount anAmmountOf: 25.
+	aPortfolio := Portfolio with: anAccount with: anotherAccount.
+	anAccountSummaryRows := (AccountSummary for: aPortfolio) rows.
+	
+	self assert: (((anAccountSummaryRows size = 5) and: 
+			((anAccountSummaryRows at: 1) = 'Deposito por 100.') and: 
+			((anAccountSummaryRows at: 2) = 'Extraccion por 50.') and: 
+			((anAccountSummaryRows at: 3) = 'Salida por transferencia de 25.') and:
+			((anAccountSummaryRows at: 4) = 'Entrada por transferencia de 25.')) and: 
+			((anAccountSummaryRows at: 5) = 'Balance = 50.')).! !
+
+!testRun: #AccountSummaryTest #test02AccountSummaryPrintsPortfolioTransactionsProperly stamp: 'scb 5/29/2022 20:13:11'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/29/2022 20:13:11'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02AccountSummaryPrintsPortfolioTransactionsProperly stamp: 'scb 5/29/2022 20:13:11'!
+PASSED!
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 20:14:44' prior: 50477438!
+test02AccountSummaryPrintsPortfolioTransactionsProperly
+
+	| anAccount anotherAccount aPortfolio anotherPortfolio anAccountSummaryRows |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	Deposit register: 100 on: anAccount.
+	Withdraw register: 50 on: anAccount.
+	Transfer from: anAccount to: anotherAccount anAmmountOf: 25.
+	aPortfolio := Portfolio with: anAccount with: anotherAccount.
+	anAccountSummaryRows := (AccountSummary for: aPortfolio) rows.
+	
+	self assert: (((anAccountSummaryRows size = 5) and: 
+			((anAccountSummaryRows at: 1) = 'Deposito por 100.') and: 
+			((anAccountSummaryRows at: 2) = 'Extraccion por 50.') and: 
+			((anAccountSummaryRows at: 3) = 'Salida por transferencia de 25.') and:
+			((anAccountSummaryRows at: 4) = 'Entrada por transferencia de 25.')) and: 
+			((anAccountSummaryRows at: 5) = 'Balance = 50.')).! !
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 20:15:45' prior: 50477480!
+test02AccountSummaryPrintsPortfolioTransactionsProperly
+
+	| anAccount anotherAccount aPortfolio anotherPortfolio anAccountSummaryRows |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	Deposit register: 100 on: anAccount.
+	Withdraw register: 50 on: anAccount.
+	Transfer from: anAccount to: anotherAccount anAmmountOf: 25.
+	aPortfolio := Portfolio with: anAccount.
+	anotherPortfolio := Portfolio with: aPortfolio with: anotherAccount.
+	anAccountSummaryRows := (AccountSummary for: anotherPortfolio) rows.
+	
+	self assert: (((anAccountSummaryRows size = 5) and: 
+			((anAccountSummaryRows at: 1) = 'Deposito por 100.') and: 
+			((anAccountSummaryRows at: 2) = 'Extraccion por 50.') and: 
+			((anAccountSummaryRows at: 3) = 'Salida por transferencia de 25.') and:
+			((anAccountSummaryRows at: 4) = 'Entrada por transferencia de 25.')) and: 
+			((anAccountSummaryRows at: 5) = 'Balance = 50.')).! !
+
+!testRun: #AccountSummaryTest #test02AccountSummaryPrintsPortfolioTransactionsProperly stamp: 'scb 5/29/2022 20:15:47'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/29/2022 20:15:47'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02AccountSummaryPrintsPortfolioTransactionsProperly stamp: 'scb 5/29/2022 20:15:47'!
+PASSED!
+!TransferNet class methodsFor: 'instance creation' stamp: 'scb 5/29/2022 20:16:55'!
+for: anAccount
+
+	^ self new initializeFor: anAccount! !
+!TransferNetTest methodsFor: 'test' stamp: 'scb 5/29/2022 20:18:33' prior: 50477133!
+test01TransferNetIsUnaffectedByDepositsAndWithdraws
+
+	| anAccount |
+	
+	anAccount := ReceptiveAccount new.
+	Deposit register: 100 on: anAccount.
+	Withdraw register: 50 on: anAccount.
+	
+	self assert: ((TransferNet for: anAccount) value = 0)! !
+
+!testRun: #TransferNetTest #test01TransferNetIsUnaffectedByDepositsAndWithdraws stamp: 'scb 5/29/2022 20:18:34'!
+ERROR!
+
+Object subclass: #TransferNet
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferNet category: 'Portfolio-Solucion' stamp: 'scb 5/29/2022 20:19:15'!
+Object subclass: #TransferNet
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!TransferNet methodsFor: 'value' stamp: 'scb 5/29/2022 20:19:31' overrides: 16902254!
+value
+	
+	value := 0.
+	^value! !
+
+!classDefinition: #TransferNet category: 'Portfolio-Solucion' stamp: 'scb 5/29/2022 20:19:58'!
+Object subclass: #TransferNet
+	instanceVariableNames: 'value account'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!TransferNet methodsFor: 'initialization' stamp: 'scb 5/29/2022 20:19:57'!
+initializeFor: anAccount
+	
+	account := anAccount! !
+
+!testRun: #TransferNetTest #test01TransferNetIsUnaffectedByDepositsAndWithdraws stamp: 'scb 5/29/2022 20:20:09'!
+PASSED!
+!TransferNetTest methodsFor: 'test' stamp: 'scb 5/29/2022 20:24:38'!
+test02TransferNetIsAffectedByTransfers
+
+	| anAccount anotherAccount aPortfolio |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	aPortfolio := Portfolio with: anAccount with: anotherAccount.
+	Transfer from: anAccount to: anotherAccount anAmmountOf: 100.
+	
+	self assert: (((TransferNet for: anAccount) value = -100) )! !
+!TransferNetTest methodsFor: 'test' stamp: 'scb 5/29/2022 20:26:03' prior: 50477604!
+test02TransferNetIsAffectedByTransfers
+
+	| anAccount anotherAccount aPortfolio |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	aPortfolio := Portfolio with: anAccount with: anotherAccount.
+	Transfer from: anAccount to: anotherAccount anAmmountOf: 100.
+	
+	self assert: (((TransferNet for: anAccount) value = -100) and: 
+			((TransferNet for: anotherAccount) value = 100) and: 
+			((TransferNet for: aPortfolio) value = 0))! !
+
+!testRun: #TransferNetTest #test02TransferNetIsAffectedByTransfers stamp: 'scb 5/29/2022 20:26:09'!
+FAILURE!
+!TransferNet methodsFor: 'value' stamp: 'scb 5/29/2022 20:26:37' prior: 50477585 overrides: 16902254!
+value
+	
+	value := 0.
+	account recordOn: self.
+	^value! !
+!TransferNet methodsFor: 'value' stamp: 'scb 5/29/2022 20:27:14' prior: 50477639 overrides: 16902254!
+value
+	
+	value := 0.
+	account recordTransferTransactionsOn: self.
+	^value! !
+!TransferNet methodsFor: 'value' stamp: 'scb 5/29/2022 20:29:18' prior: 50477644 overrides: 16902254!
+value
+	
+	value := 0.
+	account recordTransactionsWith: self.
+	^value! !
+!TransferNet methodsFor: 'recording' stamp: 'scb 5/29/2022 20:30:27'!
+recordDeposit: aDeposit
+	
+	value := value + aDeposit value! !
+!TransferNet methodsFor: 'recording' stamp: 'scb 5/29/2022 20:30:45'!
+recordTransactionDeposit: aDeposit
+	
+	value := value + aDeposit value! !
+!TransferNet methodsFor: 'recording' stamp: 'scb 5/29/2022 20:31:01' prior: 50477660!
+recordTransactionDeposit: aTransactionDeposit
+	
+	value := value + aTransactionDeposit value! !
+!TransferNet methodsFor: 'recording' stamp: 'scb 5/29/2022 20:31:11' prior: 50477655!
+recordDeposit: aDeposit! !
+!TransferNet methodsFor: 'recording' stamp: 'scb 5/29/2022 20:31:18'!
+recordWithdraw: aDeposit! !
+!TransferNet methodsFor: 'recording' stamp: 'scb 5/29/2022 20:31:29'!
+recordTransactionWithdraw: aTransactionDeposit
+	
+	value := value - aTransactionDeposit value! !
+!TransferNet methodsFor: 'recording' stamp: 'scb 5/29/2022 20:31:35' prior: 50477679!
+recordTransactionWithdraw: aTransactionWithdraw
+	
+	value := value - aTransactionWithdraw value! !
+
+!testRun: #TransferNetTest #test01TransferNetIsUnaffectedByDepositsAndWithdraws stamp: 'scb 5/29/2022 20:31:37'!
+PASSED!
+
+!testRun: #TransferNetTest #test02TransferNetIsAffectedByTransfers stamp: 'scb 5/29/2022 20:31:37'!
+ERROR!
+
+!testRun: #TransferNetTest #test02TransferNetIsAffectedByTransfers stamp: 'scb 5/29/2022 20:31:37'!
+ERROR!
+
+!testRun: #TransferNetTest #test01TransferNetIsUnaffectedByDepositsAndWithdraws stamp: 'scb 5/29/2022 20:32:08'!
+PASSED!
+
+!testRun: #TransferNetTest #test02TransferNetIsAffectedByTransfers stamp: 'scb 5/29/2022 20:32:08'!
+ERROR!
+
+!testRun: #TransferNetTest #test02TransferNetIsAffectedByTransfers stamp: 'scb 5/29/2022 20:32:08'!
+ERROR!
+!TransferNet methodsFor: 'recording' stamp: 'scb 5/29/2022 20:32:49'!
+recordTransferDeposit: aTransactionDeposit
+	
+	value := value + aTransactionDeposit value! !
+
+!methodRemoval: TransferNet #recordTransactionDeposit: stamp: 'scb 5/29/2022 20:32:49'!
+recordTransactionDeposit: aTransactionDeposit
+	
+	value := value + aTransactionDeposit value!
+!TransferNet methodsFor: 'recording' stamp: 'scb 5/29/2022 20:32:59'!
+recordTransferWithdraw: aTransactionWithdraw
+	
+	value := value - aTransactionWithdraw value! !
+
+!methodRemoval: TransferNet #recordTransactionWithdraw: stamp: 'scb 5/29/2022 20:32:59'!
+recordTransactionWithdraw: aTransactionWithdraw
+	
+	value := value - aTransactionWithdraw value!
+
+!testRun: #TransferNetTest #test01TransferNetIsUnaffectedByDepositsAndWithdraws stamp: 'scb 5/29/2022 20:33:02'!
+PASSED!
+
+!testRun: #TransferNetTest #test02TransferNetIsAffectedByTransfers stamp: 'scb 5/29/2022 20:33:02'!
+PASSED!
+
+----SNAPSHOT----(29 May 2022 20:34:21) CuisUniversity-5096.image priorSource: 4611900!
+
+AccountTransaction subclass: #TransferTransaction
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferTransaction category: 'Portfolio-Solucion' stamp: 'scb 5/29/2022 22:43:28'!
+AccountTransaction subclass: #TransferTransaction
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+TransferTransaction subclass: #TransferDeposit
+	instanceVariableNames: 'transfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferDeposit category: 'Portfolio-Solucion' stamp: 'scb 5/29/2022 22:43:49'!
+TransferTransaction subclass: #TransferDeposit
+	instanceVariableNames: 'transfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+TransferTransaction subclass: #TransferWithdraw
+	instanceVariableNames: 'transfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferWithdraw category: 'Portfolio-Solucion' stamp: 'scb 5/29/2022 22:44:28'!
+TransferTransaction subclass: #TransferWithdraw
+	instanceVariableNames: 'transfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+TransferTransaction subclass: #TransferDeposit
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferDeposit category: 'Portfolio-Solucion' stamp: 'scb 5/29/2022 22:45:14'!
+TransferTransaction subclass: #TransferDeposit
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferWithdraw category: 'Portfolio-Solucion' stamp: 'scb 5/29/2022 22:45:28'!
+TransferTransaction subclass: #TransferWithdraw
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferTransaction category: 'Portfolio-Solucion' stamp: 'scb 5/29/2022 22:45:28'!
+AccountTransaction subclass: #TransferTransaction
+	instanceVariableNames: 'transfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!TransferTransaction methodsFor: 'accessing' stamp: 'scb 5/29/2022 22:46:34' overrides: 16902254!
+value
+	
+	^transfer value! !
+
+!methodRemoval: TransferDeposit #value stamp: 'scb 5/29/2022 22:46:34'!
+value
+	
+	^transfer value!
+
+!methodRemoval: TransferWithdraw #value stamp: 'scb 5/29/2022 22:46:48'!
+value
+	
+	^transfer value!
+!TransferTransaction methodsFor: 'accessing' stamp: 'scb 5/29/2022 22:47:03'!
+transfer
+	
+	^transfer! !
+
+!methodRemoval: TransferDeposit #transfer stamp: 'scb 5/29/2022 22:47:03'!
+transfer
+	
+	^transfer!
+
+!methodRemoval: TransferWithdraw #transfer stamp: 'scb 5/29/2022 22:47:08'!
+transfer
+	
+	^transfer!
+!TransferTransaction methodsFor: 'recording' stamp: 'scb 5/29/2022 22:47:32' overrides: 50476741!
+recordOn: anAccountSummary
+
+	anAccountSummary recordTransferWithdraw: self.! !
+
+!methodRemoval: TransferWithdraw #recordOn: stamp: 'scb 5/29/2022 22:47:32'!
+recordOn: anAccountSummary
+
+	anAccountSummary recordTransferWithdraw: self.!
+
+!methodRemoval: TransferDeposit #recordOn: stamp: 'scb 5/29/2022 22:47:38'!
+recordOn: anAccountSummary
+
+	anAccountSummary recordTransferDeposit: self.!
+!TransferTransaction methodsFor: 'initialization' stamp: 'scb 5/29/2022 22:47:57'!
+initializeFor: aTransfer
+
+	transfer := aTransfer! !
+
+!methodRemoval: TransferWithdraw #initializeFor: stamp: 'scb 5/29/2022 22:47:57'!
+initializeFor: aTransfer
+
+	transfer := aTransfer!
+
+!methodRemoval: TransferDeposit #initializeFor: stamp: 'scb 5/29/2022 22:48:20'!
+initializeFor: aTransfer
+
+	transfer := aTransfer!
+
+AccountTransaction subclass: #IndependentTransaction
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #IndependentTransaction category: 'Portfolio-Solucion' stamp: 'scb 5/29/2022 22:49:10'!
+AccountTransaction subclass: #IndependentTransaction
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+AccountTransaction subclass: #Deposit
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #Deposit category: 'Portfolio-Solucion' stamp: 'scb 5/29/2022 22:49:16'!
+AccountTransaction subclass: #Deposit
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+IndependentTransaction subclass: #Deposit
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #Deposit category: 'Portfolio-Solucion' stamp: 'scb 5/29/2022 22:49:29'!
+IndependentTransaction subclass: #Deposit
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+IndependentTransaction subclass: #Withdraw
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #Withdraw category: 'Portfolio-Solucion' stamp: 'scb 5/29/2022 22:49:41'!
+IndependentTransaction subclass: #Withdraw
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!IndependentTransaction methodsFor: 'value' stamp: 'scb 5/29/2022 22:51:55' overrides: 16902254!
+value
+
+	^ value! !
+
+!methodRemoval: Withdraw #value stamp: 'scb 5/29/2022 22:51:55'!
+value
+
+	^ value!
+
+!methodRemoval: Deposit #value stamp: 'scb 5/29/2022 22:52:04'!
+value
+
+	^ value!
+!IndependentTransaction methodsFor: 'initialization' stamp: 'scb 5/29/2022 22:52:12'!
+initializeFor: aValue
+
+	value := aValue ! !
+
+!methodRemoval: Deposit #initializeFor: stamp: 'scb 5/29/2022 22:52:12'!
+initializeFor: aValue
+
+	value := aValue !
+
+!methodRemoval: Withdraw #initializeFor: stamp: 'scb 5/29/2022 22:52:20'!
+initializeFor: aValue
+
+	value := aValue !
+!IndependentTransaction methodsFor: 'recording' stamp: 'scb 5/29/2022 22:52:38' overrides: 50476741!
+recordOn: anAccountSummary
+
+	anAccountSummary recordDeposit: self ! !
+
+!methodRemoval: Deposit #recordOn: stamp: 'scb 5/29/2022 22:52:38'!
+recordOn: anAccountSummary
+
+	anAccountSummary recordDeposit: self !
+
+!methodRemoval: Withdraw #recordOn: stamp: 'scb 5/29/2022 22:52:51'!
+recordOn: anAccountSummary
+
+	anAccountSummary recordWithdraw: self!
+!TransferDeposit methodsFor: 'recording' stamp: 'scb 5/29/2022 22:54:32' overrides: 50477835!
+recordOn: anAccountSummary
+
+	anAccountSummary recordTransferWithdraw: self.! !
+!TransferWithdraw methodsFor: 'recording' stamp: 'scb 5/29/2022 22:54:32' overrides: 50477835!
+recordOn: anAccountSummary
+
+	anAccountSummary recordTransferWithdraw: self.! !
+
+!methodRemoval: TransferTransaction #recordOn: stamp: 'scb 5/29/2022 22:54:32'!
+recordOn: anAccountSummary
+
+	anAccountSummary recordTransferWithdraw: self.!
+!TransferDeposit methodsFor: 'recording' stamp: 'scb 5/29/2022 22:54:50' prior: 50477948 overrides: 50476741!
+recordOn: anAccountSummary
+
+	anAccountSummary recordTransferDeposit: self.! !
+!Deposit methodsFor: 'recording' stamp: 'scb 5/29/2022 22:55:02' overrides: 50477934!
+recordOn: anAccountSummary
+
+	anAccountSummary recordDeposit: self ! !
+!Withdraw methodsFor: 'recording' stamp: 'scb 5/29/2022 22:55:02' overrides: 50477934!
+recordOn: anAccountSummary
+
+	anAccountSummary recordDeposit: self ! !
+
+!methodRemoval: IndependentTransaction #recordOn: stamp: 'scb 5/29/2022 22:55:02'!
+recordOn: anAccountSummary
+
+	anAccountSummary recordDeposit: self !
+!Withdraw methodsFor: 'recording' stamp: 'scb 5/29/2022 22:55:16' prior: 50477976 overrides: 50476741!
+recordOn: anAccountSummary
+
+	anAccountSummary recordWithdraw: self ! !
+!TransferTransaction methodsFor: 'accessing' stamp: 'scb 5/29/2022 22:57:02' overrides: 50476741!
+recordOn: anAccountSummary
+
+	anAccountSummary recordTransferDeposit: self.! !
+!TransferTransaction methodsFor: 'recording' stamp: 'scb 5/29/2022 22:58:04' prior: 50477993 overrides: 50476741!
+recordOn: anAccountSummary
+
+	self subclassResponsibility ! !
+!AccountTransaction methodsFor: 'recording' stamp: 'scb 5/29/2022 22:58:14' prior: 50476741!
+recordOn: anAccountSummary
+
+	self subclassResponsibility ! !
+
+!methodRemoval: TransferTransaction #recordOn: stamp: 'scb 5/29/2022 22:58:14'!
+recordOn: anAccountSummary
+
+	self subclassResponsibility !
+!TransferTransaction methodsFor: 'recording' stamp: 'scb 5/29/2022 22:58:22' overrides: 50478004!
+recordOn: anAccountSummary
+
+	self subclassResponsibility ! !
+!IndependentTransaction methodsFor: 'recording' stamp: 'scb 5/29/2022 22:58:22' overrides: 50478004!
+recordOn: anAccountSummary
+
+	self subclassResponsibility ! !
+
+!methodRemoval: AccountTransaction #recordOn: stamp: 'scb 5/29/2022 22:58:22'!
+recordOn: anAccountSummary
+
+	self subclassResponsibility !
+!AccountTransaction methodsFor: 'recording' stamp: 'scb 5/29/2022 22:58:26'!
+recordOn: anAccountSummary
+
+	self subclassResponsibility ! !
+!TransferTransaction methodsFor: 'balance' stamp: 'scb 5/29/2022 23:07:01' overrides: 50474713!
+affectBalance: aBalance
+
+	^aBalance + transfer value! !
+
+!methodRemoval: TransferDeposit #affectBalance: stamp: 'scb 5/29/2022 23:07:01'!
+affectBalance: aBalance
+
+	^aBalance + transfer value!
+!TransferDeposit methodsFor: 'balance' stamp: 'scb 5/29/2022 23:07:11' overrides: 50478034!
+affectBalance: aBalance
+
+	^aBalance + transfer value! !
+!TransferTransaction methodsFor: 'balance' stamp: 'scb 5/29/2022 23:07:24' prior: 50478034 overrides: 50474713!
+affectBalance: aBalance
+
+	self subclassResponsibility ! !
+!IndependentTransaction methodsFor: 'balance' stamp: 'scb 5/29/2022 23:08:17' overrides: 50474713!
+affectBalance: aBalance
+
+	self subclassResponsibility ! !
+!AccountTransaction methodsFor: 'accessing' stamp: 'scb 5/29/2022 23:09:29' overrides: 16902254!
+value
+
+	self subclassResponsibility ! !
+!AccountTransaction methodsFor: 'initialization' stamp: 'scb 5/29/2022 23:10:02'!
+initializeFor: aValue
+
+	self subclassResponsibility ! !
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/29/2022 23:10:19'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02AccountSummaryPrintsPortfolioTransactionsProperly stamp: 'scb 5/29/2022 23:10:19'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'scb 5/29/2022 23:10:24'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'scb 5/29/2022 23:10:24'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'scb 5/29/2022 23:10:24'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'scb 5/29/2022 23:10:24'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'scb 5/29/2022 23:10:24'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'scb 5/29/2022 23:10:24'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'scb 5/29/2022 23:10:24'!
+PASSED!
+
+!testRun: #TransferNetTest #test01TransferNetIsUnaffectedByDepositsAndWithdraws stamp: 'scb 5/29/2022 23:10:27'!
+PASSED!
+
+!testRun: #TransferNetTest #test02TransferNetIsAffectedByTransfers stamp: 'scb 5/29/2022 23:10:27'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferWithdrawsFromSenderAndDepositToRecipient stamp: 'scb 5/29/2022 23:10:31'!
+PASSED!
+
+!testRun: #TransferTest #test02TransferIsRegisteredInSenderAndReceiver stamp: 'scb 5/29/2022 23:10:31'!
+PASSED!
+
+!testRun: #TransferTest #test03TransferKnowsItsValue stamp: 'scb 5/29/2022 23:10:31'!
+PASSED!
+
+!testRun: #TransferTest #test04TransferLegsKnowTransfer stamp: 'scb 5/29/2022 23:10:31'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/29/2022 23:10:52'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02AccountSummaryPrintsPortfolioTransactionsProperly stamp: 'scb 5/29/2022 23:10:52'!
+PASSED!
+!AccountTransaction methodsFor: 'accessing' stamp: 'scb 5/29/2022 23:13:16'!
+valueAsString
+
+	^ self value asString! !
+!AccountSummary methodsFor: 'recording' stamp: 'scb 5/29/2022 23:13:33' prior: 50476894!
+recordDeposit: aDeposit
+	
+	rows add: ('Deposito por ', aDeposit valueAsString, '.')! !
+!AccountSummary methodsFor: 'recording' stamp: 'scb 5/29/2022 23:13:38' prior: 50477071!
+recordTransferDeposit: aTransferDeposit
+	
+	rows add: ('Entrada por transferencia de ', aTransferDeposit valueAsString, '.')! !
+!AccountSummary methodsFor: 'recording' stamp: 'scb 5/29/2022 23:13:48' prior: 50477064!
+recordTransferWithdraw: aTransferWithdraw
+	
+	rows add: ('Salida por transferencia de ', aTransferWithdraw valueAsString, '.')! !
+!AccountSummary methodsFor: 'recording' stamp: 'scb 5/29/2022 23:13:54' prior: 50477090!
+recordWithdraw: aWithdraw
+	
+	rows add: ('Extraccion por ', aWithdraw valueAsString, '.')! !
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 23:16:47'!
+depositWithdrawAndTransferFrom: anotherAccount to: anAccount
+
+	Deposit register: 100 on: anAccount.
+	Withdraw register: 50 on: anAccount.
+	Transfer from: anAccount to: anotherAccount anAmmountOf: 25! !
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 23:16:47' prior: 50476971!
+test01AccountSummaryPrintsAccountTransactionsProperly
+
+	| anAccount anotherAccount anAccountSummaryRows anotherAccountSummaryRows |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	self depositWithdrawAndTransferFrom: anotherAccount to: anAccount.
+	anAccountSummaryRows := (AccountSummary for: anAccount) rows.
+	anotherAccountSummaryRows := (AccountSummary for: anotherAccount) rows.
+	
+	self assert: ((anAccountSummaryRows size = 4) and: 
+			((anAccountSummaryRows at: 1) = 'Deposito por 100.')and: 
+			((anAccountSummaryRows at: 2) = 'Extraccion por 50.')and: 
+			((anAccountSummaryRows at: 3) = 'Salida por transferencia de 25.')and: 
+			((anAccountSummaryRows at: 4) = 'Balance = 25.')).
+			
+	self assert: ((anotherAccountSummaryRows size = 2) and: 
+			((anotherAccountSummaryRows at: 1) = 'Entrada por transferencia de 25.')and: 
+			((anotherAccountSummaryRows at: 2) = 'Balance = 25.')).! !
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 23:16:47' prior: 50477510!
+test02AccountSummaryPrintsPortfolioTransactionsProperly
+
+	| anAccount anotherAccount aPortfolio anotherPortfolio anAccountSummaryRows |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	self depositWithdrawAndTransferFrom: anotherAccount to: anAccount.
+	aPortfolio := Portfolio with: anAccount.
+	anotherPortfolio := Portfolio with: aPortfolio with: anotherAccount.
+	anAccountSummaryRows := (AccountSummary for: anotherPortfolio) rows.
+	
+	self assert: (((anAccountSummaryRows size = 5) and: 
+			((anAccountSummaryRows at: 1) = 'Deposito por 100.') and: 
+			((anAccountSummaryRows at: 2) = 'Extraccion por 50.') and: 
+			((anAccountSummaryRows at: 3) = 'Salida por transferencia de 25.') and:
+			((anAccountSummaryRows at: 4) = 'Entrada por transferencia de 25.')) and: 
+			((anAccountSummaryRows at: 5) = 'Balance = 50.')).! !
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 23:17:02' prior: 50478162!
+depositWithdrawAndTransferFrom: anAccount to: anotherAccount
+
+	Deposit register: 100 on: anAccount.
+	Withdraw register: 50 on: anAccount.
+	Transfer from: anAccount to: anotherAccount anAmmountOf: 25! !
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 23:17:56' prior: 50478204!
+test02AccountSummaryPrintsPortfolioTransactionsProperly
+
+	| anAccount anotherAccount aPortfolio anotherPortfolio anAccountSummaryRows |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	self depositWithdrawAndTransferFrom: anotherAccount to: anAccount.
+	aPortfolio := Portfolio with: anAccount.
+	anotherPortfolio := Portfolio with: aPortfolio with: anotherAccount.
+	anAccountSummaryRows := (AccountSummary for: anotherPortfolio) rows.
+	
+	self assert: ((anAccountSummaryRows size = 5) and: 
+			(((anAccountSummaryRows at: 1) = 'Deposito por 100.') and: 
+			((anAccountSummaryRows at: 2) = 'Extraccion por 50.') and: 
+			((anAccountSummaryRows at: 3) = 'Salida por transferencia de 25.') and:
+			((anAccountSummaryRows at: 4) = 'Entrada por transferencia de 25.')) and: 
+			((anAccountSummaryRows at: 5) = 'Balance = 50.')).! !
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 23:19:07' prior: 50478172!
+test01AccountSummaryPrintsAccountTransactionsProperly
+
+	| anAccount anotherAccount anAccountSummaryRows anotherAccountSummaryRows |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	self depositWithdrawAndTransferFrom: anotherAccount to: anAccount.
+	anAccountSummaryRows := (AccountSummary for: anAccount) rows.
+	anotherAccountSummaryRows := (AccountSummary for: anotherAccount) rows.
+	
+	self assert: ((anAccountSummaryRows size = 4) and: 
+			((anAccountSummaryRows at: 1) = 'Deposito por 100.') and: 
+			((anAccountSummaryRows at: 2) = 'Extraccion por 50.') and: 
+			((anAccountSummaryRows at: 3) = 'Salida por transferencia de 25.') and: 
+			((anAccountSummaryRows at: 4) = 'Balance = 25.')).
+			
+	self assert: ((anotherAccountSummaryRows size = 2) and: 
+			((anotherAccountSummaryRows at: 1) = 'Entrada por transferencia de 25.') and: 
+			((anotherAccountSummaryRows at: 2) = 'Balance = 25.')).! !
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 23:19:18' prior: 50478274!
+test01AccountSummaryPrintsAccountTransactionsProperly
+
+	| anAccount anotherAccount anAccountSummaryRows anotherAccountSummaryRows |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	self depositWithdrawAndTransferFrom: anotherAccount to: anAccount.
+	anAccountSummaryRows := (AccountSummary for: anAccount) rows.
+	anotherAccountSummaryRows := (AccountSummary for: anotherAccount) rows.
+	
+	self assert: ((anAccountSummaryRows size = 4) and: 
+			(((anAccountSummaryRows at: 1) = 'Deposito por 100.') and: 
+			((anAccountSummaryRows at: 2) = 'Extraccion por 50.') and: 
+			((anAccountSummaryRows at: 3) = 'Salida por transferencia de 25.') and: 
+			((anAccountSummaryRows at: 4) = 'Balance = 25.'))).
+			
+	self assert: ((anotherAccountSummaryRows size = 2) and: 
+			((anotherAccountSummaryRows at: 1) = 'Entrada por transferencia de 25.') and: 
+			((anotherAccountSummaryRows at: 2) = 'Balance = 25.')).! !
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 23:22:14'!
+verifyFirstFourRowsFrom: anAccountSummaryRows
+
+	^((anAccountSummaryRows at: 1) = 'Deposito por 100.') and: 
+	((anAccountSummaryRows at: 2) = 'Extraccion por 50.') and: 
+	((anAccountSummaryRows at: 3) = 'Salida por transferencia de 25.') and: 
+	((anAccountSummaryRows at: 4) = 'Balance = 25.').! !
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 23:22:30' prior: 50478306!
+test01AccountSummaryPrintsAccountTransactionsProperly
+
+	| anAccount anotherAccount anAccountSummaryRows anotherAccountSummaryRows |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	self depositWithdrawAndTransferFrom: anotherAccount to: anAccount.
+	anAccountSummaryRows := (AccountSummary for: anAccount) rows.
+	anotherAccountSummaryRows := (AccountSummary for: anotherAccount) rows.
+	
+	self assert: ((anAccountSummaryRows size = 4) and: 
+			(self verifyFirstFourRowsFrom)).
+			
+	self assert: ((anotherAccountSummaryRows size = 2) and: 
+			((anotherAccountSummaryRows at: 1) = 'Entrada por transferencia de 25.') and: 
+			((anotherAccountSummaryRows at: 2) = 'Balance = 25.')).! !
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 23:23:05' prior: 50478351!
+test01AccountSummaryPrintsAccountTransactionsProperly
+
+	| anAccount anotherAccount anAccountSummaryRows anotherAccountSummaryRows |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	self depositWithdrawAndTransferFrom: anotherAccount to: anAccount.
+	anAccountSummaryRows := (AccountSummary for: anAccount) rows.
+	anotherAccountSummaryRows := (AccountSummary for: anotherAccount) rows.
+	
+	self assert: ((anAccountSummaryRows size = 4) and: 
+			(self verifyFirstFourRowsFrom: anAccountSummaryRows)).
+			
+	self assert: ((anotherAccountSummaryRows size = 2) and: 
+			((anotherAccountSummaryRows at: 1) = 'Entrada por transferencia de 25.') and: 
+			((anotherAccountSummaryRows at: 2) = 'Balance = 25.')).! !
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 23:23:27' prior: 50478244!
+test02AccountSummaryPrintsPortfolioTransactionsProperly
+
+	| anAccount anotherAccount aPortfolio anotherPortfolio anAccountSummaryRows |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	self depositWithdrawAndTransferFrom: anotherAccount to: anAccount.
+	aPortfolio := Portfolio with: anAccount.
+	anotherPortfolio := Portfolio with: aPortfolio with: anotherAccount.
+	anAccountSummaryRows := (AccountSummary for: anotherPortfolio) rows.
+	
+	self assert: ((anAccountSummaryRows size = 5) and: 
+			(self verifyFirstFourRowsFrom: anAccountSummaryRows) and: 
+			((anAccountSummaryRows at: 5) = 'Balance = 50.')).! !
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 23:19:18' prior: 50478376!
+test01AccountSummaryPrintsAccountTransactionsProperly
+
+	| anAccount anotherAccount anAccountSummaryRows anotherAccountSummaryRows |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	self depositWithdrawAndTransferFrom: anotherAccount to: anAccount.
+	anAccountSummaryRows := (AccountSummary for: anAccount) rows.
+	anotherAccountSummaryRows := (AccountSummary for: anotherAccount) rows.
+	
+	self assert: ((anAccountSummaryRows size = 4) and: 
+			(((anAccountSummaryRows at: 1) = 'Deposito por 100.') and: 
+			((anAccountSummaryRows at: 2) = 'Extraccion por 50.') and: 
+			((anAccountSummaryRows at: 3) = 'Salida por transferencia de 25.') and: 
+			((anAccountSummaryRows at: 4) = 'Balance = 25.'))).
+			
+	self assert: ((anotherAccountSummaryRows size = 2) and: 
+			((anotherAccountSummaryRows at: 1) = 'Entrada por transferencia de 25.') and: 
+			((anotherAccountSummaryRows at: 2) = 'Balance = 25.')).! !
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 23:24:29' prior: 50478425!
+test01AccountSummaryPrintsAccountTransactionsProperly
+
+	| anAccount anotherAccount anAccountSummaryRows anotherAccountSummaryRows |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	self depositWithdrawAndTransferFrom: anotherAccount to: anAccount.
+	anAccountSummaryRows := (AccountSummary for: anAccount) rows.
+	anotherAccountSummaryRows := (AccountSummary for: anotherAccount) rows.
+	
+	self assert: ((anAccountSummaryRows size = 4) and: 
+			(self verifyFirstFourRowsFrom: anAccountSummaryRows) and: 
+			((anAccountSummaryRows at: 4) = 'Balance = 25.')).
+			
+	self assert: ((anotherAccountSummaryRows size = 2) and: 
+			((anotherAccountSummaryRows at: 1) = 'Entrada por transferencia de 25.') and: 
+			((anotherAccountSummaryRows at: 2) = 'Balance = 25.')).! !
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 23:17:56' prior: 50478402!
+test02AccountSummaryPrintsPortfolioTransactionsProperly
+
+	| anAccount anotherAccount aPortfolio anotherPortfolio anAccountSummaryRows |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	self depositWithdrawAndTransferFrom: anotherAccount to: anAccount.
+	aPortfolio := Portfolio with: anAccount.
+	anotherPortfolio := Portfolio with: aPortfolio with: anotherAccount.
+	anAccountSummaryRows := (AccountSummary for: anotherPortfolio) rows.
+	
+	self assert: ((anAccountSummaryRows size = 5) and: 
+			(((anAccountSummaryRows at: 1) = 'Deposito por 100.') and: 
+			((anAccountSummaryRows at: 2) = 'Extraccion por 50.') and: 
+			((anAccountSummaryRows at: 3) = 'Salida por transferencia de 25.') and:
+			((anAccountSummaryRows at: 4) = 'Entrada por transferencia de 25.')) and: 
+			((anAccountSummaryRows at: 5) = 'Balance = 50.')).! !
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 23:24:59' prior: 50478485!
+test02AccountSummaryPrintsPortfolioTransactionsProperly
+
+	| anAccount anotherAccount aPortfolio anotherPortfolio anAccountSummaryRows |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	self depositWithdrawAndTransferFrom: anotherAccount to: anAccount.
+	aPortfolio := Portfolio with: anAccount.
+	anotherPortfolio := Portfolio with: aPortfolio with: anotherAccount.
+	anAccountSummaryRows := (AccountSummary for: anotherPortfolio) rows.
+	
+	self assert: ((anAccountSummaryRows size = 5) and: 
+			((self verifyFirstFourRowsFrom: anAccountSummaryRows)) and:
+			((anAccountSummaryRows at: 4) = 'Entrada por transferencia de 25.') and: 
+			((anAccountSummaryRows at: 5) = 'Balance = 50.')).! !
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 23:25:15'!
+verifyFirstThreeRowsFrom: anAccountSummaryRows
+
+	^((anAccountSummaryRows at: 1) = 'Deposito por 100.') and: 
+	((anAccountSummaryRows at: 2) = 'Extraccion por 50.') and: 
+	((anAccountSummaryRows at: 3) = 'Salida por transferencia de 25.') and: 
+	((anAccountSummaryRows at: 4) = 'Balance = 25.').! !
+!AccountSummaryTest methodsFor: 'as yet unclassified' stamp: 'scb 5/29/2022 23:25:15' prior: 50478457!
+test01AccountSummaryPrintsAccountTransactionsProperly
+
+	| anAccount anotherAccount anAccountSummaryRows anotherAccountSummaryRows |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	self depositWithdrawAndTransferFrom: anotherAccount to: anAccount.
+	anAccountSummaryRows := (AccountSummary for: anAccount) rows.
+	anotherAccountSummaryRows := (AccountSummary for: anotherAccount) rows.
+	
+	self assert: ((anAccountSummaryRows size = 4) and: 
+			(self verifyFirstThreeRowsFrom: anAccountSummaryRows) and: 
+			((anAccountSummaryRows at: 4) = 'Balance = 25.')).
+			
+	self assert: ((anotherAccountSummaryRows size = 2) and: 
+			((anotherAccountSummaryRows at: 1) = 'Entrada por transferencia de 25.') and: 
+			((anotherAccountSummaryRows at: 2) = 'Balance = 25.')).! !
+!AccountSummaryTest methodsFor: 'as yet unclassified' stamp: 'scb 5/29/2022 23:25:15' prior: 50478515!
+test02AccountSummaryPrintsPortfolioTransactionsProperly
+
+	| anAccount anotherAccount aPortfolio anotherPortfolio anAccountSummaryRows |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	self depositWithdrawAndTransferFrom: anotherAccount to: anAccount.
+	aPortfolio := Portfolio with: anAccount.
+	anotherPortfolio := Portfolio with: aPortfolio with: anotherAccount.
+	anAccountSummaryRows := (AccountSummary for: anotherPortfolio) rows.
+	
+	self assert: ((anAccountSummaryRows size = 5) and: 
+			((self verifyFirstThreeRowsFrom: anAccountSummaryRows)) and:
+			((anAccountSummaryRows at: 4) = 'Entrada por transferencia de 25.') and: 
+			((anAccountSummaryRows at: 5) = 'Balance = 50.')).! !
+
+!methodRemoval: AccountSummaryTest #verifyFirstFourRowsFrom: stamp: 'scb 5/29/2022 23:25:15'!
+verifyFirstFourRowsFrom: anAccountSummaryRows
+
+	^((anAccountSummaryRows at: 1) = 'Deposito por 100.') and: 
+	((anAccountSummaryRows at: 2) = 'Extraccion por 50.') and: 
+	((anAccountSummaryRows at: 3) = 'Salida por transferencia de 25.') and: 
+	((anAccountSummaryRows at: 4) = 'Balance = 25.').!
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 23:25:24' prior: 50478540!
+verifyFirstThreeRowsFrom: anAccountSummaryRows
+
+	^((anAccountSummaryRows at: 1) = 'Deposito por 100.') and: 
+	((anAccountSummaryRows at: 2) = 'Extraccion por 50.') and: 
+	((anAccountSummaryRows at: 3) = 'Salida por transferencia de 25.')! !
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 23:28:32'!
+verify: anAccountSummaryRows at: anIndex isBalanceEqualTo: aValue
+
+	^((anAccountSummaryRows at: anIndex) = 'Balance =', aValue asString,'.')! !
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 23:29:11'!
+assertFirstThreeRowsFrom: anAccountSummaryRows
+
+	^((anAccountSummaryRows at: 1) = 'Deposito por 100.') and: 
+	((anAccountSummaryRows at: 2) = 'Extraccion por 50.') and: 
+	((anAccountSummaryRows at: 3) = 'Salida por transferencia de 25.')! !
+!AccountSummaryTest methodsFor: 'as yet unclassified' stamp: 'scb 5/29/2022 23:29:11' prior: 50478553!
+test01AccountSummaryPrintsAccountTransactionsProperly
+
+	| anAccount anotherAccount anAccountSummaryRows anotherAccountSummaryRows |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	self depositWithdrawAndTransferFrom: anotherAccount to: anAccount.
+	anAccountSummaryRows := (AccountSummary for: anAccount) rows.
+	anotherAccountSummaryRows := (AccountSummary for: anotherAccount) rows.
+	
+	self assert: ((anAccountSummaryRows size = 4) and: 
+			(self assertFirstThreeRowsFrom: anAccountSummaryRows) and: 
+			((anAccountSummaryRows at: 4) = 'Balance = 25.')).
+			
+	self assert: ((anotherAccountSummaryRows size = 2) and: 
+			((anotherAccountSummaryRows at: 1) = 'Entrada por transferencia de 25.') and: 
+			((anotherAccountSummaryRows at: 2) = 'Balance = 25.')).! !
+!AccountSummaryTest methodsFor: 'as yet unclassified' stamp: 'scb 5/29/2022 23:29:11' prior: 50478581!
+test02AccountSummaryPrintsPortfolioTransactionsProperly
+
+	| anAccount anotherAccount aPortfolio anotherPortfolio anAccountSummaryRows |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	self depositWithdrawAndTransferFrom: anotherAccount to: anAccount.
+	aPortfolio := Portfolio with: anAccount.
+	anotherPortfolio := Portfolio with: aPortfolio with: anotherAccount.
+	anAccountSummaryRows := (AccountSummary for: anotherPortfolio) rows.
+	
+	self assert: ((anAccountSummaryRows size = 5) and: 
+			((self assertFirstThreeRowsFrom: anAccountSummaryRows)) and:
+			((anAccountSummaryRows at: 4) = 'Entrada por transferencia de 25.') and: 
+			((anAccountSummaryRows at: 5) = 'Balance = 50.')).! !
+
+!methodRemoval: AccountSummaryTest #verifyFirstThreeRowsFrom: stamp: 'scb 5/29/2022 23:29:11'!
+verifyFirstThreeRowsFrom: anAccountSummaryRows
+
+	^((anAccountSummaryRows at: 1) = 'Deposito por 100.') and: 
+	((anAccountSummaryRows at: 2) = 'Extraccion por 50.') and: 
+	((anAccountSummaryRows at: 3) = 'Salida por transferencia de 25.')!
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 23:29:28'!
+assert: anAccountSummaryRows at: anIndex isBalanceEqualTo: aValue
+
+	^((anAccountSummaryRows at: anIndex) = 'Balance =', aValue asString,'.')! !
+
+!methodRemoval: AccountSummaryTest #verify:at:isBalanceEqualTo: stamp: 'scb 5/29/2022 23:29:28'!
+verify: anAccountSummaryRows at: anIndex isBalanceEqualTo: aValue
+
+	^((anAccountSummaryRows at: anIndex) = 'Balance =', aValue asString,'.')!
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 23:30:54' prior: 50478647!
+test01AccountSummaryPrintsAccountTransactionsProperly
+
+	| anAccount anotherAccount anAccountSummaryRows anotherAccountSummaryRows |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	self depositWithdrawAndTransferFrom: anotherAccount to: anAccount.
+	anAccountSummaryRows := (AccountSummary for: anAccount) rows.
+	anotherAccountSummaryRows := (AccountSummary for: anotherAccount) rows.
+	
+	self assert: ((anAccountSummaryRows size = 4) and: 
+			(self assertFirstThreeRowsFrom: anAccountSummaryRows) and: 
+			(self assert: anAccountSummaryRows at: 4 isBalanceEqualTo: 25)).
+			
+	self assert: ((anotherAccountSummaryRows size = 2) and: 
+			((anotherAccountSummaryRows at: 1) = 'Entrada por transferencia de 25.') and: 
+			(self assert: anotherAccountSummaryRows at: 2 isBalanceEqualTo: 25)).! !
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/29/2022 23:31:02'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test02AccountSummaryPrintsPortfolioTransactionsProperly stamp: 'scb 5/29/2022 23:31:02'!
+FAILURE!
+
+!testRun: #TransferNetTest #test01TransferNetIsUnaffectedByDepositsAndWithdraws stamp: 'scb 5/29/2022 23:31:13'!
+PASSED!
+
+!testRun: #TransferNetTest #test02TransferNetIsAffectedByTransfers stamp: 'scb 5/29/2022 23:31:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'scb 5/29/2022 23:31:15'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'scb 5/29/2022 23:31:15'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'scb 5/29/2022 23:31:15'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'scb 5/29/2022 23:31:15'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'scb 5/29/2022 23:31:15'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'scb 5/29/2022 23:31:15'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'scb 5/29/2022 23:31:15'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/29/2022 23:31:20'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test02AccountSummaryPrintsPortfolioTransactionsProperly stamp: 'scb 5/29/2022 23:31:20'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/29/2022 23:31:22'!
+ERROR!
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 23:33:06' prior: 50478726!
+test01AccountSummaryPrintsAccountTransactionsProperly
+
+	| anAccount anotherAccount anAccountSummaryRows anotherAccountSummaryRows |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	self depositWithdrawAndTransferFrom: anAccount to: anotherAccount.
+	anAccountSummaryRows := (AccountSummary for: anAccount) rows.
+	anotherAccountSummaryRows := (AccountSummary for: anotherAccount) rows.
+	
+	self assert: ((anAccountSummaryRows size = 4) and: 
+			(self assertFirstThreeRowsFrom: anAccountSummaryRows) and: 
+			(self assert: anAccountSummaryRows at: 4 isBalanceEqualTo: 25)).
+			
+	self assert: ((anotherAccountSummaryRows size = 2) and: 
+			((anotherAccountSummaryRows at: 1) = 'Entrada por transferencia de 25.') and: 
+			(self assert: anotherAccountSummaryRows at: 2 isBalanceEqualTo: 25)).! !
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 23:33:16' prior: 50478675!
+test02AccountSummaryPrintsPortfolioTransactionsProperly
+
+	| anAccount anotherAccount aPortfolio anotherPortfolio anAccountSummaryRows |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	self depositWithdrawAndTransferFrom: anAccount to: anotherAccount.
+	aPortfolio := Portfolio with: anAccount.
+	anotherPortfolio := Portfolio with: aPortfolio with: anotherAccount.
+	anAccountSummaryRows := (AccountSummary for: anotherPortfolio) rows.
+	
+	self assert: ((anAccountSummaryRows size = 5) and: 
+			((self assertFirstThreeRowsFrom: anAccountSummaryRows)) and:
+			((anAccountSummaryRows at: 4) = 'Entrada por transferencia de 25.') and: 
+			((anAccountSummaryRows at: 5) = 'Balance = 50.')).! !
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/29/2022 23:33:23'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test02AccountSummaryPrintsPortfolioTransactionsProperly stamp: 'scb 5/29/2022 23:33:23'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/29/2022 23:33:23'!
+ERROR!
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 23:33:55' prior: 50478711!
+assert: anAccountSummaryRows at: anIndex isBalanceEqualTo: aValue
+
+	^((anAccountSummaryRows at: anIndex) = 'Balance =', (aValue asString),'.')! !
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/29/2022 23:33:57'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test02AccountSummaryPrintsPortfolioTransactionsProperly stamp: 'scb 5/29/2022 23:33:57'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/29/2022 23:33:57'!
+ERROR!
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 23:34:34' prior: 50478876!
+assert: anAccountSummaryRows at: anIndex isBalanceEqualTo: aValue
+
+	^((anAccountSummaryRows at: anIndex) = ('Balance =', aValue asString,'.'))! !
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/29/2022 23:34:35'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test02AccountSummaryPrintsPortfolioTransactionsProperly stamp: 'scb 5/29/2022 23:34:35'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/29/2022 23:34:35'!
+FAILURE!
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 23:36:21' prior: 50478896!
+assert: anAccountSummaryRows at: anIndex isBalanceEqualTo: aValue
+
+	^((anAccountSummaryRows at: anIndex) = ('Balance = ', aValue asString,'.'))! !
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/29/2022 23:36:22'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02AccountSummaryPrintsPortfolioTransactionsProperly stamp: 'scb 5/29/2022 23:36:22'!
+PASSED!
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 23:36:56' prior: 50478838!
+test02AccountSummaryPrintsPortfolioTransactionsProperly
+
+	| anAccount anotherAccount aPortfolio anotherPortfolio anAccountSummaryRows |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	self depositWithdrawAndTransferFrom: anAccount to: anotherAccount.
+	aPortfolio := Portfolio with: anAccount.
+	anotherPortfolio := Portfolio with: aPortfolio with: anotherAccount.
+	anAccountSummaryRows := (AccountSummary for: anotherPortfolio) rows.
+	
+	self assert: ((anAccountSummaryRows size = 5) and: 
+			((self assertFirstThreeRowsFrom: anAccountSummaryRows)) and:
+			((anAccountSummaryRows at: 4) = 'Entrada por transferencia de 25.') and: 
+			(self assert: anAccountSummaryRows at: 5 isBalanceEqualTo: 50)).! !
+
+!testRun: #AccountSummaryTest #test02AccountSummaryPrintsPortfolioTransactionsProperly stamp: 'scb 5/29/2022 23:37:07'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/29/2022 23:37:07'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02AccountSummaryPrintsPortfolioTransactionsProperly stamp: 'scb 5/29/2022 23:37:07'!
+PASSED!
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 23:38:42'!
+assertRowTransferDepositFrom: anAccountSummaryRows at: anIndex
+
+	^((anAccountSummaryRows at: anIndex) = 'Entrada por transferencia de 25.')! !
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 23:39:36' prior: 50478809!
+test01AccountSummaryPrintsAccountTransactionsProperly
+
+	| anAccount anotherAccount anAccountSummaryRows anotherAccountSummaryRows |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	self depositWithdrawAndTransferFrom: anAccount to: anotherAccount.
+	anAccountSummaryRows := (AccountSummary for: anAccount) rows.
+	anotherAccountSummaryRows := (AccountSummary for: anotherAccount) rows.
+	
+	self assert: ((anAccountSummaryRows size = 4) and: 
+			(self assertFirstThreeRowsFrom: anAccountSummaryRows) and: 
+			(self assert: anAccountSummaryRows at: 4 isBalanceEqualTo: 25)).
+			
+	self assert: ((anotherAccountSummaryRows size = 2) and: 
+			(self assertRowTransferDepositFrom: anAccountSummaryRows at: 1) and: 
+			(self assert: anotherAccountSummaryRows at: 2 isBalanceEqualTo: 25)).! !
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 23:39:51' prior: 50478932!
+test02AccountSummaryPrintsPortfolioTransactionsProperly
+
+	| anAccount anotherAccount aPortfolio anotherPortfolio anAccountSummaryRows |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	self depositWithdrawAndTransferFrom: anAccount to: anotherAccount.
+	aPortfolio := Portfolio with: anAccount.
+	anotherPortfolio := Portfolio with: aPortfolio with: anotherAccount.
+	anAccountSummaryRows := (AccountSummary for: anotherPortfolio) rows.
+	
+	self assert: ((anAccountSummaryRows size = 5) and: 
+			((self assertFirstThreeRowsFrom: anAccountSummaryRows)) and:
+			(self assertRowTransferDepositFrom: anAccountSummaryRows at: 4) and: 
+			(self assert: anAccountSummaryRows at: 5 isBalanceEqualTo: 50)).! !
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 23:40:01' prior: 50478978!
+test01AccountSummaryPrintsAccountTransactionsProperly
+
+	| anAccount anotherAccount anAccountSummaryRows anotherAccountSummaryRows |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	self depositWithdrawAndTransferFrom: anAccount to: anotherAccount.
+	anAccountSummaryRows := (AccountSummary for: anAccount) rows.
+	anotherAccountSummaryRows := (AccountSummary for: anotherAccount) rows.
+	
+	self assert: ((anAccountSummaryRows size = 4) and: 
+			(self assertFirstThreeRowsFrom: anAccountSummaryRows) and: 
+			(self assert: anAccountSummaryRows at: 4 isBalanceEqualTo: 25)).
+			
+	self assert: ((anotherAccountSummaryRows size = 2) and: 
+			(self assertRowTransferDepositFrom: anotherAccountSummaryRows at: 1) and: 
+			(self assert: anotherAccountSummaryRows at: 2 isBalanceEqualTo: 25)).! !
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/29/2022 23:40:02'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/29/2022 23:40:02'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02AccountSummaryPrintsPortfolioTransactionsProperly stamp: 'scb 5/29/2022 23:40:02'!
+PASSED!
+!AccountSummaryTest methodsFor: 'assertions' stamp: 'scb 5/29/2022 23:41:43'!
+assertBalanceEqualTo25In: anAccountSummaryRows at: anIndex
+
+	^ self assert: anAccountSummaryRows at: anIndex isBalanceEqualTo: 25! !
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/29/2022 23:42:16' prior: 50479033!
+test01AccountSummaryPrintsAccountTransactionsProperly
+
+	| anAccount anotherAccount anAccountSummaryRows anotherAccountSummaryRows |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	self depositWithdrawAndTransferFrom: anAccount to: anotherAccount.
+	anAccountSummaryRows := (AccountSummary for: anAccount) rows.
+	anotherAccountSummaryRows := (AccountSummary for: anotherAccount) rows.
+	
+	self assert: ((anAccountSummaryRows size = 4) and: 
+			(self assertFirstThreeRowsFrom: anAccountSummaryRows) and: 
+			(self assertBalanceEqualTo25In: anAccountSummaryRows at: 4)).
+			
+	self assert: ((anotherAccountSummaryRows size = 2) and: 
+			(self assertRowTransferDepositFrom: anotherAccountSummaryRows at: 1) and: 
+			(self assertBalanceEqualTo25In: anAccountSummaryRows at: 2)).! !
+
+!classDefinition: #Report category: 'Portfolio-Solucion' stamp: 'scb 5/29/2022 23:46:04'!
+Object subclass: #Report
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #AccountSummary category: 'Portfolio-Solucion' stamp: 'scb 5/29/2022 23:46:04'!
+Report subclass: #AccountSummary
+	instanceVariableNames: 'account rows'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+Report subclass: #TransferNet
+	instanceVariableNames: 'value account'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferNet category: 'Portfolio-Solucion' stamp: 'scb 5/29/2022 23:46:13'!
+Report subclass: #TransferNet
+	instanceVariableNames: 'value account'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+Report subclass: #TransferNet
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferNet category: 'Portfolio-Solucion' stamp: 'scb 5/29/2022 23:47:01'!
+Report subclass: #TransferNet
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+Report subclass: #AccountSummary
+	instanceVariableNames: 'rows'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #AccountSummary category: 'Portfolio-Solucion' stamp: 'scb 5/29/2022 23:47:07'!
+Report subclass: #AccountSummary
+	instanceVariableNames: 'rows'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+Object subclass: #Report
+	instanceVariableNames: 'account'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #Report category: 'Portfolio-Solucion' stamp: 'scb 5/29/2022 23:47:12'!
+Object subclass: #Report
+	instanceVariableNames: 'account'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!Report methodsFor: 'initialization' stamp: 'scb 5/29/2022 23:47:48'!
+initializeFor: anAccount
+
+	account := anAccount! !
+
+!methodRemoval: AccountSummary #initializeFor: stamp: 'scb 5/29/2022 23:47:48'!
+initializeFor: anAccount
+
+	account := anAccount!
+
+!methodRemoval: TransferNet #initializeFor: stamp: 'scb 5/29/2022 23:47:55'!
+initializeFor: anAccount
+	
+	account := anAccount!
+!Report methodsFor: 'recording' stamp: 'scb 5/29/2022 23:49:24'!
+recordDeposit: aDeposit
+
+	self subclassResponsibility ! !
+!Report methodsFor: 'recording' stamp: 'scb 5/29/2022 23:49:37'!
+recordWithdraw: aWithdraw
+
+	self subclassResponsibility ! !
+!Report methodsFor: 'recording' stamp: 'scb 5/29/2022 23:49:50'!
+recordTransferWithdraw: aTransferWithdraw
+
+	self subclassResponsibility ! !
+!Report methodsFor: 'recording' stamp: 'scb 5/29/2022 23:49:56' prior: 50479182!
+recordDeposit: aTransferDeposit
+
+	self subclassResponsibility ! !
+!Report methodsFor: 'recording' stamp: 'scb 5/29/2022 23:50:01'!
+recordTransferDeposit: aTransferDeposit
+
+	self subclassResponsibility ! !
+!Report methodsFor: 'recording' stamp: 'scb 5/29/2022 23:50:06' prior: 50479195!
+recordDeposit: aDeposit
+
+	self subclassResponsibility ! !
+!TransferNetTest methodsFor: 'test' stamp: 'scb 5/29/2022 23:51:32'!
+assertZeroEqualsValueOf: aPortfolio
+
+	^ (TransferNet for: aPortfolio) value = 0! !
+!TransferNetTest methodsFor: 'test' stamp: 'scb 5/29/2022 23:51:32' prior: 50477618!
+test02TransferNetIsAffectedByTransfers
+
+	| anAccount anotherAccount aPortfolio |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	aPortfolio := Portfolio with: anAccount with: anotherAccount.
+	Transfer from: anAccount to: anotherAccount anAmmountOf: 100.
+	
+	self assert: (((TransferNet for: anAccount) value = -100) and: 
+			((TransferNet for: anotherAccount) value = 100) and: 
+			((self assertZeroEqualsValueOf: aPortfolio)))! !
+!TransferNetTest methodsFor: 'test' stamp: 'scb 5/29/2022 23:51:59' prior: 50477559!
+test01TransferNetIsUnaffectedByDepositsAndWithdraws
+
+	| anAccount |
+	
+	anAccount := ReceptiveAccount new.
+	Deposit register: 100 on: anAccount.
+	Withdraw register: 50 on: anAccount.
+	
+	self assertZeroEqualsValueOf: anAccount! !
+
+!testRun: #TransferNetTest #test01TransferNetIsUnaffectedByDepositsAndWithdraws stamp: 'scb 5/29/2022 23:52:01'!
+PASSED!
+
+!testRun: #TransferNetTest #test01TransferNetIsUnaffectedByDepositsAndWithdraws stamp: 'scb 5/29/2022 23:52:01'!
+PASSED!
+
+!testRun: #TransferNetTest #test02TransferNetIsAffectedByTransfers stamp: 'scb 5/29/2022 23:52:01'!
+PASSED!
+!TransferNetTest methodsFor: 'test' stamp: 'scb 5/29/2022 23:53:01'!
+assertTransferNetValueOf: anAccount equals: aValue
+
+	^ (TransferNet for: anAccount) value = -100! !
+!TransferNetTest methodsFor: 'test' stamp: 'scb 5/29/2022 23:53:18'!
+assertZeroEqualsTransferNetValueOf: aPortfolio
+
+	^ (TransferNet for: aPortfolio) value = 0! !
+!TransferNetTest methodsFor: 'as yet unclassified' stamp: 'scb 5/29/2022 23:53:18' prior: 50479233!
+test01TransferNetIsUnaffectedByDepositsAndWithdraws
+
+	| anAccount |
+	
+	anAccount := ReceptiveAccount new.
+	Deposit register: 100 on: anAccount.
+	Withdraw register: 50 on: anAccount.
+	
+	self assertZeroEqualsTransferNetValueOf: anAccount! !
+!TransferNetTest methodsFor: 'as yet unclassified' stamp: 'scb 5/29/2022 23:53:18' prior: 50479215!
+test02TransferNetIsAffectedByTransfers
+
+	| anAccount anotherAccount aPortfolio |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	aPortfolio := Portfolio with: anAccount with: anotherAccount.
+	Transfer from: anAccount to: anotherAccount anAmmountOf: 100.
+	
+	self assert: (((TransferNet for: anAccount) value = -100) and: 
+			((TransferNet for: anotherAccount) value = 100) and: 
+			((self assertZeroEqualsTransferNetValueOf: aPortfolio)))! !
+
+!methodRemoval: TransferNetTest #assertZeroEqualsValueOf: stamp: 'scb 5/29/2022 23:53:18'!
+assertZeroEqualsValueOf: aPortfolio
+
+	^ (TransferNet for: aPortfolio) value = 0!
+!TransferNetTest methodsFor: 'test' stamp: 'scb 5/29/2022 23:53:26' prior: 50479254!
+assertTransferNetValueOf: anAccount equals: aValue
+
+	^ (TransferNet for: anAccount) value = aValue! !
+!TransferNetTest methodsFor: 'test' stamp: 'scb 5/29/2022 23:53:53' prior: 50479260!
+assertZeroEqualsTransferNetValueOf: aPortfolio
+
+	^ self assertTransferNetValueOf: aPortfolio equals: 0! !
+!TransferNetTest methodsFor: 'test' stamp: 'scb 5/29/2022 23:54:37' prior: 50479278!
+test02TransferNetIsAffectedByTransfers
+
+	| anAccount anotherAccount aPortfolio |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	aPortfolio := Portfolio with: anAccount with: anotherAccount.
+	Transfer from: anAccount to: anotherAccount anAmmountOf: 100.
+	
+	self assert: ((self assertTransferNetValueOf: anAccount equals: -100) and: 
+			(self assertTransferNetValueOf: anotherAccount equals: 100) and: 
+			((self assertZeroEqualsTransferNetValueOf: aPortfolio)))! !
+!AccountSummaryTest methodsFor: 'constant strings' stamp: 'scb 5/29/2022 23:56:28'!
+depositoPor100
+	
+	^ 'Deposito por 100.'! !
+!AccountSummaryTest methodsFor: 'assertions' stamp: 'scb 5/29/2022 23:56:44' prior: 50478636!
+assertFirstThreeRowsFrom: anAccountSummaryRows
+
+	^((anAccountSummaryRows at: 1) = self depositoPor100) and: 
+	((anAccountSummaryRows at: 2) = 'Extraccion por 50.') and: 
+	((anAccountSummaryRows at: 3) = 'Salida por transferencia de 25.')! !
+!AccountSummaryTest methodsFor: 'constant strings' stamp: 'scb 5/29/2022 23:57:39'!
+entradaPorTransferenciaDe25
+	
+	^ 'Entrada por transferencia de 25.'! !
+!AccountSummaryTest methodsFor: 'assertions' stamp: 'scb 5/29/2022 23:58:04' prior: 50478970!
+assertRowTransferDepositFrom: anAccountSummaryRows at: anIndex
+
+	^((anAccountSummaryRows at: anIndex) = self entradaPorTransferenciaDe25 )! !
+!AccountSummaryTest methodsFor: 'assertions' stamp: 'scb 5/29/2022 23:58:26'!
+extraccionPor50
+
+	^ 'Extraccion por 50.'! !
+!AccountSummaryTest methodsFor: 'assertions' stamp: 'scb 5/29/2022 23:58:26' prior: 50479337!
+assertFirstThreeRowsFrom: anAccountSummaryRows
+
+	^((anAccountSummaryRows at: 1) = self depositoPor100) and: 
+	((anAccountSummaryRows at: 2) = self extraccionPor50) and: 
+	((anAccountSummaryRows at: 3) = 'Salida por transferencia de 25.')! !
+!AccountSummaryTest methodsFor: 'assertions' stamp: 'scb 5/29/2022 23:58:50'!
+salidaPorTransferenciaDe25
+
+	^ 'Salida por transferencia de 25.'! !
+!AccountSummaryTest methodsFor: 'assertions' stamp: 'scb 5/29/2022 23:58:50' prior: 50479366!
+assertFirstThreeRowsFrom: anAccountSummaryRows
+
+	^((anAccountSummaryRows at: 1) = self depositoPor100) and: 
+	((anAccountSummaryRows at: 2) = self extraccionPor50) and: 
+	((anAccountSummaryRows at: 3) = self salidaPorTransferenciaDe25)! !
+!AccountSummaryTest methodsFor: 'assertions' stamp: 'scb 5/29/2022 23:59:58'!
+assert: anAccountSummaryRows at: anIndex isEqualTo: aString
+
+	^ (anAccountSummaryRows at: anIndex) = aString! !
+!AccountSummaryTest methodsFor: 'assertions' stamp: 'scb 5/30/2022 00:00:52' prior: 50478916!
+assert: anAccountSummaryRows at: anIndex isBalanceEqualTo: aValue
+
+	^self assert: anAccountSummaryRows at: anIndex isEqualTo: ('Balance = ', aValue asString,'.')! !
+!AccountSummaryTest methodsFor: 'assertions' stamp: 'scb 5/30/2022 00:02:55' prior: 50479382!
+assertFirstThreeRowsFrom: anAccountSummaryRows
+
+	^(self assert: anAccountSummaryRows at: 1 isEqualTo: self depositoPor100) and: 
+	(self assert: anAccountSummaryRows at: 2 isEqualTo: self extraccionPor50 ) and: 
+	(self assert: anAccountSummaryRows at: 3 isEqualTo: self salidaPorTransferenciaDe25 )! !
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/30/2022 00:04:01' prior: 50479007!
+test02AccountSummaryPrintsPortfolioTransactionsProperly
+
+	| anAccount anotherAccount aPortfolio anotherPortfolio anAccountSummaryRows |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	aPortfolio := Portfolio with: anAccount.
+	anotherPortfolio := Portfolio with: aPortfolio with: anotherAccount.
+	self depositWithdrawAndTransferFrom: anAccount to: anotherAccount.
+	anAccountSummaryRows := (AccountSummary for: anotherPortfolio) rows.
+	
+	self assert: ((anAccountSummaryRows size = 5) and: 
+			((self assertFirstThreeRowsFrom: anAccountSummaryRows)) and:
+			(self assertRowTransferDepositFrom: anAccountSummaryRows at: 4) and: 
+			(self assert: anAccountSummaryRows at: 5 isBalanceEqualTo: 50)).! !
+
+!testRun: #AccountSummaryTest #test02AccountSummaryPrintsPortfolioTransactionsProperly stamp: 'scb 5/30/2022 00:04:03'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/30/2022 00:04:03'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test02AccountSummaryPrintsPortfolioTransactionsProperly stamp: 'scb 5/30/2022 00:04:03'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/30/2022 00:04:03'!
+FAILURE!
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/30/2022 00:04:10' prior: 50479421!
+test02AccountSummaryPrintsPortfolioTransactionsProperly
+
+	| anAccount anotherAccount aPortfolio anotherPortfolio anAccountSummaryRows |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	self depositWithdrawAndTransferFrom: anAccount to: anotherAccount.
+	aPortfolio := Portfolio with: anAccount.
+	anotherPortfolio := Portfolio with: aPortfolio with: anotherAccount.
+	anAccountSummaryRows := (AccountSummary for: anotherPortfolio) rows.
+	
+	self assert: ((anAccountSummaryRows size = 5) and: 
+			((self assertFirstThreeRowsFrom: anAccountSummaryRows)) and:
+			(self assertRowTransferDepositFrom: anAccountSummaryRows at: 4) and: 
+			(self assert: anAccountSummaryRows at: 5 isBalanceEqualTo: 50)).! !
+
+!testRun: #AccountSummaryTest #test02AccountSummaryPrintsPortfolioTransactionsProperly stamp: 'scb 5/30/2022 00:04:11'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/30/2022 00:04:11'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test02AccountSummaryPrintsPortfolioTransactionsProperly stamp: 'scb 5/30/2022 00:04:11'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/30/2022 00:04:11'!
+FAILURE!
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/30/2022 00:04:25' prior: 50479463!
+test02AccountSummaryPrintsPortfolioTransactionsProperly
+
+	| anAccount anotherAccount aPortfolio anotherPortfolio anAccountSummaryRows |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	aPortfolio := Portfolio with: anAccount.
+	anotherPortfolio := Portfolio with: aPortfolio with: anotherAccount.
+	self depositWithdrawAndTransferFrom: anAccount to: anotherAccount.
+	anAccountSummaryRows := (AccountSummary for: anotherPortfolio) rows.
+	
+	self assert: ((anAccountSummaryRows size = 5) and: 
+			((self assertFirstThreeRowsFrom: anAccountSummaryRows)) and:
+			(self assertRowTransferDepositFrom: anAccountSummaryRows at: 4) and: 
+			(self assert: anAccountSummaryRows at: 5 isBalanceEqualTo: 50)).! !
+
+!testRun: #AccountSummaryTest #test02AccountSummaryPrintsPortfolioTransactionsProperly stamp: 'scb 5/30/2022 00:04:26'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/30/2022 00:04:26'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test02AccountSummaryPrintsPortfolioTransactionsProperly stamp: 'scb 5/30/2022 00:04:26'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/30/2022 00:04:26'!
+FAILURE!
+!AccountSummaryTest methodsFor: 'assertions' stamp: 'scb 5/30/2022 00:04:52' prior: 50479408!
+assertFirstThreeRowsFrom: anAccountSummaryRows
+
+	^(self assert: anAccountSummaryRows at: 1 isEqualTo: self depositoPor100) and: 
+	(self assert: anAccountSummaryRows at: 2 isEqualTo: self extraccionPor50) and: 
+	(self assert: anAccountSummaryRows at: 3 isEqualTo: self salidaPorTransferenciaDe25)! !
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/30/2022 00:05:15'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test02AccountSummaryPrintsPortfolioTransactionsProperly stamp: 'scb 5/30/2022 00:05:15'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/30/2022 00:05:15'!
+FAILURE!
+!AccountSummaryTest methodsFor: 'test' stamp: 'scb 5/30/2022 00:07:26' prior: 50479080!
+test01AccountSummaryPrintsAccountTransactionsProperly
+
+	| anAccount anotherAccount anAccountSummaryRows anotherAccountSummaryRows |
+	
+	anAccount := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	self depositWithdrawAndTransferFrom: anAccount to: anotherAccount.
+	anAccountSummaryRows := (AccountSummary for: anAccount) rows.
+	anotherAccountSummaryRows := (AccountSummary for: anotherAccount) rows.
+	
+	self assert: ((anAccountSummaryRows size = 4) and: 
+			(self assertFirstThreeRowsFrom: anAccountSummaryRows) and: 
+			(self assertBalanceEqualTo25In: anAccountSummaryRows at: 4)).
+			
+	self assert: ((anotherAccountSummaryRows size = 2) and: 
+			(self assertRowTransferDepositFrom: anotherAccountSummaryRows at: 1) and: 
+			(self assertBalanceEqualTo25In: anotherAccountSummaryRows at: 2)).! !
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/30/2022 00:07:28'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/30/2022 00:07:28'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02AccountSummaryPrintsPortfolioTransactionsProperly stamp: 'scb 5/30/2022 00:07:28'!
+PASSED!
+
+TestCase subclass: #Tests
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #Tests category: 'Portfolio-Solucion' stamp: 'scb 5/30/2022 00:08:19'!
+TestCase subclass: #Tests
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRenamed: #Tests as: #Test stamp: 'scb 5/30/2022 00:08:33'!
+Smalltalk renameClassNamed: #Tests as: #Test!
+
+Test subclass: #TransferNetTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferNetTest category: 'Portfolio-Solucion' stamp: 'scb 5/30/2022 00:08:38'!
+Test subclass: #TransferNetTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+Test subclass: #TransferTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferTest category: 'Portfolio-Solucion' stamp: 'scb 5/30/2022 00:08:41'!
+Test subclass: #TransferTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+Test subclass: #AccountSummaryTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #AccountSummaryTest category: 'Portfolio-Solucion' stamp: 'scb 5/30/2022 00:08:47'!
+Test subclass: #AccountSummaryTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+Test subclass: #PortfolioTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #PortfolioTest category: 'Portfolio-Solucion' stamp: 'scb 5/30/2022 00:08:52'!
+Test subclass: #PortfolioTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+Test subclass: #ReceptiveAccountTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #ReceptiveAccountTest category: 'Portfolio-Solucion' stamp: 'scb 5/30/2022 00:08:59'!
+Test subclass: #ReceptiveAccountTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!testRun: #AccountSummaryTest #test01AccountSummaryPrintsAccountTransactionsProperly stamp: 'scb 5/30/2022 00:09:09'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02AccountSummaryPrintsPortfolioTransactionsProperly stamp: 'scb 5/30/2022 00:09:09'!
+PASSED!
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'scb 5/30/2022 00:09:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'scb 5/30/2022 00:09:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'scb 5/30/2022 00:09:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'scb 5/30/2022 00:09:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'scb 5/30/2022 00:09:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'scb 5/30/2022 00:09:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'scb 5/30/2022 00:09:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'scb 5/30/2022 00:09:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'scb 5/30/2022 00:09:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'scb 5/30/2022 00:09:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'scb 5/30/2022 00:09:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'scb 5/30/2022 00:09:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'scb 5/30/2022 00:09:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'scb 5/30/2022 00:09:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'scb 5/30/2022 00:09:11'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'scb 5/30/2022 00:09:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'scb 5/30/2022 00:09:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'scb 5/30/2022 00:09:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'scb 5/30/2022 00:09:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'scb 5/30/2022 00:09:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'scb 5/30/2022 00:09:13'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'scb 5/30/2022 00:09:13'!
+PASSED!
+
+!testRun: #TransferNetTest #test01TransferNetIsUnaffectedByDepositsAndWithdraws stamp: 'scb 5/30/2022 00:09:14'!
+PASSED!
+
+!testRun: #TransferNetTest #test02TransferNetIsAffectedByTransfers stamp: 'scb 5/30/2022 00:09:14'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferWithdrawsFromSenderAndDepositToRecipient stamp: 'scb 5/30/2022 00:09:15'!
+PASSED!
+
+!testRun: #TransferTest #test02TransferIsRegisteredInSenderAndReceiver stamp: 'scb 5/30/2022 00:09:15'!
+PASSED!
+
+!testRun: #TransferTest #test03TransferKnowsItsValue stamp: 'scb 5/30/2022 00:09:15'!
+PASSED!
+
+!testRun: #TransferTest #test04TransferLegsKnowTransfer stamp: 'scb 5/30/2022 00:09:15'!
+PASSED!
+
+----SNAPSHOT----(30 May 2022 00:09:38) CuisUniversity-5096.image priorSource: 4674911!
