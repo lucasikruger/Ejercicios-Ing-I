@@ -1,0 +1,2486 @@
+
+
+----STARTUP---- (5 June 2022 15:23:39) as /Users/sebascantini/Downloads/macos64/CuisUniversity-5096.image!
+
+
+Object subclass: #Cart
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #Cart category: 'TusLibros' stamp: 'scb 6/5/2022 15:24:15'!
+Object subclass: #Cart
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+TestCase subclass: #CartTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #CartTest category: 'TusLibros' stamp: 'scb 6/5/2022 15:24:45'!
+TestCase subclass: #CartTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 15:32:45'!
+test01FirstCartIDIs1
+
+	self assert: 1 equals: (Cart withClientID: 7 withPassword: 'password')! !
+
+!testRun: #CartTest #test01FirstCartIDIs1 stamp: 'scb 6/5/2022 15:32:48'!
+ERROR!
+!Cart class methodsFor: 'instance creation' stamp: 'scb 6/5/2022 15:33:00'!
+withClientID: aSmallInteger withPassword: aString 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeWithClientID: aSmallInteger withPassword: aString ! !
+!Cart class methodsFor: 'instance creation' stamp: 'scb 6/5/2022 15:33:20' prior: 50490525!
+withClientID: aSmallInteger withPassword: aString 
+
+	^self new initializeWithClientID: aSmallInteger withPassword: aString ! !
+
+!testRun: #CartTest #test01FirstCartIDIs1 stamp: 'scb 6/5/2022 15:33:22'!
+ERROR!
+
+!testRun: #CartTest #test01FirstCartIDIs1 stamp: 'scb 6/5/2022 15:33:22'!
+ERROR!
+
+!classDefinition: #Cart category: 'TusLibros' stamp: 'scb 6/5/2022 15:33:39'!
+Object subclass: #Cart
+	instanceVariableNames: 'smallInteger'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #Cart category: 'TusLibros' stamp: 'scb 6/5/2022 15:33:40'!
+Object subclass: #Cart
+	instanceVariableNames: 'smallInteger string'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!Cart methodsFor: 'initialization' stamp: 'scb 6/5/2022 15:33:40'!
+initializeWithClientID: aSmallInteger withPassword: aString 
+	self shouldBeImplemented.
+	smallInteger := aSmallInteger.
+	string := aString.! !
+!Cart methodsFor: 'initialization' stamp: 'scb 6/5/2022 15:34:13' prior: 50490560!
+initializeWithClientID: aClientID withPassword: aPassword
+
+	^ 1! !
+!Cart class methodsFor: 'instance creation' stamp: 'scb 6/5/2022 15:34:30' prior: 50490535!
+withClientID: aClientID withPassword: aString 
+
+	^self new initializeWithClientID: aClientID withPassword: aString ! !
+!Cart class methodsFor: 'instance creation' stamp: 'scb 6/5/2022 15:34:36' prior: 50490573!
+withClientID: aClientID withPassword: aPassword 
+
+	^self new initializeWithClientID: aClientID withPassword: aPassword ! !
+
+!testRun: #CartTest #test01FirstCartIDIs1 stamp: 'scb 6/5/2022 15:34:42'!
+PASSED!
+
+!classDefinition: #CartManager category: 'TusLibros' stamp: 'scb 6/5/2022 15:49:30'!
+Object subclass: #CartManager
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 15:49:27'!
+test02TwoCartDontHaveSameID
+
+	| cart1ID cart2ID |
+	
+	cart1ID := CartManager createCartFor: 7 andPassword: 'Password'.
+	cart2ID := CartManager createCartFor: 8 andPassword: 'Password'.
+
+	self assert: 1 equals: cart1ID.
+	self assert: 2 equals: cart2ID.! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 15:49:48' prior: 50490517!
+test01FirstCartIDIs1
+
+	self assert: 1 equals: (CartManager createCartFor: 7 andPassword: 'Password')! !
+
+Object subclass: #Cart
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #Cart category: 'TusLibros' stamp: 'scb 6/5/2022 15:50:00'!
+Object subclass: #Cart
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!methodRemoval: Cart #initializeWithClientID:withPassword: stamp: 'scb 6/5/2022 15:50:03'!
+initializeWithClientID: aClientID withPassword: aPassword
+
+	^ 1!
+
+!classRemoval: #Cart stamp: 'scb 6/5/2022 15:50:06'!
+Object subclass: #Cart
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classRenamed: #CartTest as: #CartManagerTest stamp: 'scb 6/5/2022 15:50:14'!
+Smalltalk renameClassNamed: #CartTest as: #CartManagerTest!
+
+!testRun: #CartManagerTest #test02TwoCartDontHaveSameID stamp: 'scb 6/5/2022 15:50:22'!
+ERROR!
+!CartManager class methodsFor: 'as yet unclassified' stamp: 'scb 6/5/2022 15:50:30'!
+createCartFor: aSmallInteger andPassword: aString 
+	self shouldBeImplemented.! !
+!CartManagerTest methodsFor: 'test' stamp: 'scb 6/5/2022 15:51:28' prior: 50490595!
+test02TwoCartDontHaveSameID
+
+	| cartManager cart1ID cart2ID |
+	
+	cartManager := CartManager new.
+	cart1ID := cartManager createCartFor: 7 andPassword: 'Password'.
+	cart2ID := cartManager createCartFor: 8 andPassword: 'Password'.
+
+	self assert: 1 equals: cart1ID.
+	self assert: 2 equals: cart2ID.! !
+!CartManagerTest methodsFor: 'test' stamp: 'scb 6/5/2022 15:51:39' prior: 50490606!
+test01FirstCartIDIs1
+
+	
+
+	self assert: 1 equals: (CartManager new createCartFor: 7 andPassword: 'Password')! !
+
+!testRun: #CartManagerTest #test02TwoCartDontHaveSameID stamp: 'scb 6/5/2022 15:51:49'!
+ERROR!
+!CartManager methodsFor: 'as yet unclassified' stamp: 'scb 6/5/2022 15:51:58'!
+createCartFor: aSmallInteger andPassword: aString 
+	self shouldBeImplemented.! !
+!CartManager methodsFor: 'as yet unclassified' stamp: 'scb 6/5/2022 15:52:15' prior: 50490667!
+createCartFor: aClientID andPassword: aPassword 
+	
+	^ 1! !
+
+!testRun: #CartManagerTest #test01FirstCartIDIs1 stamp: 'scb 6/5/2022 15:52:20'!
+PASSED!
+
+!testRun: #CartManagerTest #test02TwoCartDontHaveSameID stamp: 'scb 6/5/2022 15:52:20'!
+FAILURE!
+
+!testRun: #CartManagerTest #test02TwoCartDontHaveSameID stamp: 'scb 6/5/2022 15:52:20'!
+FAILURE!
+
+Object subclass: #CartManager
+	instanceVariableNames: ' nextCardID'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #CartManager category: 'TusLibros' stamp: 'scb 6/5/2022 15:52:44'!
+Object subclass: #CartManager
+	instanceVariableNames: 'nextCardID'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!CartManager methodsFor: 'as yet unclassified' stamp: 'scb 6/5/2022 15:53:39' prior: 50490673!
+createCartFor: aClientID andPassword: aPassword 
+	
+	| currentCartID |
+	
+	nextCardID := nextCardID + 1.
+	^ currentCartID.! !
+!CartManager methodsFor: 'as yet unclassified' stamp: 'scb 6/5/2022 15:53:59' prior: 50490699!
+createCartFor: aClientID andPassword: aPassword 
+	
+	| currentCartID |
+	
+	currentCartID := nextCardID.
+	nextCardID := nextCardID + 1.
+	^ currentCartID.! !
+!CartManager methodsFor: 'as yet unclassified' stamp: 'scb 6/5/2022 15:54:11' overrides: 16920235!
+initialize
+
+	nextCardID := 1! !
+
+!testRun: #CartManagerTest #test01FirstCartIDIs1 stamp: 'scb 6/5/2022 15:54:13'!
+PASSED!
+
+!testRun: #CartManagerTest #test02TwoCartDontHaveSameID stamp: 'scb 6/5/2022 15:54:13'!
+PASSED!
+
+----STARTUP---- (5 June 2022 15:57:46) as /Users/sebascantini/Downloads/macos64/CuisUniversity-5096.image!
+
+
+TestCase subclass: #CartTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #CartTest category: 'TusLibros' stamp: 'scb 6/5/2022 15:59:56'!
+TestCase subclass: #CartTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #Cart category: 'TusLibros' stamp: 'scb 6/5/2022 16:03:35'!
+Object subclass: #Cart
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 16:03:32'!
+test01NewCartIsEmpty
+
+	self assert: Cart new isEmpty! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/5/2022 16:03:36'!
+ERROR!
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/5/2022 16:03:47'!
+ERROR!
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/5/2022 16:03:47'!
+ERROR!
+!Cart methodsFor: 'testing' stamp: 'scb 6/5/2022 16:03:54'!
+isEmpty
+	self shouldBeImplemented.! !
+!Cart methodsFor: 'testing' stamp: 'scb 6/5/2022 16:04:07' prior: 50490525!
+isEmpty
+	
+	^ true! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/5/2022 16:04:09'!
+PASSED!
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/5/2022 16:04:09'!
+PASSED!
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 16:09:03'!
+test02XXX
+
+	| aCart |
+	
+	aCart := Cart new.
+	
+	aCart add: 9783161484100.
+
+	self assert: Cart new isEmpty negated! !
+
+!testRun: #CartTest #test02XXX stamp: 'scb 6/5/2022 16:09:04'!
+ERROR!
+!Cart methodsFor: 'adding' stamp: 'scb 6/5/2022 16:09:13'!
+add: aSmallInteger 
+	self shouldBeImplemented.! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 16:10:01' prior: 50490537!
+test02XXX
+
+	| aCart |
+	
+	aCart := Cart new.
+	
+	aCart add: 1 of: 9783161484100.
+
+	self assert: Cart new isEmpty negated! !
+
+!testRun: #CartTest #test02XXX stamp: 'scb 6/5/2022 16:10:03'!
+ERROR!
+!Cart methodsFor: 'adding' stamp: 'scb 6/5/2022 16:10:08'!
+add: aSmallInteger of: aSmallInteger2 
+	self shouldBeImplemented.! !
+!Cart methodsFor: 'adding' stamp: 'scb 6/5/2022 16:10:20' prior: 50490557!
+add: anAmmount of: anISBN 
+	self shouldBeImplemented.! !
+!Cart methodsFor: 'adding' stamp: 'scb 6/5/2022 16:10:24' prior: 50490562!
+add: anAmmount of: anISBN 
+
+	self shouldBeImplemented.! !
+
+!methodRemoval: Cart #add: stamp: 'scb 6/5/2022 16:10:34'!
+add: aSmallInteger 
+	self shouldBeImplemented.!
+
+Object subclass: #Cart
+	instanceVariableNames: 'books'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #Cart category: 'TusLibros' stamp: 'scb 6/5/2022 16:11:17'!
+Object subclass: #Cart
+	instanceVariableNames: 'books'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!Cart methodsFor: 'adding' stamp: 'scb 6/5/2022 16:11:33' overrides: 16920235!
+initialize
+
+	books := OrderedCollection new.! !
+!Cart methodsFor: 'testing' stamp: 'scb 6/5/2022 16:11:41' prior: 50490529!
+isEmpty
+	
+	^ books isEmpty ! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/5/2022 16:11:42'!
+PASSED!
+
+!testRun: #CartTest #test02XXX stamp: 'scb 6/5/2022 16:11:42'!
+ERROR!
+
+!testRun: #CartTest #test02XXX stamp: 'scb 6/5/2022 16:11:42'!
+ERROR!
+!Cart methodsFor: 'adding' stamp: 'scb 6/5/2022 16:14:02' prior: 50490585 overrides: 16920235!
+initialize
+
+	books := Dictionary new.! !
+!Cart methodsFor: 'adding' stamp: 'scb 6/5/2022 16:14:40' prior: 50490567!
+add: anAmmount of: anISBN 
+
+	books add: (anISBN -> anAmmount)! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/5/2022 16:14:41'!
+PASSED!
+
+!testRun: #CartTest #test02XXX stamp: 'scb 6/5/2022 16:14:41'!
+ERROR!
+
+!testRun: #CartTest #test02XXX stamp: 'scb 6/5/2022 16:14:41'!
+ERROR!
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 16:15:52' prior: 50490549!
+test02XXX
+
+	| aCart |
+	
+	aCart := Cart new.
+	
+	aCart add: 1 of: 9783161484100.
+
+	self assert: Cart new isEmpty not! !
+
+!testRun: #CartTest #test02XXX stamp: 'scb 6/5/2022 16:15:53'!
+FAILURE!
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 16:16:41'!
+test02CartWithBookIsNotEmpty
+
+	| aCart |
+	
+	aCart := Cart new.
+	
+	aCart add: 1 of: 9783161484100.
+
+	self assert: Cart new isEmpty not! !
+
+!methodRemoval: CartTest #test02XXX stamp: 'scb 6/5/2022 16:16:41'!
+test02XXX
+
+	| aCart |
+	
+	aCart := Cart new.
+	
+	aCart add: 1 of: 9783161484100.
+
+	self assert: Cart new isEmpty not!
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 16:16:52' prior: 50490624!
+test02CartWithBookIsNotEmpty
+
+	| aCart |
+	
+	aCart := Cart new.
+	
+	aCart add: 1 of: 9783161484100.
+
+	self assert: aCart isEmpty not! !
+
+!testRun: #CartTest #test02CartWithBookIsNotEmpty stamp: 'scb 6/5/2022 16:16:53'!
+PASSED!
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/5/2022 16:16:53'!
+PASSED!
+
+!testRun: #CartTest #test02CartWithBookIsNotEmpty stamp: 'scb 6/5/2022 16:16:53'!
+PASSED!
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 16:26:12'!
+test03CartCanShowContents
+
+	| aCart |
+	
+	aCart := Cart new.
+	
+	aCart add: 1 of: 9783161484100.
+
+	self assert: (OrderedCollection with: '1,9783161484100')equals: aCart list.! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 16:27:33' prior: 50490652!
+test03CartCanShowContents
+
+	| aCart |
+	
+	aCart := Cart new.
+	
+	aCart add: 1 of: 9783161484100.
+
+	self assert: (OrderedCollection with: 1 with: 9783161484100) equals: aCart list.! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 16:28:32' prior: 50490660!
+test03CartCanShowContents
+
+	| aCart |
+	
+	aCart := Cart new.
+	
+	aCart add: 1 of: 9783161484100.
+
+	self assert: (OrderedCollection with: (OrderedCollection with: 1 with: 9783161484100)) equals: aCart list.! !
+!Cart methodsFor: 'adding' stamp: 'scb 6/5/2022 16:31:39' prior: 50490604!
+add: anAmmount of: anISBN 
+
+	books add: (OrderedCollection with: anISBN with: anAmmount)! !
+!Cart methodsFor: 'initialization' stamp: 'scb 6/5/2022 16:31:52' prior: 50490600 overrides: 16920235!
+initialize
+
+	books := OrderedCollection new.! !
+
+!testRun: #CartTest #test03CartCanShowContents stamp: 'scb 6/5/2022 16:31:57'!
+ERROR!
+!Cart methodsFor: 'accessing' stamp: 'scb 6/5/2022 16:32:07'!
+list
+	self shouldBeImplemented.! !
+!Cart methodsFor: 'accessing' stamp: 'scb 6/5/2022 16:32:20' prior: 50490692!
+list
+	
+	^ books! !
+
+!testRun: #CartTest #test03CartCanShowContents stamp: 'scb 6/5/2022 16:32:24'!
+FAILURE!
+
+----STARTUP---- (5 June 2022 16:32:55) as /Users/sebascantini/Downloads/macos64/CuisUniversity-5096.image!
+
+
+TestCase subclass: #CartTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #CartTest category: 'TusLibros' stamp: 'scb 6/5/2022 16:33:31'!
+TestCase subclass: #CartTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #Cart category: 'TusLibros' stamp: 'scb 6/5/2022 16:38:32'!
+Object subclass: #Cart
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 16:38:29'!
+test01NewCartIsEmpty
+
+	self assert: Cart new isEmpty.! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/5/2022 16:38:44'!
+ERROR!
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/5/2022 16:38:44'!
+ERROR!
+!Cart methodsFor: 'testing' stamp: 'scb 6/5/2022 16:38:52'!
+isEmpty
+	self shouldBeImplemented.! !
+!Cart methodsFor: 'testing' stamp: 'scb 6/5/2022 16:39:05' prior: 50490522!
+isEmpty
+	
+	^ true! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/5/2022 16:39:09'!
+PASSED!
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/5/2022 16:39:09'!
+PASSED!
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 16:44:16'!
+test02CartWithBookIsNotEmpty
+
+	| aCart |
+	
+	aCart := Cart new.
+
+	self deny: (aCart add: 'book') isEmpty.! !
+
+!testRun: #CartTest #test02CartWithBookIsNotEmpty stamp: 'scb 6/5/2022 16:44:18'!
+ERROR!
+!Cart methodsFor: 'adding' stamp: 'scb 6/5/2022 16:44:26'!
+add: aString 
+	self shouldBeImplemented.! !
+!Cart methodsFor: 'adding' stamp: 'scb 6/5/2022 16:44:31' prior: 50490543!
+add: aString 
+	
+	! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/5/2022 16:44:32'!
+PASSED!
+
+!testRun: #CartTest #test02CartWithBookIsNotEmpty stamp: 'scb 6/5/2022 16:44:32'!
+FAILURE!
+
+!testRun: #CartTest #test02CartWithBookIsNotEmpty stamp: 'scb 6/5/2022 16:44:32'!
+FAILURE!
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 17:20:49'!
+test02CartCantAddBookOutsideOfCollection
+
+	| aCart |
+	
+	aCart := Cart with: OrderedCollection new.
+	
+	self should: [ aCart add: 'bookOutsideOfCollection' ]
+        raise: Error
+        withExceptionDo: [ :anError |
+            self assert: anError messageText = Cart invalidBookErrorMessage.
+            self assert: aCart isEmpty ]! !
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 17:20:49'!
+ERROR!
+!Cart class methodsFor: 'error messages' stamp: 'scb 6/5/2022 17:21:11'!
+with: anOrderedCollection 
+	self shouldBeImplemented.! !
+!Cart class methodsFor: 'error messages' stamp: 'scb 6/5/2022 17:21:20' prior: 50490574!
+with: anOrderedCollection 
+	
+	^ ''! !
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 17:21:25'!
+ERROR!
+!Cart class methodsFor: 'error messages' stamp: 'scb 6/5/2022 17:21:50' prior: 50490579!
+with: anOrderedCollection 
+	! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/5/2022 17:21:53'!
+PASSED!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 17:21:53'!
+ERROR!
+
+!testRun: #CartTest #test02CartWithBookIsNotEmpty stamp: 'scb 6/5/2022 17:21:53'!
+FAILURE!
+
+!methodRemoval: CartTest #test02CartWithBookIsNotEmpty stamp: 'scb 6/5/2022 17:22:05'!
+test02CartWithBookIsNotEmpty
+
+	| aCart |
+	
+	aCart := Cart new.
+
+	self deny: (aCart add: 'book') isEmpty.!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 17:22:08'!
+ERROR!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 17:22:08'!
+ERROR!
+!Cart class methodsFor: 'error messages' stamp: 'scb 6/5/2022 17:22:15'!
+invalidBookErrorMessage
+	self shouldBeImplemented.! !
+!Cart class methodsFor: 'error messages' stamp: 'scb 6/5/2022 17:22:57' prior: 50490612!
+invalidBookErrorMessage! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/5/2022 17:22:59'!
+PASSED!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 17:22:59'!
+FAILURE!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 17:22:59'!
+FAILURE!
+!Cart class methodsFor: 'error messages' stamp: 'scb 6/5/2022 17:26:53' prior: 50490617!
+invalidBookErrorMessage
+
+	^ 'Book is invalid.'! !
+!Cart class methodsFor: 'instance creation' stamp: 'scb 6/5/2022 17:27:42' prior: 50490587!
+with: aCollection 
+
+	self new initializeWith: aCollection.
+	! !
+
+!classDefinition: #Cart category: 'TusLibros' stamp: 'scb 6/5/2022 17:29:26'!
+Object subclass: #Cart
+	instanceVariableNames: 'collection'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!Cart methodsFor: 'initialization' stamp: 'scb 6/5/2022 17:29:23'!
+initializeWith: aCollection
+
+	collection := aCollection! !
+!Cart methodsFor: 'adding' stamp: 'scb 6/5/2022 17:30:35' prior: 50490547!
+add: aBook
+	
+	(collection includes: aBook) ifFalse: [ ^ self  ]
+	! !
+
+!methodRemoval: Cart class #invalidBookErrorMessage stamp: 'scb 6/5/2022 17:30:47'!
+invalidBookErrorMessage
+
+	^ 'Book is invalid.'!
+!Cart methodsFor: 'initialization' stamp: 'scb 6/5/2022 17:30:56'!
+invalidBookErrorMessage
+
+	^ 'Book is invalid.'! !
+!Cart methodsFor: 'adding' stamp: 'scb 6/5/2022 17:31:33' prior: 50490651!
+add: aBook
+	
+	(collection includes: aBook) ifFalse: [ ^ self invalidBookErrorMessage ]
+	! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 17:31:38' prior: 50490558!
+test02CartCantAddBookOutsideOfCollection
+
+	| aCart |
+	
+	aCart := Cart with: OrderedCollection new.
+	
+	self should: [ aCart add: 'bookOutsideOfCollection' ]
+        raise: Error
+        withExceptionDo: [ :anError |
+            self assert: anError messageText = aCart invalidBookErrorMessage.
+            self assert: aCart isEmpty ]! !
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 17:31:39'!
+ERROR!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 17:31:55'!
+ERROR!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 17:32:01'!
+ERROR!
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 17:32:18' prior: 50490670!
+test02CartCantAddBookOutsideOfCollection
+
+	| aCart |
+	
+	aCart := Cart with: OrderedCollection new.
+	
+	self should: [ aCart add: 'bookOutsideOfCollection' ]
+        raise: Error
+        withExceptionDo: [ :anError |
+            self assert: anError messageText = (aCart invalidBookErrorMessage).
+            self assert: aCart isEmpty ]! !
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 17:32:19'!
+ERROR!
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 17:32:28' prior: 50490693!
+test02CartCantAddBookOutsideOfCollection
+
+	| aCart |
+	
+	aCart := Cart with: OrderedCollection new.
+	
+	self should: [ aCart add: 'bookOutsideOfCollection' ]
+        raise: Error
+        withExceptionDo: [ :anError |
+            self assert: anError messageText = aCart invalidBookErrorMessage.
+            self assert: aCart isEmpty ]! !
+!Cart class methodsFor: 'instance creation' stamp: 'scb 6/5/2022 17:32:44' prior: 50490635!
+with: aCollection 
+
+	^ self new initializeWith: aCollection.
+	! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/5/2022 17:32:45'!
+PASSED!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 17:32:45'!
+FAILURE!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 17:32:45'!
+FAILURE!
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 17:33:08' prior: 50490710!
+test02CartCantAddBookOutsideOfCollection
+
+	| aCart |
+	
+	aCart := Cart with: OrderedCollection new.
+	
+	self should: [ aCart add: 'bookOutsideOfCollection' ]
+        raise: Error
+        withExceptionDo: [ :anError |
+            self assert: anError = aCart invalidBookErrorMessage.
+            self assert: aCart isEmpty ]! !
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 17:33:09'!
+FAILURE!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 17:35:37'!
+FAILURE!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 17:35:41'!
+PASSED!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 17:35:54'!
+FAILURE!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 17:36:21'!
+FAILURE!
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 17:37:05' prior: 50490738!
+test02CartCantAddBookOutsideOfCollection
+
+	| aCart |
+	
+	aCart := Cart with: OrderedCollection new.
+	
+	self should: [ aCart add: 'bookOutsideOfCollection' ]
+        raise: Error
+        withExceptionDo: [ :anError |
+            self assert: anError messageText = aCart invalidBookErrorMessage.
+            self assert: aCart isEmpty ]! !
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 17:37:06'!
+FAILURE!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 17:37:24'!
+FAILURE!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 17:37:49'!
+FAILURE!
+!Cart methodsFor: 'adding' stamp: 'scb 6/5/2022 17:38:47' prior: 50490664!
+add: aBook
+	
+	(collection includes: aBook) ifFalse: [ ^ self error: self invalidBookErrorMessage ]
+	! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/5/2022 17:38:48'!
+PASSED!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 17:38:48'!
+PASSED!
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 17:39:49' prior: 50490767!
+test02CartCantAddBookOutsideOfCollection
+
+	| aCart |
+	
+	aCart := Cart with: OrderedCollection new.
+	
+	self should: [ aCart add: 'bookOutsideOfCollection' ]
+        raise: Error
+        withExceptionDo: [ :anError |
+            self assert: anError messageText = aCart invalidBookErrorMessage.
+            self assert: aCart isEmpty not ]! !
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 17:39:50'!
+FAILURE!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 17:40:03'!
+FAILURE!
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 17:41:34' prior: 50490802!
+test02CartCantAddBookOutsideOfCollection
+
+	| aCart |
+	
+	aCart := Cart with: OrderedCollection new.
+	
+	self should: [ aCart add: 'bookOutsideOfCollection' ]
+	raise: Error
+	withExceptionDo: [ :anError |
+            self assert: aCart isEmpty not ]
+	description: [aCart invalidBookErrorMessage].
+	
+	self should: [ aCart add: 'bookOutsideOfCollection' ]
+        raise: Error
+        withExceptionDo: [ :anError |
+            self assert: anError messageText = aCart invalidBookErrorMessage.
+            self assert: aCart isEmpty not ]! !
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 17:41:35'!
+FAILURE!
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 17:41:51' prior: 50490822!
+test02CartCantAddBookOutsideOfCollection
+
+	| aCart |
+	
+	aCart := Cart with: OrderedCollection new.
+	
+	self should: [ aCart add: 'bookOutsideOfCollection' ]
+	raise: Error
+	withExceptionDo: [ :anError |
+            self assert: aCart isEmpty]
+	description: [aCart invalidBookErrorMessage].
+	
+	self should: [ aCart add: 'bookOutsideOfCollection' ]
+        raise: Error
+        withExceptionDo: [ :anError |
+            self assert: anError messageText = aCart invalidBookErrorMessage.
+            self assert: aCart isEmpty]! !
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 17:41:52'!
+PASSED!
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/5/2022 17:41:52'!
+PASSED!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 17:41:52'!
+PASSED!
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 17:42:11' prior: 50490845!
+test02CartCantAddBookOutsideOfCollection
+
+	| aCart |
+	
+	aCart := Cart with: OrderedCollection new.
+	
+	self should: [ aCart add: 'bookOutsideOfCollection' ]
+	raise: Error
+	withExceptionDo: [ :anError |
+            self assert: aCart isEmpty]
+	description: [ aCart invalidBookErrorMessage ].! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 17:42:21' prior: 50490873!
+test02CartCantAddBookOutsideOfCollection
+
+	| aCart |
+	
+	aCart := Cart with: OrderedCollection new.
+	
+	self should: [ aCart add: 'bookOutsideOfCollection' ]
+	raise: Error
+	withExceptionDo: [ :anError |
+            self assert: aCart isEmpty]
+	description: [ 'otro error' ].! !
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 17:42:22'!
+PASSED!
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/5/2022 17:42:22'!
+PASSED!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 17:42:22'!
+PASSED!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 17:42:24'!
+PASSED!
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/5/2022 17:42:24'!
+PASSED!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 17:42:24'!
+PASSED!
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 17:42:28' prior: 50490885!
+test02CartCantAddBookOutsideOfCollection
+
+	| aCart |
+	
+	aCart := Cart with: OrderedCollection new.
+	
+	self should: [ aCart add: 'bookOutsideOfCollection' ]
+	raise: Error
+	withExceptionDo: [ :anError |
+            self assert: aCart isEmpty]
+	description: [ 'otro erro' ].! !
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 17:42:28'!
+PASSED!
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/5/2022 17:42:28'!
+PASSED!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 17:42:28'!
+PASSED!
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 17:42:55' prior: 50490915!
+test02CartCantAddBookOutsideOfCollection
+
+	| aCart |
+	
+	aCart := Cart with: OrderedCollection new.
+	
+	self should: [ aCart add: 'bookOutsideOfCollection' ]
+	raise: Error
+       	withExceptionDo: [ :anError |
+            self assert: anError messageText = aCart invalidBookErrorMessage.
+            self assert: aCart isEmpty ]! !
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 17:42:56'!
+PASSED!
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/5/2022 17:42:56'!
+PASSED!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 17:42:56'!
+PASSED!
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 17:43:02' prior: 50490936!
+test02CartCantAddBookOutsideOfCollection
+
+	| aCart |
+	
+	aCart := Cart with: OrderedCollection new.
+	
+	self should: [ aCart add: 'bookOutsideOfCollection' ]
+	raise: Error
+       	withExceptionDo: [ :anError |
+            self assert: anError messageText = 'asd'.
+            self assert: aCart isEmpty ]! !
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 17:43:03'!
+FAILURE!
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 17:43:06' prior: 50490958!
+test02CartCantAddBookOutsideOfCollection
+
+	| aCart |
+	
+	aCart := Cart with: OrderedCollection new.
+	
+	self should: [ aCart add: 'bookOutsideOfCollection' ]
+	raise: Error
+       	withExceptionDo: [ :anError |
+            self assert: anError messageText = aCart invalidBookErrorMessage.
+            self assert: aCart isEmpty ]! !
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 17:43:07'!
+PASSED!
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/5/2022 17:43:07'!
+PASSED!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 17:43:07'!
+PASSED!
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 17:43:29'!
+test02CartWithBookIsNotEmpty
+
+	| aCart |
+	
+	aCart := Cart with: OrderedCollection new.
+	
+	self should: [ aCart add: 'bookOutsideOfCollection' ]
+	raise: Error
+       	withExceptionDo: [ :anError |
+            self assert: anError messageText = aCart invalidBookErrorMessage.
+            self assert: aCart isEmpty ]! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 17:43:37'!
+test03CartWithBookIsNotEmpty
+
+	| aCart |
+	
+	aCart := Cart with: OrderedCollection new.
+	
+	self should: [ aCart add: 'bookOutsideOfCollection' ]
+	raise: Error
+       	withExceptionDo: [ :anError |
+            self assert: anError messageText = aCart invalidBookErrorMessage.
+            self assert: aCart isEmpty ]! !
+
+!methodRemoval: CartTest #test02CartWithBookIsNotEmpty stamp: 'scb 6/5/2022 17:43:37'!
+test02CartWithBookIsNotEmpty
+
+	| aCart |
+	
+	aCart := Cart with: OrderedCollection new.
+	
+	self should: [ aCart add: 'bookOutsideOfCollection' ]
+	raise: Error
+       	withExceptionDo: [ :anError |
+            self assert: anError messageText = aCart invalidBookErrorMessage.
+            self assert: aCart isEmpty ]!
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 17:43:57' prior: 50491008!
+test03CartWithBookIsNotEmpty
+
+	| aCart |
+	
+	aCart := Cart with: (OrderedCollection with: 'book').
+	
+	self should: [ aCart add: 'bookOutsideOfCollection' ]
+	raise: Error
+       	withExceptionDo: [ :anError |
+            self assert: anError messageText = aCart invalidBookErrorMessage.
+            self assert: aCart isEmpty ]! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 17:45:09' prior: 50491033!
+test03CartWithBookIsNotEmpty
+
+	| aCart |
+	
+	aCart := Cart with: (OrderedCollection with: 'book').
+	
+	self deny: (aCart add: 'book') isEmpty! !
+
+!testRun: #CartTest #test03CartWithBookIsNotEmpty stamp: 'scb 6/5/2022 17:47:54'!
+FAILURE!
+
+Object subclass: #Cart
+	instanceVariableNames: 'collection products'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #Cart category: 'TusLibros' stamp: 'scb 6/5/2022 17:48:26'!
+Object subclass: #Cart
+	instanceVariableNames: 'collection products'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+Object subclass: #Cart
+	instanceVariableNames: 'collection contents'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #Cart category: 'TusLibros' stamp: 'scb 6/5/2022 17:48:45'!
+Object subclass: #Cart
+	instanceVariableNames: 'collection contents'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!Cart methodsFor: 'initialization' stamp: 'scb 6/5/2022 17:49:42'!
+with: aCollection
+
+	collection := aCollection! !
+!Cart class methodsFor: 'instance creation' stamp: 'scb 6/5/2022 17:49:53' prior: 50490724!
+with: aCollection 
+
+	^ self new with: aCollection.
+	! !
+!Cart methodsFor: 'initialization' stamp: 'scb 6/5/2022 17:50:15' overrides: 16920235!
+initialize
+
+	collection := OrderedCollection new.
+	contents := OrderedCollection new.! !
+
+!methodRemoval: Cart #initializeWith: stamp: 'scb 6/5/2022 17:50:25'!
+initializeWith: aCollection
+
+	collection := aCollection!
+!Cart methodsFor: 'testing' stamp: 'scb 6/5/2022 17:51:13' prior: 50490526!
+isEmpty
+	
+	^ contents isEmpty! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/5/2022 17:51:16'!
+PASSED!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 17:51:16'!
+PASSED!
+
+!testRun: #CartTest #test03CartWithBookIsNotEmpty stamp: 'scb 6/5/2022 17:51:16'!
+FAILURE!
+
+!testRun: #CartTest #test03CartWithBookIsNotEmpty stamp: 'scb 6/5/2022 17:51:16'!
+FAILURE!
+!Cart methodsFor: 'adding' stamp: 'scb 6/5/2022 17:51:47' prior: 50490790!
+add: aBook
+	
+	(collection includes: aBook) ifFalse: [ ^ self error: self invalidBookErrorMessage ].
+	contents add: aBook
+	! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/5/2022 17:51:47'!
+PASSED!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 17:51:47'!
+PASSED!
+
+!testRun: #CartTest #test03CartWithBookIsNotEmpty stamp: 'scb 6/5/2022 17:51:47'!
+PASSED!
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:01:04'!
+test04CartCantAddNonStrictlyPositiveAmmountOfBooks
+
+	| aCart |
+	
+	aCart := Cart with: (OrderedCollection with: 'book').
+	
+	self deny: (aCart add: -1 of: 'book') isEmpty! !
+!Cart methodsFor: 'adding' stamp: 'scb 6/5/2022 18:03:53'!
+add: anAmount of: aBook
+	
+	( anAmount strictlyPositive ) ifFalse: [ ^ self error: self invalidAmountErrorMessage ].
+	! !
+!Cart methodsFor: 'error messages' stamp: 'scb 6/5/2022 18:05:49'!
+invalidAmountErrorMessage
+
+	^ 'Amount is invalid'! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:06:33' prior: 50491128!
+test04CartCantAddNonStrictlyPositiveAmmountOfBooks
+
+	| aCart |
+	
+	aCart := Cart with: (OrderedCollection with: 'book').
+	
+	self should: [ aCart add: -1 of: 'bookOutsideOfCollection' ]
+	raise: Error
+       	withExceptionDo: [ :anError |
+            self assert: anError messageText = aCart invalidAmountErrorMessage.
+            self assert: aCart isEmpty ]! !
+
+!testRun: #CartTest #test04CartCantAddNonStrictlyPositiveAmmountOfBooks stamp: 'scb 6/5/2022 18:06:34'!
+PASSED!
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/5/2022 18:06:34'!
+PASSED!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 18:06:34'!
+PASSED!
+
+!testRun: #CartTest #test03CartWithBookIsNotEmpty stamp: 'scb 6/5/2022 18:06:34'!
+PASSED!
+
+!testRun: #CartTest #test04CartCantAddNonStrictlyPositiveAmmountOfBooks stamp: 'scb 6/5/2022 18:06:34'!
+PASSED!
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/5/2022 18:14:53'!
+PASSED!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 18:14:53'!
+PASSED!
+
+!testRun: #CartTest #test03CartWithBookIsNotEmpty stamp: 'scb 6/5/2022 18:14:53'!
+PASSED!
+
+!testRun: #CartTest #test04CartCantAddNonStrictlyPositiveAmmountOfBooks stamp: 'scb 6/5/2022 18:14:53'!
+PASSED!
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:16:45'!
+test05CartCantAddMultipleCopiesOfBookOutsideOfCollection
+
+	| aCart |
+	
+	aCart := Cart with: OrderedCollection new.
+	
+	self should: [ aCart add: 2 of: 'bookOutsideOfCollection' ]
+	raise: Error
+       	withExceptionDo: [ :anError |
+            self assert: anError messageText = aCart invalidBookErrorMessage.
+            self assert: aCart isEmpty ]! !
+
+!testRun: #CartTest #test05CartCantAddMultipleCopiesOfBookOutsideOfCollection stamp: 'scb 6/5/2022 18:16:46'!
+FAILURE!
+!Cart methodsFor: 'adding' stamp: 'scb 6/5/2022 18:17:26' prior: 50491113!
+add: aBook
+	
+	contents add: 1 of: aBook
+	! !
+!Cart methodsFor: 'adding' stamp: 'scb 6/5/2022 18:17:35' prior: 50491136!
+add: anAmount of: aBook
+	
+	( anAmount strictlyPositive ) ifFalse: [ ^ self error: self invalidAmountErrorMessage ].
+	(collection includes: aBook) ifFalse: [ ^ self error: self invalidBookErrorMessage ].
+	! !
+!Cart methodsFor: 'adding' stamp: 'scb 6/5/2022 18:18:02' prior: 50491211!
+add: anAmount of: aBook
+	
+	( anAmount strictlyPositive ) ifFalse: [ ^ self error: self invalidAmountErrorMessage ].
+	(collection includes: aBook) ifFalse: [ ^ self error: self invalidBookErrorMessage ].
+	
+	contents add: aBook
+	! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/5/2022 18:18:03'!
+PASSED!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 18:18:03'!
+FAILURE!
+
+!testRun: #CartTest #test03CartWithBookIsNotEmpty stamp: 'scb 6/5/2022 18:18:03'!
+ERROR!
+
+!testRun: #CartTest #test04CartCantAddNonStrictlyPositiveAmmountOfBooks stamp: 'scb 6/5/2022 18:18:03'!
+PASSED!
+
+!testRun: #CartTest #test05CartCantAddMultipleCopiesOfBookOutsideOfCollection stamp: 'scb 6/5/2022 18:18:03'!
+PASSED!
+!Cart methodsFor: 'adding' stamp: 'scb 6/5/2022 18:18:53' prior: 50491220!
+add: anAmount of: aBook
+	
+	( anAmount strictlyPositive ) ifFalse: [ ^ self error: self invalidAmountErrorMessage ].
+	( collection includes: aBook ) ifFalse: [ ^ self error: self invalidBookErrorMessage ].
+	
+	contents add: aBook
+	! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/5/2022 18:19:01'!
+PASSED!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 18:19:01'!
+FAILURE!
+
+!testRun: #CartTest #test03CartWithBookIsNotEmpty stamp: 'scb 6/5/2022 18:19:01'!
+ERROR!
+
+!testRun: #CartTest #test04CartCantAddNonStrictlyPositiveAmmountOfBooks stamp: 'scb 6/5/2022 18:19:01'!
+PASSED!
+
+!testRun: #CartTest #test05CartCantAddMultipleCopiesOfBookOutsideOfCollection stamp: 'scb 6/5/2022 18:19:01'!
+PASSED!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 18:19:19'!
+FAILURE!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 18:19:19'!
+FAILURE!
+!Cart methodsFor: 'adding' stamp: 'scb 6/5/2022 18:19:50' prior: 50491246!
+add: anAmount of: aBook
+	
+	( anAmount strictlyPositive ) ifFalse: [ ^ self error: self invalidAmountErrorMessage ].
+	( collection includes: aBook ) ifFalse: [ ^ self error: self invalidBookErrorMessage ].
+	contents add: aBook
+	! !
+!Cart methodsFor: 'adding' stamp: 'scb 6/5/2022 18:19:52' prior: 50491279!
+add: anAmount of: aBook
+	
+	( anAmount strictlyPositive ) ifFalse: [ ^ self error: self invalidAmountErrorMessage ].
+	( collection includes: aBook ) ifFalse: [ ^ self error: self invalidBookErrorMessage ].
+	contents add: aBook.
+	! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/5/2022 18:19:55'!
+PASSED!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 18:19:55'!
+FAILURE!
+
+!testRun: #CartTest #test03CartWithBookIsNotEmpty stamp: 'scb 6/5/2022 18:19:55'!
+ERROR!
+
+!testRun: #CartTest #test04CartCantAddNonStrictlyPositiveAmmountOfBooks stamp: 'scb 6/5/2022 18:19:55'!
+PASSED!
+
+!testRun: #CartTest #test05CartCantAddMultipleCopiesOfBookOutsideOfCollection stamp: 'scb 6/5/2022 18:19:55'!
+PASSED!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 18:19:57'!
+FAILURE!
+!Cart methodsFor: 'adding' stamp: 'scb 6/5/2022 18:20:49' prior: 50491289!
+add: anAmount of: aBook
+	
+	( anAmount strictlyPositive ) ifFalse: [ self error: self invalidAmountErrorMessage ].
+	( collection includes: aBook ) ifFalse: [ self error: self invalidBookErrorMessage ].
+	contents add: aBook.
+	! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/5/2022 18:20:50'!
+PASSED!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 18:20:50'!
+FAILURE!
+
+!testRun: #CartTest #test03CartWithBookIsNotEmpty stamp: 'scb 6/5/2022 18:20:50'!
+ERROR!
+
+!testRun: #CartTest #test04CartCantAddNonStrictlyPositiveAmmountOfBooks stamp: 'scb 6/5/2022 18:20:50'!
+PASSED!
+
+!testRun: #CartTest #test05CartCantAddMultipleCopiesOfBookOutsideOfCollection stamp: 'scb 6/5/2022 18:20:50'!
+PASSED!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 18:21:11'!
+FAILURE!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 18:21:11'!
+FAILURE!
+!Cart methodsFor: 'adding' stamp: 'scb 6/5/2022 18:21:37' prior: 50491207!
+add: aBook
+	
+	self add: 1 of: aBook
+	! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/5/2022 18:21:38'!
+PASSED!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 18:21:38'!
+PASSED!
+
+!testRun: #CartTest #test03CartWithBookIsNotEmpty stamp: 'scb 6/5/2022 18:21:38'!
+PASSED!
+
+!testRun: #CartTest #test04CartCantAddNonStrictlyPositiveAmmountOfBooks stamp: 'scb 6/5/2022 18:21:38'!
+PASSED!
+
+!testRun: #CartTest #test05CartCantAddMultipleCopiesOfBookOutsideOfCollection stamp: 'scb 6/5/2022 18:21:38'!
+PASSED!
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:23:42' prior: 50491147!
+test04CartCantAddNonStrictlyPositiveAmmountOfBooks
+
+	| aCart |
+	
+	aCart := Cart with: (OrderedCollection with: 'book').
+	aCart add: 1 of: 'book'.
+	
+	self assert: aCart includes: 'book'! !
+
+!testRun: #CartTest #test04CartCantAddNonStrictlyPositiveAmmountOfBooks stamp: 'scb 6/5/2022 18:23:47'!
+ERROR!
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:26:52'!
+test06CartDoesntKnowNotAddedBooks
+
+	
+	self deny: (Cart new includes: 'aBook')
+	
+	! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:27:02' prior: 50491382!
+test06CartDoesntKnowNotAddedBooks
+
+	
+	self deny: (Cart new includes: 'book')
+	
+	! !
+
+!testRun: #CartTest #test06CartDoesntKnowNotAddedBooks stamp: 'scb 6/5/2022 18:27:03'!
+ERROR!
+!Cart methodsFor: 'accessing' stamp: 'scb 6/5/2022 18:27:14'!
+includes: aString 
+	self shouldBeImplemented.! !
+!Cart methodsFor: 'accessing' stamp: 'scb 6/5/2022 18:27:40' prior: 50491396!
+includes: aBook
+
+	^ contents includes: aBook! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/5/2022 18:27:41'!
+PASSED!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 18:27:41'!
+PASSED!
+
+!testRun: #CartTest #test03CartWithBookIsNotEmpty stamp: 'scb 6/5/2022 18:27:41'!
+PASSED!
+
+!testRun: #CartTest #test04CartCantAddNonStrictlyPositiveAmmountOfBooks stamp: 'scb 6/5/2022 18:27:41'!
+PASSED!
+
+!testRun: #CartTest #test05CartCantAddMultipleCopiesOfBookOutsideOfCollection stamp: 'scb 6/5/2022 18:27:41'!
+PASSED!
+
+!testRun: #CartTest #test06CartDoesntKnowNotAddedBooks stamp: 'scb 6/5/2022 18:27:41'!
+PASSED!
+!Cart methodsFor: 'accessing' stamp: 'scb 6/5/2022 18:27:48' prior: 50491400!
+includes: aBook
+
+	^ false! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/5/2022 18:27:49'!
+PASSED!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 18:27:49'!
+PASSED!
+
+!testRun: #CartTest #test03CartWithBookIsNotEmpty stamp: 'scb 6/5/2022 18:27:49'!
+PASSED!
+
+!testRun: #CartTest #test04CartCantAddNonStrictlyPositiveAmmountOfBooks stamp: 'scb 6/5/2022 18:27:49'!
+FAILURE!
+
+!testRun: #CartTest #test05CartCantAddMultipleCopiesOfBookOutsideOfCollection stamp: 'scb 6/5/2022 18:27:49'!
+PASSED!
+
+!testRun: #CartTest #test06CartDoesntKnowNotAddedBooks stamp: 'scb 6/5/2022 18:27:49'!
+PASSED!
+
+!testRun: #CartTest #test04CartCantAddNonStrictlyPositiveAmmountOfBooks stamp: 'scb 6/5/2022 18:27:49'!
+FAILURE!
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/5/2022 18:27:56'!
+PASSED!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 18:27:56'!
+PASSED!
+
+!testRun: #CartTest #test03CartWithBookIsNotEmpty stamp: 'scb 6/5/2022 18:27:56'!
+PASSED!
+
+!testRun: #CartTest #test04CartCantAddNonStrictlyPositiveAmmountOfBooks stamp: 'scb 6/5/2022 18:27:56'!
+FAILURE!
+
+!testRun: #CartTest #test05CartCantAddMultipleCopiesOfBookOutsideOfCollection stamp: 'scb 6/5/2022 18:27:56'!
+PASSED!
+
+!testRun: #CartTest #test06CartDoesntKnowNotAddedBooks stamp: 'scb 6/5/2022 18:27:56'!
+PASSED!
+
+!testRun: #CartTest #test04CartCantAddNonStrictlyPositiveAmmountOfBooks stamp: 'scb 6/5/2022 18:27:56'!
+FAILURE!
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:01:04' prior: 50491370!
+test04CartCantAddNonStrictlyPositiveAmmountOfBooks
+
+	| aCart |
+	
+	aCart := Cart with: (OrderedCollection with: 'book').
+	
+	self deny: (aCart add: -1 of: 'book') isEmpty! !
+
+!testRun: #CartTest #test04CartCantAddNonStrictlyPositiveAmmountOfBooks stamp: 'scb 6/5/2022 18:28:34'!
+ERROR!
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:06:33' prior: 50491472!
+test04CartCantAddNonStrictlyPositiveAmmountOfBooks
+
+	| aCart |
+	
+	aCart := Cart with: (OrderedCollection with: 'book').
+	
+	self should: [ aCart add: -1 of: 'bookOutsideOfCollection' ]
+	raise: Error
+       	withExceptionDo: [ :anError |
+            self assert: anError messageText = aCart invalidAmountErrorMessage.
+            self assert: aCart isEmpty ]! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/5/2022 18:28:53'!
+PASSED!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 18:28:53'!
+PASSED!
+
+!testRun: #CartTest #test03CartWithBookIsNotEmpty stamp: 'scb 6/5/2022 18:28:53'!
+PASSED!
+
+!testRun: #CartTest #test04CartCantAddNonStrictlyPositiveAmmountOfBooks stamp: 'scb 6/5/2022 18:28:53'!
+PASSED!
+
+!testRun: #CartTest #test05CartCantAddMultipleCopiesOfBookOutsideOfCollection stamp: 'scb 6/5/2022 18:28:53'!
+PASSED!
+
+!testRun: #CartTest #test06CartDoesntKnowNotAddedBooks stamp: 'scb 6/5/2022 18:28:53'!
+PASSED!
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:29:10'!
+test06CartKnowsAddedBooks
+
+	
+	self deny: (Cart new includes: 'book')
+	
+	! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:29:17'!
+test07CartKnowsAddedBooks
+
+	
+	self deny: (Cart new includes: 'book')
+	
+	! !
+
+!methodRemoval: CartTest #test06CartKnowsAddedBooks stamp: 'scb 6/5/2022 18:29:17'!
+test06CartKnowsAddedBooks
+
+	
+	self deny: (Cart new includes: 'book')
+	
+	!
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:29:51' prior: 50491522!
+test07CartKnowsAddedBooks
+
+	| aCart |
+	
+	aCart := Cart with: (OrderedCollection with: 'book').
+	aCart add: 'book'.
+	
+	self deny: (aCart includes: 'book')
+	
+	! !
+
+!testRun: #CartTest #test07CartKnowsAddedBooks stamp: 'scb 6/5/2022 18:29:52'!
+PASSED!
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/5/2022 18:29:52'!
+PASSED!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 18:29:52'!
+PASSED!
+
+!testRun: #CartTest #test03CartWithBookIsNotEmpty stamp: 'scb 6/5/2022 18:29:52'!
+PASSED!
+
+!testRun: #CartTest #test04CartCantAddNonStrictlyPositiveAmmountOfBooks stamp: 'scb 6/5/2022 18:29:52'!
+PASSED!
+
+!testRun: #CartTest #test05CartCantAddMultipleCopiesOfBookOutsideOfCollection stamp: 'scb 6/5/2022 18:29:52'!
+PASSED!
+
+!testRun: #CartTest #test06CartDoesntKnowNotAddedBooks stamp: 'scb 6/5/2022 18:29:52'!
+PASSED!
+
+!testRun: #CartTest #test07CartKnowsAddedBooks stamp: 'scb 6/5/2022 18:29:52'!
+PASSED!
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:30:03' prior: 50491532!
+test07CartKnowsAddedBooks
+
+	| aCart |
+	
+	aCart := Cart with: (OrderedCollection with: 'book').
+	aCart add: 'book'.
+	
+	self assert: (aCart includes: 'book')
+	
+	! !
+
+!testRun: #CartTest #test07CartKnowsAddedBooks stamp: 'scb 6/5/2022 18:30:04'!
+FAILURE!
+!Cart methodsFor: 'accessing' stamp: 'scb 6/5/2022 18:30:28' prior: 50491423!
+includes: aBook
+
+	^ contents includes: aBook! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/5/2022 18:30:29'!
+PASSED!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 18:30:29'!
+PASSED!
+
+!testRun: #CartTest #test03CartWithBookIsNotEmpty stamp: 'scb 6/5/2022 18:30:29'!
+PASSED!
+
+!testRun: #CartTest #test04CartCantAddNonStrictlyPositiveAmmountOfBooks stamp: 'scb 6/5/2022 18:30:29'!
+PASSED!
+
+!testRun: #CartTest #test05CartCantAddMultipleCopiesOfBookOutsideOfCollection stamp: 'scb 6/5/2022 18:30:29'!
+PASSED!
+
+!testRun: #CartTest #test06CartDoesntKnowNotAddedBooks stamp: 'scb 6/5/2022 18:30:29'!
+PASSED!
+
+!testRun: #CartTest #test07CartKnowsAddedBooks stamp: 'scb 6/5/2022 18:30:29'!
+PASSED!
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:32:44'!
+test04CartCantAddNonStrictlyPositiveAmountOfBooks
+
+	| aCart |
+	
+	aCart := Cart with: (OrderedCollection with: 'book').
+	
+	self should: [ aCart add: -1 of: 'bookOutsideOfCollection' ]
+	raise: Error
+       	withExceptionDo: [ :anError |
+            self assert: anError messageText = aCart invalidAmountErrorMessage.
+            self assert: aCart isEmpty ]! !
+
+!methodRemoval: CartTest #test04CartCantAddNonStrictlyPositiveAmmountOfBooks stamp: 'scb 6/5/2022 18:32:44'!
+test04CartCantAddNonStrictlyPositiveAmmountOfBooks
+
+	| aCart |
+	
+	aCart := Cart with: (OrderedCollection with: 'book').
+	
+	self should: [ aCart add: -1 of: 'bookOutsideOfCollection' ]
+	raise: Error
+       	withExceptionDo: [ :anError |
+            self assert: anError messageText = aCart invalidAmountErrorMessage.
+            self assert: aCart isEmpty ]!
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:37:37' prior: 50491564!
+test07CartKnowsAddedBooks
+
+	| aCart |
+	
+	aCart := Cart with: (OrderedCollection with: 'book').
+	aCart add: 'book'.
+	
+	self assert: (aCart occurrencesOf: 'book')
+	
+	! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:37:49' prior: 50491630!
+test07CartKnowsAddedBooks
+
+	| aCart |
+	
+	aCart := Cart with: (OrderedCollection with: 'book').
+	aCart add: 'book'.
+	
+	self assert: 1 equals: (aCart occurrencesOf: 'book')
+	
+	! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:37:58' prior: 50491638!
+test07CartKnowsAddedBooks
+
+	| aCart |
+	
+	aCart := Cart with: (OrderedCollection with: 'book').
+	aCart add: 'book'.
+	
+	self assert: (aCart includes: 'book')
+	
+	! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:38:40'!
+test08CartKnowsOccurrancesOfBooks
+
+	| aCart |
+	
+	aCart := Cart with: (OrderedCollection with: 'book').
+	aCart add: 'book'.
+	
+	self assert: 1 equals: (aCart occurrencesOf: 'book')
+	
+	! !
+
+!testRun: #CartTest #test08CartKnowsOccurrancesOfBooks stamp: 'scb 6/5/2022 18:38:41'!
+ERROR!
+!Cart methodsFor: 'accessing' stamp: 'scb 6/5/2022 18:38:54'!
+occurrencesOf: aString 
+	self shouldBeImplemented.! !
+!Cart methodsFor: 'accessing' stamp: 'scb 6/5/2022 18:39:06' prior: 50491664!
+occurrencesOf: aString
+
+	self shouldBeImplemented.! !
+!Cart methodsFor: 'accessing' stamp: 'scb 6/5/2022 18:39:54' prior: 50491669!
+occurrencesOf: aBook
+
+	contents occurrencesOf: aBook! !
+!Cart methodsFor: 'adding' stamp: 'scb 6/5/2022 18:41:10' prior: 50491318!
+add: anAmount of: aBook
+	
+	( anAmount strictlyPositive ) ifFalse: [ self error: self invalidAmountErrorMessage ].
+	( collection includes: aBook ) ifFalse: [ self error: self invalidBookErrorMessage ].
+	
+	1 to: anAmount do: [contents add: aBook.]
+	! !
+!Cart methodsFor: 'adding' stamp: 'scb 6/5/2022 18:42:04' prior: 50491679!
+add: anAmount of: aBook
+	
+	( anAmount strictlyPositive ) ifFalse: [ self error: self invalidAmountErrorMessage ].
+	( collection includes: aBook ) ifFalse: [ self error: self invalidBookErrorMessage ].
+	
+	anAmount timesRepeat: [contents add: aBook.]
+	! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/5/2022 18:42:05'!
+PASSED!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 18:42:05'!
+PASSED!
+
+!testRun: #CartTest #test03CartWithBookIsNotEmpty stamp: 'scb 6/5/2022 18:42:05'!
+PASSED!
+
+!testRun: #CartTest #test04CartCantAddNonStrictlyPositiveAmountOfBooks stamp: 'scb 6/5/2022 18:42:05'!
+PASSED!
+
+!testRun: #CartTest #test05CartCantAddMultipleCopiesOfBookOutsideOfCollection stamp: 'scb 6/5/2022 18:42:05'!
+PASSED!
+
+!testRun: #CartTest #test06CartDoesntKnowNotAddedBooks stamp: 'scb 6/5/2022 18:42:05'!
+PASSED!
+
+!testRun: #CartTest #test07CartKnowsAddedBooks stamp: 'scb 6/5/2022 18:42:05'!
+PASSED!
+
+!testRun: #CartTest #test08CartKnowsOccurrancesOfBooks stamp: 'scb 6/5/2022 18:42:05'!
+FAILURE!
+
+!testRun: #CartTest #test08CartKnowsOccurrancesOfBooks stamp: 'scb 6/5/2022 18:42:05'!
+FAILURE!
+!Cart methodsFor: 'accessing' stamp: 'scb 6/5/2022 18:42:32' prior: 50491674!
+occurrencesOf: aBook
+
+	^contents occurrencesOf: aBook! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/5/2022 18:42:33'!
+PASSED!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 18:42:33'!
+PASSED!
+
+!testRun: #CartTest #test03CartWithBookIsNotEmpty stamp: 'scb 6/5/2022 18:42:33'!
+PASSED!
+
+!testRun: #CartTest #test04CartCantAddNonStrictlyPositiveAmountOfBooks stamp: 'scb 6/5/2022 18:42:33'!
+PASSED!
+
+!testRun: #CartTest #test05CartCantAddMultipleCopiesOfBookOutsideOfCollection stamp: 'scb 6/5/2022 18:42:33'!
+PASSED!
+
+!testRun: #CartTest #test06CartDoesntKnowNotAddedBooks stamp: 'scb 6/5/2022 18:42:33'!
+PASSED!
+
+!testRun: #CartTest #test07CartKnowsAddedBooks stamp: 'scb 6/5/2022 18:42:33'!
+PASSED!
+
+!testRun: #CartTest #test08CartKnowsOccurrancesOfBooks stamp: 'scb 6/5/2022 18:42:33'!
+PASSED!
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:42:52' prior: 50490974!
+test02CartCantAddBookOutsideOfCollection
+
+	| aCart |
+	
+	aCart := Cart with: OrderedCollection new.
+	
+	self should: [ aCart add: 'book' ]
+	raise: Error
+       	withExceptionDo: [ :anError |
+            self assert: anError messageText = aCart invalidBookErrorMessage.
+            self assert: aCart isEmpty ]! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:43:15' prior: 50491601!
+test04CartCantAddNonStrictlyPositiveAmountOfBooks
+
+	| aCart |
+	
+	aCart := Cart with: (OrderedCollection with: 'book').
+	
+	self should: [ aCart add: -1 of: 'book' ]
+	raise: Error
+       	withExceptionDo: [ :anError |
+            self assert: anError messageText = aCart invalidAmountErrorMessage.
+            self assert: aCart isEmpty ]! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:43:20' prior: 50491189!
+test05CartCantAddMultipleCopiesOfBookOutsideOfCollection
+
+	| aCart |
+	
+	aCart := Cart with: OrderedCollection new.
+	
+	self should: [ aCart add: 2 of: 'book' ]
+	raise: Error
+       	withExceptionDo: [ :anError |
+            self assert: anError messageText = aCart invalidBookErrorMessage.
+            self assert: aCart isEmpty ]! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:44:08'!
+book
+
+	^ 'book'! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:44:08' prior: 50491785!
+test05CartCantAddMultipleCopiesOfBookOutsideOfCollection
+
+	| aCart |
+	
+	aCart := Cart with: OrderedCollection new.
+	
+	self should: [ aCart add: 2 of: self book ]
+	raise: Error
+       	withExceptionDo: [ :anError |
+            self assert: anError messageText = aCart invalidBookErrorMessage.
+            self assert: aCart isEmpty ]! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:44:08' prior: 50491388!
+test06CartDoesntKnowNotAddedBooks
+
+	
+	self deny: (Cart new includes: self book)
+	
+	! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:44:08' prior: 50491653!
+test08CartKnowsOccurrancesOfBooks
+
+	| aCart |
+	
+	aCart := Cart with: (OrderedCollection with: self book).
+	aCart add: 'book'.
+	
+	self assert: 1 equals: (aCart occurrencesOf: 'book')
+	
+	! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:44:08' prior: 50491820!
+test08CartKnowsOccurrancesOfBooks
+
+	| aCart |
+	
+	aCart := Cart with: (OrderedCollection with: self book).
+	aCart add: self book.
+	
+	self assert: 1 equals: (aCart occurrencesOf: 'book')
+	
+	! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:44:08' prior: 50491829!
+test08CartKnowsOccurrancesOfBooks
+
+	| aCart |
+	
+	aCart := Cart with: (OrderedCollection with: self book).
+	aCart add: self book.
+	
+	self assert: 1 equals: (aCart occurrencesOf: self book)
+	
+	! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:44:08' prior: 50491046!
+test03CartWithBookIsNotEmpty
+
+	| aCart |
+	
+	aCart := Cart with: (OrderedCollection with: self book).
+	
+	self deny: (aCart add: 'book') isEmpty! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:44:08' prior: 50491847!
+test03CartWithBookIsNotEmpty
+
+	| aCart |
+	
+	aCart := Cart with: (OrderedCollection with: self book).
+	
+	self deny: (aCart add: self book) isEmpty! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:44:08' prior: 50491771!
+test04CartCantAddNonStrictlyPositiveAmountOfBooks
+
+	| aCart |
+	
+	aCart := Cart with: (OrderedCollection with: self book).
+	
+	self should: [ aCart add: -1 of: 'book' ]
+	raise: Error
+       	withExceptionDo: [ :anError |
+            self assert: anError messageText = aCart invalidAmountErrorMessage.
+            self assert: aCart isEmpty ]! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:44:08' prior: 50491862!
+test04CartCantAddNonStrictlyPositiveAmountOfBooks
+
+	| aCart |
+	
+	aCart := Cart with: (OrderedCollection with: self book).
+	
+	self should: [ aCart add: -1 of: self book ]
+	raise: Error
+       	withExceptionDo: [ :anError |
+            self assert: anError messageText = aCart invalidAmountErrorMessage.
+            self assert: aCart isEmpty ]! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:44:08' prior: 50491758!
+test02CartCantAddBookOutsideOfCollection
+
+	| aCart |
+	
+	aCart := Cart with: OrderedCollection new.
+	
+	self should: [ aCart add: self book ]
+	raise: Error
+       	withExceptionDo: [ :anError |
+            self assert: anError messageText = aCart invalidBookErrorMessage.
+            self assert: aCart isEmpty ]! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:44:08' prior: 50491646!
+test07CartKnowsAddedBooks
+
+	| aCart |
+	
+	aCart := Cart with: (OrderedCollection with: self book).
+	aCart add: 'book'.
+	
+	self assert: (aCart includes: 'book')
+	
+	! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:44:08' prior: 50491903!
+test07CartKnowsAddedBooks
+
+	| aCart |
+	
+	aCart := Cart with: (OrderedCollection with: self book).
+	aCart add: self book.
+	
+	self assert: (aCart includes: 'book')
+	
+	! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:44:08' prior: 50491911!
+test07CartKnowsAddedBooks
+
+	| aCart |
+	
+	aCart := Cart with: (OrderedCollection with: self book).
+	aCart add: self book.
+	
+	self assert: (aCart includes: self book)
+	
+	! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:44:52'!
+CollectionOfBooks
+
+	^ OrderedCollection with: self book! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:44:52' prior: 50491838!
+test08CartKnowsOccurrancesOfBooks
+
+	| aCart |
+	
+	aCart := Cart with: (self CollectionOfBooks).
+	aCart add: self book.
+	
+	self assert: 1 equals: (aCart occurrencesOf: self book)
+	
+	! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:44:52' prior: 50491854!
+test03CartWithBookIsNotEmpty
+
+	| aCart |
+	
+	aCart := Cart with: (self CollectionOfBooks).
+	
+	self deny: (aCart add: self book) isEmpty! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:44:52' prior: 50491876!
+test04CartCantAddNonStrictlyPositiveAmountOfBooks
+
+	| aCart |
+	
+	aCart := Cart with: (self CollectionOfBooks).
+	
+	self should: [ aCart add: -1 of: self book ]
+	raise: Error
+       	withExceptionDo: [ :anError |
+            self assert: anError messageText = aCart invalidAmountErrorMessage.
+            self assert: aCart isEmpty ]! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:44:52' prior: 50491919!
+test07CartKnowsAddedBooks
+
+	| aCart |
+	
+	aCart := Cart with: (self CollectionOfBooks).
+	aCart add: self book.
+	
+	self assert: (aCart includes: self book)
+	
+	! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:45:00' prior: 50491941!
+test03CartWithBookIsNotEmpty
+
+	| aCart |
+	
+	aCart := Cart with: self CollectionOfBooks.
+	
+	self deny: (aCart add: self book) isEmpty! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:45:12' prior: 50491969!
+test03CartWithBookIsNotEmpty
+
+	| aCart |
+	
+	aCart := Cart with: (self CollectionOfBooks).
+	
+	self deny: (aCart add: self book) isEmpty! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:45:27'!
+CartWithCollectionOfBooks
+
+	^ Cart with: (self CollectionOfBooks)! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:45:27' prior: 50491932!
+test08CartKnowsOccurrancesOfBooks
+
+	| aCart |
+	
+	aCart := self CartWithCollectionOfBooks.
+	aCart add: self book.
+	
+	self assert: 1 equals: (aCart occurrencesOf: self book)
+	
+	! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:45:27' prior: 50491976!
+test03CartWithBookIsNotEmpty
+
+	| aCart |
+	
+	aCart := self CartWithCollectionOfBooks.
+	
+	self deny: (aCart add: self book) isEmpty! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:45:27' prior: 50491948!
+test04CartCantAddNonStrictlyPositiveAmountOfBooks
+
+	| aCart |
+	
+	aCart := self CartWithCollectionOfBooks.
+	
+	self should: [ aCart add: -1 of: self book ]
+	raise: Error
+       	withExceptionDo: [ :anError |
+            self assert: anError messageText = aCart invalidAmountErrorMessage.
+            self assert: aCart isEmpty ]! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:45:27' prior: 50491961!
+test07CartKnowsAddedBooks
+
+	| aCart |
+	
+	aCart := self CartWithCollectionOfBooks.
+	aCart add: self book.
+	
+	self assert: (aCart includes: self book)
+	
+	! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:45:33' prior: 50491983!
+CartWithCollectionOfBooks
+
+	^ Cart with: self CollectionOfBooks! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:45:45'!
+cartWithCollectionOfBooks
+
+	^ Cart with: self CollectionOfBooks! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'scb 6/5/2022 18:45:45' prior: 50492003!
+test04CartCantAddNonStrictlyPositiveAmountOfBooks
+
+	| aCart |
+	
+	aCart := self cartWithCollectionOfBooks.
+	
+	self should: [ aCart add: -1 of: self book ]
+	raise: Error
+       	withExceptionDo: [ :anError |
+            self assert: anError messageText = aCart invalidAmountErrorMessage.
+            self assert: aCart isEmpty ]! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'scb 6/5/2022 18:45:45' prior: 50491988!
+test08CartKnowsOccurrancesOfBooks
+
+	| aCart |
+	
+	aCart := self cartWithCollectionOfBooks.
+	aCart add: self book.
+	
+	self assert: 1 equals: (aCart occurrencesOf: self book)
+	
+	! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'scb 6/5/2022 18:45:45' prior: 50492016!
+test07CartKnowsAddedBooks
+
+	| aCart |
+	
+	aCart := self cartWithCollectionOfBooks.
+	aCart add: self book.
+	
+	self assert: (aCart includes: self book)
+	
+	! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'scb 6/5/2022 18:45:45' prior: 50491996!
+test03CartWithBookIsNotEmpty
+
+	| aCart |
+	
+	aCart := self cartWithCollectionOfBooks.
+	
+	self deny: (aCart add: self book) isEmpty! !
+
+!methodRemoval: CartTest #CartWithCollectionOfBooks stamp: 'scb 6/5/2022 18:45:45'!
+CartWithCollectionOfBooks
+
+	^ Cart with: self CollectionOfBooks!
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:45:53'!
+collectionOfBooks
+
+	^ OrderedCollection with: self book! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'scb 6/5/2022 18:45:53' prior: 50492028!
+cartWithCollectionOfBooks
+
+	^ Cart with: self collectionOfBooks! !
+
+!methodRemoval: CartTest #CollectionOfBooks stamp: 'scb 6/5/2022 18:45:53'!
+CollectionOfBooks
+
+	^ OrderedCollection with: self book!
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:46:25'!
+assertIsEmpty: aCart
+
+	^ self assert: aCart isEmpty! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:46:25' prior: 50491801!
+test05CartCantAddMultipleCopiesOfBookOutsideOfCollection
+
+	| aCart |
+	
+	aCart := Cart with: OrderedCollection new.
+	
+	self should: [ aCart add: 2 of: self book ]
+	raise: Error
+       	withExceptionDo: [ :anError |
+            self assert: anError messageText = aCart invalidBookErrorMessage.
+            self assertIsEmpty: aCart ]! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:46:25' prior: 50492033!
+test04CartCantAddNonStrictlyPositiveAmountOfBooks
+
+	| aCart |
+	
+	aCart := self cartWithCollectionOfBooks.
+	
+	self should: [ aCart add: -1 of: self book ]
+	raise: Error
+       	withExceptionDo: [ :anError |
+            self assert: anError messageText = aCart invalidAmountErrorMessage.
+            self assertIsEmpty: aCart ]! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:46:26' prior: 50491890!
+test02CartCantAddBookOutsideOfCollection
+
+	| aCart |
+	
+	aCart := Cart with: OrderedCollection new.
+	
+	self should: [ aCart add: self book ]
+	raise: Error
+       	withExceptionDo: [ :anError |
+            self assert: anError messageText = aCart invalidBookErrorMessage.
+            self assertIsEmpty: aCart ]! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:47:02' prior: 50492064!
+test03CartWithBookIsNotEmpty
+
+	| aCart |
+	
+	aCart := self cartWithCollectionOfBooks.
+	aCart add: self book.
+	
+	self deny: aCart isEmpty! !
+
+!testRun: #CartTest #test03CartWithBookIsNotEmpty stamp: 'scb 6/5/2022 18:47:03'!
+PASSED!
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/5/2022 18:47:03'!
+PASSED!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 18:47:03'!
+PASSED!
+
+!testRun: #CartTest #test03CartWithBookIsNotEmpty stamp: 'scb 6/5/2022 18:47:03'!
+PASSED!
+
+!testRun: #CartTest #test04CartCantAddNonStrictlyPositiveAmountOfBooks stamp: 'scb 6/5/2022 18:47:03'!
+PASSED!
+
+!testRun: #CartTest #test05CartCantAddMultipleCopiesOfBookOutsideOfCollection stamp: 'scb 6/5/2022 18:47:03'!
+PASSED!
+
+!testRun: #CartTest #test06CartDoesntKnowNotAddedBooks stamp: 'scb 6/5/2022 18:47:03'!
+PASSED!
+
+!testRun: #CartTest #test07CartKnowsAddedBooks stamp: 'scb 6/5/2022 18:47:03'!
+PASSED!
+
+!testRun: #CartTest #test08CartKnowsOccurrancesOfBooks stamp: 'scb 6/5/2022 18:47:03'!
+PASSED!
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:48:30'!
+cartWithCollectionOfBooksAndBookIncluded
+
+	| aCart |
+	
+	aCart := self cartWithCollectionOfBooks.
+	^aCart add: self book.! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:48:40' prior: 50492047!
+test08CartKnowsOccurrancesOfBooks
+
+	| aCart |
+	
+	aCart := self cartWithCollectionOfBooksAndBookIncluded
+	
+	self assert: 1 equals: (aCart occurrencesOf: self book)
+	
+	! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:48:44' prior: 50492174!
+test08CartKnowsOccurrancesOfBooks
+
+	| aCart |
+	
+	aCart := self cartWithCollectionOfBooksAndBookIncluded.
+	
+	self assert: 1 equals: (aCart occurrencesOf: self book)
+	
+	! !
+
+!testRun: #CartTest #test08CartKnowsOccurrancesOfBooks stamp: 'scb 6/5/2022 18:48:45'!
+PASSED!
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/5/2022 18:48:45'!
+PASSED!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 18:48:45'!
+PASSED!
+
+!testRun: #CartTest #test03CartWithBookIsNotEmpty stamp: 'scb 6/5/2022 18:48:45'!
+PASSED!
+
+!testRun: #CartTest #test04CartCantAddNonStrictlyPositiveAmountOfBooks stamp: 'scb 6/5/2022 18:48:45'!
+PASSED!
+
+!testRun: #CartTest #test05CartCantAddMultipleCopiesOfBookOutsideOfCollection stamp: 'scb 6/5/2022 18:48:45'!
+PASSED!
+
+!testRun: #CartTest #test06CartDoesntKnowNotAddedBooks stamp: 'scb 6/5/2022 18:48:45'!
+PASSED!
+
+!testRun: #CartTest #test07CartKnowsAddedBooks stamp: 'scb 6/5/2022 18:48:45'!
+PASSED!
+
+!testRun: #CartTest #test08CartKnowsOccurrancesOfBooks stamp: 'scb 6/5/2022 18:48:45'!
+PASSED!
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:48:53' prior: 50492056!
+test07CartKnowsAddedBooks
+
+	| aCart |
+	
+	aCart := self cartWithCollectionOfBooksAndBookIncluded.
+	
+	self assert: (aCart includes: self book)
+	
+	! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:49:04' prior: 50492133!
+test03CartWithBookIsNotEmpty
+
+	| aCart |
+	
+	aCart := self cartWithCollectionOfBooksAndBookIncluded.
+	
+	self deny: aCart isEmpty! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:54:14'!
+with: aCart should: aClosureToFail rise: errorMessage
+
+	self should: aClosureToFail
+	raise: Error
+       	withExceptionDo: [ :anError |
+            self assert: anError messageText = errorMessage.
+            self assertIsEmpty: aCart ]! !
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:54:44' prior: 50492094!
+test05CartCantAddMultipleCopiesOfBookOutsideOfCollection
+
+	| aCart |
+	
+	aCart := Cart with: OrderedCollection new.
+	
+	self with: aCart should: [ aCart add: 2 of: self book ] rise: aCart invalidBookErrorMessage! !
+
+!testRun: #CartTest #test05CartCantAddMultipleCopiesOfBookOutsideOfCollection stamp: 'scb 6/5/2022 18:54:45'!
+PASSED!
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/5/2022 18:54:45'!
+PASSED!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 18:54:45'!
+PASSED!
+
+!testRun: #CartTest #test03CartWithBookIsNotEmpty stamp: 'scb 6/5/2022 18:54:45'!
+PASSED!
+
+!testRun: #CartTest #test04CartCantAddNonStrictlyPositiveAmountOfBooks stamp: 'scb 6/5/2022 18:54:45'!
+PASSED!
+
+!testRun: #CartTest #test05CartCantAddMultipleCopiesOfBookOutsideOfCollection stamp: 'scb 6/5/2022 18:54:45'!
+PASSED!
+
+!testRun: #CartTest #test06CartDoesntKnowNotAddedBooks stamp: 'scb 6/5/2022 18:54:45'!
+PASSED!
+
+!testRun: #CartTest #test07CartKnowsAddedBooks stamp: 'scb 6/5/2022 18:54:45'!
+PASSED!
+
+!testRun: #CartTest #test08CartKnowsOccurrancesOfBooks stamp: 'scb 6/5/2022 18:54:45'!
+PASSED!
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:55:10' prior: 50492107!
+test04CartCantAddNonStrictlyPositiveAmountOfBooks
+
+	| aCart |
+	
+	aCart := self cartWithCollectionOfBooks.
+	
+	self with: aCart should: [ aCart add: -1 of: self book ] rise: aCart invalidAmountErrorMessage! !
+
+!testRun: #CartTest #test04CartCantAddNonStrictlyPositiveAmountOfBooks stamp: 'scb 6/5/2022 18:55:11'!
+PASSED!
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/5/2022 18:55:11'!
+PASSED!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 18:55:11'!
+PASSED!
+
+!testRun: #CartTest #test03CartWithBookIsNotEmpty stamp: 'scb 6/5/2022 18:55:11'!
+PASSED!
+
+!testRun: #CartTest #test04CartCantAddNonStrictlyPositiveAmountOfBooks stamp: 'scb 6/5/2022 18:55:11'!
+PASSED!
+
+!testRun: #CartTest #test05CartCantAddMultipleCopiesOfBookOutsideOfCollection stamp: 'scb 6/5/2022 18:55:11'!
+PASSED!
+
+!testRun: #CartTest #test06CartDoesntKnowNotAddedBooks stamp: 'scb 6/5/2022 18:55:11'!
+PASSED!
+
+!testRun: #CartTest #test07CartKnowsAddedBooks stamp: 'scb 6/5/2022 18:55:11'!
+PASSED!
+
+!testRun: #CartTest #test08CartKnowsOccurrancesOfBooks stamp: 'scb 6/5/2022 18:55:11'!
+PASSED!
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:55:39' prior: 50492120!
+test02CartCantAddBookOutsideOfCollection
+
+	| aCart |
+	
+	aCart := Cart with: OrderedCollection new.
+	
+	self with: aCart should: [ aCart add: self book ] rise: aCart invalidBookErrorMessage! !
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 18:55:40'!
+PASSED!
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/5/2022 18:55:40'!
+PASSED!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/5/2022 18:55:40'!
+PASSED!
+
+!testRun: #CartTest #test03CartWithBookIsNotEmpty stamp: 'scb 6/5/2022 18:55:40'!
+PASSED!
+
+!testRun: #CartTest #test04CartCantAddNonStrictlyPositiveAmountOfBooks stamp: 'scb 6/5/2022 18:55:40'!
+PASSED!
+
+!testRun: #CartTest #test05CartCantAddMultipleCopiesOfBookOutsideOfCollection stamp: 'scb 6/5/2022 18:55:40'!
+PASSED!
+
+!testRun: #CartTest #test06CartDoesntKnowNotAddedBooks stamp: 'scb 6/5/2022 18:55:40'!
+PASSED!
+
+!testRun: #CartTest #test07CartKnowsAddedBooks stamp: 'scb 6/5/2022 18:55:40'!
+PASSED!
+
+!testRun: #CartTest #test08CartKnowsOccurrancesOfBooks stamp: 'scb 6/5/2022 18:55:40'!
+PASSED!
+!CartTest methodsFor: 'test' stamp: 'scb 6/5/2022 18:56:01'!
+with: aCart should: aClosureToFail riseErrorWithMessage: errorMessage
+
+	self should: aClosureToFail
+	raise: Error
+       	withExceptionDo: [ :anError |
+            self assert: anError messageText = errorMessage.
+            self assertIsEmpty: aCart ]! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'scb 6/5/2022 18:56:01' prior: 50492317!
+test02CartCantAddBookOutsideOfCollection
+
+	| aCart |
+	
+	aCart := Cart with: OrderedCollection new.
+	
+	self with: aCart should: [ aCart add: self book ] riseErrorWithMessage: aCart invalidBookErrorMessage! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'scb 6/5/2022 18:56:01' prior: 50492242!
+test05CartCantAddMultipleCopiesOfBookOutsideOfCollection
+
+	| aCart |
+	
+	aCart := Cart with: OrderedCollection new.
+	
+	self with: aCart should: [ aCart add: 2 of: self book ] riseErrorWithMessage: aCart invalidBookErrorMessage! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'scb 6/5/2022 18:56:01' prior: 50492280!
+test04CartCantAddNonStrictlyPositiveAmountOfBooks
+
+	| aCart |
+	
+	aCart := self cartWithCollectionOfBooks.
+	
+	self with: aCart should: [ aCart add: -1 of: self book ] riseErrorWithMessage: aCart invalidAmountErrorMessage! !
+
+!methodRemoval: CartTest #with:should:rise: stamp: 'scb 6/5/2022 18:56:01'!
+with: aCart should: aClosureToFail rise: errorMessage
+
+	self should: aClosureToFail
+	raise: Error
+       	withExceptionDo: [ :anError |
+            self assert: anError messageText = errorMessage.
+            self assertIsEmpty: aCart ]!
+!CartTest methodsFor: 'initializations' stamp: 'scb 6/5/2022 18:57:17'!
+initializationCartWithCollectionOfBooks
+
+	^ Cart with: self collectionOfBooks! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'scb 6/5/2022 18:57:17' prior: 50492385!
+test04CartCantAddNonStrictlyPositiveAmountOfBooks
+
+	| aCart |
+	
+	aCart := self initializationCartWithCollectionOfBooks.
+	
+	self with: aCart should: [ aCart add: -1 of: self book ] riseErrorWithMessage: aCart invalidAmountErrorMessage! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'scb 6/5/2022 18:57:17' prior: 50492167!
+cartWithCollectionOfBooksAndBookIncluded
+
+	| aCart |
+	
+	aCart := self initializationCartWithCollectionOfBooks.
+	^aCart add: self book.! !
+
+!methodRemoval: CartTest #cartWithCollectionOfBooks stamp: 'scb 6/5/2022 18:57:17'!
+cartWithCollectionOfBooks
+
+	^ Cart with: self collectionOfBooks!
+!CartTest methodsFor: 'initializations' stamp: 'scb 6/5/2022 18:57:27'!
+initializeCartWithCollectionOfBooks
+
+	^ Cart with: self collectionOfBooks! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'scb 6/5/2022 18:57:27' prior: 50492422!
+cartWithCollectionOfBooksAndBookIncluded
+
+	| aCart |
+	
+	aCart := self initializeCartWithCollectionOfBooks.
+	^aCart add: self book.! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'scb 6/5/2022 18:57:27' prior: 50492411!
+test04CartCantAddNonStrictlyPositiveAmountOfBooks
+
+	| aCart |
+	
+	aCart := self initializeCartWithCollectionOfBooks.
+	
+	self with: aCart should: [ aCart add: -1 of: self book ] riseErrorWithMessage: aCart invalidAmountErrorMessage! !
+
+!methodRemoval: CartTest #initializationCartWithCollectionOfBooks stamp: 'scb 6/5/2022 18:57:27'!
+initializationCartWithCollectionOfBooks
+
+	^ Cart with: self collectionOfBooks!
+!CartTest methodsFor: 'initializations' stamp: 'scb 6/5/2022 18:57:41'!
+initializeCartWithCollectionOfBooksAndBookIncluded
+
+	| aCart |
+	
+	aCart := self initializeCartWithCollectionOfBooks.
+	^aCart add: self book.! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'scb 6/5/2022 18:57:41' prior: 50492226!
+test03CartWithBookIsNotEmpty
+
+	| aCart |
+	
+	aCart := self initializeCartWithCollectionOfBooksAndBookIncluded.
+	
+	self deny: aCart isEmpty! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'scb 6/5/2022 18:57:41' prior: 50492182!
+test08CartKnowsOccurrancesOfBooks
+
+	| aCart |
+	
+	aCart := self initializeCartWithCollectionOfBooksAndBookIncluded.
+	
+	self assert: 1 equals: (aCart occurrencesOf: self book)
+	
+	! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'scb 6/5/2022 18:57:41' prior: 50492218!
+test07CartKnowsAddedBooks
+
+	| aCart |
+	
+	aCart := self initializeCartWithCollectionOfBooksAndBookIncluded.
+	
+	self assert: (aCart includes: self book)
+	
+	! !
+
+!methodRemoval: CartTest #cartWithCollectionOfBooksAndBookIncluded stamp: 'scb 6/5/2022 18:57:41'!
+cartWithCollectionOfBooksAndBookIncluded
+
+	| aCart |
+	
+	aCart := self initializeCartWithCollectionOfBooks.
+	^aCart add: self book.!
+!CartTest methodsFor: 'initializations' stamp: 'scb 6/5/2022 18:58:03'!
+initializeCollectionOfBooks
+
+	^ OrderedCollection with: self book! !
+!Cart methodsFor: 'adding' stamp: 'scb 6/5/2022 19:00:43'!
+riseInvalidAmountError
+
+	^ self error: self invalidAmountErrorMessage! !
+!Cart methodsFor: 'adding' stamp: 'scb 6/5/2022 19:00:43' prior: 50491690!
+add: anAmount of: aBook
+	
+	( anAmount strictlyPositive ) ifFalse: [ self riseInvalidAmountError ].
+	( collection includes: aBook ) ifFalse: [ self error: self invalidBookErrorMessage ].
+	
+	anAmount timesRepeat: [contents add: aBook.]
+	! !
+!Cart methodsFor: 'adding' stamp: 'scb 6/5/2022 19:01:19'!
+riseInvalidBookError
+
+	^ self error: self invalidBookErrorMessage! !
+!Cart methodsFor: 'adding' stamp: 'scb 6/5/2022 19:01:19' prior: 50492513!
+add: anAmount of: aBook
+	
+	( anAmount strictlyPositive ) ifFalse: [ self riseInvalidAmountError ].
+	( collection includes: aBook ) ifFalse: [ self riseInvalidBookError ].
+	
+	anAmount timesRepeat: [contents add: aBook.]
+	! !
+!Cart methodsFor: 'adding' stamp: 'scb 6/5/2022 19:02:10'!
+assertStrictlyPositiveAmount: anAmount
+	
+	^ ( anAmount strictlyPositive ) ifFalse: [ self riseInvalidAmountError ]
+	! !
+!Cart methodsFor: 'adding' stamp: 'scb 6/5/2022 19:02:25' prior: 50492528!
+add: anAmount of: aBook
+	
+	self assertStrictlyPositiveAmount: anAmount.
+	( collection includes: aBook ) ifFalse: [ self riseInvalidBookError ].
+	
+	anAmount timesRepeat: [contents add: aBook.]
+	! !
+!Cart methodsFor: 'adding' stamp: 'scb 6/5/2022 19:02:55'!
+assertValidBook: aBook
+	
+	^ ( collection includes: aBook ) ifFalse: [ self riseInvalidBookError ]
+	! !
+!Cart methodsFor: 'adding' stamp: 'scb 6/5/2022 19:03:16' prior: 50492544!
+add: anAmount of: aBook
+	
+	self assertStrictlyPositiveAmount: anAmount.
+	self assertValidBook: aBook.
+	
+	anAmount timesRepeat: [contents add: aBook.]
+	! !
+
+----SNAPSHOT----(5 June 2022 19:06:33) CuisUniversity-5096.image priorSource: 5082876!
