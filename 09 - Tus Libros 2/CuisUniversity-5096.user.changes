@@ -4781,3 +4781,4630 @@ PASSED!
 PASSED!
 
 ----SNAPSHOT----(7 June 2022 20:53:49) CuisUniversity-5096.image priorSource: 5149848!
+
+----STARTUP---- (8 June 2022 22:04:32) as /Users/sebascantini/Downloads/macos64/CuisUniversity-5096.image!
+
+
+!testRun: #CashierTest #test05CashierCheckoutsCart stamp: 'scb 6/8/2022 22:04:58'!
+PASSED!
+
+!testRun: #CashierTest #test01CantCheckoutEmptyCart stamp: 'scb 6/8/2022 22:04:58'!
+PASSED!
+
+!testRun: #CashierTest #test02CashierCanCalculateCheckoutPriceOfCartWithOneBook stamp: 'scb 6/8/2022 22:04:58'!
+PASSED!
+
+!testRun: #CashierTest #test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks stamp: 'scb 6/8/2022 22:04:58'!
+PASSED!
+
+!testRun: #CashierTest #test04CantCheckoutWithExpiredCard stamp: 'scb 6/8/2022 22:04:58'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierCheckoutsCart stamp: 'scb 6/8/2022 22:04:58'!
+PASSED!
+
+!classDefinition: #CashierTest category: 'TusLibros' stamp: 'scb 6/8/2022 22:21:59'!
+TestCase subclass: #CashierTest
+	instanceVariableNames: 'aCredit debitedCreditCard'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #CashierTest category: 'TusLibros' stamp: 'scb 6/8/2022 22:22:00'!
+TestCase subclass: #CashierTest
+	instanceVariableNames: 'aCredit debitedCreditCard debitedAmount'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/8/2022 22:22:06'!
+test06CashierCheckoutsCartUsingMerchantProcessor
+	
+	| aCart aCashier aCreditCard aPrice aLedger|
+	
+	aCart := Cart checkout: (Dictionary with: 'book' -> 10).
+	aCart add: 1 of: 'book'.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) registerOn: aLedger.
+	
+	aPrice := aCashier checkout.
+	
+	
+	
+	self assert: aCreditCard equals: debitedCreditCard.
+	self assert: aPrice equals: debitedAmount.! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/8/2022 22:22:11' prior: 50494320!
+test06CashierCheckoutsCartUsingMerchantProcessor
+	
+	| aCart aCashier aCreditCard aPrice aLedger|
+	
+	aCart := Cart checkout: (Dictionary with: 'book' -> 10).
+	aCart add: 1 of: 'book'.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) registerOn: aLedger.
+	
+	aPrice := aCashier checkout.
+	
+	self assert: aCreditCard equals: debitedCreditCard.
+	self assert: aPrice equals: debitedAmount.! !
+
+!testRun: #CashierTest #test06CashierCheckoutsCartUsingMerchantProcessor stamp: 'scb 6/8/2022 22:22:13'!
+FAILURE!
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/8/2022 22:24:05' prior: 50494343!
+test06CashierCheckoutsCartUsingMerchantProcessor
+	
+	| aCart aCashier aCreditCard aPrice aLedger |
+	
+	aCart := Cart checkout: (Dictionary with: 'book' -> 10).
+	aCart add: 1 of: 'book'.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) registerOn: aLedger.
+	
+	aPrice := aCashier checkout.
+	
+	self assert: aPrice equals: debitedAmount.
+	self assert: aCreditCard equals: debitedCreditCard.! !
+
+!testRun: #CashierTest #test06CashierCheckoutsCartUsingMerchantProcessor stamp: 'scb 6/8/2022 22:26:23'!
+FAILURE!
+
+!testRun: #CashierTest #test06CashierCheckoutsCartUsingMerchantProcessor stamp: 'scb 6/8/2022 22:38:01'!
+FAILURE!
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/8/2022 22:39:42' prior: 50492946!
+test01CantCheckoutEmptyCart
+
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := Cart new.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	
+	self should: [Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) registerOn: aLedger.]
+	raise: Error
+	withMessageText: Cashier emptyCartErrorMessage. ! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/8/2022 22:39:53' prior: 50494399!
+test01CantCheckoutEmptyCart
+
+	| aCart aCreditCard aLedger|
+	
+	aCart := Cart new.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	
+	self should: [Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) registerOn: aLedger.]
+	raise: Error
+	withMessageText: Cashier emptyCartErrorMessage. ! !
+
+!testRun: #CashierTest #test01CantCheckoutEmptyCart stamp: 'scb 6/8/2022 22:39:54'!
+PASSED!
+
+!testRun: #CashierTest #test01CantCheckoutEmptyCart stamp: 'scb 6/8/2022 22:39:54'!
+PASSED!
+
+!testRun: #CashierTest #test02CashierCanCalculateCheckoutPriceOfCartWithOneBook stamp: 'scb 6/8/2022 22:39:54'!
+PASSED!
+
+!testRun: #CashierTest #test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks stamp: 'scb 6/8/2022 22:39:54'!
+PASSED!
+
+!testRun: #CashierTest #test04CantCheckoutWithExpiredCard stamp: 'scb 6/8/2022 22:39:54'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierCheckoutsCart stamp: 'scb 6/8/2022 22:39:54'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierCheckoutsCartUsingMerchantProcessor stamp: 'scb 6/8/2022 22:39:54'!
+FAILURE!
+
+!testRun: #CashierTest #test06CashierCheckoutsCartUsingMerchantProcessor stamp: 'scb 6/8/2022 22:39:54'!
+FAILURE!
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/8/2022 22:41:15'!
+PASSED!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/8/2022 22:41:15'!
+PASSED!
+
+!testRun: #CartTest #test03CartWithBookIsNotEmpty stamp: 'scb 6/8/2022 22:41:15'!
+ERROR!
+
+!testRun: #CartTest #test04CartCantAddNonStrictlyPositiveAmountOfBooks stamp: 'scb 6/8/2022 22:41:15'!
+ERROR!
+
+!testRun: #CartTest #test04_5CartCantAddNonIntegerAmountOfBooks stamp: 'scb 6/8/2022 22:41:15'!
+ERROR!
+
+!testRun: #CartTest #test05CartCantAddMultipleCopiesOfBookOutsideOfCollection stamp: 'scb 6/8/2022 22:41:15'!
+PASSED!
+
+!testRun: #CartTest #test06CartDoesntKnowNotAddedBooks stamp: 'scb 6/8/2022 22:41:15'!
+PASSED!
+
+!testRun: #CartTest #test07CartKnowsAddedBooks stamp: 'scb 6/8/2022 22:41:15'!
+ERROR!
+
+!testRun: #CartTest #test08CartKnowsOccurrancesOfBooks stamp: 'scb 6/8/2022 22:41:15'!
+ERROR!
+!CartTest methodsFor: 'initializations' stamp: 'scb 6/8/2022 22:41:35' prior: 50492954!
+initializeCatalogOfBooks
+
+	^ Dictionary at: self book -> self bookPrice! !
+
+!methodRemoval: Cashier class #checkout: stamp: 'scb 6/8/2022 22:41:47'!
+checkout: aCart
+
+	(aCart isEmpty) ifTrue: [self error: self emptyCartErrorMessage ].
+	^ self new initializeCheckoutOf: aCart.!
+
+!methodRemoval: Cashier #initializeCheckoutOf: stamp: 'scb 6/8/2022 22:41:51'!
+initializeCheckoutOf: aCart 
+
+	cart := aCart.!
+
+!testRun: #CashierTest #test01CantCheckoutEmptyCart stamp: 'scb 6/8/2022 22:41:52'!
+PASSED!
+
+!testRun: #CashierTest #test02CashierCanCalculateCheckoutPriceOfCartWithOneBook stamp: 'scb 6/8/2022 22:41:52'!
+PASSED!
+
+!testRun: #CashierTest #test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks stamp: 'scb 6/8/2022 22:41:52'!
+PASSED!
+
+!testRun: #CashierTest #test04CantCheckoutWithExpiredCard stamp: 'scb 6/8/2022 22:41:52'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierCheckoutsCart stamp: 'scb 6/8/2022 22:41:52'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierCheckoutsCartUsingMerchantProcessor stamp: 'scb 6/8/2022 22:41:52'!
+FAILURE!
+
+!testRun: #CashierTest #test06CashierCheckoutsCartUsingMerchantProcessor stamp: 'scb 6/8/2022 22:41:52'!
+FAILURE!
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/8/2022 22:42:00'!
+PASSED!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/8/2022 22:42:00'!
+PASSED!
+
+!testRun: #CartTest #test03CartWithBookIsNotEmpty stamp: 'scb 6/8/2022 22:42:00'!
+ERROR!
+
+!testRun: #CartTest #test04CartCantAddNonStrictlyPositiveAmountOfBooks stamp: 'scb 6/8/2022 22:42:00'!
+ERROR!
+
+!testRun: #CartTest #test04_5CartCantAddNonIntegerAmountOfBooks stamp: 'scb 6/8/2022 22:42:00'!
+ERROR!
+
+!testRun: #CartTest #test05CartCantAddMultipleCopiesOfBookOutsideOfCollection stamp: 'scb 6/8/2022 22:42:00'!
+PASSED!
+
+!testRun: #CartTest #test06CartDoesntKnowNotAddedBooks stamp: 'scb 6/8/2022 22:42:00'!
+PASSED!
+
+!testRun: #CartTest #test07CartKnowsAddedBooks stamp: 'scb 6/8/2022 22:42:00'!
+ERROR!
+
+!testRun: #CartTest #test08CartKnowsOccurrancesOfBooks stamp: 'scb 6/8/2022 22:42:00'!
+ERROR!
+!CartTest methodsFor: 'initializations' stamp: 'scb 6/8/2022 22:42:25' prior: 50494489!
+initializeCatalogOfBooks
+
+	^ Dictionary add: self book -> self bookPrice! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/8/2022 22:42:27'!
+PASSED!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/8/2022 22:42:27'!
+PASSED!
+
+!testRun: #CartTest #test03CartWithBookIsNotEmpty stamp: 'scb 6/8/2022 22:42:27'!
+ERROR!
+
+!testRun: #CartTest #test04CartCantAddNonStrictlyPositiveAmountOfBooks stamp: 'scb 6/8/2022 22:42:27'!
+ERROR!
+
+!testRun: #CartTest #test04_5CartCantAddNonIntegerAmountOfBooks stamp: 'scb 6/8/2022 22:42:27'!
+ERROR!
+
+!testRun: #CartTest #test05CartCantAddMultipleCopiesOfBookOutsideOfCollection stamp: 'scb 6/8/2022 22:42:27'!
+PASSED!
+
+!testRun: #CartTest #test06CartDoesntKnowNotAddedBooks stamp: 'scb 6/8/2022 22:42:27'!
+PASSED!
+
+!testRun: #CartTest #test07CartKnowsAddedBooks stamp: 'scb 6/8/2022 22:42:27'!
+ERROR!
+
+!testRun: #CartTest #test08CartKnowsOccurrancesOfBooks stamp: 'scb 6/8/2022 22:42:27'!
+ERROR!
+!CartTest methodsFor: 'initializations' stamp: 'scb 6/8/2022 22:42:58' prior: 50494556!
+initializeCatalogOfBooks
+
+	^ Dictionary add: self book -> self bookPrice! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/8/2022 22:42:59'!
+PASSED!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/8/2022 22:42:59'!
+PASSED!
+
+!testRun: #CartTest #test03CartWithBookIsNotEmpty stamp: 'scb 6/8/2022 22:42:59'!
+ERROR!
+
+!testRun: #CartTest #test04CartCantAddNonStrictlyPositiveAmountOfBooks stamp: 'scb 6/8/2022 22:42:59'!
+ERROR!
+
+!testRun: #CartTest #test04_5CartCantAddNonIntegerAmountOfBooks stamp: 'scb 6/8/2022 22:42:59'!
+ERROR!
+
+!testRun: #CartTest #test05CartCantAddMultipleCopiesOfBookOutsideOfCollection stamp: 'scb 6/8/2022 22:43:00'!
+PASSED!
+
+!testRun: #CartTest #test06CartDoesntKnowNotAddedBooks stamp: 'scb 6/8/2022 22:43:00'!
+PASSED!
+
+!testRun: #CartTest #test07CartKnowsAddedBooks stamp: 'scb 6/8/2022 22:43:00'!
+ERROR!
+
+!testRun: #CartTest #test08CartKnowsOccurrancesOfBooks stamp: 'scb 6/8/2022 22:43:00'!
+ERROR!
+
+!testRun: #CartTest #test03CartWithBookIsNotEmpty stamp: 'scb 6/8/2022 22:43:01'!
+ERROR!
+!CartTest methodsFor: 'initializations' stamp: 'scb 6/8/2022 22:43:13' prior: 50494589!
+initializeCatalogOfBooks
+
+	^ Dictionary with: self book -> self bookPrice! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/8/2022 22:43:13'!
+PASSED!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/8/2022 22:43:13'!
+PASSED!
+
+!testRun: #CartTest #test03CartWithBookIsNotEmpty stamp: 'scb 6/8/2022 22:43:13'!
+PASSED!
+
+!testRun: #CartTest #test04CartCantAddNonStrictlyPositiveAmountOfBooks stamp: 'scb 6/8/2022 22:43:13'!
+PASSED!
+
+!testRun: #CartTest #test04_5CartCantAddNonIntegerAmountOfBooks stamp: 'scb 6/8/2022 22:43:13'!
+PASSED!
+
+!testRun: #CartTest #test05CartCantAddMultipleCopiesOfBookOutsideOfCollection stamp: 'scb 6/8/2022 22:43:14'!
+PASSED!
+
+!testRun: #CartTest #test06CartDoesntKnowNotAddedBooks stamp: 'scb 6/8/2022 22:43:14'!
+PASSED!
+
+!testRun: #CartTest #test07CartKnowsAddedBooks stamp: 'scb 6/8/2022 22:43:14'!
+PASSED!
+
+!testRun: #CartTest #test08CartKnowsOccurrancesOfBooks stamp: 'scb 6/8/2022 22:43:14'!
+PASSED!
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/8/2022 22:43:19'!
+PASSED!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/8/2022 22:43:19'!
+PASSED!
+
+!testRun: #CartTest #test03CartWithBookIsNotEmpty stamp: 'scb 6/8/2022 22:43:19'!
+PASSED!
+
+!testRun: #CartTest #test04CartCantAddNonStrictlyPositiveAmountOfBooks stamp: 'scb 6/8/2022 22:43:19'!
+PASSED!
+
+!testRun: #CartTest #test04_5CartCantAddNonIntegerAmountOfBooks stamp: 'scb 6/8/2022 22:43:19'!
+PASSED!
+
+!testRun: #CartTest #test05CartCantAddMultipleCopiesOfBookOutsideOfCollection stamp: 'scb 6/8/2022 22:43:19'!
+PASSED!
+
+!testRun: #CartTest #test06CartDoesntKnowNotAddedBooks stamp: 'scb 6/8/2022 22:43:19'!
+PASSED!
+
+!testRun: #CartTest #test07CartKnowsAddedBooks stamp: 'scb 6/8/2022 22:43:19'!
+PASSED!
+
+!testRun: #CartTest #test08CartKnowsOccurrancesOfBooks stamp: 'scb 6/8/2022 22:43:19'!
+PASSED!
+
+!classDefinition: #Cashier category: 'TusLibros' stamp: 'scb 6/8/2022 22:45:33'!
+Object subclass: #Cashier
+	instanceVariableNames: 'cart creditCard ledger merchantProcessor'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!Cashier methodsFor: 'initialization' stamp: 'scb 6/8/2022 22:45:41'!
+initializeCheckoutOf: aCart with: aCreditCard using: aMerchantProcessor registerOn: aLedger.
+	
+	merchantProcessor := aMerchantProcessor.
+	cart := aCart.
+	creditCard := aCreditCard.
+	ledger := aLedger.
+	! !
+
+!methodRemoval: Cashier #initializeCheckoutOf:with:using:registerOn: stamp: 'scb 6/8/2022 22:46:14'!
+initializeCheckoutOf: aCart with: aCreditCard using: aMerchantProcessor registerOn: aLedger.
+	
+	merchantProcessor := aMerchantProcessor.
+	cart := aCart.
+	creditCard := aCreditCard.
+	ledger := aLedger.
+	!
+!Cashier methodsFor: 'initialization' stamp: 'scb 6/8/2022 22:46:40'!
+initializeCheckoutOf: aCart with: aCreditCard using: aMerchantProcessor registerOn: aLedger.
+	
+	cart := aCart.
+	creditCard := aCreditCard.
+	ledger := aLedger.
+	! !
+!Cashier class methodsFor: 'as yet unclassified' stamp: 'scb 6/8/2022 22:46:40' prior: 50493659!
+checkout: aCart with: aCreditCard on: aDate registerOn: aLedger 
+	
+	(aCart isEmpty) ifTrue: [self error: self emptyCartErrorMessage ].
+	(aCreditCard isExpiredOn: aDate) ifTrue: [self error: self expiredCreditCardErrorMessage ].
+	
+	^ self new initializeCheckoutOf: aCart with: aCreditCard using: self registerOn: aLedger.! !
+
+!methodRemoval: Cashier #initializeCheckoutOf:with:registerOn: stamp: 'scb 6/8/2022 22:46:40'!
+initializeCheckoutOf: aCart with: aCreditCard registerOn: aLedger.
+	
+	cart := aCart.
+	creditCard := aCreditCard.
+	ledger := aLedger.
+	!
+
+!testRun: #CashierTest #test01CantCheckoutEmptyCart stamp: 'scb 6/8/2022 22:46:43'!
+PASSED!
+
+!testRun: #CashierTest #test02CashierCanCalculateCheckoutPriceOfCartWithOneBook stamp: 'scb 6/8/2022 22:46:43'!
+PASSED!
+
+!testRun: #CashierTest #test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks stamp: 'scb 6/8/2022 22:46:43'!
+PASSED!
+
+!testRun: #CashierTest #test04CantCheckoutWithExpiredCard stamp: 'scb 6/8/2022 22:46:43'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierCheckoutsCart stamp: 'scb 6/8/2022 22:46:43'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierCheckoutsCartUsingMerchantProcessor stamp: 'scb 6/8/2022 22:46:43'!
+FAILURE!
+
+!testRun: #CashierTest #test06CashierCheckoutsCartUsingMerchantProcessor stamp: 'scb 6/8/2022 22:46:43'!
+FAILURE!
+!Cashier methodsFor: 'initialization' stamp: 'scb 6/8/2022 22:47:14'!
+initializeCheckoutOf: aCart with: aCreditCard registerOn: aLedger.
+	
+	cart := aCart.
+	creditCard := aCreditCard.
+	ledger := aLedger.
+	! !
+
+!methodRemoval: Cashier #initializeCheckoutOf:with:using:registerOn: stamp: 'scb 6/8/2022 22:47:17'!
+initializeCheckoutOf: aCart with: aCreditCard using: aMerchantProcessor registerOn: aLedger.
+	
+	cart := aCart.
+	creditCard := aCreditCard.
+	ledger := aLedger.
+	!
+!Cashier methodsFor: 'initialization' stamp: 'scb 6/8/2022 22:47:36'!
+initializeCheckoutOf: aCart with: aCreditCard using: aMerchantProcessor registerOn: aLedger.
+	
+	cart := aCart.
+	creditCard := aCreditCard.
+	ledger := aLedger.
+	! !
+
+!methodRemoval: Cashier #initializeCheckoutOf:with:registerOn: stamp: 'scb 6/8/2022 22:47:36'!
+initializeCheckoutOf: aCart with: aCreditCard registerOn: aLedger.
+	
+	cart := aCart.
+	creditCard := aCreditCard.
+	ledger := aLedger.
+	!
+!Cashier class methodsFor: 'as yet unclassified' stamp: 'scb 6/8/2022 22:48:43' prior: 50494722!
+checkout: aCart with: aCreditCard on: aDate registerOn: aLedger 
+	
+	(aCart isEmpty) ifTrue: [self error: self emptyCartErrorMessage ].
+	(aCreditCard isExpiredOn: aDate) ifTrue: [self error: self expiredCreditCardErrorMessage ].
+	
+	^ self new initializeCheckoutOf: aCart with: aCreditCard using: self registerOn: aLedger.! !
+!Cashier class methodsFor: 'as yet unclassified' stamp: 'scb 6/8/2022 22:49:07'!
+checkout: aCart with: aCreditCard on: aDate using: aMerchantProcessor registerOn: aLedger 
+	
+	(aCart isEmpty) ifTrue: [self error: self emptyCartErrorMessage ].
+	(aCreditCard isExpiredOn: aDate) ifTrue: [self error: self expiredCreditCardErrorMessage ].
+	
+	^ self new initializeCheckoutOf: aCart with: aCreditCard using: self registerOn: aLedger.! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/8/2022 22:49:07' prior: 50494217!
+test04CantCheckoutWithExpiredCard
+	
+	| aCart aCreditCard aLedger |
+	
+	aCart := Cart checkout: (Dictionary with: 'book' -> 10).
+	aCart add: 1 of: 'book'.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber - 1).
+	aLedger := OrderedCollection new.
+	
+	self should: [Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.]
+	raise: Error
+	withMessageText: Cashier expiredCreditCardErrorMessage.
+	self assert: aLedger isEmpty
+	! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/8/2022 22:49:07' prior: 50494369!
+test06CashierCheckoutsCartUsingMerchantProcessor
+	
+	| aCart aCashier aCreditCard aPrice aLedger |
+	
+	aCart := Cart checkout: (Dictionary with: 'book' -> 10).
+	aCart add: 1 of: 'book'.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.
+	
+	aPrice := aCashier checkout.
+	
+	self assert: aPrice equals: debitedAmount.
+	self assert: aCreditCard equals: debitedCreditCard.! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/8/2022 22:49:07' prior: 50494075!
+test02CashierCanCalculateCheckoutPriceOfCartWithOneBook
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := Cart checkout: (Dictionary with: 'book' -> 10).
+	aCart add: 1 of: 'book'.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.
+	
+	self assert: 10 equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/8/2022 22:49:07' prior: 50493995!
+test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := Cart checkout: (Dictionary with: 'book' -> 10).
+	aCart add: 5 of: 'book'.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.
+	
+	self assert: 50 equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/8/2022 22:49:07' prior: 50494238!
+test05CashierCheckoutsCart
+	
+	| aCart aCashier aCreditCard aPrice aLedger|
+	
+	aCart := Cart checkout: (Dictionary with: 'book' -> 10).
+	aCart add: 1 of: 'book'.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.
+	
+	aPrice := aCashier checkout.
+	
+	self assert: 1 equals: aLedger size.
+	self assert: aPrice equals: aLedger first.! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/8/2022 22:49:07' prior: 50494417!
+test01CantCheckoutEmptyCart
+
+	| aCart aCreditCard aLedger|
+	
+	aCart := Cart new.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	
+	self should: [Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.]
+	raise: Error
+	withMessageText: Cashier emptyCartErrorMessage. ! !
+
+!methodRemoval: Cashier class #checkout:with:on:registerOn: stamp: 'scb 6/8/2022 22:49:07'!
+checkout: aCart with: aCreditCard on: aDate registerOn: aLedger 
+	
+	(aCart isEmpty) ifTrue: [self error: self emptyCartErrorMessage ].
+	(aCreditCard isExpiredOn: aDate) ifTrue: [self error: self expiredCreditCardErrorMessage ].
+	
+	^ self new initializeCheckoutOf: aCart with: aCreditCard using: self registerOn: aLedger.!
+
+!testRun: #CashierTest #test01CantCheckoutEmptyCart stamp: 'scb 6/8/2022 22:49:10'!
+PASSED!
+
+!testRun: #CashierTest #test02CashierCanCalculateCheckoutPriceOfCartWithOneBook stamp: 'scb 6/8/2022 22:49:10'!
+PASSED!
+
+!testRun: #CashierTest #test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks stamp: 'scb 6/8/2022 22:49:10'!
+PASSED!
+
+!testRun: #CashierTest #test04CantCheckoutWithExpiredCard stamp: 'scb 6/8/2022 22:49:10'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierCheckoutsCart stamp: 'scb 6/8/2022 22:49:10'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierCheckoutsCartUsingMerchantProcessor stamp: 'scb 6/8/2022 22:49:10'!
+FAILURE!
+
+!testRun: #CashierTest #test06CashierCheckoutsCartUsingMerchantProcessor stamp: 'scb 6/8/2022 22:49:10'!
+FAILURE!
+!Cashier class methodsFor: 'as yet unclassified' stamp: 'scb 6/8/2022 22:49:22' prior: 50494810!
+checkout: aCart with: aCreditCard on: aDate using: aMerchantProcessor registerOn: aLedger 
+	
+	(aCart isEmpty) ifTrue: [self error: self emptyCartErrorMessage ].
+	(aCreditCard isExpiredOn: aDate) ifTrue: [self error: self expiredCreditCardErrorMessage ].
+	
+	^ self new initializeCheckoutOf: aCart with: aCreditCard using: aMerchantProcessor registerOn: aLedger.! !
+
+!testRun: #CashierTest #test01CantCheckoutEmptyCart stamp: 'scb 6/8/2022 22:49:23'!
+PASSED!
+
+!testRun: #CashierTest #test02CashierCanCalculateCheckoutPriceOfCartWithOneBook stamp: 'scb 6/8/2022 22:49:23'!
+PASSED!
+
+!testRun: #CashierTest #test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks stamp: 'scb 6/8/2022 22:49:23'!
+PASSED!
+
+!testRun: #CashierTest #test04CantCheckoutWithExpiredCard stamp: 'scb 6/8/2022 22:49:23'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierCheckoutsCart stamp: 'scb 6/8/2022 22:49:23'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierCheckoutsCartUsingMerchantProcessor stamp: 'scb 6/8/2022 22:49:23'!
+FAILURE!
+
+!testRun: #CashierTest #test06CashierCheckoutsCartUsingMerchantProcessor stamp: 'scb 6/8/2022 22:49:23'!
+FAILURE!
+!Cashier methodsFor: 'initialization' stamp: 'scb 6/8/2022 22:50:23' prior: 50494781!
+initializeCheckoutOf: aCart with: aCreditCard using: aMerchantProcessor registerOn: aLedger.
+	
+	merchantProcessor := aMerchantProcessor.
+	cart := aCart.
+	creditCard := aCreditCard.
+	ledger := aLedger.
+	! !
+!Cashier methodsFor: 'as yet unclassified' stamp: 'scb 6/8/2022 22:51:13' prior: 50493926!
+checkout
+	
+	| catalog price |
+	
+	catalog := cart catalog.
+	price := 0.
+	cart do: [ :product | price := price + catalog at: product ].
+	merchantProcessor debit: price from: creditCard.
+	ledger add: price.
+	
+	^ price.! !
+
+!testRun: #CashierTest #test01CantCheckoutEmptyCart stamp: 'scb 6/8/2022 22:51:15'!
+PASSED!
+
+!testRun: #CashierTest #test02CashierCanCalculateCheckoutPriceOfCartWithOneBook stamp: 'scb 6/8/2022 22:51:15'!
+ERROR!
+
+!testRun: #CashierTest #test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks stamp: 'scb 6/8/2022 22:51:15'!
+ERROR!
+
+!testRun: #CashierTest #test04CantCheckoutWithExpiredCard stamp: 'scb 6/8/2022 22:51:15'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierCheckoutsCart stamp: 'scb 6/8/2022 22:51:15'!
+ERROR!
+
+!testRun: #CashierTest #test06CashierCheckoutsCartUsingMerchantProcessor stamp: 'scb 6/8/2022 22:51:15'!
+ERROR!
+
+!testRun: #CashierTest #test02CashierCanCalculateCheckoutPriceOfCartWithOneBook stamp: 'scb 6/8/2022 22:51:18'!
+ERROR!
+!CashierTest methodsFor: 'merchant processor simulator' stamp: 'scb 6/8/2022 22:52:23'!
+debit: aSmallInteger from: aCreditCard 
+	self shouldBeImplemented.! !
+!CashierTest methodsFor: 'merchant processor simulator' stamp: 'scb 6/8/2022 22:53:03' prior: 50495068!
+debit: anAmount from: aCreditCard 
+	
+	debitedAmount := anAmount.
+	debitedCreditCard := aCreditCard.! !
+
+!testRun: #CashierTest #test01CantCheckoutEmptyCart stamp: 'scb 6/8/2022 22:53:04'!
+PASSED!
+
+!testRun: #CashierTest #test02CashierCanCalculateCheckoutPriceOfCartWithOneBook stamp: 'scb 6/8/2022 22:53:04'!
+PASSED!
+
+!testRun: #CashierTest #test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks stamp: 'scb 6/8/2022 22:53:04'!
+PASSED!
+
+!testRun: #CashierTest #test04CantCheckoutWithExpiredCard stamp: 'scb 6/8/2022 22:53:04'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierCheckoutsCart stamp: 'scb 6/8/2022 22:53:04'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierCheckoutsCartUsingMerchantProcessor stamp: 'scb 6/8/2022 22:53:04'!
+PASSED!
+
+TestCase subclass: #CashierTest
+	instanceVariableNames: 'debitedCreditCard debitedAmount'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #CashierTest category: 'TusLibros' stamp: 'scb 6/8/2022 22:53:18'!
+TestCase subclass: #CashierTest
+	instanceVariableNames: 'debitedCreditCard debitedAmount'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!testRun: #CashierTest #test01CantCheckoutEmptyCart stamp: 'scb 6/8/2022 22:53:21'!
+PASSED!
+
+!testRun: #CashierTest #test02CashierCanCalculateCheckoutPriceOfCartWithOneBook stamp: 'scb 6/8/2022 22:53:21'!
+PASSED!
+
+!testRun: #CashierTest #test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks stamp: 'scb 6/8/2022 22:53:21'!
+PASSED!
+
+!testRun: #CashierTest #test04CantCheckoutWithExpiredCard stamp: 'scb 6/8/2022 22:53:21'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierCheckoutsCart stamp: 'scb 6/8/2022 22:53:21'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierCheckoutsCartUsingMerchantProcessor stamp: 'scb 6/8/2022 22:53:21'!
+PASSED!
+
+TestCase subclass: #CashierTest
+	instanceVariableNames: 'debitedAmount debitedCreditCard'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #CashierTest category: 'TusLibros' stamp: 'scb 6/8/2022 22:53:31'!
+TestCase subclass: #CashierTest
+	instanceVariableNames: 'debitedAmount debitedCreditCard'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 22:56:16'!
+test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit
+	
+	| aCart aCashier aCreditCard aPrice aLedger |
+	
+	aCart := Cart checkout: (Dictionary with: 'book' -> 10).
+	aCart add: 1 of: 'book'.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.
+	
+	aPrice := aCashier checkout.
+	
+	self assert: aPrice equals: debitedAmount.
+	self assert: aCreditCard equals: debitedCreditCard.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:00:35' prior: 50495146!
+test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := Cart checkout: (Dictionary with: 'book' -> 10).
+	aCart add: 1 of: 'book'.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.
+	
+	self should: [aCashier checkout] raise: Error withMessageText: Cashier notEnoughCreditOnCreditCardErrorMessage.
+	self assert: aLedger isEmpty.! !
+!Cashier class methodsFor: 'as yet unclassified' stamp: 'scb 6/8/2022 23:02:02'!
+notEnoughCreditOnCreditCardErrorMessage
+	
+	^ 'not enough credit on credit card'! !
+
+!testRun: #CashierTest #test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit stamp: 'scb 6/8/2022 23:02:14'!
+FAILURE!
+
+!classDefinition: #CashierTest category: 'TusLibros' stamp: 'scb 6/8/2022 23:06:03'!
+TestCase subclass: #CashierTest
+	instanceVariableNames: 'debitedAmount debitedCreditCard behavior'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:06:01' prior: 50495169!
+test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := Cart checkout: (Dictionary with: 'book' -> 10).
+	aCart add: 1 of: 'book'.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.
+	
+	behavior := [Cashier notEnoughCreditOnCreditCardErrorMessage].
+	
+	self should: [aCashier checkout] raise: Error withMessageText: Cashier notEnoughCreditOnCreditCardErrorMessage.
+	self assert: aLedger isEmpty.! !
+!CashierTest methodsFor: 'merchant processor simulator' stamp: 'scb 6/8/2022 23:06:34' prior: 50495074!
+debit: anAmount from: aCreditCard 
+	
+	behavior value: anAmount value: aCreditCard! !
+!CashierTest methodsFor: 'merchant processor simulator' stamp: 'scb 6/8/2022 23:07:53' prior: 50495236!
+debit: anAmount from: aCreditCard 
+	
+	behavior value.
+	debitedAmount := anAmount.
+	debitedCreditCard := aCreditCard.! !
+
+!classDefinition: #CashierTest category: 'TusLibros' stamp: 'scb 6/8/2022 23:08:05'!
+TestCase subclass: #CashierTest
+	instanceVariableNames: 'debitedAmount debitedCreditCard behavior error'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!CashierTest methodsFor: 'merchant processor simulator' stamp: 'scb 6/8/2022 23:08:02' prior: 50495242!
+debit: anAmount from: aCreditCard 
+	
+	error value.
+	debitedAmount := anAmount.
+	debitedCreditCard := aCreditCard.! !
+
+!classDefinition: #CashierTest category: 'TusLibros' stamp: 'scb 6/8/2022 23:08:30'!
+TestCase subclass: #CashierTest
+	instanceVariableNames: 'debitedAmount debitedCreditCard behavior error errorMessage'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!CashierTest methodsFor: 'merchant processor simulator' stamp: 'scb 6/8/2022 23:08:28' prior: 50495258!
+debit: anAmount from: aCreditCard 
+	
+	errorMessage value.
+	debitedAmount := anAmount.
+	debitedCreditCard := aCreditCard.! !
+
+TestCase subclass: #CashierTest
+	instanceVariableNames: 'debitedAmount debitedCreditCard errorMessage'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #CashierTest category: 'TusLibros' stamp: 'scb 6/8/2022 23:08:39'!
+TestCase subclass: #CashierTest
+	instanceVariableNames: 'debitedAmount debitedCreditCard errorMessage'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #CashierTest category: 'TusLibros' stamp: 'scb 6/8/2022 23:09:02'!
+TestCase subclass: #CashierTest
+	instanceVariableNames: 'debitedAmount debitedCreditCard errorMessage error'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:09:01' prior: 50495210!
+test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := Cart checkout: (Dictionary with: 'book' -> 10).
+	aCart add: 1 of: 'book'.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.
+	
+	error := [self error: Cashier notEnoughCreditOnCreditCardErrorMessage].
+	
+	self should: [aCashier checkout] raise: Error withMessageText: Cashier notEnoughCreditOnCreditCardErrorMessage.
+	self assert: aLedger isEmpty.! !
+
+TestCase subclass: #CashierTest
+	instanceVariableNames: 'debitedAmount debitedCreditCard error'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #CashierTest category: 'TusLibros' stamp: 'scb 6/8/2022 23:09:09'!
+TestCase subclass: #CashierTest
+	instanceVariableNames: 'debitedAmount debitedCreditCard error'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:09:30' prior: 50494845!
+test06CashierCheckoutsCartUsingMerchantProcessor
+	
+	| aCart aCashier aCreditCard aPrice aLedger |
+	
+	aCart := Cart checkout: (Dictionary with: 'book' -> 10).
+	aCart add: 1 of: 'book'.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.
+	error := [].
+	
+	aPrice := aCashier checkout.
+	
+	self assert: aPrice equals: debitedAmount.
+	self assert: aCreditCard equals: debitedCreditCard.! !
+!CashierTest methodsFor: 'merchant processor simulator' stamp: 'scb 6/8/2022 23:09:37' prior: 50495274!
+debit: anAmount from: aCreditCard 
+	
+	error value.
+	debitedAmount := anAmount.
+	debitedCreditCard := aCreditCard.! !
+
+!testRun: #CashierTest #test01CantCheckoutEmptyCart stamp: 'scb 6/8/2022 23:09:38'!
+PASSED!
+
+!testRun: #CashierTest #test02CashierCanCalculateCheckoutPriceOfCartWithOneBook stamp: 'scb 6/8/2022 23:09:38'!
+PASSED!
+
+!testRun: #CashierTest #test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks stamp: 'scb 6/8/2022 23:09:38'!
+PASSED!
+
+!testRun: #CashierTest #test04CantCheckoutWithExpiredCard stamp: 'scb 6/8/2022 23:09:38'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierCheckoutsCart stamp: 'scb 6/8/2022 23:09:38'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierCheckoutsCartUsingMerchantProcessor stamp: 'scb 6/8/2022 23:09:38'!
+PASSED!
+
+!testRun: #CashierTest #test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit stamp: 'scb 6/8/2022 23:09:38'!
+PASSED!
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:10:13'!
+book
+
+	^ 'book'! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:10:13' prior: 50494888!
+test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := Cart checkout: (Dictionary with: self book -> 10).
+	aCart add: 5 of: 'book'.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.
+	
+	self assert: 50 equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:10:13' prior: 50495400!
+test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := Cart checkout: (Dictionary with: self book -> 10).
+	aCart add: 5 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.
+	
+	self assert: 50 equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:10:13' prior: 50494909!
+test05CashierCheckoutsCart
+	
+	| aCart aCashier aCreditCard aPrice aLedger|
+	
+	aCart := Cart checkout: (Dictionary with: self book -> 10).
+	aCart add: 1 of: 'book'.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.
+	
+	aPrice := aCashier checkout.
+	
+	self assert: 1 equals: aLedger size.
+	self assert: aPrice equals: aLedger first.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:10:13' prior: 50495440!
+test05CashierCheckoutsCart
+	
+	| aCart aCashier aCreditCard aPrice aLedger|
+	
+	aCart := Cart checkout: (Dictionary with: self book -> 10).
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.
+	
+	aPrice := aCashier checkout.
+	
+	self assert: 1 equals: aLedger size.
+	self assert: aPrice equals: aLedger first.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:10:13' prior: 50495342!
+test06CashierCheckoutsCartUsingMerchantProcessor
+	
+	| aCart aCashier aCreditCard aPrice aLedger |
+	
+	aCart := Cart checkout: (Dictionary with: self book -> 10).
+	aCart add: 1 of: 'book'.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.
+	error := [].
+	
+	aPrice := aCashier checkout.
+	
+	self assert: aPrice equals: debitedAmount.
+	self assert: aCreditCard equals: debitedCreditCard.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:10:13' prior: 50495483!
+test06CashierCheckoutsCartUsingMerchantProcessor
+	
+	| aCart aCashier aCreditCard aPrice aLedger |
+	
+	aCart := Cart checkout: (Dictionary with: self book -> 10).
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.
+	error := [].
+	
+	aPrice := aCashier checkout.
+	
+	self assert: aPrice equals: debitedAmount.
+	self assert: aCreditCard equals: debitedCreditCard.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:10:13' prior: 50494824!
+test04CantCheckoutWithExpiredCard
+	
+	| aCart aCreditCard aLedger |
+	
+	aCart := Cart checkout: (Dictionary with: self book -> 10).
+	aCart add: 1 of: 'book'.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber - 1).
+	aLedger := OrderedCollection new.
+	
+	self should: [Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.]
+	raise: Error
+	withMessageText: Cashier expiredCreditCardErrorMessage.
+	self assert: aLedger isEmpty
+	! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:10:14' prior: 50495529!
+test04CantCheckoutWithExpiredCard
+	
+	| aCart aCreditCard aLedger |
+	
+	aCart := Cart checkout: (Dictionary with: self book -> 10).
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber - 1).
+	aLedger := OrderedCollection new.
+	
+	self should: [Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.]
+	raise: Error
+	withMessageText: Cashier expiredCreditCardErrorMessage.
+	self assert: aLedger isEmpty
+	! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:10:14' prior: 50494868!
+test02CashierCanCalculateCheckoutPriceOfCartWithOneBook
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := Cart checkout: (Dictionary with: self book -> 10).
+	aCart add: 1 of: 'book'.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.
+	
+	self assert: 10 equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:10:14' prior: 50495571!
+test02CashierCanCalculateCheckoutPriceOfCartWithOneBook
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := Cart checkout: (Dictionary with: self book -> 10).
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.
+	
+	self assert: 10 equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:10:14' prior: 50495303!
+test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := Cart checkout: (Dictionary with: self book -> 10).
+	aCart add: 1 of: 'book'.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.
+	
+	error := [self error: Cashier notEnoughCreditOnCreditCardErrorMessage].
+	
+	self should: [aCashier checkout] raise: Error withMessageText: Cashier notEnoughCreditOnCreditCardErrorMessage.
+	self assert: aLedger isEmpty.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:10:14' prior: 50495611!
+test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := Cart checkout: (Dictionary with: self book -> 10).
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.
+	
+	error := [self error: Cashier notEnoughCreditOnCreditCardErrorMessage].
+	
+	self should: [aCashier checkout] raise: Error withMessageText: Cashier notEnoughCreditOnCreditCardErrorMessage.
+	self assert: aLedger isEmpty.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:10:29'!
+bookValue
+
+	^ 10! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:10:29' prior: 50495420!
+test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := Cart checkout: (Dictionary with: self book -> self bookValue).
+	aCart add: 5 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.
+	
+	self assert: 50 equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:10:29' prior: 50495461!
+test05CashierCheckoutsCart
+	
+	| aCart aCashier aCreditCard aPrice aLedger|
+	
+	aCart := Cart checkout: (Dictionary with: self book -> self bookValue).
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.
+	
+	aPrice := aCashier checkout.
+	
+	self assert: 1 equals: aLedger size.
+	self assert: aPrice equals: aLedger first.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:10:29' prior: 50495506!
+test06CashierCheckoutsCartUsingMerchantProcessor
+	
+	| aCart aCashier aCreditCard aPrice aLedger |
+	
+	aCart := Cart checkout: (Dictionary with: self book -> self bookValue).
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.
+	error := [].
+	
+	aPrice := aCashier checkout.
+	
+	self assert: aPrice equals: debitedAmount.
+	self assert: aCreditCard equals: debitedCreditCard.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:10:29' prior: 50495550!
+test04CantCheckoutWithExpiredCard
+	
+	| aCart aCreditCard aLedger |
+	
+	aCart := Cart checkout: (Dictionary with: self book -> self bookValue).
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber - 1).
+	aLedger := OrderedCollection new.
+	
+	self should: [Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.]
+	raise: Error
+	withMessageText: Cashier expiredCreditCardErrorMessage.
+	self assert: aLedger isEmpty
+	! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:10:29' prior: 50495591!
+test02CashierCanCalculateCheckoutPriceOfCartWithOneBook
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := Cart checkout: (Dictionary with: self book -> self bookValue).
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.
+	
+	self assert: 10 equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:10:29' prior: 50495754!
+test02CashierCanCalculateCheckoutPriceOfCartWithOneBook
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := Cart checkout: (Dictionary with: self book -> self bookValue).
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.
+	
+	self assert: self bookValue equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:10:29' prior: 50495637!
+test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := Cart checkout: (Dictionary with: self book -> self bookValue).
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.
+	
+	error := [self error: Cashier notEnoughCreditOnCreditCardErrorMessage].
+	
+	self should: [aCashier checkout] raise: Error withMessageText: Cashier notEnoughCreditOnCreditCardErrorMessage.
+	self assert: aLedger isEmpty.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:10:52'!
+bookValueRelation
+
+	^ self book -> self bookValue! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:10:52' prior: 50495666!
+test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := Cart checkout: (Dictionary with: self bookValueRelation).
+	aCart add: 5 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.
+	
+	self assert: 50 equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:10:52' prior: 50495687!
+test05CashierCheckoutsCart
+	
+	| aCart aCashier aCreditCard aPrice aLedger|
+	
+	aCart := Cart checkout: (Dictionary with: self bookValueRelation).
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.
+	
+	aPrice := aCashier checkout.
+	
+	self assert: 1 equals: aLedger size.
+	self assert: aPrice equals: aLedger first.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:10:52' prior: 50495709!
+test06CashierCheckoutsCartUsingMerchantProcessor
+	
+	| aCart aCashier aCreditCard aPrice aLedger |
+	
+	aCart := Cart checkout: (Dictionary with: self bookValueRelation).
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.
+	error := [].
+	
+	aPrice := aCashier checkout.
+	
+	self assert: aPrice equals: debitedAmount.
+	self assert: aCreditCard equals: debitedCreditCard.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:10:52' prior: 50495733!
+test04CantCheckoutWithExpiredCard
+	
+	| aCart aCreditCard aLedger |
+	
+	aCart := Cart checkout: (Dictionary with: self bookValueRelation).
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber - 1).
+	aLedger := OrderedCollection new.
+	
+	self should: [Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.]
+	raise: Error
+	withMessageText: Cashier expiredCreditCardErrorMessage.
+	self assert: aLedger isEmpty
+	! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:10:52' prior: 50495774!
+test02CashierCanCalculateCheckoutPriceOfCartWithOneBook
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := Cart checkout: (Dictionary with: self bookValueRelation).
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.
+	
+	self assert: self bookValue equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:10:52' prior: 50495795!
+test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := Cart checkout: (Dictionary with: self bookValueRelation).
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.
+	
+	error := [self error: Cashier notEnoughCreditOnCreditCardErrorMessage].
+	
+	self should: [aCashier checkout] raise: Error withMessageText: Cashier notEnoughCreditOnCreditCardErrorMessage.
+	self assert: aLedger isEmpty.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:11:21'!
+initializeCatalog
+
+	^ Dictionary with: self bookValueRelation! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:11:21' prior: 50495826!
+test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := Cart checkout: (self initializeCatalog).
+	aCart add: 5 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.
+	
+	self assert: 50 equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:11:21' prior: 50495847!
+test05CashierCheckoutsCart
+	
+	| aCart aCashier aCreditCard aPrice aLedger|
+	
+	aCart := Cart checkout: (self initializeCatalog).
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.
+	
+	aPrice := aCashier checkout.
+	
+	self assert: 1 equals: aLedger size.
+	self assert: aPrice equals: aLedger first.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:11:21' prior: 50495869!
+test06CashierCheckoutsCartUsingMerchantProcessor
+	
+	| aCart aCashier aCreditCard aPrice aLedger |
+	
+	aCart := Cart checkout: (self initializeCatalog).
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.
+	error := [].
+	
+	aPrice := aCashier checkout.
+	
+	self assert: aPrice equals: debitedAmount.
+	self assert: aCreditCard equals: debitedCreditCard.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:11:21' prior: 50495892!
+test04CantCheckoutWithExpiredCard
+	
+	| aCart aCreditCard aLedger |
+	
+	aCart := Cart checkout: (self initializeCatalog).
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber - 1).
+	aLedger := OrderedCollection new.
+	
+	self should: [Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.]
+	raise: Error
+	withMessageText: Cashier expiredCreditCardErrorMessage.
+	self assert: aLedger isEmpty
+	! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:11:21' prior: 50495913!
+test02CashierCanCalculateCheckoutPriceOfCartWithOneBook
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := Cart checkout: (self initializeCatalog).
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.
+	
+	self assert: self bookValue equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:11:21' prior: 50495934!
+test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := Cart checkout: (self initializeCatalog).
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.
+	
+	error := [self error: Cashier notEnoughCreditOnCreditCardErrorMessage].
+	
+	self should: [aCashier checkout] raise: Error withMessageText: Cashier notEnoughCreditOnCreditCardErrorMessage.
+	self assert: aLedger isEmpty.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:12:07'!
+initializeCartWithCatalog
+
+	^ Cart checkout: (self initializeCatalog)! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:12:07' prior: 50495965!
+test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 5 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.
+	
+	self assert: 50 equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:12:07' prior: 50495985!
+test05CashierCheckoutsCart
+	
+	| aCart aCashier aCreditCard aPrice aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.
+	
+	aPrice := aCashier checkout.
+	
+	self assert: 1 equals: aLedger size.
+	self assert: aPrice equals: aLedger first.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:12:07' prior: 50496006!
+test06CashierCheckoutsCartUsingMerchantProcessor
+	
+	| aCart aCashier aCreditCard aPrice aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.
+	error := [].
+	
+	aPrice := aCashier checkout.
+	
+	self assert: aPrice equals: debitedAmount.
+	self assert: aCreditCard equals: debitedCreditCard.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:12:07' prior: 50496029!
+test04CantCheckoutWithExpiredCard
+	
+	| aCart aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber - 1).
+	aLedger := OrderedCollection new.
+	
+	self should: [Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.]
+	raise: Error
+	withMessageText: Cashier expiredCreditCardErrorMessage.
+	self assert: aLedger isEmpty
+	! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:12:07' prior: 50496050!
+test02CashierCanCalculateCheckoutPriceOfCartWithOneBook
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.
+	
+	self assert: self bookValue equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:12:07' prior: 50496070!
+test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (Month month: Date today monthIndex year: Date today yearNumber) using: self registerOn: aLedger.
+	
+	error := [self error: Cashier notEnoughCreditOnCreditCardErrorMessage].
+	
+	self should: [aCashier checkout] raise: Error withMessageText: Cashier notEnoughCreditOnCreditCardErrorMessage.
+	self assert: aLedger isEmpty.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:12:14' prior: 50496095!
+initializeCartWithCatalog
+
+	^ Cart checkout: self initializeCatalog! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:13:41'!
+monthYearToday
+
+	^ Month month: Date today monthIndex year: Date today yearNumber! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:13:41' prior: 50496100!
+test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 5 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self monthYearToday) using: self registerOn: aLedger.
+	
+	self assert: 50 equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:13:41' prior: 50496120!
+test05CashierCheckoutsCart
+	
+	| aCart aCashier aCreditCard aPrice aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self monthYearToday) using: self registerOn: aLedger.
+	
+	aPrice := aCashier checkout.
+	
+	self assert: 1 equals: aLedger size.
+	self assert: aPrice equals: aLedger first.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:13:41' prior: 50496141!
+test06CashierCheckoutsCartUsingMerchantProcessor
+	
+	| aCart aCashier aCreditCard aPrice aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self monthYearToday) using: self registerOn: aLedger.
+	error := [].
+	
+	aPrice := aCashier checkout.
+	
+	self assert: aPrice equals: debitedAmount.
+	self assert: aCreditCard equals: debitedCreditCard.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:13:41' prior: 50496164!
+test04CantCheckoutWithExpiredCard
+	
+	| aCart aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber - 1).
+	aLedger := OrderedCollection new.
+	
+	self should: [Cashier checkout: aCart with: aCreditCard on: (self monthYearToday) using: self registerOn: aLedger.]
+	raise: Error
+	withMessageText: Cashier expiredCreditCardErrorMessage.
+	self assert: aLedger isEmpty
+	! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:13:41' prior: 50496184!
+test02CashierCanCalculateCheckoutPriceOfCartWithOneBook
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self monthYearToday) using: self registerOn: aLedger.
+	
+	self assert: self bookValue equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:13:41' prior: 50494931!
+test01CantCheckoutEmptyCart
+
+	| aCart aCreditCard aLedger|
+	
+	aCart := Cart new.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	
+	self should: [Cashier checkout: aCart with: aCreditCard on: (self monthYearToday) using: self registerOn: aLedger.]
+	raise: Error
+	withMessageText: Cashier emptyCartErrorMessage. ! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:13:41' prior: 50496204!
+test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self monthYearToday) using: self registerOn: aLedger.
+	
+	error := [self error: Cashier notEnoughCreditOnCreditCardErrorMessage].
+	
+	self should: [aCashier checkout] raise: Error withMessageText: Cashier notEnoughCreditOnCreditCardErrorMessage.
+	self assert: aLedger isEmpty.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:14:41'!
+initializeMonthYearNow
+
+	^ Month month: Date today monthIndex year: Date today yearNumber! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/8/2022 23:14:41' prior: 50496337!
+test01CantCheckoutEmptyCart
+
+	| aCart aCreditCard aLedger|
+	
+	aCart := Cart new.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	
+	self should: [Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.]
+	raise: Error
+	withMessageText: Cashier emptyCartErrorMessage. ! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/8/2022 23:14:41' prior: 50496240!
+test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 5 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	
+	self assert: 50 equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/8/2022 23:14:41' prior: 50496258!
+test05CashierCheckoutsCart
+	
+	| aCart aCashier aCreditCard aPrice aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	
+	aPrice := aCashier checkout.
+	
+	self assert: 1 equals: aLedger size.
+	self assert: aPrice equals: aLedger first.! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/8/2022 23:14:41' prior: 50496318!
+test02CashierCanCalculateCheckoutPriceOfCartWithOneBook
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	
+	self assert: self bookValue equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/8/2022 23:14:41' prior: 50496353!
+test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	
+	error := [self error: Cashier notEnoughCreditOnCreditCardErrorMessage].
+	
+	self should: [aCashier checkout] raise: Error withMessageText: Cashier notEnoughCreditOnCreditCardErrorMessage.
+	self assert: aLedger isEmpty.! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/8/2022 23:14:41' prior: 50496278!
+test06CashierCheckoutsCartUsingMerchantProcessor
+	
+	| aCart aCashier aCreditCard aPrice aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	error := [].
+	
+	aPrice := aCashier checkout.
+	
+	self assert: aPrice equals: debitedAmount.
+	self assert: aCreditCard equals: debitedCreditCard.! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/8/2022 23:14:41' prior: 50496299!
+test04CantCheckoutWithExpiredCard
+	
+	| aCart aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: Date today monthIndex year: Date today yearNumber - 1).
+	aLedger := OrderedCollection new.
+	
+	self should: [Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.]
+	raise: Error
+	withMessageText: Cashier expiredCreditCardErrorMessage.
+	self assert: aLedger isEmpty
+	! !
+
+!methodRemoval: CashierTest #monthYearToday stamp: 'scb 6/8/2022 23:14:41'!
+monthYearToday
+
+	^ Month month: Date today monthIndex year: Date today yearNumber!
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:16:23'!
+today
+
+	^ Date today! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:16:23' prior: 50496376!
+initializeMonthYearNow
+
+	^ Month month: self today monthIndex year: Date today yearNumber! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:16:23' prior: 50496532!
+initializeMonthYearNow
+
+	^ Month month: self today monthIndex year: self today yearNumber! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:16:23' prior: 50496399!
+test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 5 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: self today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	
+	self assert: 50 equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:16:23' prior: 50496544!
+test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 5 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: self today monthIndex year: self today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	
+	self assert: 50 equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:16:23' prior: 50496418!
+test05CashierCheckoutsCart
+	
+	| aCart aCashier aCreditCard aPrice aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: self today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	
+	aPrice := aCashier checkout.
+	
+	self assert: 1 equals: aLedger size.
+	self assert: aPrice equals: aLedger first.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:16:23' prior: 50496582!
+test05CashierCheckoutsCart
+	
+	| aCart aCashier aCreditCard aPrice aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: self today monthIndex year: self today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	
+	aPrice := aCashier checkout.
+	
+	self assert: 1 equals: aLedger size.
+	self assert: aPrice equals: aLedger first.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:16:23' prior: 50496482!
+test06CashierCheckoutsCartUsingMerchantProcessor
+	
+	| aCart aCashier aCreditCard aPrice aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: self today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	error := [].
+	
+	aPrice := aCashier checkout.
+	
+	self assert: aPrice equals: debitedAmount.
+	self assert: aCreditCard equals: debitedCreditCard.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:16:23' prior: 50496622!
+test06CashierCheckoutsCartUsingMerchantProcessor
+	
+	| aCart aCashier aCreditCard aPrice aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: self today monthIndex year: self today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	error := [].
+	
+	aPrice := aCashier checkout.
+	
+	self assert: aPrice equals: debitedAmount.
+	self assert: aCreditCard equals: debitedCreditCard.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:16:23' prior: 50496504!
+test04CantCheckoutWithExpiredCard
+	
+	| aCart aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: self today monthIndex year: Date today yearNumber - 1).
+	aLedger := OrderedCollection new.
+	
+	self should: [Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.]
+	raise: Error
+	withMessageText: Cashier expiredCreditCardErrorMessage.
+	self assert: aLedger isEmpty
+	! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:16:23' prior: 50496666!
+test04CantCheckoutWithExpiredCard
+	
+	| aCart aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: self today monthIndex year: self today yearNumber - 1).
+	aLedger := OrderedCollection new.
+	
+	self should: [Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.]
+	raise: Error
+	withMessageText: Cashier expiredCreditCardErrorMessage.
+	self assert: aLedger isEmpty
+	! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:16:23' prior: 50496438!
+test02CashierCanCalculateCheckoutPriceOfCartWithOneBook
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: self today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	
+	self assert: self bookValue equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:16:24' prior: 50496704!
+test02CashierCanCalculateCheckoutPriceOfCartWithOneBook
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: self today monthIndex year: self today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	
+	self assert: self bookValue equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:16:24' prior: 50496382!
+test01CantCheckoutEmptyCart
+
+	| aCart aCreditCard aLedger|
+	
+	aCart := Cart new.
+	aCreditCard := CreditCard withExpirationDate: (Month month: self today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	
+	self should: [Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.]
+	raise: Error
+	withMessageText: Cashier emptyCartErrorMessage. ! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:16:24' prior: 50496742!
+test01CantCheckoutEmptyCart
+
+	| aCart aCreditCard aLedger|
+	
+	aCart := Cart new.
+	aCreditCard := CreditCard withExpirationDate: (Month month: self today monthIndex year: self today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	
+	self should: [Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.]
+	raise: Error
+	withMessageText: Cashier emptyCartErrorMessage. ! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:16:24' prior: 50496457!
+test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: self today monthIndex year: Date today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	
+	error := [self error: Cashier notEnoughCreditOnCreditCardErrorMessage].
+	
+	self should: [aCashier checkout] raise: Error withMessageText: Cashier notEnoughCreditOnCreditCardErrorMessage.
+	self assert: aLedger isEmpty.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:16:24' prior: 50496774!
+test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: self today monthIndex year: self today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	
+	error := [self error: Cashier notEnoughCreditOnCreditCardErrorMessage].
+	
+	self should: [aCashier checkout] raise: Error withMessageText: Cashier notEnoughCreditOnCreditCardErrorMessage.
+	self assert: aLedger isEmpty.! !
+
+!testRun: #CashierTest #test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit stamp: 'scb 6/8/2022 23:16:25'!
+PASSED!
+
+!testRun: #CashierTest #test01CantCheckoutEmptyCart stamp: 'scb 6/8/2022 23:16:25'!
+PASSED!
+
+!testRun: #CashierTest #test02CashierCanCalculateCheckoutPriceOfCartWithOneBook stamp: 'scb 6/8/2022 23:16:25'!
+PASSED!
+
+!testRun: #CashierTest #test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks stamp: 'scb 6/8/2022 23:16:25'!
+PASSED!
+
+!testRun: #CashierTest #test04CantCheckoutWithExpiredCard stamp: 'scb 6/8/2022 23:16:25'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierCheckoutsCart stamp: 'scb 6/8/2022 23:16:25'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierCheckoutsCartUsingMerchantProcessor stamp: 'scb 6/8/2022 23:16:25'!
+PASSED!
+
+!testRun: #CashierTest #test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit stamp: 'scb 6/8/2022 23:16:26'!
+PASSED!
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:16:39'!
+thisMonth
+
+	^ self today monthIndex! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:16:39' prior: 50496538!
+initializeMonthYearNow
+
+	^ Month month: self thisMonth year: self today yearNumber! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:16:39' prior: 50496563!
+test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 5 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: self thisMonth year: self today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	
+	self assert: 50 equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:16:39' prior: 50496602!
+test05CashierCheckoutsCart
+	
+	| aCart aCashier aCreditCard aPrice aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: self thisMonth year: self today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	
+	aPrice := aCashier checkout.
+	
+	self assert: 1 equals: aLedger size.
+	self assert: aPrice equals: aLedger first.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:16:39' prior: 50496644!
+test06CashierCheckoutsCartUsingMerchantProcessor
+	
+	| aCart aCashier aCreditCard aPrice aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: self thisMonth year: self today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	error := [].
+	
+	aPrice := aCashier checkout.
+	
+	self assert: aPrice equals: debitedAmount.
+	self assert: aCreditCard equals: debitedCreditCard.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:16:39' prior: 50496685!
+test04CantCheckoutWithExpiredCard
+	
+	| aCart aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: self thisMonth year: self today yearNumber - 1).
+	aLedger := OrderedCollection new.
+	
+	self should: [Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.]
+	raise: Error
+	withMessageText: Cashier expiredCreditCardErrorMessage.
+	self assert: aLedger isEmpty
+	! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:16:39' prior: 50496723!
+test02CashierCanCalculateCheckoutPriceOfCartWithOneBook
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: self thisMonth year: self today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	
+	self assert: self bookValue equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:16:39' prior: 50496758!
+test01CantCheckoutEmptyCart
+
+	| aCart aCreditCard aLedger|
+	
+	aCart := Cart new.
+	aCreditCard := CreditCard withExpirationDate: (Month month: self thisMonth year: self today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	
+	self should: [Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.]
+	raise: Error
+	withMessageText: Cashier emptyCartErrorMessage. ! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:16:39' prior: 50496798!
+test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: self thisMonth year: self today yearNumber + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	
+	error := [self error: Cashier notEnoughCreditOnCreditCardErrorMessage].
+	
+	self should: [aCashier checkout] raise: Error withMessageText: Cashier notEnoughCreditOnCreditCardErrorMessage.
+	self assert: aLedger isEmpty.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:16:58'!
+thisYear
+
+	^ self today yearNumber! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:16:58' prior: 50496854!
+initializeMonthYearNow
+
+	^ Month month: self thisMonth year: self thisYear! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:16:58' prior: 50496860!
+test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 5 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: self thisMonth year: self thisYear + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	
+	self assert: 50 equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:16:58' prior: 50496878!
+test05CashierCheckoutsCart
+	
+	| aCart aCashier aCreditCard aPrice aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: self thisMonth year: self thisYear + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	
+	aPrice := aCashier checkout.
+	
+	self assert: 1 equals: aLedger size.
+	self assert: aPrice equals: aLedger first.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:16:58' prior: 50496898!
+test06CashierCheckoutsCartUsingMerchantProcessor
+	
+	| aCart aCashier aCreditCard aPrice aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: self thisMonth year: self thisYear + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	error := [].
+	
+	aPrice := aCashier checkout.
+	
+	self assert: aPrice equals: debitedAmount.
+	self assert: aCreditCard equals: debitedCreditCard.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:16:58' prior: 50496919!
+test04CantCheckoutWithExpiredCard
+	
+	| aCart aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: self thisMonth year: self thisYear - 1).
+	aLedger := OrderedCollection new.
+	
+	self should: [Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.]
+	raise: Error
+	withMessageText: Cashier expiredCreditCardErrorMessage.
+	self assert: aLedger isEmpty
+	! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:16:58' prior: 50496938!
+test02CashierCanCalculateCheckoutPriceOfCartWithOneBook
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: self thisMonth year: self thisYear + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	
+	self assert: self bookValue equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:16:58' prior: 50496957!
+test01CantCheckoutEmptyCart
+
+	| aCart aCreditCard aLedger|
+	
+	aCart := Cart new.
+	aCreditCard := CreditCard withExpirationDate: (Month month: self thisMonth year: self thisYear + 1).
+	aLedger := OrderedCollection new.
+	
+	self should: [Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.]
+	raise: Error
+	withMessageText: Cashier emptyCartErrorMessage. ! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:16:58' prior: 50496973!
+test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: self thisMonth year: self thisYear + 1).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	
+	error := [self error: Cashier notEnoughCreditOnCreditCardErrorMessage].
+	
+	self should: [aCashier checkout] raise: Error withMessageText: Cashier notEnoughCreditOnCreditCardErrorMessage.
+	self assert: aLedger isEmpty.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:17:13'!
+nextYear
+
+	^ self thisYear + 1! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:17:13' prior: 50497005!
+test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 5 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: self thisMonth year: self nextYear).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	
+	self assert: 50 equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:17:13' prior: 50497023!
+test05CashierCheckoutsCart
+	
+	| aCart aCashier aCreditCard aPrice aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: self thisMonth year: self nextYear).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	
+	aPrice := aCashier checkout.
+	
+	self assert: 1 equals: aLedger size.
+	self assert: aPrice equals: aLedger first.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:17:13' prior: 50497042!
+test06CashierCheckoutsCartUsingMerchantProcessor
+	
+	| aCart aCashier aCreditCard aPrice aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: self thisMonth year: self nextYear).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	error := [].
+	
+	aPrice := aCashier checkout.
+	
+	self assert: aPrice equals: debitedAmount.
+	self assert: aCreditCard equals: debitedCreditCard.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:17:13' prior: 50497116!
+test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: self thisMonth year: self nextYear).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	
+	error := [self error: Cashier notEnoughCreditOnCreditCardErrorMessage].
+	
+	self should: [aCashier checkout] raise: Error withMessageText: Cashier notEnoughCreditOnCreditCardErrorMessage.
+	self assert: aLedger isEmpty.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:17:13' prior: 50497082!
+test02CashierCanCalculateCheckoutPriceOfCartWithOneBook
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: self thisMonth year: self nextYear).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	
+	self assert: self bookValue equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:17:13' prior: 50497100!
+test01CantCheckoutEmptyCart
+
+	| aCart aCreditCard aLedger|
+	
+	aCart := Cart new.
+	aCreditCard := CreditCard withExpirationDate: (Month month: self thisMonth year: self nextYear).
+	aLedger := OrderedCollection new.
+	
+	self should: [Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.]
+	raise: Error
+	withMessageText: Cashier emptyCartErrorMessage. ! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:17:32'!
+initializeMonthYearNextYeat
+
+	^ Month month: self thisMonth year: self nextYear! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:17:32' prior: 50497143!
+test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 5 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (self initializeMonthYearNextYeat).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	
+	self assert: 50 equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:17:32' prior: 50497161!
+test05CashierCheckoutsCart
+	
+	| aCart aCashier aCreditCard aPrice aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (self initializeMonthYearNextYeat).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	
+	aPrice := aCashier checkout.
+	
+	self assert: 1 equals: aLedger size.
+	self assert: aPrice equals: aLedger first.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:17:32' prior: 50497180!
+test06CashierCheckoutsCartUsingMerchantProcessor
+	
+	| aCart aCashier aCreditCard aPrice aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (self initializeMonthYearNextYeat).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	error := [].
+	
+	aPrice := aCashier checkout.
+	
+	self assert: aPrice equals: debitedAmount.
+	self assert: aCreditCard equals: debitedCreditCard.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:17:32' prior: 50497201!
+test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (self initializeMonthYearNextYeat).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	
+	error := [self error: Cashier notEnoughCreditOnCreditCardErrorMessage].
+	
+	self should: [aCashier checkout] raise: Error withMessageText: Cashier notEnoughCreditOnCreditCardErrorMessage.
+	self assert: aLedger isEmpty.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:17:32' prior: 50497225!
+test02CashierCanCalculateCheckoutPriceOfCartWithOneBook
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (self initializeMonthYearNextYeat).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	
+	self assert: self bookValue equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:17:32' prior: 50497243!
+test01CantCheckoutEmptyCart
+
+	| aCart aCreditCard aLedger|
+	
+	aCart := Cart new.
+	aCreditCard := CreditCard withExpirationDate: (self initializeMonthYearNextYeat).
+	aLedger := OrderedCollection new.
+	
+	self should: [Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.]
+	raise: Error
+	withMessageText: Cashier emptyCartErrorMessage. ! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:18:10'!
+initializeMonthYearNextYear
+
+	^ Month month: self thisMonth year: self nextYear! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/8/2022 23:18:10' prior: 50497282!
+test05CashierCheckoutsCart
+	
+	| aCart aCashier aCreditCard aPrice aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (self initializeMonthYearNextYear).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	
+	aPrice := aCashier checkout.
+	
+	self assert: 1 equals: aLedger size.
+	self assert: aPrice equals: aLedger first.! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/8/2022 23:18:10' prior: 50497264!
+test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 5 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (self initializeMonthYearNextYear).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	
+	self assert: 50 equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/8/2022 23:18:10' prior: 50497301!
+test06CashierCheckoutsCartUsingMerchantProcessor
+	
+	| aCart aCashier aCreditCard aPrice aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (self initializeMonthYearNextYear).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	error := [].
+	
+	aPrice := aCashier checkout.
+	
+	self assert: aPrice equals: debitedAmount.
+	self assert: aCreditCard equals: debitedCreditCard.! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/8/2022 23:18:10' prior: 50497362!
+test01CantCheckoutEmptyCart
+
+	| aCart aCreditCard aLedger|
+	
+	aCart := Cart new.
+	aCreditCard := CreditCard withExpirationDate: (self initializeMonthYearNextYear).
+	aLedger := OrderedCollection new.
+	
+	self should: [Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.]
+	raise: Error
+	withMessageText: Cashier emptyCartErrorMessage. ! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/8/2022 23:18:10' prior: 50497344!
+test02CashierCanCalculateCheckoutPriceOfCartWithOneBook
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (self initializeMonthYearNextYear).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	
+	self assert: self bookValue equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/8/2022 23:18:10' prior: 50497321!
+test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (self initializeMonthYearNextYear).
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	
+	error := [self error: Cashier notEnoughCreditOnCreditCardErrorMessage].
+	
+	self should: [aCashier checkout] raise: Error withMessageText: Cashier notEnoughCreditOnCreditCardErrorMessage.
+	self assert: aLedger isEmpty.! !
+
+!methodRemoval: CashierTest #initializeMonthYearNextYeat stamp: 'scb 6/8/2022 23:18:10'!
+initializeMonthYearNextYeat
+
+	^ Month month: self thisMonth year: self nextYear!
+
+!testRun: #CashierTest #test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit stamp: 'scb 6/8/2022 23:18:12'!
+PASSED!
+
+!testRun: #CashierTest #test01CantCheckoutEmptyCart stamp: 'scb 6/8/2022 23:18:12'!
+PASSED!
+
+!testRun: #CashierTest #test02CashierCanCalculateCheckoutPriceOfCartWithOneBook stamp: 'scb 6/8/2022 23:18:12'!
+PASSED!
+
+!testRun: #CashierTest #test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks stamp: 'scb 6/8/2022 23:18:12'!
+PASSED!
+
+!testRun: #CashierTest #test04CantCheckoutWithExpiredCard stamp: 'scb 6/8/2022 23:18:12'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierCheckoutsCart stamp: 'scb 6/8/2022 23:18:12'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierCheckoutsCartUsingMerchantProcessor stamp: 'scb 6/8/2022 23:18:12'!
+PASSED!
+
+!testRun: #CashierTest #test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit stamp: 'scb 6/8/2022 23:18:12'!
+PASSED!
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:18:50'!
+initializeValidCreditCard
+
+	^ CreditCard withExpirationDate: (self initializeMonthYearNextYear)! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:18:50' prior: 50497402!
+test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 5 of: self book.
+	aCreditCard := self initializeValidCreditCard.
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	
+	self assert: 50 equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:18:50' prior: 50497383!
+test05CashierCheckoutsCart
+	
+	| aCart aCashier aCreditCard aPrice aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeValidCreditCard.
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	
+	aPrice := aCashier checkout.
+	
+	self assert: 1 equals: aLedger size.
+	self assert: aPrice equals: aLedger first.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:18:50' prior: 50497420!
+test06CashierCheckoutsCartUsingMerchantProcessor
+	
+	| aCart aCashier aCreditCard aPrice aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeValidCreditCard.
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	error := [].
+	
+	aPrice := aCashier checkout.
+	
+	self assert: aPrice equals: debitedAmount.
+	self assert: aCreditCard equals: debitedCreditCard.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:18:50' prior: 50497475!
+test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeValidCreditCard.
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	
+	error := [self error: Cashier notEnoughCreditOnCreditCardErrorMessage].
+	
+	self should: [aCashier checkout] raise: Error withMessageText: Cashier notEnoughCreditOnCreditCardErrorMessage.
+	self assert: aLedger isEmpty.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:18:50' prior: 50497457!
+test02CashierCanCalculateCheckoutPriceOfCartWithOneBook
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeValidCreditCard.
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	
+	self assert: self bookValue equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:18:50' prior: 50497441!
+test01CantCheckoutEmptyCart
+
+	| aCart aCreditCard aLedger|
+	
+	aCart := Cart new.
+	aCreditCard := self initializeValidCreditCard.
+	aLedger := OrderedCollection new.
+	
+	self should: [Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.]
+	raise: Error
+	withMessageText: Cashier emptyCartErrorMessage. ! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:19:07'!
+initializeNotExpiredCreditCard
+
+	^ CreditCard withExpirationDate: (self initializeMonthYearNextYear)! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/8/2022 23:19:07' prior: 50497537!
+test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 5 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	
+	self assert: 50 equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/8/2022 23:19:07' prior: 50497571!
+test06CashierCheckoutsCartUsingMerchantProcessor
+	
+	| aCart aCashier aCreditCard aPrice aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	error := [].
+	
+	aPrice := aCashier checkout.
+	
+	self assert: aPrice equals: debitedAmount.
+	self assert: aCreditCard equals: debitedCreditCard.! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/8/2022 23:19:07' prior: 50497612!
+test02CashierCanCalculateCheckoutPriceOfCartWithOneBook
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	
+	self assert: self bookValue equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/8/2022 23:19:07' prior: 50497590!
+test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	
+	error := [self error: Cashier notEnoughCreditOnCreditCardErrorMessage].
+	
+	self should: [aCashier checkout] raise: Error withMessageText: Cashier notEnoughCreditOnCreditCardErrorMessage.
+	self assert: aLedger isEmpty.! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/8/2022 23:19:07' prior: 50497553!
+test05CashierCheckoutsCart
+	
+	| aCart aCashier aCreditCard aPrice aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	
+	aPrice := aCashier checkout.
+	
+	self assert: 1 equals: aLedger size.
+	self assert: aPrice equals: aLedger first.! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/8/2022 23:19:07' prior: 50497629!
+test01CantCheckoutEmptyCart
+
+	| aCart aCreditCard aLedger|
+	
+	aCart := Cart new.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := OrderedCollection new.
+	
+	self should: [Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.]
+	raise: Error
+	withMessageText: Cashier emptyCartErrorMessage. ! !
+
+!methodRemoval: CashierTest #initializeValidCreditCard stamp: 'scb 6/8/2022 23:19:07'!
+initializeValidCreditCard
+
+	^ CreditCard withExpirationDate: (self initializeMonthYearNextYear)!
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:21:24'!
+riseNotEnoughCreditErrorClosure
+
+	^ [self error: Cashier notEnoughCreditOnCreditCardErrorMessage]! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:21:24' prior: 50497704!
+test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	
+	error := self riseNotEnoughCreditErrorClosure.
+	
+	self should: [aCashier checkout] raise: Error withMessageText: Cashier notEnoughCreditOnCreditCardErrorMessage.
+	self assert: aLedger isEmpty.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:22:09'!
+assertIsEmpty: aLedger
+
+	^ self assert: aLedger isEmpty! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:22:09' prior: 50497063!
+test04CantCheckoutWithExpiredCard
+	
+	| aCart aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: self thisMonth year: self thisYear - 1).
+	aLedger := OrderedCollection new.
+	
+	self should: [Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.]
+	raise: Error
+	withMessageText: Cashier expiredCreditCardErrorMessage.
+	self assertIsEmpty: aLedger
+	! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:22:09' prior: 50497771!
+test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := OrderedCollection new.
+	aCashier := Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger.
+	
+	error := self riseNotEnoughCreditErrorClosure.
+	
+	self should: [aCashier checkout] raise: Error withMessageText: Cashier notEnoughCreditOnCreditCardErrorMessage.
+	self assertIsEmpty: aLedger.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:22:27' prior: 50497792!
+assertIsEmpty: anOrderedCollection
+
+	^ self assert: anOrderedCollection isEmpty! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:24:57'!
+initializeCashierCheckOut: aLedger on: aCreditCard registerOn: aCart
+
+	^ Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:24:57' prior: 50497650!
+test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 5 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := OrderedCollection new.
+	aCashier := self initializeCashierCheckOut: aLedger on: aCreditCard registerOn: aCart.
+	
+	self assert: 50 equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:24:57' prior: 50497727!
+test05CashierCheckoutsCart
+	
+	| aCart aCashier aCreditCard aPrice aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := OrderedCollection new.
+	aCashier := self initializeCashierCheckOut: aLedger on: aCreditCard registerOn: aCart.
+	
+	aPrice := aCashier checkout.
+	
+	self assert: 1 equals: aLedger size.
+	self assert: aPrice equals: aLedger first.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:24:57' prior: 50497667!
+test06CashierCheckoutsCartUsingMerchantProcessor
+	
+	| aCart aCashier aCreditCard aPrice aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := OrderedCollection new.
+	aCashier := self initializeCashierCheckOut: aLedger on: aCreditCard registerOn: aCart.
+	error := [].
+	
+	aPrice := aCashier checkout.
+	
+	self assert: aPrice equals: debitedAmount.
+	self assert: aCreditCard equals: debitedCreditCard.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:24:57' prior: 50497797!
+test04CantCheckoutWithExpiredCard
+	
+	| aCart aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: self thisMonth year: self thisYear - 1).
+	aLedger := OrderedCollection new.
+	
+	self should: [self initializeCashierCheckOut: aLedger on: aCreditCard registerOn: aCart.]
+	raise: Error
+	withMessageText: Cashier expiredCreditCardErrorMessage.
+	self assertIsEmpty: aLedger
+	! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:24:57' prior: 50497687!
+test02CashierCanCalculateCheckoutPriceOfCartWithOneBook
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := OrderedCollection new.
+	aCashier := self initializeCashierCheckOut: aLedger on: aCreditCard registerOn: aCart.
+	
+	self assert: self bookValue equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:24:57' prior: 50497745!
+test01CantCheckoutEmptyCart
+
+	| aCart aCreditCard aLedger|
+	
+	aCart := Cart new.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := OrderedCollection new.
+	
+	self should: [self initializeCashierCheckOut: aLedger on: aCreditCard registerOn: aCart.]
+	raise: Error
+	withMessageText: Cashier emptyCartErrorMessage. ! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:24:57' prior: 50497816!
+test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := OrderedCollection new.
+	aCashier := self initializeCashierCheckOut: aLedger on: aCreditCard registerOn: aCart.
+	
+	error := self riseNotEnoughCreditErrorClosure.
+	
+	self should: [aCashier checkout] raise: Error withMessageText: Cashier notEnoughCreditOnCreditCardErrorMessage.
+	self assertIsEmpty: aLedger.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:25:18' prior: 50497842!
+initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger
+
+	^ Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:25:34' prior: 50497949!
+test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := OrderedCollection new.
+	aCashier := self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger.
+	
+	error := self riseNotEnoughCreditErrorClosure.
+	
+	self should: [aCashier checkout] raise: Error withMessageText: Cashier notEnoughCreditOnCreditCardErrorMessage.
+	self assertIsEmpty: aLedger.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:25:51' prior: 50497884!
+test06CashierCheckoutsCartUsingMerchantProcessor
+	
+	| aCart aCashier aCreditCard aPrice aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := OrderedCollection new.
+	aCashier := self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger.
+	error := [].
+	
+	aPrice := aCashier checkout.
+	
+	self assert: aPrice equals: debitedAmount.
+	self assert: aCreditCard equals: debitedCreditCard.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:25:59' prior: 50497867!
+test05CashierCheckoutsCart
+	
+	| aCart aCashier aCreditCard aPrice aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := OrderedCollection new.
+	aCashier := self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger..
+	
+	aPrice := aCashier checkout.
+	
+	self assert: 1 equals: aLedger size.
+	self assert: aPrice equals: aLedger first.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:26:08' prior: 50497902!
+test04CantCheckoutWithExpiredCard
+	
+	| aCart aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: self thisMonth year: self thisYear - 1).
+	aLedger := OrderedCollection new.
+	
+	self should: [self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger.]
+	raise: Error
+	withMessageText: Cashier expiredCreditCardErrorMessage.
+	self assertIsEmpty: aLedger
+	! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:26:18' prior: 50497851!
+test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 5 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := OrderedCollection new.
+	aCashier := self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger..
+	
+	self assert: 50 equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:26:20' prior: 50498051!
+test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 5 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := OrderedCollection new.
+	aCashier := self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger.
+	
+	self assert: 50 equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:26:29' prior: 50497920!
+test02CashierCanCalculateCheckoutPriceOfCartWithOneBook
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := OrderedCollection new.
+	aCashier := self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger..
+	
+	self assert: self bookValue equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:26:42' prior: 50497936!
+test01CantCheckoutEmptyCart
+
+	| aCart aCreditCard aLedger|
+	
+	aCart := Cart new.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := OrderedCollection new.
+	
+	self should: [self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger.]
+	raise: Error
+	withMessageText: Cashier emptyCartErrorMessage. ! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:27:06'!
+initializeEmptyCart
+
+	^ Cart new! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:27:06' prior: 50498099!
+test01CantCheckoutEmptyCart
+
+	| aCart aCreditCard aLedger|
+	
+	aCart := self initializeEmptyCart.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := OrderedCollection new.
+	
+	self should: [self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger.]
+	raise: Error
+	withMessageText: Cashier emptyCartErrorMessage. ! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:27:44' prior: 50498116!
+test01CantCheckoutEmptyCart
+
+	| aCart aCreditCard aLedger|
+	
+	aCart := self initializeEmptyCart.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := OrderedCollection new.
+	
+	self should: [self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger.]
+	raise: Error
+	withMessageText: Cashier emptyCartErrorMessage. ! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:29:27'!
+should: aClosure raiseErrorWithErrorMessage: anErrorMessage
+
+	self should: aClosure
+	raise: Error
+	withMessageText: anErrorMessage! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:30:04' prior: 50498130!
+test01CantCheckoutEmptyCart
+
+	| aCart aCreditCard aLedger|
+	
+	aCart := self initializeEmptyCart.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := OrderedCollection new.
+	
+	self should: [self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger]
+	raiseErrorWithMessageText: Cashier emptyCartErrorMessage. ! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:30:34'!
+should: aClosure raiseErrorWithMessageText: anErrorMessage
+
+	self should: aClosure
+	raise: Error
+	withMessageText: anErrorMessage! !
+
+!methodRemoval: CashierTest #should:raiseErrorWithErrorMessage: stamp: 'scb 6/8/2022 23:30:34'!
+should: aClosure raiseErrorWithErrorMessage: anErrorMessage
+
+	self should: aClosure
+	raise: Error
+	withMessageText: anErrorMessage!
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:30:51' prior: 50498033!
+test04CantCheckoutWithExpiredCard
+	
+	| aCart aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (Month month: self thisMonth year: self thisYear - 1).
+	aLedger := OrderedCollection new.
+	
+	self should: [self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger.]
+	raiseErrorWithMessageText: Cashier expiredCreditCardErrorMessage.
+	self assertIsEmpty: aLedger
+	! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:31:11' prior: 50497978!
+test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := OrderedCollection new.
+	aCashier := self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger.
+	
+	error := self riseNotEnoughCreditErrorClosure.
+	
+	self should: [aCashier checkout] raiseErrorWithMessageText: Cashier notEnoughCreditOnCreditCardErrorMessage.
+	self assertIsEmpty: aLedger.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:32:23'!
+initializeMonthYearLastYear
+
+	^ Month month: self thisMonth year: self thisYear - 1! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:32:23' prior: 50498177!
+test04CantCheckoutWithExpiredCard
+	
+	| aCart aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (self initializeMonthYearLastYear).
+	aLedger := OrderedCollection new.
+	
+	self should: [self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger.]
+	raiseErrorWithMessageText: Cashier expiredCreditCardErrorMessage.
+	self assertIsEmpty: aLedger
+	! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:33:05' prior: 50497377!
+initializeMonthYearNextYear
+
+	^ Month month: self thisMonth year: self thisYear+1! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:33:11' prior: 50498238!
+initializeMonthYearNextYear
+
+	^ Month month: self thisMonth year: self thisYear + 1! !
+
+!methodRemoval: CashierTest #nextYear stamp: 'scb 6/8/2022 23:33:22'!
+nextYear
+
+	^ self thisYear + 1!
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:37:59'!
+assertCheckoutOf: aCart on: aCreditCard registeredOn: aLedger raisesErrorWithMessageText: anErrorMessage
+
+	self should: [self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger]
+	raiseErrorWithMessageText: anErrorMessage.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:38:00' prior: 50498252!
+assertCheckoutOf: aCart on: aCreditCard registeredOn: aLedger raisesErrorWithMessageText: anErrorMessage
+
+	self should: [self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger]
+	raiseErrorWithMessageText: anErrorMessage! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:38:13'!
+assert: aClosure raisesErrorWithMessageText: anErrorMessage
+
+	self should: aClosure
+	raise: Error
+	withMessageText: anErrorMessage! !
+
+!methodRemoval: CashierTest #assert:raisesErrorWithMessageText: stamp: 'scb 6/8/2022 23:38:30'!
+assert: aClosure raisesErrorWithMessageText: anErrorMessage
+
+	self should: aClosure
+	raise: Error
+	withMessageText: anErrorMessage!
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:38:48'!
+assert: aClosure raiseErrorWithMessageText: anErrorMessage
+
+	self should: aClosure
+	raise: Error
+	withMessageText: anErrorMessage! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/8/2022 23:38:48' prior: 50498263!
+assertCheckoutOf: aCart on: aCreditCard registeredOn: aLedger raisesErrorWithMessageText: anErrorMessage
+
+	self assert: [self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger]
+	raiseErrorWithMessageText: anErrorMessage! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/8/2022 23:38:48' prior: 50498195!
+test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := OrderedCollection new.
+	aCashier := self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger.
+	
+	error := self riseNotEnoughCreditErrorClosure.
+	
+	self assert: [aCashier checkout] raiseErrorWithMessageText: Cashier notEnoughCreditOnCreditCardErrorMessage.
+	self assertIsEmpty: aLedger.! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/8/2022 23:38:48' prior: 50498150!
+test01CantCheckoutEmptyCart
+
+	| aCart aCreditCard aLedger|
+	
+	aCart := self initializeEmptyCart.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := OrderedCollection new.
+	
+	self assert: [self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger]
+	raiseErrorWithMessageText: Cashier emptyCartErrorMessage. ! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/8/2022 23:38:48' prior: 50498221!
+test04CantCheckoutWithExpiredCard
+	
+	| aCart aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (self initializeMonthYearLastYear).
+	aLedger := OrderedCollection new.
+	
+	self assert: [self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger.]
+	raiseErrorWithMessageText: Cashier expiredCreditCardErrorMessage.
+	self assertIsEmpty: aLedger
+	! !
+
+!methodRemoval: CashierTest #should:raiseErrorWithMessageText: stamp: 'scb 6/8/2022 23:38:48'!
+should: aClosure raiseErrorWithMessageText: anErrorMessage
+
+	self should: aClosure
+	raise: Error
+	withMessageText: anErrorMessage!
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:39:13' prior: 50495821!
+bookValueRelation
+
+	^ self book -> 10! !
+
+!methodRemoval: CashierTest #bookValue stamp: 'scb 6/8/2022 23:39:16'!
+bookValue
+
+	^ 10!
+
+!testRun: #CashierTest #test01CantCheckoutEmptyCart stamp: 'scb 6/8/2022 23:39:19'!
+PASSED!
+
+!testRun: #CashierTest #test02CashierCanCalculateCheckoutPriceOfCartWithOneBook stamp: 'scb 6/8/2022 23:39:19'!
+ERROR!
+
+!testRun: #CashierTest #test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks stamp: 'scb 6/8/2022 23:39:19'!
+PASSED!
+
+!testRun: #CashierTest #test04CantCheckoutWithExpiredCard stamp: 'scb 6/8/2022 23:39:19'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierCheckoutsCart stamp: 'scb 6/8/2022 23:39:19'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierCheckoutsCartUsingMerchantProcessor stamp: 'scb 6/8/2022 23:39:19'!
+PASSED!
+
+!testRun: #CashierTest #test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit stamp: 'scb 6/8/2022 23:39:19'!
+PASSED!
+
+!testRun: #CashierTest #test02CashierCanCalculateCheckoutPriceOfCartWithOneBook stamp: 'scb 6/8/2022 23:39:19'!
+ERROR!
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:39:32'!
+bookValue
+
+	^ 10! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:39:42' prior: 50498365!
+bookValueRelation
+
+	^ self book -> self bookValue! !
+
+!testRun: #CashierTest #test01CantCheckoutEmptyCart stamp: 'scb 6/8/2022 23:39:43'!
+PASSED!
+
+!testRun: #CashierTest #test02CashierCanCalculateCheckoutPriceOfCartWithOneBook stamp: 'scb 6/8/2022 23:39:43'!
+PASSED!
+
+!testRun: #CashierTest #test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks stamp: 'scb 6/8/2022 23:39:43'!
+PASSED!
+
+!testRun: #CashierTest #test04CantCheckoutWithExpiredCard stamp: 'scb 6/8/2022 23:39:43'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierCheckoutsCart stamp: 'scb 6/8/2022 23:39:43'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierCheckoutsCartUsingMerchantProcessor stamp: 'scb 6/8/2022 23:39:43'!
+PASSED!
+
+!testRun: #CashierTest #test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit stamp: 'scb 6/8/2022 23:39:43'!
+PASSED!
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:39:58' prior: 50497998!
+test06CashierCheckoutsCartUsingMerchantProcessor
+	
+	| aCart aCashier aCreditCard aPrice aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := OrderedCollection new.
+	aCashier := self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger.
+	error := OrderedCollection new.
+	
+	aPrice := aCashier checkout.
+	
+	self assert: aPrice equals: debitedAmount.
+	self assert: aCreditCard equals: debitedCreditCard.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:40:34'!
+initializeEmptyOrderedCollection
+
+	^ OrderedCollection new! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:40:34' prior: 50498067!
+test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 5 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	aCashier := self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger.
+	
+	self assert: 50 equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:40:34' prior: 50498016!
+test05CashierCheckoutsCart
+	
+	| aCart aCashier aCreditCard aPrice aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	aCashier := self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger..
+	
+	aPrice := aCashier checkout.
+	
+	self assert: 1 equals: aLedger size.
+	self assert: aPrice equals: aLedger first.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:40:34' prior: 50498432!
+test06CashierCheckoutsCartUsingMerchantProcessor
+	
+	| aCart aCashier aCreditCard aPrice aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	aCashier := self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger.
+	error := OrderedCollection new.
+	
+	aPrice := aCashier checkout.
+	
+	self assert: aPrice equals: debitedAmount.
+	self assert: aCreditCard equals: debitedCreditCard.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:40:34' prior: 50498489!
+test06CashierCheckoutsCartUsingMerchantProcessor
+	
+	| aCart aCashier aCreditCard aPrice aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	aCashier := self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger.
+	error := self initializeEmptyOrderedCollection.
+	
+	aPrice := aCashier checkout.
+	
+	self assert: aPrice equals: debitedAmount.
+	self assert: aCreditCard equals: debitedCreditCard.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:40:34' prior: 50498341!
+test04CantCheckoutWithExpiredCard
+	
+	| aCart aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (self initializeMonthYearLastYear).
+	aLedger := self initializeEmptyOrderedCollection.
+	
+	self assert: [self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger.]
+	raiseErrorWithMessageText: Cashier expiredCreditCardErrorMessage.
+	self assertIsEmpty: aLedger
+	! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:40:34' prior: 50498306!
+test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	aCashier := self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger.
+	
+	error := self riseNotEnoughCreditErrorClosure.
+	
+	self assert: [aCashier checkout] raiseErrorWithMessageText: Cashier notEnoughCreditOnCreditCardErrorMessage.
+	self assertIsEmpty: aLedger.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:40:34' prior: 50498083!
+test02CashierCanCalculateCheckoutPriceOfCartWithOneBook
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	aCashier := self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger..
+	
+	self assert: self bookValue equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:40:34' prior: 50498327!
+test01CantCheckoutEmptyCart
+
+	| aCart aCreditCard aLedger|
+	
+	aCart := self initializeEmptyCart.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	
+	self assert: [self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger]
+	raiseErrorWithMessageText: Cashier emptyCartErrorMessage. ! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:41:57' prior: 50498509!
+test06CashierCheckoutsCartUsingMerchantProcessor
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	aCashier := self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger.
+	error := self initializeEmptyOrderedCollection.
+	
+	aCashier checkout.
+	
+	self assert: self bookValue equals: debitedAmount.
+	self assert: aCreditCard equals: debitedCreditCard.! !
+
+!testRun: #CashierTest #test06CashierCheckoutsCartUsingMerchantProcessor stamp: 'scb 6/8/2022 23:41:58'!
+PASSED!
+
+!testRun: #CashierTest #test01CantCheckoutEmptyCart stamp: 'scb 6/8/2022 23:41:58'!
+PASSED!
+
+!testRun: #CashierTest #test02CashierCanCalculateCheckoutPriceOfCartWithOneBook stamp: 'scb 6/8/2022 23:41:58'!
+PASSED!
+
+!testRun: #CashierTest #test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks stamp: 'scb 6/8/2022 23:41:58'!
+PASSED!
+
+!testRun: #CashierTest #test04CantCheckoutWithExpiredCard stamp: 'scb 6/8/2022 23:41:58'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierCheckoutsCart stamp: 'scb 6/8/2022 23:41:58'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierCheckoutsCartUsingMerchantProcessor stamp: 'scb 6/8/2022 23:41:58'!
+PASSED!
+
+!testRun: #CashierTest #test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit stamp: 'scb 6/8/2022 23:41:58'!
+PASSED!
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:43:29'!
+assertBookValueEquals: aValue
+
+	self assert: self bookValue equals: aValue! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:43:45' prior: 50498568!
+test02CashierCanCalculateCheckoutPriceOfCartWithOneBook
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	aCashier := self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger..
+	
+	self assertBookValueEquals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:43:52' prior: 50498598!
+test06CashierCheckoutsCartUsingMerchantProcessor
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	aCashier := self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger.
+	error := self initializeEmptyOrderedCollection.
+	
+	aCashier checkout.
+	
+	self assertBookValueEquals: debitedAmount.
+	self assert: aCreditCard equals: debitedCreditCard.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:44:21' prior: 50498650!
+test02CashierCanCalculateCheckoutPriceOfCartWithOneBook
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	aCashier := self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger.
+	
+	self assertBookValueEquals: aCashier checkout.
+! !
+
+!methodRemoval: CashierTest #assertBookValueEquals: stamp: 'scb 6/8/2022 23:45:02'!
+assertBookValueEquals: aValue
+
+	self assert: self bookValue equals: aValue!
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:45:33' prior: 50498686!
+test02CashierCanCalculateCheckoutPriceOfCartWithOneBook
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	aCashier := self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger.
+	
+	self assert: self bookValue equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:45:47' prior: 50498666!
+test06CashierCheckoutsCartUsingMerchantProcessor
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	aCashier := self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger.
+	error := self initializeEmptyOrderedCollection.
+	
+	aCashier checkout.
+	
+	self assert: self bookValue equals: debitedAmount.
+	self assert: aCreditCard equals: debitedCreditCard.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:48:24'!
+assertAfterCheckoutOf: anAmount priceEquals: aValue
+
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: anAmount of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	aCashier := self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger.
+	error := self initializeEmptyOrderedCollection.
+	
+	aCashier checkout.
+	
+	self assert: anAmount * self bookValue equals: aValue.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:49:18'!
+assertAfterCheckoutOfAnAmountOfBooks: anAmount priceEquals: aValue
+
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: anAmount of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	aCashier := self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger.
+	error := self initializeEmptyOrderedCollection.
+	
+	aCashier checkout.
+	
+	self assert: anAmount * self bookValue equals: aValue.! !
+
+!methodRemoval: CashierTest #assertAfterCheckoutOf:priceEquals: stamp: 'scb 6/8/2022 23:49:18'!
+assertAfterCheckoutOf: anAmount priceEquals: aValue
+
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: anAmount of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	aCashier := self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger.
+	error := self initializeEmptyOrderedCollection.
+	
+	aCashier checkout.
+	
+	self assert: anAmount * self bookValue equals: aValue.!
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:51:01' prior: 50498456!
+test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 5 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	aCashier := self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger.
+	
+	self assert: 5*self bookValue equals: aCashier checkout.
+! !
+
+!testRun: #CashierTest #test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks stamp: 'scb 6/8/2022 23:51:02'!
+PASSED!
+
+!testRun: #CashierTest #test01CantCheckoutEmptyCart stamp: 'scb 6/8/2022 23:51:02'!
+PASSED!
+
+!testRun: #CashierTest #test02CashierCanCalculateCheckoutPriceOfCartWithOneBook stamp: 'scb 6/8/2022 23:51:02'!
+PASSED!
+
+!testRun: #CashierTest #test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks stamp: 'scb 6/8/2022 23:51:02'!
+PASSED!
+
+!testRun: #CashierTest #test04CantCheckoutWithExpiredCard stamp: 'scb 6/8/2022 23:51:02'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierCheckoutsCart stamp: 'scb 6/8/2022 23:51:02'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierCheckoutsCartUsingMerchantProcessor stamp: 'scb 6/8/2022 23:51:02'!
+PASSED!
+
+!testRun: #CashierTest #test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit stamp: 'scb 6/8/2022 23:51:02'!
+PASSED!
+
+!methodRemoval: CashierTest #assertAfterCheckoutOfAnAmountOfBooks:priceEquals: stamp: 'scb 6/8/2022 23:51:49'!
+assertAfterCheckoutOfAnAmountOfBooks: anAmount priceEquals: aValue
+
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: anAmount of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	aCashier := self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger.
+	error := self initializeEmptyOrderedCollection.
+	
+	aCashier checkout.
+	
+	self assert: anAmount * self bookValue equals: aValue.!
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:56:09' prior: 50498584!
+test01CantCheckoutEmptyCart
+
+	| aCart aCreditCard aLedger|
+	
+	aCart := self initializeEmptyCart.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	self assertCheckoutOf: aCart on: aCreditCard registeredOn: aLedger
+	raisesErrorWithMessageText: Cashier emptyCartErrorMessage.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:56:25' prior: 50498529!
+test04CantCheckoutWithExpiredCard
+	
+	| aCart aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := CreditCard withExpirationDate: (self initializeMonthYearLastYear).
+	aLedger := self initializeEmptyOrderedCollection.
+	
+	self assertCheckoutOf: aCart on: aCreditCard registeredOn: aLedger
+	raisesErrorWithMessageText: Cashier expiredCreditCardErrorMessage.
+	self assertIsEmpty: aLedger
+	! !
+
+!testRun: #CashierTest #test04CantCheckoutWithExpiredCard stamp: 'scb 6/8/2022 23:56:26'!
+PASSED!
+
+!testRun: #CashierTest #test01CantCheckoutEmptyCart stamp: 'scb 6/8/2022 23:56:26'!
+PASSED!
+
+!testRun: #CashierTest #test02CashierCanCalculateCheckoutPriceOfCartWithOneBook stamp: 'scb 6/8/2022 23:56:26'!
+PASSED!
+
+!testRun: #CashierTest #test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks stamp: 'scb 6/8/2022 23:56:26'!
+PASSED!
+
+!testRun: #CashierTest #test04CantCheckoutWithExpiredCard stamp: 'scb 6/8/2022 23:56:26'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierCheckoutsCart stamp: 'scb 6/8/2022 23:56:26'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierCheckoutsCartUsingMerchantProcessor stamp: 'scb 6/8/2022 23:56:26'!
+PASSED!
+
+!testRun: #CashierTest #test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit stamp: 'scb 6/8/2022 23:56:26'!
+PASSED!
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:56:49'!
+initializeExpiredCreditCard
+
+	^ CreditCard withExpirationDate: (self initializeMonthYearLastYear)! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:56:49' prior: 50498874!
+test04CantCheckoutWithExpiredCard
+	
+	| aCart aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	
+	self assertCheckoutOf: aCart on: aCreditCard registeredOn: aLedger
+	raisesErrorWithMessageText: Cashier expiredCreditCardErrorMessage.
+	self assertIsEmpty: aLedger
+	! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/8/2022 23:58:26' prior: 50498472!
+test05CashierCheckoutsCart
+	
+	| aCart aCashier aCreditCard aPrice aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	aCashier := self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger.
+	
+	aPrice := aCashier checkout.
+	
+	self assert: 1 equals: aLedger size.
+	self assert: aPrice equals: aLedger first.! !
+!CashierTest methodsFor: 'initialization' stamp: 'scb 6/8/2022 23:59:21'!
+initializeCashierCheckOut: aCart on: aCreditCard
+	
+	| aLedger |
+	
+	aLedger := self initializeEmptyOrderedCollection.
+	^ self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger.! !
+
+!methodRemoval: CashierTest #initializeCashierCheckOut:on: stamp: 'scb 6/9/2022 00:00:18'!
+initializeCashierCheckOut: aCart on: aCreditCard
+	
+	| aLedger |
+	
+	aLedger := self initializeEmptyOrderedCollection.
+	^ self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger.!
+!CashierTest methodsFor: 'initialization' stamp: 'scb 6/9/2022 00:01:20'!
+initializeCashierCheckOut: aCart on: aCreditCard
+
+	| aLedger |
+	aLedger := self initializeEmptyOrderedCollection.
+	^ Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger! !
+
+!methodRemoval: CashierTest #initializeCashierCheckOut:on:registerOn: stamp: 'scb 6/9/2022 00:01:24'!
+initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger
+
+	^ Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger!
+!CashierTest methodsFor: 'test' stamp: 'scb 6/9/2022 00:01:49' prior: 50498861!
+test01CantCheckoutEmptyCart
+
+	| aCart aCreditCard aLedger|
+	
+	aCart := self initializeEmptyCart.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	self assertCheckoutOf: aCart on: aCreditCard registeredOn: aLedger
+	raisesErrorWithMessageText: Cashier emptyCartErrorMessage.! !
+!CashierTest methodsFor: 'assertions' stamp: 'scb 6/9/2022 00:02:05' prior: 50498295!
+assertCheckoutOf: aCart on: aCreditCard registeredOn: aLedger raisesErrorWithMessageText: anErrorMessage
+
+	self assert: [self initializeCashierCheckOut: aCart on: aCreditCard]
+	raiseErrorWithMessageText: anErrorMessage! !
+!CashierTest methodsFor: 'assertions' stamp: 'scb 6/9/2022 00:02:12'!
+assertCheckoutOf: aCart on: aCreditCard raisesErrorWithMessageText: anErrorMessage
+
+	self assert: [self initializeCashierCheckOut: aCart on: aCreditCard]
+	raiseErrorWithMessageText: anErrorMessage! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/9/2022 00:02:12' prior: 50498994!
+test01CantCheckoutEmptyCart
+
+	| aCart aCreditCard aLedger|
+	
+	aCart := self initializeEmptyCart.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	self assertCheckoutOf: aCart on: aCreditCard raisesErrorWithMessageText: Cashier emptyCartErrorMessage.! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/9/2022 00:02:12' prior: 50498924!
+test04CantCheckoutWithExpiredCard
+	
+	| aCart aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	
+	self assertCheckoutOf: aCart on: aCreditCard raisesErrorWithMessageText: Cashier expiredCreditCardErrorMessage.
+	self assertIsEmpty: aLedger
+	! !
+
+!methodRemoval: CashierTest #assertCheckoutOf:on:registeredOn:raisesErrorWithMessageText: stamp: 'scb 6/9/2022 00:02:12'!
+assertCheckoutOf: aCart on: aCreditCard registeredOn: aLedger raisesErrorWithMessageText: anErrorMessage
+
+	self assert: [self initializeCashierCheckOut: aCart on: aCreditCard]
+	raiseErrorWithMessageText: anErrorMessage!
+!CashierTest methodsFor: 'initialization' stamp: 'scb 6/9/2022 00:02:28' prior: 50498975!
+initializeCashierCheckOut: aCart on: aCreditCard
+
+	| aLedger |
+	aLedger := self initializeEmptyOrderedCollection.
+	^ Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/9/2022 00:02:41' prior: 50498707!
+test02CashierCanCalculateCheckoutPriceOfCartWithOneBook
+	
+	| aCart aCashier aCreditCard aLedger|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aCashier := self initializeCashierCheckOut: aCart on: aCreditCard.
+	
+	self assert: self bookValue equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/9/2022 00:02:50' prior: 50499077!
+test02CashierCanCalculateCheckoutPriceOfCartWithOneBook
+	
+	| aCart aCashier aCreditCard |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aCashier := self initializeCashierCheckOut: aCart on: aCreditCard.
+	
+	self assert: self bookValue equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/9/2022 00:03:11' prior: 50498797!
+test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks
+	
+	| aCart aCashier aCreditCard|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 5 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aCashier := self initializeCashierCheckOut: aCart on: aCreditCard.
+	
+	self assert: 5*self bookValue equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'initialization' stamp: 'scb 6/9/2022 00:05:22'!
+initializeCashierCheckout: aCart on: aCreditCard
+
+	| aLedger |
+	aLedger := self initializeEmptyOrderedCollection.
+	^ Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/9/2022 00:05:22' prior: 50499105!
+test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks
+	
+	| aCart aCashier aCreditCard|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 5 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aCashier := self initializeCashierCheckout: aCart on: aCreditCard.
+	
+	self assert: 5*self bookValue equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/9/2022 00:05:22' prior: 50499091!
+test02CashierCanCalculateCheckoutPriceOfCartWithOneBook
+	
+	| aCart aCashier aCreditCard |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aCashier := self initializeCashierCheckout: aCart on: aCreditCard.
+	
+	self assert: self bookValue equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/9/2022 00:05:22' prior: 50499018!
+assertCheckoutOf: aCart on: aCreditCard raisesErrorWithMessageText: anErrorMessage
+
+	self assert: [self initializeCashierCheckout: aCart on: aCreditCard]
+	raiseErrorWithMessageText: anErrorMessage! !
+
+!methodRemoval: CashierTest #initializeCashierCheckOut:on: stamp: 'scb 6/9/2022 00:05:22'!
+initializeCashierCheckOut: aCart on: aCreditCard
+
+	| aLedger |
+	aLedger := self initializeEmptyOrderedCollection.
+	^ Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger!
+!CashierTest methodsFor: 'initialization' stamp: 'scb 6/9/2022 00:06:24' prior: 50499119!
+initializeCashierCheckout: aCart on: aCreditCard
+
+	^ Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: 0! !
+!CashierTest methodsFor: 'initialization' stamp: 'scb 6/9/2022 00:06:53'!
+initializeCashierCheckout: aCart on: aCreditCard registerOn: aLedger 
+
+	^ Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: 0! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/9/2022 00:06:53' prior: 50499158!
+assertCheckoutOf: aCart on: aCreditCard raisesErrorWithMessageText: anErrorMessage
+
+	self assert: [self initializeCashierCheckout: aCart on: aCreditCard registerOn: 0]
+	raiseErrorWithMessageText: anErrorMessage! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/9/2022 00:06:53' prior: 50499144!
+test02CashierCanCalculateCheckoutPriceOfCartWithOneBook
+	
+	| aCart aCashier aCreditCard |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aCashier := self initializeCashierCheckout: aCart on: aCreditCard registerOn: 0.
+	
+	self assert: self bookValue equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/9/2022 00:06:53' prior: 50499130!
+test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks
+	
+	| aCart aCashier aCreditCard|
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 5 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aCashier := self initializeCashierCheckout: aCart on: aCreditCard registerOn: 0.
+	
+	self assert: 5*self bookValue equals: aCashier checkout.
+! !
+
+!methodRemoval: CashierTest #initializeCashierCheckout:on: stamp: 'scb 6/9/2022 00:06:53'!
+initializeCashierCheckout: aCart on: aCreditCard
+
+	^ Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: 0!
+!CashierTest methodsFor: 'initialization' stamp: 'scb 6/9/2022 00:07:00' prior: 50499185!
+initializeCashierCheckout: aCart on: aCreditCard registerOn: aLedger 
+
+	^ Cashier checkout: aCart with: aCreditCard on: (self initializeMonthYearNow) using: self registerOn: aLedger! !
+!CashierTest methodsFor: 'assertions' stamp: 'scb 6/9/2022 00:07:27' prior: 50499194!
+assertCheckoutOf: aCart on: aCreditCard raisesErrorWithMessageText: anErrorMessage
+
+	self assert: [self initializeCashierCheckout: aCart on: aCreditCard registerOn: 0]
+	raiseErrorWithMessageText: anErrorMessage! !
+!CashierTest methodsFor: 'assertions' stamp: 'scb 6/9/2022 00:07:44'!
+assertCheckoutOf: aCart on: aCreditCard registerOn: aLedger raisesErrorWithMessageText: anErrorMessage
+
+	self assert: [self initializeCashierCheckout: aCart on: aCreditCard registerOn: 0]
+	raiseErrorWithMessageText: anErrorMessage! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/9/2022 00:07:44' prior: 50499028!
+test01CantCheckoutEmptyCart
+
+	| aCart aCreditCard aLedger|
+	
+	aCart := self initializeEmptyCart.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	self assertCheckoutOf: aCart on: aCreditCard registerOn: 0 raisesErrorWithMessageText: Cashier emptyCartErrorMessage.! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/9/2022 00:07:44' prior: 50499041!
+test04CantCheckoutWithExpiredCard
+	
+	| aCart aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	
+	self assertCheckoutOf: aCart on: aCreditCard registerOn: 0 raisesErrorWithMessageText: Cashier expiredCreditCardErrorMessage.
+	self assertIsEmpty: aLedger
+	! !
+
+!methodRemoval: CashierTest #assertCheckoutOf:on:raisesErrorWithMessageText: stamp: 'scb 6/9/2022 00:07:44'!
+assertCheckoutOf: aCart on: aCreditCard raisesErrorWithMessageText: anErrorMessage
+
+	self assert: [self initializeCashierCheckout: aCart on: aCreditCard registerOn: 0]
+	raiseErrorWithMessageText: anErrorMessage!
+!CashierTest methodsFor: 'assertions' stamp: 'scb 6/9/2022 00:07:48' prior: 50499260!
+assertCheckoutOf: aCart on: aCreditCard registerOn: aLedger raisesErrorWithMessageText: anErrorMessage
+
+	self assert: [self initializeCashierCheckout: aCart on: aCreditCard registerOn: aLedger]
+	raiseErrorWithMessageText: anErrorMessage! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/9/2022 00:08:00' prior: 50499271!
+test01CantCheckoutEmptyCart
+
+	| aCart aCreditCard aLedger|
+	
+	aCart := self initializeEmptyCart.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	self assertCheckoutOf: aCart on: aCreditCard registerOn: aLedger raisesErrorWithMessageText: Cashier emptyCartErrorMessage.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/9/2022 00:08:41' prior: 50499204!
+test02CashierCanCalculateCheckoutPriceOfCartWithOneBook
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	aCashier := self initializeCashierCheckout: aCart on: aCreditCard registerOn: aLedger.
+	
+	self assert: self bookValue equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/9/2022 00:09:00' prior: 50499219!
+test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 5 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	aCashier := self initializeCashierCheckout: aCart on: aCreditCard registerOn: aLedger.
+	
+	self assert: 5*self bookValue equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/9/2022 00:10:55' prior: 50498723!
+test06CashierCheckoutsCartUsingMerchantProcessor
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	aCashier := self initializeCashierCheckout: aCart on: aCreditCard registerOn: aLedger.
+	error := self initializeEmptyOrderedCollection.
+	
+	aCashier checkout.
+	
+	self assert: self bookValue equals: debitedAmount.
+	self assert: aCreditCard equals: debitedCreditCard.! !
+!CashierTest methodsFor: 'initialization' stamp: 'scb 6/9/2022 00:13:31'!
+initializeCartWithCatalogAndAnAmountOfBooks: anAmount
+
+	| aCart |
+	
+	aCart := Cart checkout: self initializeCatalog.
+	^ aCart add: anAmount of: self book! !
+!CashierTest methodsFor: 'initialization' stamp: 'scb 6/9/2022 00:14:59'!
+initializeCartWithCatalog: anAmount
+
+	^ Cart checkout: self initializeCatalog! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/9/2022 00:14:59' prior: 50498940!
+test05CashierCheckoutsCart
+	
+	| aCart aCashier aCreditCard aPrice aLedger|
+	
+	aCart := self initializeCartWithCatalog: 0.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	aCashier := self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger.
+	
+	aPrice := aCashier checkout.
+	
+	self assert: 1 equals: aLedger size.
+	self assert: aPrice equals: aLedger first.! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/9/2022 00:14:59' prior: 50499367!
+test06CashierCheckoutsCartUsingMerchantProcessor
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog: 0.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	aCashier := self initializeCashierCheckout: aCart on: aCreditCard registerOn: aLedger.
+	error := self initializeEmptyOrderedCollection.
+	
+	aCashier checkout.
+	
+	self assert: self bookValue equals: debitedAmount.
+	self assert: aCreditCard equals: debitedCreditCard.! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/9/2022 00:14:59' prior: 50499334!
+test02CashierCanCalculateCheckoutPriceOfCartWithOneBook
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog: 0.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	aCashier := self initializeCashierCheckout: aCart on: aCreditCard registerOn: aLedger.
+	
+	self assert: self bookValue equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/9/2022 00:14:59' prior: 50499285!
+test04CantCheckoutWithExpiredCard
+	
+	| aCart aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog: 0.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	
+	self assertCheckoutOf: aCart on: aCreditCard registerOn: 0 raisesErrorWithMessageText: Cashier expiredCreditCardErrorMessage.
+	self assertIsEmpty: aLedger
+	! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/9/2022 00:14:59' prior: 50499350!
+test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog: 0.
+	aCart add: 5 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	aCashier := self initializeCashierCheckout: aCart on: aCreditCard registerOn: aLedger.
+	
+	self assert: 5*self bookValue equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/9/2022 00:14:59' prior: 50498547!
+test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalog: 0.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	aCashier := self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger.
+	
+	error := self riseNotEnoughCreditErrorClosure.
+	
+	self assert: [aCashier checkout] raiseErrorWithMessageText: Cashier notEnoughCreditOnCreditCardErrorMessage.
+	self assertIsEmpty: aLedger.! !
+
+!methodRemoval: CashierTest #initializeCartWithCatalog stamp: 'scb 6/9/2022 00:14:59'!
+initializeCartWithCatalog
+
+	^ Cart checkout: self initializeCatalog!
+!CashierTest methodsFor: 'initialization' stamp: 'scb 6/9/2022 00:15:21'!
+initializeCartWithCatalogAndAnAmountOfBooks2: anAmount
+
+	^ Cart checkout: self initializeCatalog! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/9/2022 00:15:21' prior: 50499472!
+test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalogAndAnAmountOfBooks2: 0.
+	aCart add: 5 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	aCashier := self initializeCashierCheckout: aCart on: aCreditCard registerOn: aLedger.
+	
+	self assert: 5*self bookValue equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/9/2022 00:15:21' prior: 50499401!
+test05CashierCheckoutsCart
+	
+	| aCart aCashier aCreditCard aPrice aLedger|
+	
+	aCart := self initializeCartWithCatalogAndAnAmountOfBooks2: 0.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	aCashier := self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger.
+	
+	aPrice := aCashier checkout.
+	
+	self assert: 1 equals: aLedger size.
+	self assert: aPrice equals: aLedger first.! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/9/2022 00:15:21' prior: 50499419!
+test06CashierCheckoutsCartUsingMerchantProcessor
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalogAndAnAmountOfBooks2: 0.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	aCashier := self initializeCashierCheckout: aCart on: aCreditCard registerOn: aLedger.
+	error := self initializeEmptyOrderedCollection.
+	
+	aCashier checkout.
+	
+	self assert: self bookValue equals: debitedAmount.
+	self assert: aCreditCard equals: debitedCreditCard.! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/9/2022 00:15:21' prior: 50499439!
+test02CashierCanCalculateCheckoutPriceOfCartWithOneBook
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalogAndAnAmountOfBooks2: 0.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	aCashier := self initializeCashierCheckout: aCart on: aCreditCard registerOn: aLedger.
+	
+	self assert: self bookValue equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/9/2022 00:15:21' prior: 50499456!
+test04CantCheckoutWithExpiredCard
+	
+	| aCart aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalogAndAnAmountOfBooks2: 0.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	
+	self assertCheckoutOf: aCart on: aCreditCard registerOn: 0 raisesErrorWithMessageText: Cashier expiredCreditCardErrorMessage.
+	self assertIsEmpty: aLedger
+	! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'scb 6/9/2022 00:15:21' prior: 50499489!
+test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalogAndAnAmountOfBooks2: 0.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	aCashier := self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger.
+	
+	error := self riseNotEnoughCreditErrorClosure.
+	
+	self assert: [aCashier checkout] raiseErrorWithMessageText: Cashier notEnoughCreditOnCreditCardErrorMessage.
+	self assertIsEmpty: aLedger.! !
+
+!methodRemoval: CashierTest #initializeCartWithCatalog: stamp: 'scb 6/9/2022 00:15:21'!
+initializeCartWithCatalog: anAmount
+
+	^ Cart checkout: self initializeCatalog!
+
+!methodRemoval: CashierTest #initializeCartWithCatalogAndAnAmountOfBooks2: stamp: 'scb 6/9/2022 00:15:25'!
+initializeCartWithCatalogAndAnAmountOfBooks2: anAmount
+
+	^ Cart checkout: self initializeCatalog!
+!CashierTest methodsFor: 'test' stamp: 'scb 6/9/2022 00:15:33' prior: 50499578!
+test02CashierCanCalculateCheckoutPriceOfCartWithOneBook
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalogAndAnAmountOfBooks: 0.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	aCashier := self initializeCashierCheckout: aCart on: aCreditCard registerOn: aLedger.
+	
+	self assert: self bookValue equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/9/2022 00:15:37' prior: 50499521!
+test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalogAndAnAmountOfBooks: 0.
+	aCart add: 5 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	aCashier := self initializeCashierCheckout: aCart on: aCreditCard registerOn: aLedger.
+	
+	self assert: 5*self bookValue equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/9/2022 00:15:41' prior: 50499595!
+test04CantCheckoutWithExpiredCard
+	
+	| aCart aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalogAndAnAmountOfBooks: 0.
+	aCart add: 1 of: self book.
+	aCreditCard := self initializeExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	
+	self assertCheckoutOf: aCart on: aCreditCard registerOn: 0 raisesErrorWithMessageText: Cashier expiredCreditCardErrorMessage.
+	self assertIsEmpty: aLedger
+	! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/9/2022 00:15:44' prior: 50499679!
+test04CantCheckoutWithExpiredCard
+	
+	| aCart aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalogAndAnAmountOfBooks: 0.
+	aCreditCard := self initializeExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	
+	self assertCheckoutOf: aCart on: aCreditCard registerOn: 0 raisesErrorWithMessageText: Cashier expiredCreditCardErrorMessage.
+	self assertIsEmpty: aLedger
+	! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/9/2022 00:15:48' prior: 50499662!
+test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalogAndAnAmountOfBooks: 5.
+	aCart add: 5 of: self book.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	aCashier := self initializeCashierCheckout: aCart on: aCreditCard registerOn: aLedger.
+	
+	self assert: 5*self bookValue equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/9/2022 00:15:51' prior: 50499710!
+test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalogAndAnAmountOfBooks: 5.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	aCashier := self initializeCashierCheckout: aCart on: aCreditCard registerOn: aLedger.
+	
+	self assert: 5*self bookValue equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/9/2022 00:15:59' prior: 50499645!
+test02CashierCanCalculateCheckoutPriceOfCartWithOneBook
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalogAndAnAmountOfBooks: 1.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	aCashier := self initializeCashierCheckout: aCart on: aCreditCard registerOn: aLedger.
+	
+	self assert: self bookValue equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/9/2022 00:16:12' prior: 50499321!
+test01CantCheckoutEmptyCart
+
+	| aCart aCreditCard aLedger|
+	
+	aCart := self initializeCartWithCatalogAndAnAmountOfBooks: 0.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	self assertCheckoutOf: aCart on: aCreditCard registerOn: aLedger raisesErrorWithMessageText: Cashier emptyCartErrorMessage.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/9/2022 00:16:23' prior: 50499539!
+test05CashierCheckoutsCart
+	
+	| aCart aCashier aCreditCard aPrice aLedger|
+	
+	aCart := self initializeCartWithCatalogAndAnAmountOfBooks: 1.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	aCashier := self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger.
+	
+	aPrice := aCashier checkout.
+	
+	self assert: 1 equals: aLedger size.
+	self assert: aPrice equals: aLedger first.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/9/2022 00:16:30' prior: 50499557!
+test06CashierCheckoutsCartUsingMerchantProcessor
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalogAndAnAmountOfBooks: 1.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	aCashier := self initializeCashierCheckout: aCart on: aCreditCard registerOn: aLedger.
+	error := self initializeEmptyOrderedCollection.
+	
+	aCashier checkout.
+	
+	self assert: self bookValue equals: debitedAmount.
+	self assert: aCreditCard equals: debitedCreditCard.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/9/2022 00:16:36' prior: 50499612!
+test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalogAndAnAmountOfBooks: 1.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	aCashier := self initializeCashierCheckOut: aCart on: aCreditCard registerOn: aLedger.
+	
+	error := self riseNotEnoughCreditErrorClosure.
+	
+	self assert: [aCashier checkout] raiseErrorWithMessageText: Cashier notEnoughCreditOnCreditCardErrorMessage.
+	self assertIsEmpty: aLedger.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/9/2022 00:16:43' prior: 50499810!
+test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalogAndAnAmountOfBooks: 1.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	aCashier := self initializeCashierCheckout: aCart on: aCreditCard registerOn: aLedger.
+	
+	error := self riseNotEnoughCreditErrorClosure.
+	
+	self assert: [aCashier checkout] raiseErrorWithMessageText: Cashier notEnoughCreditOnCreditCardErrorMessage.
+	self assertIsEmpty: aLedger.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/9/2022 00:16:49' prior: 50499773!
+test05CashierCheckoutsCart
+	
+	| aCart aCashier aCreditCard aPrice aLedger|
+	
+	aCart := self initializeCartWithCatalogAndAnAmountOfBooks: 1.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	aCashier := self initializeCashierCheckout: aCart on: aCreditCard registerOn: aLedger.
+	
+	aPrice := aCashier checkout.
+	
+	self assert: 1 equals: aLedger size.
+	self assert: aPrice equals: aLedger first.! !
+
+!testRun: #CashierTest #test02CashierCanCalculateCheckoutPriceOfCartWithOneBook stamp: 'scb 6/9/2022 00:16:54'!
+PASSED!
+
+!testRun: #CashierTest #test01CantCheckoutEmptyCart stamp: 'scb 6/9/2022 00:16:57'!
+ERROR!
+
+!testRun: #CashierTest #test02CashierCanCalculateCheckoutPriceOfCartWithOneBook stamp: 'scb 6/9/2022 00:16:57'!
+PASSED!
+
+!testRun: #CashierTest #test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks stamp: 'scb 6/9/2022 00:16:57'!
+PASSED!
+
+!testRun: #CashierTest #test04CantCheckoutWithExpiredCard stamp: 'scb 6/9/2022 00:16:57'!
+ERROR!
+
+!testRun: #CashierTest #test05CashierCheckoutsCart stamp: 'scb 6/9/2022 00:16:57'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierCheckoutsCartUsingMerchantProcessor stamp: 'scb 6/9/2022 00:16:57'!
+PASSED!
+
+!testRun: #CashierTest #test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit stamp: 'scb 6/9/2022 00:16:57'!
+PASSED!
+
+!testRun: #CashierTest #test01CantCheckoutEmptyCart stamp: 'scb 6/9/2022 00:16:59'!
+ERROR!
+!CashierTest methodsFor: 'test' stamp: 'scb 6/9/2022 00:18:06' prior: 50499695!
+test04CantCheckoutWithExpiredCard
+	
+	| aCart aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalogAndAnAmountOfBooks: 1.
+	aCreditCard := self initializeExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	
+	self assertCheckoutOf: aCart on: aCreditCard registerOn: 0 raisesErrorWithMessageText: Cashier expiredCreditCardErrorMessage.
+	self assertIsEmpty: aLedger
+	! !
+!CashierTest methodsFor: 'initialization' stamp: 'scb 6/9/2022 00:18:59' prior: 50499387!
+initializeCartWithCatalogAndAnAmountOfBooks: anAmount
+
+	| aCart |
+	
+	aCart := Cart checkout: self initializeCatalog.
+	anAmount timesRepeat: [aCart add: 1 of: self book].
+	^aCart! !
+
+!testRun: #CashierTest #test01CantCheckoutEmptyCart stamp: 'scb 6/9/2022 00:19:01'!
+PASSED!
+
+!testRun: #CashierTest #test02CashierCanCalculateCheckoutPriceOfCartWithOneBook stamp: 'scb 6/9/2022 00:19:01'!
+PASSED!
+
+!testRun: #CashierTest #test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks stamp: 'scb 6/9/2022 00:19:01'!
+PASSED!
+
+!testRun: #CashierTest #test04CantCheckoutWithExpiredCard stamp: 'scb 6/9/2022 00:19:01'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierCheckoutsCart stamp: 'scb 6/9/2022 00:19:01'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierCheckoutsCartUsingMerchantProcessor stamp: 'scb 6/9/2022 00:19:01'!
+PASSED!
+
+!testRun: #CashierTest #test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit stamp: 'scb 6/9/2022 00:19:01'!
+PASSED!
+!CashierTest methodsFor: 'test' stamp: 'scb 6/9/2022 00:20:05' prior: 50499759!
+test01CantCheckoutEmptyCart
+
+	| aCart aCreditCard aLedger|
+	
+	aCart := self initializeCartWithCatalogAndAnAmountOfBooks: 0.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	
+	self assertCheckoutOf: aCart on: aCreditCard registerOn: aLedger raisesErrorWithMessageText: Cashier emptyCartErrorMessage.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/9/2022 00:22:20'!
+assertCheckoutPriceEqualsBooksValueAfterPurchasing: anAmount
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalogAndAnAmountOfBooks: anAmount.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	aCashier := self initializeCashierCheckout: aCart on: aCreditCard registerOn: aLedger.
+	
+	self assert: self bookValue equals: aCashier checkout.
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/9/2022 00:22:50' prior: 50499743!
+test02CashierCanCalculateCheckoutPriceOfCartWithOneBook
+	
+	self assertCheckoutPriceEqualsBooksValueAfterPurchasing: 1
+! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/9/2022 00:23:02' prior: 50499727!
+test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks
+	
+	self assertCheckoutPriceEqualsBooksValueAfterPurchasing: 5
+! !
+
+!testRun: #CashierTest #test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks stamp: 'scb 6/9/2022 00:23:03'!
+FAILURE!
+!CashierTest methodsFor: 'assertions' stamp: 'scb 6/9/2022 00:23:21' prior: 50499961!
+assertCheckoutPriceEqualsBooksValueAfterPurchasing: anAmount
+	
+	| aCart aCashier aCreditCard aLedger |
+	
+	aCart := self initializeCartWithCatalogAndAnAmountOfBooks: anAmount.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	aCashier := self initializeCashierCheckout: aCart on: aCreditCard registerOn: aLedger.
+	
+	self assert: self bookValue * anAmount equals: aCashier checkout.
+! !
+
+!testRun: #CashierTest #test01CantCheckoutEmptyCart stamp: 'scb 6/9/2022 00:23:22'!
+PASSED!
+
+!testRun: #CashierTest #test02CashierCanCalculateCheckoutPriceOfCartWithOneBook stamp: 'scb 6/9/2022 00:23:22'!
+PASSED!
+
+!testRun: #CashierTest #test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks stamp: 'scb 6/9/2022 00:23:22'!
+PASSED!
+
+!testRun: #CashierTest #test04CantCheckoutWithExpiredCard stamp: 'scb 6/9/2022 00:23:22'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierCheckoutsCart stamp: 'scb 6/9/2022 00:23:22'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierCheckoutsCartUsingMerchantProcessor stamp: 'scb 6/9/2022 00:23:22'!
+PASSED!
+
+!testRun: #CashierTest #test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit stamp: 'scb 6/9/2022 00:23:22'!
+PASSED!
+!Cashier methodsFor: 'as yet unclassified' stamp: 'scb 6/9/2022 00:24:25'!
+updateLedgerWith: price
+
+	^ ledger add: price! !
+!Cashier methodsFor: 'as yet unclassified' stamp: 'scb 6/9/2022 00:24:25' prior: 50495034!
+checkout
+	
+	| catalog price |
+	
+	catalog := cart catalog.
+	price := 0.
+	cart do: [ :product | price := price + catalog at: product ].
+	merchantProcessor debit: price from: creditCard.
+	self updateLedgerWith: price.
+	
+	^ price.! !
+!Cashier methodsFor: 'as yet unclassified' stamp: 'scb 6/9/2022 00:25:17' prior: 50500036!
+updateLedgerWith: price
+
+	ledger add: price! !
+!Cashier methodsFor: 'as yet unclassified' stamp: 'scb 6/9/2022 00:26:35'!
+calculatePrice
+	
+	| catalog price |
+	
+	catalog := cart catalog.
+	price := 0.
+	cart do: [ :product | price := price + catalog at: product ].
+	^ price.! !
+!Cashier methodsFor: 'as yet unclassified' stamp: 'scb 6/9/2022 00:26:57' prior: 50500041!
+checkout
+	
+	| price |
+	
+	price := self calculatePrice.
+	merchantProcessor debit: price from: creditCard.
+	self updateLedgerWith: price.
+	
+	^ price.! !
+!Cashier methodsFor: 'as yet unclassified' stamp: 'scb 6/9/2022 00:27:58'!
+merchantProcessorProcess: price
+
+	^ merchantProcessor debit: price from: creditCard! !
+!Cashier methodsFor: 'as yet unclassified' stamp: 'scb 6/9/2022 00:27:58' prior: 50500064!
+checkout
+	
+	| price |
+	
+	price := self calculatePrice.
+	self merchantProcessorProcess: price.
+	self updateLedgerWith: price.
+	
+	^ price.! !
+!Cart methodsFor: 'asserting' stamp: 'scb 6/9/2022 00:29:07' prior: 50492779!
+assertStrictlyPositiveAmount: anAmount
+	
+	^ ( self assertIsStrictlyPositiveInteger: anAmount ) ifFalse: [ self riseInvalidAmountError ]
+	! !
+!Cart methodsFor: 'adding' stamp: 'scb 6/9/2022 00:30:18'!
+addPriceOf: aProduct To: aPrice
+	
+	aPrice add: (catalog at: aProduct)
+	! !
+
+!methodRemoval: Cashier #calculatePrice stamp: 'scb 6/9/2022 00:31:07'!
+calculatePrice
+	
+	| catalog price |
+	
+	catalog := cart catalog.
+	price := 0.
+	cart do: [ :product | price := price + catalog at: product ].
+	^ price.!
+!Cashier methodsFor: 'as yet unclassified' stamp: 'scb 6/9/2022 00:31:30' prior: 50500078!
+checkout
+	
+	| price |
+	
+	price := self calculatePrice.
+	self merchantProcessorProcess: price.
+	self updateLedgerWith: price.
+	
+	^ price.! !
+!Cashier methodsFor: 'as yet unclassified' stamp: 'scb 6/9/2022 00:32:59'!
+calculatePrice
+	
+	| price |
+	
+	price := 0.
+	cart do: [ :aProduct | cart addPriceOf: aProduct To: price].
+	^ price.! !
+
+!testRun: #CashierTest #test01CantCheckoutEmptyCart stamp: 'scb 6/9/2022 00:33:01'!
+PASSED!
+
+!testRun: #CashierTest #test02CashierCanCalculateCheckoutPriceOfCartWithOneBook stamp: 'scb 6/9/2022 00:33:01'!
+ERROR!
+
+!testRun: #CashierTest #test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks stamp: 'scb 6/9/2022 00:33:01'!
+ERROR!
+
+!testRun: #CashierTest #test04CantCheckoutWithExpiredCard stamp: 'scb 6/9/2022 00:33:01'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierCheckoutsCart stamp: 'scb 6/9/2022 00:33:01'!
+ERROR!
+
+!testRun: #CashierTest #test06CashierCheckoutsCartUsingMerchantProcessor stamp: 'scb 6/9/2022 00:33:01'!
+ERROR!
+
+!testRun: #CashierTest #test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit stamp: 'scb 6/9/2022 00:33:01'!
+FAILURE!
+
+!testRun: #CashierTest #test02CashierCanCalculateCheckoutPriceOfCartWithOneBook stamp: 'scb 6/9/2022 00:33:03'!
+ERROR!
+!Cashier methodsFor: 'as yet unclassified' stamp: 'scb 6/9/2022 00:34:16' prior: 50500112!
+calculatePrice
+	
+	| price |
+	
+	price := 0.
+	cart do: [ :aProduct | price := cart addPriceOf: aProduct To: price].
+	^ price.! !
+!Cart methodsFor: 'adding' stamp: 'scb 6/9/2022 00:34:29' prior: 50500092!
+addPriceOf: aProduct To: aPrice
+	
+	^ aPrice + (catalog at: aProduct)
+	! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/9/2022 00:34:30'!
+PASSED!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/9/2022 00:34:30'!
+PASSED!
+
+!testRun: #CartTest #test03CartWithBookIsNotEmpty stamp: 'scb 6/9/2022 00:34:30'!
+PASSED!
+
+!testRun: #CartTest #test04CartCantAddNonStrictlyPositiveAmountOfBooks stamp: 'scb 6/9/2022 00:34:30'!
+PASSED!
+
+!testRun: #CartTest #test04_5CartCantAddNonIntegerAmountOfBooks stamp: 'scb 6/9/2022 00:34:31'!
+PASSED!
+
+!testRun: #CartTest #test05CartCantAddMultipleCopiesOfBookOutsideOfCollection stamp: 'scb 6/9/2022 00:34:31'!
+PASSED!
+
+!testRun: #CartTest #test06CartDoesntKnowNotAddedBooks stamp: 'scb 6/9/2022 00:34:31'!
+PASSED!
+
+!testRun: #CartTest #test07CartKnowsAddedBooks stamp: 'scb 6/9/2022 00:34:31'!
+PASSED!
+
+!testRun: #CartTest #test08CartKnowsOccurrancesOfBooks stamp: 'scb 6/9/2022 00:34:31'!
+PASSED!
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'scb 6/9/2022 00:34:34'!
+PASSED!
+
+!testRun: #CartTest #test02CartCantAddBookOutsideOfCollection stamp: 'scb 6/9/2022 00:34:34'!
+PASSED!
+
+!testRun: #CartTest #test03CartWithBookIsNotEmpty stamp: 'scb 6/9/2022 00:34:34'!
+PASSED!
+
+!testRun: #CartTest #test04CartCantAddNonStrictlyPositiveAmountOfBooks stamp: 'scb 6/9/2022 00:34:34'!
+PASSED!
+
+!testRun: #CartTest #test04_5CartCantAddNonIntegerAmountOfBooks stamp: 'scb 6/9/2022 00:34:34'!
+PASSED!
+
+!testRun: #CartTest #test05CartCantAddMultipleCopiesOfBookOutsideOfCollection stamp: 'scb 6/9/2022 00:34:34'!
+PASSED!
+
+!testRun: #CartTest #test06CartDoesntKnowNotAddedBooks stamp: 'scb 6/9/2022 00:34:34'!
+PASSED!
+
+!testRun: #CartTest #test07CartKnowsAddedBooks stamp: 'scb 6/9/2022 00:34:34'!
+PASSED!
+
+!testRun: #CartTest #test08CartKnowsOccurrancesOfBooks stamp: 'scb 6/9/2022 00:34:34'!
+PASSED!
+
+!testRun: #CashierTest #test01CantCheckoutEmptyCart stamp: 'scb 6/9/2022 00:34:34'!
+PASSED!
+
+!testRun: #CashierTest #test02CashierCanCalculateCheckoutPriceOfCartWithOneBook stamp: 'scb 6/9/2022 00:34:34'!
+PASSED!
+
+!testRun: #CashierTest #test03CashierCanCalculateCheckoutPriceOfCartWithMultipleBooks stamp: 'scb 6/9/2022 00:34:34'!
+PASSED!
+
+!testRun: #CashierTest #test04CantCheckoutWithExpiredCard stamp: 'scb 6/9/2022 00:34:34'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierCheckoutsCart stamp: 'scb 6/9/2022 00:34:34'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierCheckoutsCartUsingMerchantProcessor stamp: 'scb 6/9/2022 00:34:34'!
+PASSED!
+
+!testRun: #CashierTest #test07CashierCantCheckoutWhenCreditCardDoesNotHaveEnoughCredit stamp: 'scb 6/9/2022 00:34:34'!
+PASSED!
+!Cashier methodsFor: 'as yet unclassified' stamp: 'scb 6/9/2022 00:35:17' prior: 50500105!
+checkout
+	
+	| price |
+	
+	price := self calculatePrice.
+	self merchantProcessorProcess: price.
+	self updateLedgerWith: price.
+	^ price.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/9/2022 00:39:39'!
+assert: aPrice includesOneItemOfPrice: aLedger
+
+	self assert: 1 equals: aLedger size.
+	self assert: aPrice equals: aLedger first! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/9/2022 00:39:39' prior: 50499850!
+test05CashierCheckoutsCart
+	
+	| aCart aCashier aCreditCard aPrice aLedger|
+	
+	aCart := self initializeCartWithCatalogAndAnAmountOfBooks: 1.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	aCashier := self initializeCashierCheckout: aCart on: aCreditCard registerOn: aLedger.
+	
+	aPrice := aCashier checkout.
+	
+	self assert: aPrice includesOneItemOfPrice: aLedger.! !
+!CashierTest methodsFor: 'test' stamp: 'scb 6/9/2022 00:39:50' prior: 50500254!
+test05CashierCheckoutsCart
+	
+	| aCart aCashier aCreditCard aPrice aLedger|
+	
+	aCart := self initializeCartWithCatalogAndAnAmountOfBooks: 1.
+	aCreditCard := self initializeNotExpiredCreditCard.
+	aLedger := self initializeEmptyOrderedCollection.
+	aCashier := self initializeCashierCheckout: aCart on: aCreditCard registerOn: aLedger.
+	
+	aPrice := aCashier checkout.
+	
+	self assert: aLedger includesOneItemOfPrice: aPrice.! !
+!CashierTest methodsFor: 'assertions' stamp: 'scb 6/9/2022 00:41:00' prior: 50500247!
+assert: aPrice2 includesOneItemOfPrice: aLedger
+
+	self assert: 1 equals: aLedger size.
+	self assert: aPrice2 equals: aLedger first! !
+!CashierTest methodsFor: 'assertions' stamp: 'scb 6/9/2022 00:41:10' prior: 50500286!
+assert: aPrice includesOneItemOfPrice: aLedger
+
+	self assert: 1 equals: aLedger size.
+	self assert: aPrice equals: aLedger first! !
+!CashierTest methodsFor: 'assertions' stamp: 'scb 6/9/2022 00:41:19' prior: 50500293!
+assert: aLedger includesOneItemOfPrice: aPrice
+
+	self assert: 1 equals: aLedger size.
+	self assert: aPrice equals: aLedger first! !
+!CashierTest methodsFor: 'assertions' stamp: 'scb 6/9/2022 00:41:21' prior: 50500300!
+assert: aLedger includesOneItemOfPrice: aPrice
+
+	self assert: 1 equals: aLedger size.
+	self assert: aPrice equals: aLedger first! !
+
+----SNAPSHOT----(9 June 2022 00:42:32) CuisUniversity-5096.image priorSource: 5204080!
