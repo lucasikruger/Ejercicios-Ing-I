@@ -1,0 +1,3255 @@
+
+
+----QUIT----(28 June 2022 10:51:03) CuisUniversity-5324.image priorSource: 3389678!
+
+----STARTUP---- (28 June 2022 10:51:03) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-5324.image!
+
+
+----QUIT----(28 June 2022 10:51:03) CuisUniversity-5324.image priorSource: 7600809!
+
+----STARTUP---- (4 July 2022 17:23:09) as /home/clinux01/Escritorio/linux64/CuisUniversity-5324.image!
+
+
+Object subclass: #PlayerTests
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #PlayerTests category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 17:40:21'!
+Object subclass: #PlayerTests
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #Player category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 17:50:04'!
+Object subclass: #Player
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+!PlayerTests methodsFor: 'tests' stamp: 'lk 7/4/2022 17:50:01'!
+test01CantCreateAPlayerOnXZero
+	
+	self should: [Player startOnPosition: 0@1 onFloor: 1] raise: Error - MessageNotUnderstood withMessageText: Player invalidStartPositionErrorDescription! !
+
+TestCase subclass: #PlayerTests
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #PlayerTests category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 17:50:24'!
+TestCase subclass: #PlayerTests
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!testRun: #PlayerTests #test01CantCreateAPlayerOnXZero stamp: 'lk 7/4/2022 17:50:28'!
+ERROR!
+
+!testRun: #PlayerTests #test01CantCreateAPlayerOnXZero stamp: 'lk 7/4/2022 17:50:28'!
+ERROR!
+
+!testRun: #PlayerTests #test01CantCreateAPlayerOnXZero stamp: 'lk 7/4/2022 17:50:34'!
+ERROR!
+
+!testRun: #PlayerTests #test01CantCreateAPlayerOnXZero stamp: 'lk 7/4/2022 17:50:34'!
+ERROR!
+!Player class methodsFor: 'error' stamp: 'lk 7/4/2022 17:50:43'!
+invalidStartPositionErrorDescription
+	self shouldBeImplemented.! !
+!Player class methodsFor: 'error' stamp: 'lk 7/4/2022 17:51:04' prior: 50569240!
+invalidStartPositionErrorDescription
+	^ 'Invalid start position.'! !
+
+!testRun: #PlayerTests #test01CantCreateAPlayerOnXZero stamp: 'lk 7/4/2022 17:51:05'!
+ERROR!
+!Player class methodsFor: 'instance creation' stamp: 'lk 7/4/2022 17:51:11'!
+startOnPosition: aPoint onFloor: aSmallInteger 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeStartOnPosition: aPoint onFloor: aSmallInteger ! !
+!Player class methodsFor: 'instance creation' stamp: 'lk 7/4/2022 17:52:00' prior: 50569253!
+startOnPosition: aPosition onFloor: aFloor 
+
+	^self new initializeStartOnPosition: aPosition onFloor: aFloor ! !
+
+!testRun: #PlayerTests #test01CantCreateAPlayerOnXZero stamp: 'lk 7/4/2022 17:52:02'!
+ERROR!
+
+!classDefinition: #Player category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 17:52:11'!
+Object subclass: #Player
+	instanceVariableNames: 'position'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #Player category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 17:52:11'!
+Object subclass: #Player
+	instanceVariableNames: 'position floor'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+!Player methodsFor: 'initialization' stamp: 'lk 7/4/2022 17:52:11'!
+initializeStartOnPosition: aPosition onFloor: aFloor 
+	self shouldBeImplemented.
+	position := aPosition.
+	floor := aFloor.! !
+!Player methodsFor: 'initialization' stamp: 'lk 7/4/2022 17:52:15' prior: 50569287!
+initializeStartOnPosition: aPosition onFloor: aFloor 
+	position := aPosition.
+	floor := aFloor.! !
+!Player class methodsFor: 'instance creation' stamp: 'lk 7/4/2022 17:53:01' prior: 50569263!
+startOnPosition: aPosition onFloor: aFloor 
+	aPosition x = 0 ifTrue: [self error: self invalidStartPositionErrorDescription ].
+	^self new initializeStartOnPosition: aPosition onFloor: aFloor ! !
+
+!testRun: #PlayerTests #test01CantCreateAPlayerOnXZero stamp: 'lk 7/4/2022 17:53:02'!
+PASSED!
+!PlayerTests methodsFor: 'tests' stamp: 'lk 7/4/2022 17:53:15'!
+test02CantCreateAPlayerOnYZero
+	
+	self should: [Player startOnPosition: 0@1 onFloor: 1] raise: Error - MessageNotUnderstood withMessageText: Player invalidStartPositionErrorDescription! !
+!PlayerTests methodsFor: 'tests' stamp: 'lk 7/4/2022 17:53:21' prior: 50569312!
+test02CantCreateAPlayerOnYZero
+	
+	self should: [Player startOnPosition: 1@0 onFloor: 1] raise: Error - MessageNotUnderstood withMessageText: Player invalidStartPositionErrorDescription! !
+
+!testRun: #PlayerTests #test02CantCreateAPlayerOnYZero stamp: 'lk 7/4/2022 17:53:23'!
+FAILURE!
+!Player class methodsFor: 'instance creation' stamp: 'lk 7/4/2022 17:54:40' prior: 50569300!
+startOnPosition: aPosition onFloor: aFloor 
+	(aPosition x = 0 or: [aPosition y = 0]) ifTrue: [self error: self invalidStartPositionErrorDescription ].
+	^self new initializeStartOnPosition: aPosition onFloor: aFloor ! !
+
+!testRun: #PlayerTests #test01CantCreateAPlayerOnXZero stamp: 'lk 7/4/2022 17:54:40'!
+PASSED!
+
+!testRun: #PlayerTests #test02CantCreateAPlayerOnYZero stamp: 'lk 7/4/2022 17:54:40'!
+PASSED!
+!PlayerTests methodsFor: 'tests' stamp: 'lk 7/4/2022 17:54:59'!
+test02CantCreateAPlayerOnXNegative
+	
+	self should: [Player startOnPosition: -1@1 onFloor: 1] raise: Error - MessageNotUnderstood withMessageText: Player invalidStartPositionErrorDescription! !
+!PlayerTests methodsFor: 'tests' stamp: 'lk 7/4/2022 17:55:11'!
+test03CantCreateAPlayerOnXNegative
+	
+	self should: [Player startOnPosition: -1@1 onFloor: 1] raise: Error - MessageNotUnderstood withMessageText: Player invalidStartPositionErrorDescription! !
+
+!methodRemoval: PlayerTests #test02CantCreateAPlayerOnXNegative stamp: 'lk 7/4/2022 17:55:11'!
+test02CantCreateAPlayerOnXNegative
+	
+	self should: [Player startOnPosition: -1@1 onFloor: 1] raise: Error - MessageNotUnderstood withMessageText: Player invalidStartPositionErrorDescription!
+
+!testRun: #PlayerTests #test03CantCreateAPlayerOnXNegative stamp: 'lk 7/4/2022 17:55:20'!
+FAILURE!
+!Player class methodsFor: 'instance creation' stamp: 'lk 7/4/2022 17:55:41' prior: 50569333!
+startOnPosition: aPosition onFloor: aFloor 
+	(aPosition x <= 0 or: [aPosition y = 0]) ifTrue: [self error: self invalidStartPositionErrorDescription ].
+	^self new initializeStartOnPosition: aPosition onFloor: aFloor ! !
+
+!testRun: #PlayerTests #test01CantCreateAPlayerOnXZero stamp: 'lk 7/4/2022 17:55:42'!
+PASSED!
+
+!testRun: #PlayerTests #test02CantCreateAPlayerOnYZero stamp: 'lk 7/4/2022 17:55:42'!
+PASSED!
+
+!testRun: #PlayerTests #test03CantCreateAPlayerOnXNegative stamp: 'lk 7/4/2022 17:55:42'!
+PASSED!
+!PlayerTests methodsFor: 'tests' stamp: 'lk 7/4/2022 17:55:57'!
+test04CantCreateAPlayerOnYNegative
+	
+	self should: [Player startOnPosition: 1@-1 onFloor: 1] raise: Error - MessageNotUnderstood withMessageText: Player invalidStartPositionErrorDescription! !
+
+!testRun: #PlayerTests #test04CantCreateAPlayerOnYNegative stamp: 'lk 7/4/2022 17:55:57'!
+ERROR!
+!Player class methodsFor: 'instance creation' stamp: 'lk 7/4/2022 17:56:58' prior: 50569379!
+startOnPosition: aPosition onFloor: aFloor 
+	(aPosition x <= 0 or: [aPosition y <= 0]) ifTrue: [self error: self invalidStartPositionErrorDescription ].
+	^self new initializeStartOnPosition: aPosition onFloor: aFloor ! !
+
+!testRun: #PlayerTests #test01CantCreateAPlayerOnXZero stamp: 'lk 7/4/2022 17:56:59'!
+PASSED!
+
+!testRun: #PlayerTests #test02CantCreateAPlayerOnYZero stamp: 'lk 7/4/2022 17:56:59'!
+PASSED!
+
+!testRun: #PlayerTests #test03CantCreateAPlayerOnXNegative stamp: 'lk 7/4/2022 17:56:59'!
+PASSED!
+
+!testRun: #PlayerTests #test04CantCreateAPlayerOnYNegative stamp: 'lk 7/4/2022 17:56:59'!
+ERROR!
+
+!testRun: #PlayerTests #test04CantCreateAPlayerOnYNegative stamp: 'lk 7/4/2022 17:56:59'!
+ERROR!
+
+!testRun: #PlayerTests #test01CantCreateAPlayerOnXZero stamp: 'lk 7/4/2022 17:57:08'!
+PASSED!
+
+!testRun: #PlayerTests #test02CantCreateAPlayerOnYZero stamp: 'lk 7/4/2022 17:57:08'!
+PASSED!
+
+!testRun: #PlayerTests #test03CantCreateAPlayerOnXNegative stamp: 'lk 7/4/2022 17:57:08'!
+PASSED!
+
+!testRun: #PlayerTests #test04CantCreateAPlayerOnYNegative stamp: 'lk 7/4/2022 17:57:08'!
+ERROR!
+
+!testRun: #PlayerTests #test04CantCreateAPlayerOnYNegative stamp: 'lk 7/4/2022 17:57:08'!
+ERROR!
+!PlayerTests methodsFor: 'tests' stamp: 'lk 7/4/2022 17:57:18' prior: 50569397!
+test04CantCreateAPlayerOnYNegative
+	
+	self should: [Player startOnPosition: (1@-1) onFloor: 1] raise: Error - MessageNotUnderstood withMessageText: Player invalidStartPositionErrorDescription! !
+
+!testRun: #PlayerTests #test04CantCreateAPlayerOnYNegative stamp: 'lk 7/4/2022 17:57:19'!
+ERROR!
+
+!testRun: #PlayerTests #test01CantCreateAPlayerOnXZero stamp: 'lk 7/4/2022 17:57:22'!
+PASSED!
+
+!testRun: #PlayerTests #test02CantCreateAPlayerOnYZero stamp: 'lk 7/4/2022 17:57:22'!
+PASSED!
+
+!testRun: #PlayerTests #test03CantCreateAPlayerOnXNegative stamp: 'lk 7/4/2022 17:57:22'!
+PASSED!
+
+!testRun: #PlayerTests #test04CantCreateAPlayerOnYNegative stamp: 'lk 7/4/2022 17:57:22'!
+ERROR!
+
+!testRun: #PlayerTests #test04CantCreateAPlayerOnYNegative stamp: 'lk 7/4/2022 17:57:22'!
+ERROR!
+!PlayerTests methodsFor: 'tests' stamp: 'lk 7/4/2022 17:57:40' prior: 50569449!
+test04CantCreateAPlayerOnYNegative
+	
+	self should: [Player startOnPosition: (1@(-1)) onFloor: 1] raise: Error - MessageNotUnderstood withMessageText: Player invalidStartPositionErrorDescription! !
+
+!testRun: #PlayerTests #test04CantCreateAPlayerOnYNegative stamp: 'lk 7/4/2022 17:57:44'!
+PASSED!
+
+!testRun: #PlayerTests #test01CantCreateAPlayerOnXZero stamp: 'lk 7/4/2022 17:57:46'!
+PASSED!
+
+!testRun: #PlayerTests #test02CantCreateAPlayerOnYZero stamp: 'lk 7/4/2022 17:57:46'!
+PASSED!
+
+!testRun: #PlayerTests #test03CantCreateAPlayerOnXNegative stamp: 'lk 7/4/2022 17:57:46'!
+PASSED!
+
+!testRun: #PlayerTests #test04CantCreateAPlayerOnYNegative stamp: 'lk 7/4/2022 17:57:46'!
+PASSED!
+!PlayerTests methodsFor: 'tests' stamp: 'lk 7/4/2022 17:59:58'!
+test05CantCreateAPlayerOnFloorZero
+	
+	self should: [Player startOnPosition: (1@1) onFloor: 0] raise: Error - MessageNotUnderstood withMessageText: Player invalidStartFloorErrorDescription! !
+
+!testRun: #PlayerTests #test05CantCreateAPlayerOnFloorZero stamp: 'lk 7/4/2022 18:00:00'!
+ERROR!
+!Player class methodsFor: 'error' stamp: 'lk 7/4/2022 18:00:03'!
+invalidStartFloorErrorDescription
+	self shouldBeImplemented.! !
+!Player class methodsFor: 'error' stamp: 'lk 7/4/2022 18:00:16' prior: 50569512!
+invalidStartFloorErrorDescription
+	^'Invalid Floor.'! !
+
+!testRun: #PlayerTests #test01CantCreateAPlayerOnXZero stamp: 'lk 7/4/2022 18:00:17'!
+PASSED!
+
+!testRun: #PlayerTests #test02CantCreateAPlayerOnYZero stamp: 'lk 7/4/2022 18:00:17'!
+PASSED!
+
+!testRun: #PlayerTests #test03CantCreateAPlayerOnXNegative stamp: 'lk 7/4/2022 18:00:17'!
+PASSED!
+
+!testRun: #PlayerTests #test04CantCreateAPlayerOnYNegative stamp: 'lk 7/4/2022 18:00:17'!
+PASSED!
+
+!testRun: #PlayerTests #test05CantCreateAPlayerOnFloorZero stamp: 'lk 7/4/2022 18:00:17'!
+FAILURE!
+
+!testRun: #PlayerTests #test05CantCreateAPlayerOnFloorZero stamp: 'lk 7/4/2022 18:00:17'!
+FAILURE!
+!Player class methodsFor: 'instance creation' stamp: 'lk 7/4/2022 18:00:55' prior: 50569409!
+startOnPosition: aPosition onFloor: aFloor 
+	(aPosition x <= 0 or: [aPosition y <= 0]) ifTrue: [self error: self invalidStartPositionErrorDescription ].
+	(aFloor = 0 ) ifTrue: [self error: self invalidStartFloorErrorDescription ].
+	^self new initializeStartOnPosition: aPosition onFloor: aFloor ! !
+
+!testRun: #PlayerTests #test01CantCreateAPlayerOnXZero stamp: 'lk 7/4/2022 18:00:56'!
+PASSED!
+
+!testRun: #PlayerTests #test02CantCreateAPlayerOnYZero stamp: 'lk 7/4/2022 18:00:56'!
+PASSED!
+
+!testRun: #PlayerTests #test03CantCreateAPlayerOnXNegative stamp: 'lk 7/4/2022 18:00:56'!
+PASSED!
+
+!testRun: #PlayerTests #test04CantCreateAPlayerOnYNegative stamp: 'lk 7/4/2022 18:00:56'!
+PASSED!
+
+!testRun: #PlayerTests #test05CantCreateAPlayerOnFloorZero stamp: 'lk 7/4/2022 18:00:56'!
+PASSED!
+!PlayerTests methodsFor: 'tests' stamp: 'lk 7/4/2022 18:01:14'!
+test06CantCreateAPlayerOnFloorNegative
+	
+	self should: [Player startOnPosition: (1@1) onFloor: -1] raise: Error - MessageNotUnderstood withMessageText: Player invalidStartFloorErrorDescription! !
+
+!testRun: #PlayerTests #test06CantCreateAPlayerOnFloorNegative stamp: 'lk 7/4/2022 18:01:14'!
+FAILURE!
+!Player class methodsFor: 'instance creation' stamp: 'lk 7/4/2022 18:01:23' prior: 50569541!
+startOnPosition: aPosition onFloor: aFloor 
+	(aPosition x <= 0 or: [aPosition y <= 0]) ifTrue: [self error: self invalidStartPositionErrorDescription ].
+	(aFloor <= 0 ) ifTrue: [self error: self invalidStartFloorErrorDescription ].
+	^self new initializeStartOnPosition: aPosition onFloor: aFloor ! !
+
+!testRun: #PlayerTests #test01CantCreateAPlayerOnXZero stamp: 'lk 7/4/2022 18:01:25'!
+PASSED!
+
+!testRun: #PlayerTests #test02CantCreateAPlayerOnYZero stamp: 'lk 7/4/2022 18:01:25'!
+PASSED!
+
+!testRun: #PlayerTests #test03CantCreateAPlayerOnXNegative stamp: 'lk 7/4/2022 18:01:25'!
+PASSED!
+
+!testRun: #PlayerTests #test04CantCreateAPlayerOnYNegative stamp: 'lk 7/4/2022 18:01:25'!
+PASSED!
+
+!testRun: #PlayerTests #test05CantCreateAPlayerOnFloorZero stamp: 'lk 7/4/2022 18:01:25'!
+PASSED!
+
+!testRun: #PlayerTests #test06CantCreateAPlayerOnFloorNegative stamp: 'lk 7/4/2022 18:01:25'!
+PASSED!
+
+!classRemoval: #PlayerTests stamp: 'lk 7/4/2022 18:10:27'!
+TestCase subclass: #PlayerTests
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classRemoval: #Player stamp: 'lk 7/4/2022 18:10:30'!
+Object subclass: #Player
+	instanceVariableNames: 'position floor'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+Object subclass: #PlayerTests
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #PlayerTests category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 18:10:40'!
+Object subclass: #PlayerTests
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #Player category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 18:17:34'!
+Object subclass: #Player
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+!PlayerTests methodsFor: 'tests' stamp: 'lk 7/4/2022 18:17:25'!
+test01CanCreateAPlayerOnALevel
+
+	| player |
+	player := Player startGameOnPosition: self validStartPosition onFloor: self validFloor.
+	self assert: self validStartPosition equals: player position.  
+	self assert: self validFloor equals: player floor.! !
+!PlayerTests methodsFor: 'tests' stamp: 'lk 7/4/2022 18:17:41' prior: 50569643!
+test01CanCreateAPlayerOnALevel
+	| player |
+	
+	player := Player startGameOnPosition: self validStartPosition onFloor: self validFloor.
+	self assert: self validStartPosition equals: player position.  
+	self assert: self validFloor equals: player floor.! !
+
+TestCase subclass: #NameOfSubclass
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #NameOfSubclass category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 18:17:59'!
+TestCase subclass: #NameOfSubclass
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+TestCase subclass: #PlayerTests
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #PlayerTests category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 18:18:10'!
+TestCase subclass: #PlayerTests
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classRemoval: #NameOfSubclass stamp: 'lk 7/4/2022 18:18:15'!
+TestCase subclass: #NameOfSubclass
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!testRun: #PlayerTests #test01CanCreateAPlayerOnALevel stamp: 'lk 7/4/2022 18:18:17'!
+ERROR!
+
+!testRun: #PlayerTests #test01CanCreateAPlayerOnALevel stamp: 'lk 7/4/2022 18:18:17'!
+ERROR!
+!PlayerTests methodsFor: 'validArguments' stamp: 'lk 7/4/2022 18:18:46'!
+validStartPosition
+	self shouldBeImplemented.! !
+!PlayerTests methodsFor: 'validArguments' stamp: 'lk 7/4/2022 18:18:59' prior: 50569702!
+validStartPosition
+	^ 1@1! !
+
+!testRun: #PlayerTests #test01CanCreateAPlayerOnALevel stamp: 'lk 7/4/2022 18:19:01'!
+ERROR!
+!PlayerTests methodsFor: 'validArguments' stamp: 'lk 7/4/2022 18:19:05'!
+validFloor
+	self shouldBeImplemented.! !
+!PlayerTests methodsFor: 'validArguments' stamp: 'lk 7/4/2022 18:19:17' prior: 50569714!
+validFloor
+	^ #aFloor! !
+
+!testRun: #PlayerTests #test01CanCreateAPlayerOnALevel stamp: 'lk 7/4/2022 18:19:21'!
+ERROR!
+!Player class methodsFor: 'instance creation' stamp: 'lk 7/4/2022 18:19:31'!
+startGameOnPosition: aPoint onFloor: aSymbol 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeStartGameOnPosition: aPoint onFloor: aSymbol ! !
+!Player class methodsFor: 'instance creation' stamp: 'lk 7/4/2022 18:20:11' prior: 50569726!
+startGameOnPosition: aPosition onFloor: aFloor 
+	^self new initializeGameOnPosition: aPosition onFloor: aFloor ! !
+
+!testRun: #PlayerTests #test01CanCreateAPlayerOnALevel stamp: 'lk 7/4/2022 18:20:13'!
+ERROR!
+
+!classDefinition: #Player category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 18:20:21'!
+Object subclass: #Player
+	instanceVariableNames: 'position'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #Player category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 18:20:21'!
+Object subclass: #Player
+	instanceVariableNames: 'position floor'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+!Player methodsFor: 'initialization' stamp: 'lk 7/4/2022 18:20:21'!
+initializeGameOnPosition: aPosition onFloor: aFloor 
+	self shouldBeImplemented.
+	position := aPosition.
+	floor := aFloor.! !
+!Player methodsFor: 'initialization' stamp: 'lk 7/4/2022 18:20:24' prior: 50569760!
+initializeGameOnPosition: aPosition onFloor: aFloor 
+	position := aPosition.
+	floor := aFloor.! !
+
+!testRun: #PlayerTests #test01CanCreateAPlayerOnALevel stamp: 'lk 7/4/2022 18:20:26'!
+ERROR!
+!Player methodsFor: 'test' stamp: 'lk 7/4/2022 18:20:38'!
+position
+	self shouldBeImplemented.
+	^position! !
+!Player methodsFor: 'test' stamp: 'lk 7/4/2022 18:20:42' prior: 50569775!
+position
+	^position! !
+
+!testRun: #PlayerTests #test01CanCreateAPlayerOnALevel stamp: 'lk 7/4/2022 18:20:44'!
+ERROR!
+!Player methodsFor: 'test' stamp: 'lk 7/4/2022 18:20:48'!
+floor
+	self shouldBeImplemented.
+	^floor! !
+!Player methodsFor: 'test' stamp: 'lk 7/4/2022 18:20:51' prior: 50569785!
+floor
+	^floor! !
+
+!testRun: #PlayerTests #test01CanCreateAPlayerOnALevel stamp: 'lk 7/4/2022 18:20:52'!
+PASSED!
+
+!testRun: #PlayerTests #test01CanCreateAPlayerOnALevel stamp: 'lk 7/4/2022 18:20:55'!
+PASSED!
+!PlayerTests methodsFor: 'tests' stamp: 'lk 7/4/2022 18:21:35' prior: 50569654!
+test01CanCreateAPlayerOnALevel
+	| player |
+	
+	player := Player startGameOnPosition: self validStartPosition onFloor: self validFloor.
+	
+	self assert: self validStartPosition equals: player position.  
+	self assert: self validFloor equals: player floor.! !
+!PlayerTests methodsFor: 'tests' stamp: 'lk 7/4/2022 18:30:02' prior: 50569798!
+test01CanCreateAPlayerOnALevel
+	| player |
+	
+	player := Player startGameOn: self.
+	
+	self assert: self validStartPosition equals: player position.  
+	self assert: self validFloor equals: player floor.! !
+
+!testRun: #PlayerTests #test01CanCreateAPlayerOnALevel stamp: 'lk 7/4/2022 18:30:08'!
+ERROR!
+!Player class methodsFor: 'instance creation' stamp: 'lk 7/4/2022 18:30:17'!
+startGameOn: aPlayerTests 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeStartGameOn: aPlayerTests ! !
+!Player class methodsFor: 'instance creation' stamp: 'lk 7/4/2022 18:30:37' prior: 50569821!
+startGameOn: aLevel 
+
+	^self new initializeStartGameOn: aLevel ! !
+
+!testRun: #PlayerTests #test01CanCreateAPlayerOnALevel stamp: 'lk 7/4/2022 18:30:38'!
+ERROR!
+
+!classDefinition: #Player category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 18:30:44'!
+Object subclass: #Player
+	instanceVariableNames: 'position floor level'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+!Player methodsFor: 'initialization' stamp: 'lk 7/4/2022 18:30:44'!
+initializeStartGameOn: aLevel 
+	self shouldBeImplemented.
+	level := aLevel.! !
+!Player methodsFor: 'initialization' stamp: 'lk 7/4/2022 18:30:50' prior: 50569845!
+initializeStartGameOn: aLevel 
+	level := aLevel.! !
+
+!testRun: #PlayerTests #test01CanCreateAPlayerOnALevel stamp: 'lk 7/4/2022 18:30:53'!
+FAILURE!
+!PlayerTests methodsFor: 'validArguments' stamp: 'lk 7/4/2022 18:31:15'!
+startPosition
+	^ 1@1! !
+!Player methodsFor: 'initialization' stamp: 'lk 7/4/2022 18:32:34' prior: 50569851!
+initializeStartGameOn: aLevel 
+	floor := aLevel startFloor.
+	position := aLevel startPosition.! !
+
+!methodRemoval: Player #initializeGameOnPosition:onFloor: stamp: 'lk 7/4/2022 18:32:42'!
+initializeGameOnPosition: aPosition onFloor: aFloor 
+	position := aPosition.
+	floor := aFloor.!
+!PlayerTests methodsFor: 'validArguments' stamp: 'lk 7/4/2022 18:32:54' prior: 50569858!
+startPosition
+	^ 1@1! !
+!PlayerTests methodsFor: 'validArguments' stamp: 'lk 7/4/2022 18:33:03'!
+startFloor
+	^ #aFloor! !
+
+!methodRemoval: PlayerTests #validFloor stamp: 'lk 7/4/2022 18:33:14'!
+validFloor
+	^ #aFloor!
+
+!methodRemoval: PlayerTests #validStartPosition stamp: 'lk 7/4/2022 18:33:18'!
+validStartPosition
+	^ 1@1!
+
+!testRun: #PlayerTests #test01CanCreateAPlayerOnALevel stamp: 'lk 7/4/2022 18:33:21'!
+ERROR!
+
+!testRun: #PlayerTests #test01CanCreateAPlayerOnALevel stamp: 'lk 7/4/2022 18:33:21'!
+ERROR!
+!PlayerTests methodsFor: 'tests' stamp: 'lk 7/4/2022 18:33:33' prior: 50569809!
+test01CanCreateAPlayerOnALevel
+	| player |
+	
+	player := Player startGameOn: self.
+	
+	self assert: self startPosition equals: player position.  
+	self assert: self startFloor equals: player floor.! !
+
+!testRun: #PlayerTests #test01CanCreateAPlayerOnALevel stamp: 'lk 7/4/2022 18:33:37'!
+PASSED!
+
+!testRun: #PlayerTests #test01CanCreateAPlayerOnALevel stamp: 'lk 7/4/2022 18:33:39'!
+PASSED!
+
+!testRun: #PlayerTests #test01CanCreateAPlayerOnALevel stamp: 'lk 7/4/2022 18:33:39'!
+PASSED!
+!PlayerTests methodsFor: 'tests' stamp: 'lk 7/4/2022 18:43:39'!
+test02CanThrowADiceTwiceAndMoveToAValidPositon
+	| player testDice |
+	
+	testDice := testDice withWeightOn: 5.
+	
+	player := Player startGameOn: self.
+	
+	player throwDice: testDice.
+	player throwDice: testDice.
+	
+	self assert: self startPosition equals: player position + 5@5.  
+	self assert: self startFloor equals: player floor.! !
+
+!testRun: #PlayerTests #test02CanThrowADiceTwiceAndMoveToAValidPositon stamp: 'lk 7/4/2022 18:44:00'!
+ERROR!
+!PlayerTests methodsFor: 'tests' stamp: 'lk 7/4/2022 18:45:38' prior: 50569912!
+test02CanThrowADiceTwiceAndMoveToAValidPositon
+	| player testDice |
+	
+	
+	
+	player := Player startGameOn: self.
+	
+	self setDiceOn: 5.
+	player throwDice: testDice.
+	player throwDice: testDice.
+	
+	self assert: self startPosition equals: player position + 5@5.  
+	self assert: self startFloor equals: player floor.! !
+
+TestCase subclass: #PlayerTests
+	instanceVariableNames: 'dice'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #PlayerTests category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 18:45:50'!
+TestCase subclass: #PlayerTests
+	instanceVariableNames: 'dice'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!testRun: #PlayerTests #test02CanThrowADiceTwiceAndMoveToAValidPositon stamp: 'lk 7/4/2022 18:45:54'!
+ERROR!
+
+!testRun: #PlayerTests #test02CanThrowADiceTwiceAndMoveToAValidPositon stamp: 'lk 7/4/2022 18:45:54'!
+ERROR!
+!PlayerTests methodsFor: 'validArguments' stamp: 'lk 7/4/2022 18:46:10'!
+setDiceOn: aSmallInteger 
+	self shouldBeImplemented.! !
+!PlayerTests methodsFor: 'validArguments' stamp: 'lk 7/4/2022 18:46:28' prior: 50569961!
+setDiceOn: aNumber
+	dice := aNumber ! !
+
+!testRun: #PlayerTests #test02CanThrowADiceTwiceAndMoveToAValidPositon stamp: 'lk 7/4/2022 18:46:31'!
+ERROR!
+!Player methodsFor: 'action' stamp: 'lk 7/4/2022 18:46:41'!
+throwDice: anUndefinedObject 
+	self shouldBeImplemented.! !
+
+----STARTUP---- (4 July 2022 18:55:19) as /home/clinux01/Escritorio/linux64/CuisUniversity-5324.image!
+
+
+TestCase subclass: #GameTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #GameTest category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 18:56:26'!
+TestCase subclass: #GameTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #Game category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 19:00:48'!
+Object subclass: #Game
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #Player category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 19:00:57'!
+Object subclass: #Player
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+!GameTest methodsFor: 'nil' stamp: 'lk 7/4/2022 19:00:43'!
+test01CanCreateAPlayerAndItsInValidFloorAndPosition
+	| game player |
+	game := Game withStartPosition: self startPosition withEndPosition: self endPosition withFloors: #(self startFloor, self anotherFloor).
+	player:= Player startOnGame: game. 
+	self assert: self startPosition equals: player position. 
+	self assert: self startFloor equals: player floor.
+	
+	! !
+
+!testRun: #GameTest #test01CanCreateAPlayerAndItsInValidFloorAndPosition stamp: 'lk 7/4/2022 19:01:03'!
+ERROR!
+!GameTest methodsFor: 'vars' stamp: 'lk 7/4/2022 19:01:23'!
+startPosition
+	self shouldBeImplemented.! !
+!GameTest methodsFor: 'vars' stamp: 'lk 7/4/2022 19:01:34' prior: 50569232!
+startPosition
+	^ 1@1! !
+
+!testRun: #GameTest #test01CanCreateAPlayerAndItsInValidFloorAndPosition stamp: 'lk 7/4/2022 19:01:36'!
+ERROR!
+
+!classDefinition: #Floor category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 19:22:50'!
+Object subclass: #Floor
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+!GameTest methodsFor: 'as yet unclassified' stamp: 'lk 7/4/2022 19:22:37' prior: 50569215!
+test01CanCreateAPlayerAndItsInValidFloorAndPosition
+	| game floorOne floorTwo playerOne playerTwo |
+	floorOne := Floor withExtension: 5@5.
+	floorOne addStartPosition: self startPosition .
+	floorTwo := Floor withExtension: 3@3.
+	floorTwo addEndPosition: self endPosition.
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	game := Game withFloors: #(floorOne, floorTwo) andPlayers: #(playerOne, playerTwo).
+	
+	self assert: self startPosition equals: playerOne position.
+	self assert: self startPosition equals: playerTwo position.	
+	self assert: floorOne equals: playerOne floor.
+	self assert: floorOne equals: playerTwo floor.! !
+!GameTest methodsFor: 'as yet unclassified' stamp: 'lk 7/4/2022 19:23:33' prior: 50569251!
+test01CanCreateAPlayerAndItsInValidFloorAndPosition
+	|  floorOne floorTwo playerOne playerTwo |
+	floorOne := Floor withExtension: 5@5.
+	floorOne addStartPosition: self startPosition .
+	floorTwo := Floor withExtension: 3@3.
+	floorTwo addEndPosition: self endPosition.
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	Game withFloors: #(floorOne, floorTwo) andPlayers: #(playerOne, playerTwo).
+	
+	self assert: self startPosition equals: playerOne position.
+	self assert: self startPosition equals: playerTwo position.	
+	self assert: floorOne equals: playerOne floor.
+	self assert: floorOne equals: playerTwo floor.! !
+
+!testRun: #GameTest #test01CanCreateAPlayerAndItsInValidFloorAndPosition stamp: 'lk 7/4/2022 19:23:39'!
+ERROR!
+!Floor class methodsFor: 'instance creation' stamp: 'lk 7/4/2022 19:23:49'!
+withExtension: aPoint 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeWithExtension: aPoint ! !
+!Floor class methodsFor: 'instance creation' stamp: 'lk 7/4/2022 19:24:07' prior: 50569300!
+withExtension: aPoint 
+
+	^self new initializeWithExtension: aPoint ! !
+
+!testRun: #GameTest #test01CanCreateAPlayerAndItsInValidFloorAndPosition stamp: 'lk 7/4/2022 19:24:10'!
+ERROR!
+
+!classDefinition: #Floor category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 19:24:21'!
+Object subclass: #Floor
+	instanceVariableNames: 'point'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+!Floor methodsFor: 'initialization' stamp: 'lk 7/4/2022 19:24:21'!
+initializeWithExtension: aPoint 
+	self shouldBeImplemented.
+	point := aPoint.! !
+
+!classDefinition: #Floor category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 19:24:33'!
+Object subclass: #Floor
+	instanceVariableNames: 'point extension'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+!Floor methodsFor: 'initialization' stamp: 'lk 7/4/2022 19:24:32' prior: 50569325!
+initializeWithExtension: aPoint 
+
+	extension := aPoint.! !
+
+!testRun: #GameTest #test01CanCreateAPlayerAndItsInValidFloorAndPosition stamp: 'lk 7/4/2022 19:24:35'!
+ERROR!
+!Floor methodsFor: 'add' stamp: 'lk 7/4/2022 19:25:39'!
+addStartPosition: aPoint 
+	self shouldBeImplemented.! !
+!Floor methodsFor: 'add' stamp: 'lk 7/4/2022 19:25:48' prior: 50569346!
+addStartPosition: aStartPosition! !
+
+!testRun: #GameTest #test01CanCreateAPlayerAndItsInValidFloorAndPosition stamp: 'lk 7/4/2022 19:25:49'!
+ERROR!
+!GameTest methodsFor: 'vars' stamp: 'lk 7/4/2022 19:26:05'!
+endPosition
+	self shouldBeImplemented.! !
+!GameTest methodsFor: 'vars' stamp: 'lk 7/4/2022 19:26:17' prior: 50569357!
+endPosition
+	^2@2! !
+
+!testRun: #GameTest #test01CanCreateAPlayerAndItsInValidFloorAndPosition stamp: 'lk 7/4/2022 19:26:18'!
+ERROR!
+!Floor methodsFor: 'add' stamp: 'lk 7/4/2022 19:26:23'!
+addEndPosition: aPoint 
+	self shouldBeImplemented.! !
+!Floor methodsFor: 'add' stamp: 'lk 7/4/2022 19:26:26' prior: 50569367!
+addEndPosition: aPoint ! !
+
+!testRun: #GameTest #test01CanCreateAPlayerAndItsInValidFloorAndPosition stamp: 'lk 7/4/2022 19:26:27'!
+ERROR!
+!Game class methodsFor: 'instance creation' stamp: 'lk 7/4/2022 19:26:33'!
+withFloors: anArray andPlayers: anArray2 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeWithFloors: anArray andPlayers: anArray2 ! !
+!Game class methodsFor: 'instance creation' stamp: 'lk 7/4/2022 19:27:06' prior: 50569378!
+withFloors: aCollectionOfFloors andPlayers: aCollectionOfPlayers 
+	^self new initializeWithFloors: aCollectionOfFloors andPlayers: aCollectionOfPlayers ! !
+
+!testRun: #GameTest #test01CanCreateAPlayerAndItsInValidFloorAndPosition stamp: 'lk 7/4/2022 19:27:08'!
+ERROR!
+
+!classDefinition: #Game category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 19:27:21'!
+Object subclass: #Game
+	instanceVariableNames: 'collectionOfFloors'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #Game category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 19:27:22'!
+Object subclass: #Game
+	instanceVariableNames: 'collectionOfFloors collectionOfPlayers'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+!Game methodsFor: 'initialization' stamp: 'lk 7/4/2022 19:27:22'!
+initializeWithFloors: aCollectionOfFloors andPlayers: aCollectionOfPlayers 
+	self shouldBeImplemented.
+	collectionOfFloors := aCollectionOfFloors.
+	collectionOfPlayers := aCollectionOfPlayers.! !
+!Game methodsFor: 'initialization' stamp: 'lk 7/4/2022 19:27:27' prior: 50569415!
+initializeWithFloors: aCollectionOfFloors andPlayers: aCollectionOfPlayers 
+
+	collectionOfFloors := aCollectionOfFloors.
+	collectionOfPlayers := aCollectionOfPlayers.! !
+
+!testRun: #GameTest #test01CanCreateAPlayerAndItsInValidFloorAndPosition stamp: 'lk 7/4/2022 19:27:30'!
+ERROR!
+!Player methodsFor: 'test' stamp: 'lk 7/4/2022 19:28:09'!
+position
+	self shouldBeImplemented.! !
+
+!classDefinition: #Player category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 19:28:39'!
+Object subclass: #Player
+	instanceVariableNames: 'position'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+!Player methodsFor: 'test' stamp: 'lk 7/4/2022 19:28:38' prior: 50569435!
+position
+	^ position! !
+
+!testRun: #GameTest #test01CanCreateAPlayerAndItsInValidFloorAndPosition stamp: 'lk 7/4/2022 19:28:41'!
+FAILURE!
+!Game class methodsFor: 'instance creation' stamp: 'lk 7/4/2022 19:35:29' prior: 50569388!
+withFloors: aCollectionOfFloors andPlayers: aCollectionOfPlayers
+	
+	
+	^self new initializeWithFloors: aCollectionOfFloors andPlayers: aCollectionOfPlayers ! !
+!GameTest methodsFor: 'as yet unclassified' stamp: 'lk 7/4/2022 19:37:29' prior: 50569274!
+test01CanCreateAPlayerAndItsInValidFloorAndPosition
+	| game floorOne floorTwo playerOne playerTwo |
+	floorOne := Floor withExtension: 5@5.
+	floorOne addStartPosition: self startPosition .
+	floorTwo := Floor withExtension: 3@3.
+	floorTwo addEndPosition: self endPosition.
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	game := Game withFloors: #(floorOne, floorTwo) andPlayers: #(playerOne, playerTwo).
+	
+	self assert: floorOne equals: game startFloor. 
+	self assert: self startPosition equals: game startPosition.
+	self assert: floorTwo equals: game endFloor. 
+	self assert: self endPosition equals: game endPosition.! !
+
+!methodRemoval: Player #position stamp: 'lk 7/4/2022 19:37:42'!
+position
+	^ position!
+
+!testRun: #GameTest #test01CanCreateAPlayerAndItsInValidFloorAndPosition stamp: 'lk 7/4/2022 19:38:08'!
+ERROR!
+
+!testRun: #GameTest #test01CanCreateAPlayerAndItsInValidFloorAndPosition stamp: 'lk 7/4/2022 19:38:08'!
+ERROR!
+!Game methodsFor: 'test' stamp: 'lk 7/4/2022 19:38:19'!
+startFloor
+	self shouldBeImplemented.! !
+
+!classDefinition: #Game category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 19:39:02'!
+Object subclass: #Game
+	instanceVariableNames: 'collectionOfFloors collectionOfPlayers startFloor'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+!Game methodsFor: 'test' stamp: 'lk 7/4/2022 19:39:00' prior: 50569494!
+startFloor
+	^ startFloor! !
+
+!testRun: #GameTest #test01CanCreateAPlayerAndItsInValidFloorAndPosition stamp: 'lk 7/4/2022 19:39:04'!
+FAILURE!
+
+----End fileIn of /home/clinux01/Escritorio/linux64/Packages/TerseGuide.pck.st----!
+!Game methodsFor: 'initialization' stamp: 'lk 7/4/2022 19:42:31' prior: 50569424!
+initializeWithFloors: aCollectionOfFloors andPlayers: aCollectionOfPlayers 
+	collectionOfFloors := aCollectionOfFloors.
+	collectionOfPlayers := aCollectionOfPlayers.! !
+!Game methodsFor: 'test' stamp: 'lk 7/4/2022 19:44:38' prior: 50569507!
+startFloor
+	^ collectionOfFloors detect:[:floor| floor withStartPosition.].! !
+!Game methodsFor: 'test' stamp: 'lk 7/4/2022 19:45:04'!
+endFloor
+	^ collectionOfFloors detect:[:floor| floor withEndPosition.].! !
+!Game methodsFor: 'test' stamp: 'lk 7/4/2022 19:46:35'!
+startPosition
+	^ startFloor getStartPosition.! !
+!Game methodsFor: 'test' stamp: 'lk 7/4/2022 19:46:58'!
+endPosition
+	^ startFloor getSpecialPosition.! !
+!Game methodsFor: 'test' stamp: 'lk 7/4/2022 19:47:05' prior: 50572442!
+startFloor
+	^ collectionOfFloors detect:[:floor| floor withSpecialPosition.].! !
+!Game methodsFor: 'test' stamp: 'lk 7/4/2022 19:47:13' prior: 50572460!
+startFloor
+	^ collectionOfFloors detect:[:floor| floor withStartPosition.].! !
+!Game methodsFor: 'test' stamp: 'lk 7/4/2022 19:47:23' prior: 50572452!
+startPosition
+	^ self startFloor getStartPosition.! !
+!Game methodsFor: 'test' stamp: 'lk 7/4/2022 19:47:29' prior: 50572470!
+startPosition
+	^ self startFloor getSpecialPosition.! !
+
+Object subclass: #Game
+	instanceVariableNames: 'collectionOfFloors collectionOfPlayers '
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #Game category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 19:47:40'!
+Object subclass: #Game
+	instanceVariableNames: 'collectionOfFloors collectionOfPlayers'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!testRun: #GameTest #test01CanCreateAPlayerAndItsInValidFloorAndPosition stamp: 'lk 7/4/2022 19:47:44'!
+ERROR!
+
+!testRun: #GameTest #test01CanCreateAPlayerAndItsInValidFloorAndPosition stamp: 'lk 7/4/2022 19:47:44'!
+ERROR!
+
+!classDefinition: #Floor category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 19:48:29'!
+Object subclass: #Floor
+	instanceVariableNames: 'point extension specialPosition'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+!Floor methodsFor: 'add' stamp: 'lk 7/4/2022 19:48:27' prior: 50569350!
+addStartPosition: aStartPosition
+	specialPosition := aStartPosition! !
+!Floor methodsFor: 'add' stamp: 'lk 7/4/2022 19:48:48' prior: 50569371!
+addEndPosition: anEndPosition
+	specialPosition := anEndPosition ! !
+!Floor methodsFor: 'add' stamp: 'lk 7/4/2022 19:49:11'!
+getSpecialPosition
+	^ specialPosition! !
+
+!classDefinition: #Floor category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 19:49:50'!
+Object subclass: #Floor
+	instanceVariableNames: 'point extension specialPosition startPosition'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+!Floor methodsFor: 'add' stamp: 'lk 7/4/2022 19:49:49' prior: 50572507!
+addStartPosition: aStartPosition
+	startPosition := aStartPosition! !
+
+!classDefinition: #Floor category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 19:50:03'!
+Object subclass: #Floor
+	instanceVariableNames: 'point extension specialPosition startPosition endPosition'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+!Floor methodsFor: 'add' stamp: 'lk 7/4/2022 19:50:01' prior: 50572512!
+addEndPosition: anEndPosition
+	endPosition := anEndPosition ! !
+
+Object subclass: #Floor
+	instanceVariableNames: 'point extension startPosition endPosition'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #Floor category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 19:50:11'!
+Object subclass: #Floor
+	instanceVariableNames: 'point extension startPosition endPosition'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+!Floor methodsFor: 'add' stamp: 'lk 7/4/2022 19:50:30'!
+getStartPosition
+	^ startPosition! !
+!Floor methodsFor: 'add' stamp: 'lk 7/4/2022 19:50:43'!
+getEndPosition
+	^ endPosition ! !
+
+!methodRemoval: Floor #getSpecialPosition stamp: 'lk 7/4/2022 19:50:50'!
+getSpecialPosition
+	^ specialPosition!
+
+!classDefinition: #EndFloor category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 19:56:35'!
+Object subclass: #EndFloor
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+!GameTest methodsFor: 'tests' stamp: 'lk 7/4/2022 19:56:46'!
+test01CantCreateGameIfThereIsNotAnStartFloor
+	| floorOne floorTwo playerOne playerTwo |
+	floorOne := Floor withExtension: 5@5.
+	floorTwo := EndFloor withExtension: 3@3 andEndPosition: self endPosition .
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	self should: [Game withFloors: #(floorOne, floorTwo) andPlayers: #(playerOne, playerTwo).]
+	raise: Error - MessageNotUnderstood 
+	withMessageText: Game noStartFloorErrorDescription. 
+! !
+
+Object subclass: #Floors
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #Floors category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 19:58:07'!
+Object subclass: #Floors
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classRenamed: #Floor as: #NormalFloor stamp: 'lk 7/4/2022 19:58:39'!
+Smalltalk renameClassNamed: #Floor as: #NormalFloor!
+!GameTest methodsFor: 'as yet unclassified' stamp: 'lk 7/4/2022 19:58:39' prior: 50572578!
+test01CantCreateGameIfThereIsNotAnStartFloor
+	| floorOne floorTwo playerOne playerTwo |
+	floorOne := NormalFloor withExtension: 5@5.
+	floorTwo := EndFloor withExtension: 3@3 andEndPosition: self endPosition .
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	self should: [Game withFloors: #(floorOne, floorTwo) andPlayers: #(playerOne, playerTwo).]
+	raise: Error - MessageNotUnderstood 
+	withMessageText: Game noStartFloorErrorDescription. 
+! !
+!GameTest methodsFor: 'as yet unclassified' stamp: 'lk 7/4/2022 19:58:39' prior: 50569462!
+test01CanCreateAPlayerAndItsInValidFloorAndPosition
+	| game floorOne floorTwo playerOne playerTwo |
+	floorOne := NormalFloor withExtension: 5@5.
+	floorOne addStartPosition: self startPosition .
+	floorTwo := NormalFloor withExtension: 3@3.
+	floorTwo addEndPosition: self endPosition.
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	game := Game withFloors: #(floorOne, floorTwo) andPlayers: #(playerOne, playerTwo).
+	
+	self assert: floorOne equals: game startFloor. 
+	self assert: self startPosition equals: game startPosition.
+	self assert: floorTwo equals: game endFloor. 
+	self assert: self endPosition equals: game endPosition.! !
+
+Floors subclass: #NormalFloor
+	instanceVariableNames: 'point extension startPosition endPosition'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #NormalFloor category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 20:00:38'!
+Floors subclass: #NormalFloor
+	instanceVariableNames: 'point extension startPosition endPosition'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+Floors subclass: #EndFloor
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #EndFloor category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 20:00:46'!
+Floors subclass: #EndFloor
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+Floors subclass: #StartFloor
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #StartFloor category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 20:00:55'!
+Floors subclass: #StartFloor
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!methodRemoval: GameTest #test01CanCreateAPlayerAndItsInValidFloorAndPosition stamp: 'lk 7/4/2022 20:01:14'!
+test01CanCreateAPlayerAndItsInValidFloorAndPosition
+	| game floorOne floorTwo playerOne playerTwo |
+	floorOne := NormalFloor withExtension: 5@5.
+	floorOne addStartPosition: self startPosition .
+	floorTwo := NormalFloor withExtension: 3@3.
+	floorTwo addEndPosition: self endPosition.
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	game := Game withFloors: #(floorOne, floorTwo) andPlayers: #(playerOne, playerTwo).
+	
+	self assert: floorOne equals: game startFloor. 
+	self assert: self startPosition equals: game startPosition.
+	self assert: floorTwo equals: game endFloor. 
+	self assert: self endPosition equals: game endPosition.!
+
+!methodRemoval: NormalFloor #getEndPosition stamp: 'lk 7/4/2022 20:01:46'!
+getEndPosition
+	^ endPosition !
+
+!methodRemoval: NormalFloor #getStartPosition stamp: 'lk 7/4/2022 20:01:50'!
+getStartPosition
+	^ startPosition!
+
+!methodRemoval: NormalFloor #addStartPosition: stamp: 'lk 7/4/2022 20:01:53'!
+addStartPosition: aStartPosition
+	startPosition := aStartPosition!
+
+!methodRemoval: NormalFloor #addEndPosition: stamp: 'lk 7/4/2022 20:02:01'!
+addEndPosition: anEndPosition
+	endPosition := anEndPosition !
+
+!testRun: #GameTest #test01CantCreateGameIfThereIsNotAnStartFloor stamp: 'lk 7/4/2022 20:02:19'!
+ERROR!
+!EndFloor class methodsFor: 'instance creation' stamp: 'lk 7/4/2022 20:02:26'!
+withExtension: aPoint andEndPosition: aPoint2 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeWithExtension: aPoint andEndPosition: aPoint2 ! !
+!EndFloor class methodsFor: 'instance creation' stamp: 'lk 7/4/2022 20:02:54' prior: 50572732!
+withExtension: anExtension andEndPosition: anEndPoint 
+	^self new initializeWithExtension: anExtension andEndPosition: anEndPoint ! !
+
+!testRun: #GameTest #test01CantCreateGameIfThereIsNotAnStartFloor stamp: 'lk 7/4/2022 20:02:56'!
+ERROR!
+
+!classDefinition: #EndFloor category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 20:03:05'!
+Floors subclass: #EndFloor
+	instanceVariableNames: 'extension'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #EndFloor category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 20:03:05'!
+Floors subclass: #EndFloor
+	instanceVariableNames: 'extension endPoint'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+!EndFloor methodsFor: 'initializaion' stamp: 'lk 7/4/2022 20:03:05'!
+initializeWithExtension: anExtension andEndPosition: anEndPoint 
+	self shouldBeImplemented.
+	extension := anExtension.
+	endPoint := anEndPoint.! !
+
+!classDefinition: #EndFloor category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 20:03:18'!
+Floors subclass: #EndFloor
+	instanceVariableNames: 'extension endPoint endPosition'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+!EndFloor methodsFor: 'initializaion' stamp: 'lk 7/4/2022 20:03:17' prior: 50572768!
+initializeWithExtension: anExtension andEndPosition: anEndPoint 
+	extension := anExtension.
+	endPosition := anEndPoint.! !
+!EndFloor methodsFor: 'test' stamp: 'lk 7/4/2022 20:04:04'!
+isStartFloor
+^ false.! !
+!NormalFloor methodsFor: 'initialization' stamp: 'lk 7/4/2022 20:04:15'!
+isStartFloor
+^ false.! !
+!Game class methodsFor: 'instance creation' stamp: 'lk 7/4/2022 20:06:21' prior: 50569454!
+withFloors: aCollectionOfFloors andPlayers: aCollectionOfPlayers
+	
+	(aCollectionOfFloors anySatisfy: [:floor| floor isStartFloor]) ifFalse: (self error: self ).
+	self new initializeWithFloors: aCollectionOfFloors andPlayers: aCollectionOfPlayers ! !
+!Game class methodsFor: 'instance creation' stamp: 'lk 7/4/2022 20:06:41' prior: 50572798!
+withFloors: aCollectionOfFloors andPlayers: aCollectionOfPlayers
+	
+	(aCollectionOfFloors anySatisfy: [:floor| floor isStartFloor]) ifFalse: (self error: self noStartFloorErrorDescription).
+	self new initializeWithFloors: aCollectionOfFloors andPlayers: aCollectionOfPlayers ! !
+!Game class methodsFor: 'error' stamp: 'lk 7/4/2022 20:07:02'!
+noStartFloorErrorDescription
+	^ 'there is no start floor'! !
+
+!testRun: #GameTest #test01CantCreateGameIfThereIsNotAnStartFloor stamp: 'lk 7/4/2022 20:07:18'!
+ERROR!
+
+!testRun: #GameTest #test01CantCreateGameIfThereIsNotAnStartFloor stamp: 'lk 7/4/2022 20:07:18'!
+ERROR!
+
+!testRun: #GameTest #test01CantCreateGameIfThereIsNotAnStartFloor stamp: 'lk 7/4/2022 20:07:58'!
+ERROR!
+!GameTest methodsFor: 'tests' stamp: 'lk 7/4/2022 20:08:37' prior: 50572611!
+test01CantCreateGameIfThereIsNotAnStartFloor
+	| floorOne floorTwo playerOne playerTwo |
+	floorOne := NormalFloor withExtension: 5@5.
+	floorTwo := EndFloor withExtension: 3@3 andEndPosition: self endPosition .
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	self should: [Game withFloors: #(floorOne floorTwo) andPlayers: #(playerOne, playerTwo).]
+	raise: Error - MessageNotUnderstood 
+	withMessageText: Game noStartFloorErrorDescription. 
+! !
+!GameTest methodsFor: 'tests' stamp: 'lk 7/4/2022 20:08:44' prior: 50572835!
+test01CantCreateGameIfThereIsNotAnStartFloor
+	| floorOne floorTwo playerOne playerTwo |
+	floorOne := NormalFloor withExtension: 5@5.
+	floorTwo := EndFloor withExtension: 3@3 andEndPosition: self endPosition .
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	self should: [Game withFloors: #(floorOne floorTwo) andPlayers: #(playerOne playerTwo).]
+	raise: Error - MessageNotUnderstood 
+	withMessageText: Game noStartFloorErrorDescription. 
+! !
+
+!testRun: #GameTest #test01CantCreateGameIfThereIsNotAnStartFloor stamp: 'lk 7/4/2022 20:08:50'!
+ERROR!
+!GameTest methodsFor: 'tests' stamp: 'lk 7/4/2022 20:09:13' prior: 50572852!
+test01CantCreateGameIfThereIsNotAnStartFloor
+	| floorOne floorTwo playerOne playerTwo |
+	floorOne := NormalFloor withExtension: 5@5.
+	floorTwo := EndFloor withExtension: 3@3 andEndPosition: self endPosition .
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	self should: [Game withFloors: {floorOne. floorTwo} andPlayers: {playerOne. playerTwo}]
+	raise: Error - MessageNotUnderstood 
+	withMessageText: Game noStartFloorErrorDescription. 
+! !
+
+!testRun: #GameTest #test01CantCreateGameIfThereIsNotAnStartFloor stamp: 'lk 7/4/2022 20:09:14'!
+PASSED!
+
+!testRun: #GameTest #test01CantCreateGameIfThereIsNotAnStartFloor stamp: 'lk 7/4/2022 20:09:14'!
+PASSED!
+!GameTest methodsFor: 'tests' stamp: 'lk 7/4/2022 20:09:41'!
+test02CantCreateGameIfThereIsNotAnEndFloor
+	| floorOne floorTwo playerOne playerTwo |
+	floorOne := StartFloor withExtension: 5@5.
+	floorTwo := NormalFloor withExtension: 3@3 andEndPosition: self endPosition .
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	self should: [Game withFloors: {floorOne. floorTwo} andPlayers: {playerOne. playerTwo}]
+	raise: Error - MessageNotUnderstood 
+	withMessageText: Game noStartFloorErrorDescription. 
+! !
+
+!testRun: #GameTest #test02CantCreateGameIfThereIsNotAnEndFloor stamp: 'lk 7/4/2022 20:09:42'!
+ERROR!
+!StartFloor methodsFor: 'test' stamp: 'lk 7/4/2022 20:10:14'!
+isStartFloor
+^ true! !
+!StartFloor methodsFor: 'test' stamp: 'lk 7/4/2022 20:10:22'!
+isEndFloor
+^ false! !
+!NormalFloor methodsFor: 'test' stamp: 'lk 7/4/2022 20:10:34'!
+isEndFloor
+^ false! !
+!EndFloor methodsFor: 'test' stamp: 'lk 7/4/2022 20:10:41'!
+isEndFloor
+^ true! !
+!GameTest methodsFor: 'tests' stamp: 'lk 7/4/2022 20:10:49' prior: 50572895!
+test02CantCreateGameIfThereIsNotAnEndFloor
+	| floorOne floorTwo playerOne playerTwo |
+	floorOne := StartFloor withExtension: 5@5.
+	floorTwo := NormalFloor withExtension: 3@3 andEndPosition: self endPosition .
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	self should: [Game withFloors: {floorOne. floorTwo} andPlayers: {playerOne. playerTwo}]
+	raise: Error - MessageNotUnderstood 
+	withMessageText: Game noEndFloorErrorDescription. 
+! !
+
+!testRun: #GameTest #test02CantCreateGameIfThereIsNotAnEndFloor stamp: 'lk 7/4/2022 20:10:51'!
+ERROR!
+!GameTest methodsFor: 'tests' stamp: 'lk 7/4/2022 20:11:19' prior: 50572928!
+test02CantCreateGameIfThereIsNotAnEndFloor
+	| floorOne floorTwo playerOne playerTwo |
+	floorOne := StartFloor  withExtension: 3@3 andStartPosition: self endPosition .
+	floorTwo := NormalFloor withExtension: 5@5. 
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	self should: [Game withFloors: {floorOne. floorTwo} andPlayers: {playerOne. playerTwo}]
+	raise: Error - MessageNotUnderstood 
+	withMessageText: Game noEndFloorErrorDescription. 
+! !
+
+!testRun: #GameTest #test02CantCreateGameIfThereIsNotAnEndFloor stamp: 'lk 7/4/2022 20:11:21'!
+ERROR!
+!StartFloor class methodsFor: 'instance creation' stamp: 'lk 7/4/2022 20:11:26'!
+withExtension: aPoint andStartPosition: aPoint2 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeWithExtension: aPoint andStartPosition: aPoint2 ! !
+!StartFloor class methodsFor: 'instance creation' stamp: 'lk 7/4/2022 20:11:53' prior: 50572968!
+withExtension: anExtensionPoint andStartPosition: anStartPoint 
+	^self new initializeWithExtension: anExtensionPoint andStartPosition: anStartPoint ! !
+
+!testRun: #GameTest #test02CantCreateGameIfThereIsNotAnEndFloor stamp: 'lk 7/4/2022 20:11:54'!
+ERROR!
+
+!classDefinition: #StartFloor category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 20:12:01'!
+Floors subclass: #StartFloor
+	instanceVariableNames: 'extensionPoint'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #StartFloor category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 20:12:01'!
+Floors subclass: #StartFloor
+	instanceVariableNames: 'extensionPoint startPoint'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+!StartFloor methodsFor: 'initialization' stamp: 'lk 7/4/2022 20:12:01'!
+initializeWithExtension: anExtensionPoint andStartPosition: anStartPoint 
+	self shouldBeImplemented.
+	extensionPoint := anExtensionPoint.
+	startPoint := anStartPoint.! !
+
+!classDefinition: #StartFloor category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 20:12:20'!
+Floors subclass: #StartFloor
+	instanceVariableNames: 'extensionPoint startPoint extension'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+!StartFloor methodsFor: 'initialization' stamp: 'lk 7/4/2022 20:12:19' prior: 50573005!
+initializeWithExtension: anExtensionPoint andStartPosition: anStartPoint 
+	extension := anExtensionPoint.
+	startPoint := anStartPoint.! !
+
+!testRun: #GameTest #test02CantCreateGameIfThereIsNotAnEndFloor stamp: 'lk 7/4/2022 20:12:23'!
+ERROR!
+!Game class methodsFor: 'error' stamp: 'lk 7/4/2022 20:12:28'!
+noEndFloorErrorDescription
+	self shouldBeImplemented.! !
+!Game class methodsFor: 'error' stamp: 'lk 7/4/2022 20:12:40' prior: 50573032!
+noEndFloorErrorDescription
+	^ 'there is no end floor'! !
+
+!testRun: #GameTest #test02CantCreateGameIfThereIsNotAnEndFloor stamp: 'lk 7/4/2022 20:12:41'!
+FAILURE!
+!Game class methodsFor: 'instance creation' stamp: 'lk 7/4/2022 20:13:10' prior: 50572809!
+withFloors: aCollectionOfFloors andPlayers: aCollectionOfPlayers
+	
+	(aCollectionOfFloors anySatisfy: [:floor| floor isStartFloor]) ifFalse: (self error: self noStartFloorErrorDescription).
+	(aCollectionOfFloors anySatisfy: [:floor| floor isEndFloor]) ifFalse: (self error: self noEndFloorErrorDescription).
+	self new initializeWithFloors: aCollectionOfFloors andPlayers: aCollectionOfPlayers ! !
+
+!testRun: #GameTest #test01CantCreateGameIfThereIsNotAnStartFloor stamp: 'lk 7/4/2022 20:13:11'!
+PASSED!
+
+!testRun: #GameTest #test02CantCreateGameIfThereIsNotAnEndFloor stamp: 'lk 7/4/2022 20:13:11'!
+FAILURE!
+
+!testRun: #GameTest #test02CantCreateGameIfThereIsNotAnEndFloor stamp: 'lk 7/4/2022 20:13:11'!
+FAILURE!
+
+!testRun: #GameTest #test02CantCreateGameIfThereIsNotAnEndFloor stamp: 'lk 7/4/2022 20:14:02'!
+FAILURE!
+
+!testRun: #GameTest #test01CantCreateGameIfThereIsNotAnStartFloor stamp: 'lk 7/4/2022 20:15:12'!
+PASSED!
+
+!testRun: #GameTest #test02CantCreateGameIfThereIsNotAnEndFloor stamp: 'lk 7/4/2022 20:15:12'!
+FAILURE!
+
+!testRun: #GameTest #test02CantCreateGameIfThereIsNotAnEndFloor stamp: 'lk 7/4/2022 20:15:12'!
+FAILURE!
+
+aCollectionOfFloors anySatisfy: [:floor| floor isStartFloor]!
+!Game class methodsFor: 'instance creation' stamp: 'lk 7/4/2022 20:15:57' prior: 50573045!
+withFloors: aCollectionOfFloors andPlayers: aCollectionOfPlayers
+	
+	(aCollectionOfFloors anySatisfy: [:floor| floor isStartFloor]) ifFalse: [(self error: self noStartFloorErrorDescription)].
+	(aCollectionOfFloors anySatisfy: [:floor| floor isEndFloor]) ifFalse: [(self error: self noEndFloorErrorDescription)].
+	self new initializeWithFloors: aCollectionOfFloors andPlayers: aCollectionOfPlayers ! !
+
+!testRun: #GameTest #test02CantCreateGameIfThereIsNotAnEndFloor stamp: 'lk 7/4/2022 20:15:58'!
+PASSED!
+
+!testRun: #GameTest #test01CantCreateGameIfThereIsNotAnStartFloor stamp: 'lk 7/4/2022 20:16:00'!
+PASSED!
+
+!testRun: #GameTest #test02CantCreateGameIfThereIsNotAnEndFloor stamp: 'lk 7/4/2022 20:16:00'!
+PASSED!
+!GameTest methodsFor: 'tests' stamp: 'lk 7/4/2022 20:17:25'!
+test03CanCreateGame
+	| floorOne floorTwo playerOne playerTwo |
+	floorOne := StartFloor  withExtension: 3@3 andStartPosition: self endPosition .
+	floorTwo := NormalFloor withExtension: 5@5. 
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	self should: [Game withFloors: {floorOne. floorTwo} andPlayers: {playerOne. playerTwo}]
+	raise: Error - MessageNotUnderstood 
+	withMessageText: Game noEndFloorErrorDescription. 
+! !
+!GameTest methodsFor: 'tests' stamp: 'lk 7/4/2022 20:19:37' prior: 50573111!
+test03CanCreateGame
+	| floorOne floorTwo playerOne playerTwo game |
+	floorOne := StartFloor  withExtension: 3@3 andStartPosition: self endPosition .
+	floorTwo := NormalFloor withExtension: 5@5. 
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	game := Game withFloors: {floorOne. floorTwo} andPlayers: {playerOne. playerTwo}.
+	
+	self assert: self startPosition equals: game startPosition.
+	self assert: floorOne equals: game startFloor.
+	
+	self assert: self endPosition equals: game endPosition.
+	self assert: self floorTwoo equals: game endFloor.! !
+!GameTest methodsFor: 'tests' stamp: 'lk 7/4/2022 20:20:08' prior: 50573127!
+test03CanCreateGame
+	| floorOne floorTwo playerOne playerTwo game |
+	floorOne := StartFloor  withExtension: 3@3 andStartPosition: self endPosition .
+	floorTwo := EndFloor withExtension: 3@3 andEndPosition: self endPosition .
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	game := Game withFloors: {floorOne. floorTwo} andPlayers: {playerOne. playerTwo}.
+	
+	self assert: self startPosition equals: game startPosition.
+	self assert: floorOne equals: game startFloor.
+	
+	self assert: self endPosition equals: game endPosition.
+	self assert: self floorTwoo equals: game endFloor.! !
+!GameTest methodsFor: 'tests' stamp: 'lk 7/4/2022 20:20:14' prior: 50573147!
+test03CanCreateGame
+	| floorOne floorTwo playerOne playerTwo game |
+	floorOne := StartFloor  withExtension: 3@3 andStartPosition: self startPosition .
+	floorTwo := EndFloor withExtension: 3@3 andEndPosition: self endPosition .
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	game := Game withFloors: {floorOne. floorTwo} andPlayers: {playerOne. playerTwo}.
+	
+	self assert: self startPosition equals: game startPosition.
+	self assert: floorOne equals: game startFloor.
+	
+	self assert: self endPosition equals: game endPosition.
+	self assert: self floorTwoo equals: game endFloor.! !
+!GameTest methodsFor: 'tests' stamp: 'lk 7/4/2022 20:20:20' prior: 50573168!
+test03CanCreateGame
+	| floorOne floorTwo playerOne playerTwo game |
+	floorOne := StartFloor  withExtension: 3@3 andStartPosition: self startPosition .
+	floorTwo := EndFloor withExtension: 3@3 andEndPosition: self endPosition .
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	game := Game withFloors: {floorOne. floorTwo} andPlayers: {playerOne. playerTwo}.
+	
+	self assert: self startPosition equals: game startPosition.
+	self assert: floorOne equals: game startFloor.
+	
+	self assert: self endPosition equals: game endPosition.
+	self assert: self floorTwo equals: game endFloor.! !
+!GameTest methodsFor: 'tests' stamp: 'lk 7/4/2022 20:21:56' prior: 50573189!
+test03CanCreateGame
+	| floorOne floorTwo playerOne playerTwo game |
+	floorOne := StartFloor  withExtension: 3@3 andStartPosition: self startPosition .
+	floorTwo := EndFloor withExtension: 3@3 andEndPosition: self endPosition .
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	game := Game withFloors: {floorOne. floorTwo} andPlayers: {playerOne. playerTwo}.
+	
+	self assert: self startPosition equals: game startPosition.
+	self assert: floorOne equals: game startFloor.
+	
+	self assert: self endPosition equals: game endPosition.
+	self assert: floorTwo equals: game endFloor.! !
+!GameTest methodsFor: 'tests' stamp: 'lk 7/4/2022 20:22:01' prior: 50572948!
+test02CantCreateGameIfThereIsNotAnEndFloor
+	| floorOne floorTwo playerOne playerTwo |
+	floorOne := StartFloor  withExtension: 3@3 andStartPosition: self startPosition .
+	floorTwo := NormalFloor withExtension: 5@5. 
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	self should: [Game withFloors: {floorOne. floorTwo} andPlayers: {playerOne. playerTwo}]
+	raise: Error - MessageNotUnderstood 
+	withMessageText: Game noEndFloorErrorDescription. 
+! !
+
+!testRun: #GameTest #test03CanCreateGame stamp: 'lk 7/4/2022 20:22:03'!
+ERROR!
+
+!testRun: #GameTest #test03CanCreateGame stamp: 'lk 7/4/2022 20:22:03'!
+ERROR!
+!Game class methodsFor: 'test' stamp: 'lk 7/4/2022 20:22:19'!
+startPosition
+	self shouldBeImplemented.! !
+!Game class methodsFor: 'test' stamp: 'lk 7/4/2022 20:22:41' prior: 50573253!
+startPosition
+	self startFloor startPosition.! !
+!GameTest methodsFor: 'tests' stamp: 'lk 7/4/2022 20:23:03' prior: 50573210!
+test03CanCreateGame
+	| floorOne floorTwo playerOne playerTwo game |
+	floorOne := StartFloor  withExtension: 3@3 andStartPosition: self startPosition .
+	floorTwo := EndFloor withExtension: 3@3 andEndPosition: self endPosition .
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	game := Game withFloors: {floorOne. floorTwo} andPlayers: {playerOne. playerTwo}.
+	
+	self assert: floorOne equals: game startFloor.
+	self assert: self startPosition equals: game startPosition.
+	
+	self assert: floorTwo equals: game endFloor.
+	self assert: self endPosition equals: game endPosition.
+	! !
+
+!testRun: #GameTest #test03CanCreateGame stamp: 'lk 7/4/2022 20:23:05'!
+ERROR!
+!Game class methodsFor: 'test' stamp: 'lk 7/4/2022 20:23:13'!
+startFloor
+	self shouldBeImplemented.! !
+
+!methodRemoval: Game class #startPosition stamp: 'lk 7/4/2022 20:23:51'!
+startPosition
+	self startFloor startPosition.!
+
+!methodRemoval: Game class #startFloor stamp: 'lk 7/4/2022 20:23:55'!
+startFloor
+	self shouldBeImplemented.!
+!Game class methodsFor: 'instance creation' stamp: 'lk 7/4/2022 20:24:16' prior: 50573086!
+withFloors: aCollectionOfFloors andPlayers: aCollectionOfPlayers
+	
+	(aCollectionOfFloors anySatisfy: [:floor| floor isStartFloor]) ifFalse: [(self error: self noStartFloorErrorDescription)].
+	(aCollectionOfFloors anySatisfy: [:floor| floor isEndFloor]) ifFalse: [(self error: self noEndFloorErrorDescription)].
+	^self new initializeWithFloors: aCollectionOfFloors andPlayers: aCollectionOfPlayers ! !
+
+!testRun: #GameTest #test01CantCreateGameIfThereIsNotAnStartFloor stamp: 'lk 7/4/2022 20:24:18'!
+PASSED!
+
+!testRun: #GameTest #test02CantCreateGameIfThereIsNotAnEndFloor stamp: 'lk 7/4/2022 20:24:18'!
+PASSED!
+
+!testRun: #GameTest #test03CanCreateGame stamp: 'lk 7/4/2022 20:24:18'!
+ERROR!
+
+!testRun: #GameTest #test03CanCreateGame stamp: 'lk 7/4/2022 20:24:18'!
+ERROR!
+
+!testRun: #GameTest #test03CanCreateGame stamp: 'lk 7/4/2022 20:24:52'!
+ERROR!
+
+!testRun: #GameTest #test03CanCreateGame stamp: 'lk 7/4/2022 20:26:06'!
+ERROR!
+!Game methodsFor: 'test' stamp: 'lk 7/4/2022 20:26:25' prior: 50572465!
+startFloor
+	^ collectionOfFloors detect:[:floor| floor isStartPosition.].! !
+!Game methodsFor: 'test' stamp: 'lk 7/4/2022 20:26:35' prior: 50573328!
+startFloor
+	^ collectionOfFloors detect:[:floor| floor isStartFloor.].! !
+!Game methodsFor: 'test' stamp: 'lk 7/4/2022 20:26:43' prior: 50572447!
+endFloor
+	^ collectionOfFloors detect:[:floor| floor isEndFloor.].! !
+!Game methodsFor: 'test' stamp: 'lk 7/4/2022 20:27:03' prior: 50572456!
+endPosition
+	^ self startFloor startPosition.! !
+!Game methodsFor: 'test' stamp: 'lk 7/4/2022 20:27:16' prior: 50573343!
+endPosition
+	^ self startFloor endPosition.! !
+!Game methodsFor: 'test' stamp: 'lk 7/4/2022 20:27:22' prior: 50572474!
+startPosition
+	^ self startFloor startPosition.! !
+
+!testRun: #GameTest #test01CantCreateGameIfThereIsNotAnStartFloor stamp: 'lk 7/4/2022 20:27:24'!
+PASSED!
+
+!testRun: #GameTest #test02CantCreateGameIfThereIsNotAnEndFloor stamp: 'lk 7/4/2022 20:27:24'!
+PASSED!
+
+!testRun: #GameTest #test03CanCreateGame stamp: 'lk 7/4/2022 20:27:24'!
+ERROR!
+
+!testRun: #GameTest #test03CanCreateGame stamp: 'lk 7/4/2022 20:27:24'!
+ERROR!
+
+!classDefinition: #StartFloor category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 20:27:45'!
+Floors subclass: #StartFloor
+	instanceVariableNames: 'extensionPoint startPosition extension'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+!StartFloor methodsFor: 'as yet unclassified' stamp: 'lk 7/4/2022 20:27:45' prior: 50573022!
+initializeWithExtension: anExtensionPoint andStartPosition: anStartPoint 
+	extension := anExtensionPoint.
+	startPosition := anStartPoint.! !
+!StartFloor methodsFor: 'test' stamp: 'lk 7/4/2022 20:27:57'!
+startPosition
+^startPosition ! !
+
+Floors subclass: #EndFloor
+	instanceVariableNames: 'extension endPosition'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #EndFloor category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 20:28:03'!
+Floors subclass: #EndFloor
+	instanceVariableNames: 'extension endPosition'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+!EndFloor methodsFor: 'test' stamp: 'lk 7/4/2022 20:28:17'!
+endPosition
+^endPosition ! !
+
+!testRun: #GameTest #test01CantCreateGameIfThereIsNotAnStartFloor stamp: 'lk 7/4/2022 20:28:18'!
+PASSED!
+
+!testRun: #GameTest #test02CantCreateGameIfThereIsNotAnEndFloor stamp: 'lk 7/4/2022 20:28:18'!
+PASSED!
+
+!testRun: #GameTest #test03CanCreateGame stamp: 'lk 7/4/2022 20:28:18'!
+ERROR!
+
+!testRun: #GameTest #test03CanCreateGame stamp: 'lk 7/4/2022 20:28:18'!
+ERROR!
+!Game methodsFor: 'test' stamp: 'lk 7/4/2022 20:28:36' prior: 50573347!
+endPosition
+	^ self endFloor endPosition.! !
+
+!testRun: #GameTest #test01CantCreateGameIfThereIsNotAnStartFloor stamp: 'lk 7/4/2022 20:28:37'!
+PASSED!
+
+!testRun: #GameTest #test02CantCreateGameIfThereIsNotAnEndFloor stamp: 'lk 7/4/2022 20:28:37'!
+PASSED!
+
+!testRun: #GameTest #test03CanCreateGame stamp: 'lk 7/4/2022 20:28:37'!
+PASSED!
+
+Floors subclass: #Floor
+	instanceVariableNames: 'extension endPosition'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #Floor category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 20:30:07'!
+Floors subclass: #Floor
+	instanceVariableNames: 'extension endPosition'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classRemoval: #Floor stamp: 'lk 7/4/2022 20:30:11'!
+Floors subclass: #Floor
+	instanceVariableNames: 'extension endPosition'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classRenamed: #NormalFloor as: #Floor stamp: 'lk 7/4/2022 20:30:25'!
+Smalltalk renameClassNamed: #NormalFloor as: #Floor!
+!GameTest methodsFor: 'as yet unclassified' stamp: 'lk 7/4/2022 20:30:25' prior: 50572872!
+test01CantCreateGameIfThereIsNotAnStartFloor
+	| floorOne floorTwo playerOne playerTwo |
+	floorOne := Floor withExtension: 5@5.
+	floorTwo := EndFloor withExtension: 3@3 andEndPosition: self endPosition .
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	self should: [Game withFloors: {floorOne. floorTwo} andPlayers: {playerOne. playerTwo}]
+	raise: Error - MessageNotUnderstood 
+	withMessageText: Game noStartFloorErrorDescription. 
+! !
+!GameTest methodsFor: 'as yet unclassified' stamp: 'lk 7/4/2022 20:30:25' prior: 50573231!
+test02CantCreateGameIfThereIsNotAnEndFloor
+	| floorOne floorTwo playerOne playerTwo |
+	floorOne := StartFloor  withExtension: 3@3 andStartPosition: self startPosition .
+	floorTwo := Floor withExtension: 5@5. 
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	self should: [Game withFloors: {floorOne. floorTwo} andPlayers: {playerOne. playerTwo}]
+	raise: Error - MessageNotUnderstood 
+	withMessageText: Game noEndFloorErrorDescription. 
+! !
+
+Floors subclass: #SpecialFloor
+	instanceVariableNames: 'point extension startPosition endPosition'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #SpecialFloor category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 20:30:45'!
+Floors subclass: #SpecialFloor
+	instanceVariableNames: 'point extension startPosition endPosition'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+SpecialFloor subclass: #EndFloor
+	instanceVariableNames: 'extension endPosition'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+SpecialFloor subclass: #EndFloor
+	instanceVariableNames: 'extension endPosition'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+Floors subclass: #SpecialFloor
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #SpecialFloor category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 20:31:14'!
+Floors subclass: #SpecialFloor
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+SpecialFloor subclass: #StartFloor
+	instanceVariableNames: 'extensionPoint startPosition extension'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #StartFloor category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 20:31:23'!
+SpecialFloor subclass: #StartFloor
+	instanceVariableNames: 'extensionPoint startPosition extension'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+SpecialFloor subclass: #EndFloor
+	instanceVariableNames: 'extension endPosition'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #EndFloor category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 20:31:32'!
+SpecialFloor subclass: #EndFloor
+	instanceVariableNames: 'extension endPosition'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+SpecialFloor subclass: #EndFloor
+	instanceVariableNames: 'floor endPosition'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #EndFloor category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 20:32:08'!
+SpecialFloor subclass: #EndFloor
+	instanceVariableNames: 'floor endPosition'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+SpecialFloor subclass: #StartFloor
+	instanceVariableNames: 'floor startPosition'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #StartFloor category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 20:32:22'!
+SpecialFloor subclass: #StartFloor
+	instanceVariableNames: 'floor startPosition'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+!StartFloor class methodsFor: 'instance creation' stamp: 'lk 7/4/2022 20:32:56'!
+withFloor: anExtensionPoint andStartPosition: anStartPoint 
+	^self new initializeWithExtension: anExtensionPoint andStartPosition: anStartPoint ! !
+!GameTest methodsFor: 'as yet unclassified' stamp: 'lk 7/4/2022 20:32:56' prior: 50573261!
+test03CanCreateGame
+	| floorOne floorTwo playerOne playerTwo game |
+	floorOne := StartFloor  withFloor: 3@3 andStartPosition: self startPosition .
+	floorTwo := EndFloor withExtension: 3@3 andEndPosition: self endPosition .
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	game := Game withFloors: {floorOne. floorTwo} andPlayers: {playerOne. playerTwo}.
+	
+	self assert: floorOne equals: game startFloor.
+	self assert: self startPosition equals: game startPosition.
+	
+	self assert: floorTwo equals: game endFloor.
+	self assert: self endPosition equals: game endPosition.
+	! !
+!GameTest methodsFor: 'as yet unclassified' stamp: 'lk 7/4/2022 20:32:57' prior: 50573468!
+test02CantCreateGameIfThereIsNotAnEndFloor
+	| floorOne floorTwo playerOne playerTwo |
+	floorOne := StartFloor  withFloor: 3@3 andStartPosition: self startPosition .
+	floorTwo := Floor withExtension: 5@5. 
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	self should: [Game withFloors: {floorOne. floorTwo} andPlayers: {playerOne. playerTwo}]
+	raise: Error - MessageNotUnderstood 
+	withMessageText: Game noEndFloorErrorDescription. 
+! !
+
+!methodRemoval: StartFloor class #withExtension:andStartPosition: stamp: 'lk 7/4/2022 20:32:57'!
+withExtension: anExtensionPoint andStartPosition: anStartPoint 
+	^self new initializeWithExtension: anExtensionPoint andStartPosition: anStartPoint !
+!EndFloor class methodsFor: 'instance creation' stamp: 'lk 7/4/2022 20:33:16'!
+withFloor: anExtension andEndPosition: anEndPoint 
+	^self new initializeWithExtension: anExtension andEndPosition: anEndPoint ! !
+!GameTest methodsFor: 'as yet unclassified' stamp: 'lk 7/4/2022 20:33:16' prior: 50573451!
+test01CantCreateGameIfThereIsNotAnStartFloor
+	| floorOne floorTwo playerOne playerTwo |
+	floorOne := Floor withExtension: 5@5.
+	floorTwo := EndFloor withFloor: 3@3 andEndPosition: self endPosition .
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	self should: [Game withFloors: {floorOne. floorTwo} andPlayers: {playerOne. playerTwo}]
+	raise: Error - MessageNotUnderstood 
+	withMessageText: Game noStartFloorErrorDescription. 
+! !
+!GameTest methodsFor: 'as yet unclassified' stamp: 'lk 7/4/2022 20:33:16' prior: 50573584!
+test03CanCreateGame
+	| floorOne floorTwo playerOne playerTwo game |
+	floorOne := StartFloor  withFloor: 3@3 andStartPosition: self startPosition .
+	floorTwo := EndFloor withFloor: 3@3 andEndPosition: self endPosition .
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	game := Game withFloors: {floorOne. floorTwo} andPlayers: {playerOne. playerTwo}.
+	
+	self assert: floorOne equals: game startFloor.
+	self assert: self startPosition equals: game startPosition.
+	
+	self assert: floorTwo equals: game endFloor.
+	self assert: self endPosition equals: game endPosition.
+	! !
+
+!methodRemoval: EndFloor class #withExtension:andEndPosition: stamp: 'lk 7/4/2022 20:33:16'!
+withExtension: anExtension andEndPosition: anEndPoint 
+	^self new initializeWithExtension: anExtension andEndPosition: anEndPoint !
+!EndFloor class methodsFor: 'instance creation' stamp: 'lk 7/4/2022 20:33:27' prior: 50573631!
+withFloor: aFloor andEndPosition: anEndPoint 
+	^self new initializeWithExtension: aFloor andEndPosition: anEndPoint ! !
+!EndFloor methodsFor: 'initializaion' stamp: 'lk 7/4/2022 20:33:51'!
+initializeWithFloor: anExtension andEndPosition: anEndPoint 
+	extension := anExtension.
+	endPosition := anEndPoint.! !
+!EndFloor class methodsFor: 'as yet unclassified' stamp: 'lk 7/4/2022 20:33:51' prior: 50573684!
+withFloor: aFloor andEndPosition: anEndPoint 
+	^self new initializeWithFloor: aFloor andEndPosition: anEndPoint ! !
+
+!methodRemoval: EndFloor #initializeWithExtension:andEndPosition: stamp: 'lk 7/4/2022 20:33:51'!
+initializeWithExtension: anExtension andEndPosition: anEndPoint 
+	extension := anExtension.
+	endPosition := anEndPoint.!
+!EndFloor methodsFor: 'initializaion' stamp: 'lk 7/4/2022 20:34:03' prior: 50573690!
+initializeWithFloor: aFloor andEndPosition: anEndPoint 
+	floor := aFloor.
+	endPosition := anEndPoint.! !
+!StartFloor methodsFor: 'initialization' stamp: 'lk 7/4/2022 20:34:47'!
+initializeWithFloor: anExtensionPoint andStartPosition: anStartPoint 
+	extension := anExtensionPoint.
+	startPosition := anStartPoint.! !
+!StartFloor class methodsFor: 'as yet unclassified' stamp: 'lk 7/4/2022 20:34:47' prior: 50573576!
+withFloor: anExtensionPoint andStartPosition: anStartPoint 
+	^self new initializeWithFloor: anExtensionPoint andStartPosition: anStartPoint ! !
+
+!methodRemoval: StartFloor #initializeWithExtension:andStartPosition: stamp: 'lk 7/4/2022 20:34:47'!
+initializeWithExtension: anExtensionPoint andStartPosition: anStartPoint 
+	extension := anExtensionPoint.
+	startPosition := anStartPoint.!
+!StartFloor methodsFor: 'initialization' stamp: 'lk 7/4/2022 20:34:57' prior: 50573717!
+initializeWithFloor: aFloor andStartPosition: anStartPoint 
+	floor := aFloor.
+	startPosition := anStartPoint.! !
+
+Floors subclass: #Floor
+	instanceVariableNames: 'extension'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #Floor category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 20:35:13'!
+Floors subclass: #Floor
+	instanceVariableNames: 'extension'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+Floors subclass: #Floor
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #Floor category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 20:35:18'!
+Floors subclass: #Floor
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+Object subclass: #Floors
+	instanceVariableNames: 'extension'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+Object subclass: #Floors
+	instanceVariableNames: 'extension'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+----SNAPSHOT----(4 July 2022 20:35:39) CuisUniversity-5324.image priorSource: 7601032!
+
+----STARTUP---- (4 July 2022 20:36:01) as /home/clinux01/Escritorio/linux64/CuisUniversity-5324.image!
+
+
+Object subclass: #Game
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #Game category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 20:36:19'!
+Object subclass: #Game
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+----STARTUP---- (4 July 2022 20:36:43) as /home/clinux01/Escritorio/linux64/CuisUniversity-5324.image!
+
+
+!classRemoval: #Player stamp: 'lk 7/4/2022 20:36:52'!
+Object subclass: #Player
+	instanceVariableNames: 'position'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classRemoval: #Game stamp: 'lk 7/4/2022 20:36:52'!
+Object subclass: #Game
+	instanceVariableNames: 'collectionOfFloors collectionOfPlayers'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classRemoval: #StartFloor stamp: 'lk 7/4/2022 20:36:52'!
+SpecialFloor subclass: #StartFloor
+	instanceVariableNames: 'floor startPosition'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classRemoval: #EndFloor stamp: 'lk 7/4/2022 20:36:52'!
+SpecialFloor subclass: #EndFloor
+	instanceVariableNames: 'floor endPosition'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classRemoval: #SpecialFloor stamp: 'lk 7/4/2022 20:36:53'!
+Floors subclass: #SpecialFloor
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classRemoval: #Floor stamp: 'lk 7/4/2022 20:36:53'!
+Floors subclass: #Floor
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classRemoval: #Floors stamp: 'lk 7/4/2022 20:36:53'!
+Object subclass: #Floors
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classRemoval: #GameTest stamp: 'lk 7/4/2022 20:36:53'!
+TestCase subclass: #GameTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+----End fileIn of /home/clinux01/Escritorio/linux64/ISW1-2022-1C-2doParcial.st----!
+
+!testRun: #GameTest #test03CanCreateGame stamp: 'lk 7/4/2022 20:37:28'!
+PASSED!
+
+!testRun: #GameTest #test01CantCreateGameIfThereIsNotAnStartFloor stamp: 'lk 7/4/2022 20:37:28'!
+PASSED!
+
+!testRun: #GameTest #test02CantCreateGameIfThereIsNotAnEndFloor stamp: 'lk 7/4/2022 20:37:28'!
+PASSED!
+
+!testRun: #GameTest #test03CanCreateGame stamp: 'lk 7/4/2022 20:37:28'!
+PASSED!
+
+!classDefinition: #GameTest category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 20:38:34'!
+TestCase subclass: #GameTest
+	instanceVariableNames: 'floorThree'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+!GameTest methodsFor: 'tests' stamp: 'lk 7/4/2022 20:38:29' prior: 50573880!
+test03CanCreateGame
+	| floorOne floorTwo playerOne playerTwo game |
+	floorOne := StartFloor  withFloor: 3@3 andStartPosition: self startPosition .
+	floorTwo := Floor withExtension: 3@3.
+	floorThree := EndFloor withFloor: 3@3 andEndPosition: self endPosition .
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	game := Game withFloors: {floorOne. floorTwo} andPlayers: {playerOne. playerTwo}.
+	
+	self assert: floorOne equals: game startFloor.
+	self assert: self startPosition equals: game startPosition.
+	
+	self assert: floorTwo equals: game endFloor.
+	self assert: self endPosition equals: game endPosition.
+	! !
+
+TestCase subclass: #GameTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #GameTest category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 20:38:43'!
+TestCase subclass: #GameTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+!GameTest methodsFor: 'tests' stamp: 'lk 7/4/2022 20:38:54' prior: 50574156!
+test03CanCreateGame
+	| floorOne floorTwo playerOne playerTwo game |
+	floorOne := StartFloor  withFloor: 3@3 andStartPosition: self startPosition .
+	floorTwo := EndFloor withFloor: 3@3 andEndPosition: self endPosition .
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	game := Game withFloors: {floorOne. floorTwo} andPlayers: {playerOne. playerTwo}.
+	
+	self assert: floorOne equals: game startFloor.
+	self assert: self startPosition equals: game startPosition.
+	
+	self assert: floorTwo equals: game endFloor.
+	self assert: self endPosition equals: game endPosition.
+	! !
+
+!testRun: #GameTest #test03CanCreateGame stamp: 'lk 7/4/2022 20:38:55'!
+PASSED!
+
+!testRun: #GameTest #test01CantCreateGameIfThereIsNotAnStartFloor stamp: 'lk 7/4/2022 20:38:55'!
+PASSED!
+
+!testRun: #GameTest #test02CantCreateGameIfThereIsNotAnEndFloor stamp: 'lk 7/4/2022 20:38:55'!
+PASSED!
+
+!testRun: #GameTest #test03CanCreateGame stamp: 'lk 7/4/2022 20:38:55'!
+PASSED!
+!GameTest methodsFor: 'tests' stamp: 'lk 7/4/2022 20:39:28'!
+test04CantCreateGameWithStairsGoingDown
+	| floorOne floorTwo playerOne playerTwo game |
+	floorOne := StartFloor  withFloor: 3@3 andStartPosition: self startPosition .
+	floorTwo := EndFloor withFloor: 3@3 andEndPosition: self endPosition .
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	game := Game withFloors: {floorOne. floorTwo} andPlayers: {playerOne. playerTwo}.
+	
+	self assert: floorOne equals: game startFloor.
+	self assert: self startPosition equals: game startPosition.
+	
+	self assert: floorTwo equals: game endFloor.
+	self assert: self endPosition equals: game endPosition.
+	! !
+!GameTest methodsFor: 'tests' stamp: 'lk 7/4/2022 20:39:55' prior: 50574222!
+test04CantCreateGameWithStairsGoingDown
+	| floorOne floorTwo playerOne playerTwo game floorThree |
+	floorOne := StartFloor  withFloor: 3@3 andStartPosition: self startPosition .
+	floorTwo := Floor withExtension: 3@3.
+	floorThree := EndFloor withFloor: 3@3 andEndPosition: self endPosition .
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	game := Game withFloors: {floorOne. floorTwo} andPlayers: {playerOne. playerTwo}.
+	
+	self assert: floorOne equals: game startFloor.
+	self assert: self startPosition equals: game startPosition.
+	
+	self assert: floorTwo equals: game endFloor.
+	self assert: self endPosition equals: game endPosition.
+	! !
+!GameTest methodsFor: 'tests' stamp: 'lk 7/4/2022 20:40:12' prior: 50573848!
+test01CantCreateGameIfThereIsNotAnStartFloor
+	| floorOne floorTwo playerOne playerTwo |
+	floorOne := Floor withExtension: 5@5.
+	floorTwo := EndFloor withFloor: (Floor withExtension: 3@3) andEndPosition: self endPosition .
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	self should: [Game withFloors: {floorOne. floorTwo} andPlayers: {playerOne. playerTwo}]
+	raise: Error - MessageNotUnderstood 
+	withMessageText: Game noStartFloorErrorDescription. 
+! !
+!GameTest methodsFor: 'tests' stamp: 'lk 7/4/2022 20:40:23' prior: 50573864!
+test02CantCreateGameIfThereIsNotAnEndFloor
+	| floorOne floorTwo playerOne playerTwo |
+	floorOne := StartFloor  withFloor: (Floor withExtension: 3@3) andStartPosition: self startPosition .
+	floorTwo := Floor withExtension: 5@5. 
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	self should: [Game withFloors: {floorOne. floorTwo} andPlayers: {playerOne. playerTwo}]
+	raise: Error - MessageNotUnderstood 
+	withMessageText: Game noEndFloorErrorDescription. 
+! !
+!GameTest methodsFor: 'tests' stamp: 'lk 7/4/2022 20:40:33' prior: 50574190!
+test03CanCreateGame
+	| floorOne floorTwo playerOne playerTwo game |
+	floorOne := StartFloor  withFloor:(Floor withExtension: 3@3) andStartPosition: self startPosition .
+	floorTwo := EndFloor withFloor: 3@3 andEndPosition: self endPosition .
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	game := Game withFloors: {floorOne. floorTwo} andPlayers: {playerOne. playerTwo}.
+	
+	self assert: floorOne equals: game startFloor.
+	self assert: self startPosition equals: game startPosition.
+	
+	self assert: floorTwo equals: game endFloor.
+	self assert: self endPosition equals: game endPosition.
+	! !
+!GameTest methodsFor: 'tests' stamp: 'lk 7/4/2022 20:40:39' prior: 50574301!
+test03CanCreateGame
+	| floorOne floorTwo playerOne playerTwo game |
+	floorOne := StartFloor  withFloor:(Floor withExtension: 3@3) andStartPosition: self startPosition .
+	floorTwo := EndFloor withFloor: (Floor withExtension: 3@3) andEndPosition: self endPosition .
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	game := Game withFloors: {floorOne. floorTwo} andPlayers: {playerOne. playerTwo}.
+	
+	self assert: floorOne equals: game startFloor.
+	self assert: self startPosition equals: game startPosition.
+	
+	self assert: floorTwo equals: game endFloor.
+	self assert: self endPosition equals: game endPosition.
+	! !
+!GameTest methodsFor: 'tests' stamp: 'lk 7/4/2022 20:40:46' prior: 50574244!
+test04CantCreateGameWithStairsGoingDown
+	| floorOne floorTwo playerOne playerTwo game floorThree |
+	floorOne := StartFloor  withFloor: (Floor withExtension: 3@3) andStartPosition: self startPosition .
+	floorTwo := Floor withExtension: 3@3.
+	floorThree := EndFloor withFloor: 3@3 andEndPosition: self endPosition .
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	game := Game withFloors: {floorOne. floorTwo} andPlayers: {playerOne. playerTwo}.
+	
+	self assert: floorOne equals: game startFloor.
+	self assert: self startPosition equals: game startPosition.
+	
+	self assert: floorTwo equals: game endFloor.
+	self assert: self endPosition equals: game endPosition.
+	! !
+!GameTest methodsFor: 'tests' stamp: 'lk 7/4/2022 20:40:53' prior: 50574345!
+test04CantCreateGameWithStairsGoingDown
+	| floorOne floorTwo playerOne playerTwo game floorThree |
+	floorOne := StartFloor  withFloor: (Floor withExtension: 3@3) andStartPosition: self startPosition .
+	floorTwo := Floor withExtension: 3@3.
+	floorThree := EndFloor withFloor: (Floor withExtension: 3@3) andEndPosition: self endPosition .
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	game := Game withFloors: {floorOne. floorTwo} andPlayers: {playerOne. playerTwo}.
+	
+	self assert: floorOne equals: game startFloor.
+	self assert: self startPosition equals: game startPosition.
+	
+	self assert: floorTwo equals: game endFloor.
+	self assert: self endPosition equals: game endPosition.
+	! !
+!GameTest methodsFor: 'tests' stamp: 'lk 7/4/2022 20:41:13' prior: 50574369!
+test04CantCreateGameWithStairsGoingDown
+	| floorOne floorTwo playerOne playerTwo game floorThree |
+	floorOne := StartFloor  withFloor: (Floor withExtension: 3@3) andStartPosition: self startPosition .
+	floorTwo := Floor withExtension: 3@3.
+	floorThree := EndFloor withFloor: (Floor withExtension: 3@3) andEndPosition: self endPosition .
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	game := Game withFloors: {floorOne. floorTwo. floorThree} andPlayers: {playerOne. playerTwo}.
+	
+	self assert: floorOne equals: game startFloor.
+	self assert: self startPosition equals: game startPosition.
+	
+	self assert: floorTwo equals: game endFloor.
+	self assert: self endPosition equals: game endPosition.
+	! !
+
+!testRun: #GameTest #test04CantCreateGameWithStairsGoingDown stamp: 'lk 7/4/2022 20:41:20'!
+FAILURE!
+!GameTest methodsFor: 'tests' stamp: 'lk 7/4/2022 20:41:28' prior: 50574394!
+test04CantCreateGameWithStairsGoingDown
+	| floorOne floorTwo playerOne playerTwo game floorThree |
+	floorOne := StartFloor  withFloor: (Floor withExtension: 3@3) andStartPosition: self startPosition .
+	floorTwo := Floor withExtension: 3@3.
+	floorThree := EndFloor withFloor: (Floor withExtension: 3@3) andEndPosition: self endPosition .
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	game := Game withFloors: {floorOne. floorTwo. floorThree} andPlayers: {playerOne. playerTwo}.
+	
+	self assert: floorOne equals: game startFloor.
+	self assert: self startPosition equals: game startPosition.
+	
+	self assert: floorThree equals: game endFloor.
+	self assert: self endPosition equals: game endPosition.
+	! !
+
+!testRun: #GameTest #test04CantCreateGameWithStairsGoingDown stamp: 'lk 7/4/2022 20:41:29'!
+PASSED!
+
+!testRun: #GameTest #test01CantCreateGameIfThereIsNotAnStartFloor stamp: 'lk 7/4/2022 20:41:29'!
+PASSED!
+
+!testRun: #GameTest #test02CantCreateGameIfThereIsNotAnEndFloor stamp: 'lk 7/4/2022 20:41:29'!
+PASSED!
+
+!testRun: #GameTest #test03CanCreateGame stamp: 'lk 7/4/2022 20:41:29'!
+PASSED!
+
+!testRun: #GameTest #test04CantCreateGameWithStairsGoingDown stamp: 'lk 7/4/2022 20:41:29'!
+PASSED!
+!Floor class methodsFor: 'instance creation' stamp: 'lk 7/4/2022 20:42:32' prior: 50573947!
+withExtension: aPoint 
+
+	^self new initializeWithExtension: aPoint ! !
+!Floor class methodsFor: 'instance creation' stamp: 'lk 7/4/2022 20:43:16'!
+withExtension: aPoint withShortcut: aCollectionOfShortcuts  
+
+	^self new initializeWithExtension: aPoint ! !
+!GameTest methodsFor: 'as yet unclassified' stamp: 'lk 7/4/2022 20:43:16' prior: 50574284!
+test02CantCreateGameIfThereIsNotAnEndFloor
+	| floorOne floorTwo playerOne playerTwo |
+	floorOne := StartFloor  withFloor: (Floor withExtension: 3@3 withShortcut: {}) andStartPosition: self startPosition .
+	floorTwo := Floor withExtension: 5@5 withShortcut: {}. 
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	self should: [Game withFloors: {floorOne. floorTwo} andPlayers: {playerOne. playerTwo}]
+	raise: Error - MessageNotUnderstood 
+	withMessageText: Game noEndFloorErrorDescription. 
+! !
+!GameTest methodsFor: 'as yet unclassified' stamp: 'lk 7/4/2022 20:43:16' prior: 50574422!
+test04CantCreateGameWithStairsGoingDown
+	| floorOne floorTwo playerOne playerTwo game floorThree |
+	floorOne := StartFloor  withFloor: (Floor withExtension: 3@3 withShortcut: {}) andStartPosition: self startPosition .
+	floorTwo := Floor withExtension: 3@3 withShortcut: {}.
+	floorThree := EndFloor withFloor: (Floor withExtension: 3@3 withShortcut: {}) andEndPosition: self endPosition .
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	game := Game withFloors: {floorOne. floorTwo. floorThree} andPlayers: {playerOne. playerTwo}.
+	
+	self assert: floorOne equals: game startFloor.
+	self assert: self startPosition equals: game startPosition.
+	
+	self assert: floorThree equals: game endFloor.
+	self assert: self endPosition equals: game endPosition.
+	! !
+!GameTest methodsFor: 'as yet unclassified' stamp: 'lk 7/4/2022 20:43:16' prior: 50574267!
+test01CantCreateGameIfThereIsNotAnStartFloor
+	| floorOne floorTwo playerOne playerTwo |
+	floorOne := Floor withExtension: 5@5 withShortcut: {}.
+	floorTwo := EndFloor withFloor: (Floor withExtension: 3@3 withShortcut: {}) andEndPosition: self endPosition .
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	self should: [Game withFloors: {floorOne. floorTwo} andPlayers: {playerOne. playerTwo}]
+	raise: Error - MessageNotUnderstood 
+	withMessageText: Game noStartFloorErrorDescription. 
+! !
+!GameTest methodsFor: 'as yet unclassified' stamp: 'lk 7/4/2022 20:43:16' prior: 50574323!
+test03CanCreateGame
+	| floorOne floorTwo playerOne playerTwo game |
+	floorOne := StartFloor  withFloor:(Floor withExtension: 3@3 withShortcut: {}) andStartPosition: self startPosition .
+	floorTwo := EndFloor withFloor: (Floor withExtension: 3@3 withShortcut: {}) andEndPosition: self endPosition .
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	game := Game withFloors: {floorOne. floorTwo} andPlayers: {playerOne. playerTwo}.
+	
+	self assert: floorOne equals: game startFloor.
+	self assert: self startPosition equals: game startPosition.
+	
+	self assert: floorTwo equals: game endFloor.
+	self assert: self endPosition equals: game endPosition.
+	! !
+
+!methodRemoval: Floor class #withExtension: stamp: 'lk 7/4/2022 20:43:16'!
+withExtension: aPoint 
+
+	^self new initializeWithExtension: aPoint !
+
+Floors subclass: #Floor
+	instanceVariableNames: 'extension'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #Floor category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 20:43:45'!
+Floors subclass: #Floor
+	instanceVariableNames: 'extension'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+!Floor methodsFor: 'initialization' stamp: 'lk 7/4/2022 20:44:33'!
+initializeWithExtension: aPoint withShortCuts: aCollectionOfShortcuts  
+
+	extension := aPoint.! !
+!Floor class methodsFor: 'as yet unclassified' stamp: 'lk 7/4/2022 20:44:33' prior: 50574468!
+withExtension: aPoint withShortcut: aCollectionOfShortcuts  
+
+	^self new initializeWithExtension: aPoint withShortCuts: aCollectionOfShortcuts ! !
+
+!methodRemoval: Floor #initializeWithExtension: stamp: 'lk 7/4/2022 20:44:33'!
+initializeWithExtension: aPoint 
+
+	extension := aPoint.!
+
+!classDefinition: #Floor category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 20:44:50'!
+Floors subclass: #Floor
+	instanceVariableNames: 'extension collectionOfShortCuts'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+!Floor methodsFor: 'initialization' stamp: 'lk 7/4/2022 20:44:49' prior: 50574580!
+initializeWithExtension: aPoint withShortCuts: aCollectionOfShortcuts  
+	collectionOfShortCuts := aCollectionOfShortcuts .
+	extension := aPoint.! !
+
+!classDefinition: #Stair category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 20:47:07'!
+Object subclass: #Stair
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+!GameTest methodsFor: 'tests' stamp: 'lk 7/4/2022 20:46:59' prior: 50574494!
+test04CantCreateGameWithStairsGoingDown
+	| floorOne floorTwo playerOne playerTwo game floorThree anStair |
+	floorOne := StartFloor  withFloor: (Floor withExtension: 3@3 withShortcut: {}) andStartPosition: self startPosition .
+	anStair := Stair fromPos: 1@1 toPos: 1@1 fromFloor: 1 toFloor: 1 . 
+	floorTwo := Floor withExtension: 3@3 withShortcut: {}.
+	floorThree := EndFloor withFloor: (Floor withExtension: 3@3 withShortcut: {}) andEndPosition: self endPosition .
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	game := Game withFloors: {floorOne. floorTwo. floorThree} andPlayers: {playerOne. playerTwo}.
+	
+	self assert: floorOne equals: game startFloor.
+	self assert: self startPosition equals: game startPosition.
+	
+	self assert: floorThree equals: game endFloor.
+	self assert: self endPosition equals: game endPosition.
+	! !
+!GameTest methodsFor: 'tests' stamp: 'lk 7/4/2022 20:47:20' prior: 50574621!
+test04CantCreateGameWithStairsGoingDown
+	| floorOne floorTwo playerOne playerTwo floorThree anStair |
+	floorOne := StartFloor  withFloor: (Floor withExtension: 3@3 withShortcut: {}) andStartPosition: self startPosition .
+	anStair := Stair fromPos: 1@1 toPos: 1@1 fromFloor: 1 toFloor: 1 . 
+	floorTwo := Floor withExtension: 3@3 withShortcut: {}.
+	floorThree := EndFloor withFloor: (Floor withExtension: 3@3 withShortcut: {}) andEndPosition: self endPosition .
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	 Game withFloors: {floorOne. floorTwo. floorThree} andPlayers: {playerOne. playerTwo}.
+	! !
+!GameTest methodsFor: 'tests' stamp: 'lk 7/4/2022 20:47:57' prior: 50574650!
+test04CantCreateGameWithStairsGoingDown
+	| floorOne floorTwo playerOne playerTwo floorThree anStair |
+	floorOne := StartFloor  withFloor: (Floor withExtension: 3@3 withShortcut: {}) andStartPosition: self startPosition .
+	anStair := Stair fromPos: 1@1 toPos: 1@1 fromFloor: 1 toFloor: 1 . 
+	floorTwo := Floor withExtension: 3@3 withShortcut: {}.
+	floorThree := EndFloor withFloor: (Floor withExtension: 3@3 withShortcut: {}) andEndPosition: self endPosition .
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	 
+	self should: [Game withFloors: {floorOne. floorTwo. floorThree} andPlayers: {playerOne. playerTwo}]
+	raise: Error - MessageNotUnderstood 
+	withMessageText: Game badShortcutsErrorDescription. 
+! !
+!GameTest methodsFor: 'tests' stamp: 'lk 7/4/2022 20:48:44' prior: 50574672!
+test04CantCreateGameWithStairsGoingDown
+	| floorOne floorTwo playerOne playerTwo floorThree anStair |
+	floorOne := StartFloor  withFloor: (Floor withExtension: 3@3 withShortcut: {}) andStartPosition: self startPosition .
+	anStair := Stair fromPos: 1@2 toPos: 1@2 fromFloor: 1 toFloor: 1 . 
+	floorTwo := Floor withExtension: 3@3 withShortcut: {}.
+	floorThree := EndFloor withFloor: (Floor withExtension: 3@3 withShortcut: {}) andEndPosition: self endPosition .
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	 
+	self should: [Game withFloors: {floorOne. floorTwo. floorThree} andPlayers: {playerOne. playerTwo}]
+	raise: Error - MessageNotUnderstood 
+	withMessageText: Game badShortcutsErrorDescription. 
+! !
+!GameTest methodsFor: 'tests' stamp: 'lk 7/4/2022 20:49:19' prior: 50574697!
+test04CantCreateGameWithStairsGoingDown
+	| floorOne floorTwo playerOne playerTwo floorThree anStair |
+	floorOne := StartFloor  withFloor: (Floor withExtension: 3@3 withShortcut: {}) andStartPosition: self startPosition .
+	anStair := Stair fromPos: 1@2 toPos: 1@2 fromFloor: 1 toFloor: 2 . 
+	floorTwo := Floor withExtension: 3@3 withShortcut: {}.
+	floorThree := EndFloor withFloor: (Floor withExtension: 3@3 withShortcut: {}) andEndPosition: self endPosition .
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	 
+	self should: [Game withFloors: {floorOne. floorTwo. floorThree} andPlayers: {playerOne. playerTwo}]
+	raise: Error - MessageNotUnderstood 
+	withMessageText: Game badShortcutsErrorDescription. 
+! !
+
+TestCase subclass: #ShortCutsTests
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #ShortCutsTests category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 20:49:35'!
+TestCase subclass: #ShortCutsTests
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+!ShortCutsTests methodsFor: 'tests' stamp: 'lk 7/4/2022 20:51:11'!
+test01CantCreateAStairInLessThanZeroX! !
+!ShortCutsTests methodsFor: 'tests' stamp: 'lk 7/4/2022 20:53:52'!
+test01CantCreateAStairFromUpToSameFloor
+	self should: [Stair fromPoint: 1@1 toPoint: 1@1 fromFloor: 1 to: 1]  raise: Error- MessageNotUnderstood withMessageText: Stair invalidFromToFloorErrorDescription ! !
+
+!methodRemoval: ShortCutsTests #test01CantCreateAStairInLessThanZeroX stamp: 'lk 7/4/2022 20:54:05'!
+test01CantCreateAStairInLessThanZeroX!
+
+!testRun: #ShortCutsTests #test01CantCreateAStairFromUpToSameFloor stamp: 'lk 7/4/2022 20:54:16'!
+ERROR!
+!Stair class methodsFor: 'instance creation' stamp: 'lk 7/4/2022 20:54:24'!
+invalidFromToFloorErrorDescription
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeInvalidFromToFloorErrorDescription! !
+
+!testRun: #ShortCutsTests #test01CantCreateAStairFromUpToSameFloor stamp: 'lk 7/4/2022 20:54:36'!
+ERROR!
+!Stair class methodsFor: 'error' stamp: 'lk 7/4/2022 20:55:35' prior: 50574780!
+invalidFromToFloorErrorDescription
+	^'invalid from to Floor'! !
+
+!testRun: #ShortCutsTests #test01CantCreateAStairFromUpToSameFloor stamp: 'lk 7/4/2022 20:55:40'!
+ERROR!
+
+!testRun: #ShortCutsTests #test01CantCreateAStairFromUpToSameFloor stamp: 'lk 7/4/2022 20:55:40'!
+ERROR!
+!Stair class methodsFor: 'instance creation' stamp: 'lk 7/4/2022 20:55:45'!
+fromPoint: aPoint toPoint: aPoint2 fromFloor: aSmallInteger to: aSmallInteger4 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeFromPoint: aPoint toPoint: aPoint2 fromFloor: aSmallInteger to: aSmallInteger4 ! !
+!Stair class methodsFor: 'instance creation' stamp: 'lk 7/4/2022 20:56:27' prior: 50574803!
+fromPoint: startPoint toPoint: endPoint fromFloor: fromFloor to: toFloor 
+
+	^self new initializeFromPoint: startPoint toPoint: endPoint fromFloor: fromFloor to: toFloor ! !
+
+!testRun: #ShortCutsTests #test01CantCreateAStairFromUpToSameFloor stamp: 'lk 7/4/2022 20:56:30'!
+ERROR!
+
+!classDefinition: #Stair category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 20:56:41'!
+Object subclass: #Stair
+	instanceVariableNames: 'startPoint_CHANGE_ME'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #Stair category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 20:56:41'!
+Object subclass: #Stair
+	instanceVariableNames: 'startPoint_CHANGE_ME endPoint_CHANGE_ME'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #Stair category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 20:56:41'!
+Object subclass: #Stair
+	instanceVariableNames: 'startPoint_CHANGE_ME endPoint_CHANGE_ME fromFloor_CHANGE_ME'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #Stair category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 20:56:41'!
+Object subclass: #Stair
+	instanceVariableNames: 'startPoint_CHANGE_ME endPoint_CHANGE_ME fromFloor_CHANGE_ME toFloor_CHANGE_ME'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+!Stair methodsFor: 'initialization' stamp: 'lk 7/4/2022 20:56:41'!
+initializeFromPoint: startPoint toPoint: endPoint fromFloor: fromFloor to: toFloor 
+	self shouldBeImplemented.
+	startPoint_CHANGE_ME := startPoint.
+	endPoint_CHANGE_ME := endPoint.
+	fromFloor_CHANGE_ME := fromFloor.
+	toFloor_CHANGE_ME := toFloor.! !
+
+----SNAPSHOT----(4 July 2022 20:58:22) CuisUniversity-5324.image priorSource: 7748094!
+
+----STARTUP---- (4 July 2022 20:58:27) as /home/clinux01/Escritorio/linux64/CuisUniversity-5324.image!
+
+
+!classRemoval: #Stair stamp: 'lk 7/4/2022 20:58:41'!
+Object subclass: #Stair
+	instanceVariableNames: 'startPoint_CHANGE_ME endPoint_CHANGE_ME fromFloor_CHANGE_ME toFloor_CHANGE_ME'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classRemoval: #Player stamp: 'lk 7/4/2022 20:58:41'!
+Object subclass: #Player
+	instanceVariableNames: 'position'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classRemoval: #Game stamp: 'lk 7/4/2022 20:58:42'!
+Object subclass: #Game
+	instanceVariableNames: 'collectionOfFloors collectionOfPlayers'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classRemoval: #StartFloor stamp: 'lk 7/4/2022 20:58:42'!
+SpecialFloor subclass: #StartFloor
+	instanceVariableNames: 'floor startPosition'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classRemoval: #EndFloor stamp: 'lk 7/4/2022 20:58:42'!
+SpecialFloor subclass: #EndFloor
+	instanceVariableNames: 'floor endPosition'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classRemoval: #SpecialFloor stamp: 'lk 7/4/2022 20:58:42'!
+Floors subclass: #SpecialFloor
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classRemoval: #Floor stamp: 'lk 7/4/2022 20:58:43'!
+Floors subclass: #Floor
+	instanceVariableNames: 'extension collectionOfShortCuts'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classRemoval: #Floors stamp: 'lk 7/4/2022 20:58:43'!
+Object subclass: #Floors
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classRemoval: #ShortCutsTests stamp: 'lk 7/4/2022 20:58:43'!
+TestCase subclass: #ShortCutsTests
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classRemoval: #GameTest stamp: 'lk 7/4/2022 20:58:43'!
+TestCase subclass: #GameTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+----End fileIn of /home/clinux01/Escritorio/linux64/ISW1-2022-1C-2doParcial.st----!
+
+Object subclass: #Stair
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #Stair category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 20:59:15'!
+Object subclass: #Stair
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+Object subclass: #Stair
+	instanceVariableNames: 'startPoint endPoint'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+!Stair methodsFor: 'initialization' stamp: 'lk 7/4/2022 21:00:05' prior: 50575319!
+initializeFromPoint: aStartPoint toPoint: anEndPoint fromFloor: aFromFloor to: aToFloor 
+
+	"startPoint := aStartPoint.
+	endPoint := anEndPoint.
+	fromFloor := aFromFloor.
+	toFloor:= aToFloor."! !
+!Stair class methodsFor: 'instance creation' stamp: 'lk 7/4/2022 21:01:01' prior: 50575337!
+fromPoint: anStartPoint toPoint: anEndPoint fromFloor: aFromFloor to: aToFloor 
+
+	^self new initializeFromPoint: anStartPoint toPoint: anEndPoint fromFloor: aFromFloor to: aToFloor ! !
+
+!classDefinition: #Stair category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 21:01:10'!
+Object subclass: #Stair
+	instanceVariableNames: 'startPoint'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #Stair category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 21:01:11'!
+Object subclass: #Stair
+	instanceVariableNames: 'startPoint endPoint'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #Stair category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 21:01:12'!
+Object subclass: #Stair
+	instanceVariableNames: 'startPoint endPoint fromFloor'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #Stair category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 21:01:13'!
+Object subclass: #Stair
+	instanceVariableNames: 'startPoint endPoint fromFloor toFloor'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+!Stair methodsFor: 'initialization' stamp: 'lk 7/4/2022 21:01:09' prior: 50575369!
+initializeFromPoint: aStartPoint toPoint: anEndPoint fromFloor: aFromFloor to: aToFloor 
+
+	startPoint := aStartPoint.
+	endPoint := anEndPoint.
+	fromFloor := aFromFloor.
+	toFloor:= aToFloor.! !
+!Stair class methodsFor: 'instance creation' stamp: 'lk 7/4/2022 21:02:07' prior: 50575378!
+fromPoint: anStartPoint toPoint: anEndPoint fromFloor: aFromFloor to: aToFloor 
+	aFromFloor = aToFloor ifTrue: [self error: self invalidFromToFloorErrorDescription ].
+	^self new initializeFromPoint: anStartPoint toPoint: anEndPoint fromFloor: aFromFloor to: aToFloor ! !
+
+!testRun: #GameTest #test01CantCreateGameIfThereIsNotAnStartFloor stamp: 'lk 7/4/2022 21:02:08'!
+PASSED!
+
+!testRun: #GameTest #test02CantCreateGameIfThereIsNotAnEndFloor stamp: 'lk 7/4/2022 21:02:08'!
+PASSED!
+
+!testRun: #GameTest #test03CanCreateGame stamp: 'lk 7/4/2022 21:02:08'!
+PASSED!
+
+!testRun: #GameTest #test04CantCreateGameWithStairsGoingDown stamp: 'lk 7/4/2022 21:02:08'!
+ERROR!
+
+!testRun: #ShortCutsTests #test01CantCreateAStairFromUpToSameFloor stamp: 'lk 7/4/2022 21:02:08'!
+PASSED!
+
+!testRun: #GameTest #test04CantCreateGameWithStairsGoingDown stamp: 'lk 7/4/2022 21:02:08'!
+ERROR!
+
+!testRun: #ShortCutsTests #test01CantCreateAStairFromUpToSameFloor stamp: 'lk 7/4/2022 21:02:40'!
+PASSED!
+!ShortCutsTests methodsFor: 'tests' stamp: 'lk 7/4/2022 21:03:08'!
+test01CantCreateAStairFromToSameFloor
+	self should: [Stair fromPoint: 1@1 toPoint: 1@1 fromFloor: 1 to: 1]  raise: Error- MessageNotUnderstood withMessageText: Stair invalidFromToFloorErrorDescription ! !
+
+!methodRemoval: ShortCutsTests #test01CantCreateAStairFromUpToSameFloor stamp: 'lk 7/4/2022 21:03:08'!
+test01CantCreateAStairFromUpToSameFloor
+	self should: [Stair fromPoint: 1@1 toPoint: 1@1 fromFloor: 1 to: 1]  raise: Error- MessageNotUnderstood withMessageText: Stair invalidFromToFloorErrorDescription !
+!ShortCutsTests methodsFor: 'tests' stamp: 'lk 7/4/2022 21:03:48'!
+test02CantCreateAStairFromAFloorToAnotherBelow
+	self should: [Stair fromPoint: 1@1 toPoint: 1@1 fromFloor: 2 to: 1]  raise: Error- MessageNotUnderstood withMessageText: Stair invalidFromToFloorErrorDescription ! !
+
+Object subclass: #Shortcuts
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #Shortcuts category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 21:04:54'!
+Object subclass: #Shortcuts
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+Shortcuts subclass: #Stair
+	instanceVariableNames: 'startPoint endPoint fromFloor toFloor'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #Stair category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 21:05:13'!
+Shortcuts subclass: #Stair
+	instanceVariableNames: 'startPoint endPoint fromFloor toFloor'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classRenamed: #ShortCutsTests as: #ShortcutsTests stamp: 'lk 7/4/2022 21:05:25'!
+Smalltalk renameClassNamed: #ShortCutsTests as: #ShortcutsTests!
+
+!testRun: #ShortcutsTests #test01CantCreateAStairFromToSameFloor stamp: 'lk 7/4/2022 21:06:42'!
+PASSED!
+
+!testRun: #ShortcutsTests #test02CantCreateAStairFromAFloorToAnotherBelow stamp: 'lk 7/4/2022 21:06:42'!
+FAILURE!
+
+!testRun: #ShortcutsTests #test02CantCreateAStairFromAFloorToAnotherBelow stamp: 'lk 7/4/2022 21:06:42'!
+FAILURE!
+
+!methodRemoval: GameTest #test04CantCreateGameWithStairsGoingDown stamp: 'lk 7/4/2022 21:06:55'!
+test04CantCreateGameWithStairsGoingDown
+	| floorOne floorTwo playerOne playerTwo floorThree anStair |
+	floorOne := StartFloor  withFloor: (Floor withExtension: 3@3 withShortcut: {}) andStartPosition: self startPosition .
+	anStair := Stair fromPos: 1@2 toPos: 1@2 fromFloor: 1 toFloor: 2 . 
+	floorTwo := Floor withExtension: 3@3 withShortcut: {}.
+	floorThree := EndFloor withFloor: (Floor withExtension: 3@3 withShortcut: {}) andEndPosition: self endPosition .
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	 
+	self should: [Game withFloors: {floorOne. floorTwo. floorThree} andPlayers: {playerOne. playerTwo}]
+	raise: Error - MessageNotUnderstood 
+	withMessageText: Game badShortcutsErrorDescription. 
+!
+
+!testRun: #GameTest #test01CantCreateGameIfThereIsNotAnStartFloor stamp: 'lk 7/4/2022 21:06:59'!
+PASSED!
+
+!testRun: #GameTest #test02CantCreateGameIfThereIsNotAnEndFloor stamp: 'lk 7/4/2022 21:06:59'!
+PASSED!
+
+!testRun: #GameTest #test03CanCreateGame stamp: 'lk 7/4/2022 21:06:59'!
+PASSED!
+
+!testRun: #ShortcutsTests #test01CantCreateAStairFromToSameFloor stamp: 'lk 7/4/2022 21:07:01'!
+PASSED!
+
+!testRun: #ShortcutsTests #test02CantCreateAStairFromAFloorToAnotherBelow stamp: 'lk 7/4/2022 21:07:01'!
+FAILURE!
+
+!testRun: #ShortcutsTests #test02CantCreateAStairFromAFloorToAnotherBelow stamp: 'lk 7/4/2022 21:07:01'!
+FAILURE!
+!Stair class methodsFor: 'instance creation' stamp: 'lk 7/4/2022 21:07:56' prior: 50575427!
+fromPoint: anStartPoint toPoint: anEndPoint fromFloor: aFromFloor to: aToFloor 
+	(aFromFloor = aToFloor or: [aFromFloor > aToFloor]) ifTrue: [self error: self invalidFromToFloorErrorDescription ].
+	^self new initializeFromPoint: anStartPoint toPoint: anEndPoint fromFloor: aFromFloor to: aToFloor ! !
+
+!testRun: #ShortcutsTests #test01CantCreateAStairFromToSameFloor stamp: 'lk 7/4/2022 21:07:58'!
+PASSED!
+
+!testRun: #ShortcutsTests #test02CantCreateAStairFromAFloorToAnotherBelow stamp: 'lk 7/4/2022 21:07:58'!
+PASSED!
+
+!classDefinition: #Slide category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 21:09:11'!
+Object subclass: #Slide
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+!ShortcutsTests methodsFor: 'tests' stamp: 'lk 7/4/2022 21:09:07'!
+test03CantCreateASlideFromToSameFloor
+	self should: [Slide fromPoint: 1@1 toPoint: 1@1 fromFloor: 1 to: 1]  raise: Error- MessageNotUnderstood withMessageText: Stair invalidFromToFloorErrorDescription ! !
+
+Shortcuts subclass: #Slide
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #Slide category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 21:09:30'!
+Shortcuts subclass: #Slide
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!testRun: #ShortcutsTests #test03CantCreateASlideFromToSameFloor stamp: 'lk 7/4/2022 21:09:55'!
+ERROR!
+!Slide class methodsFor: 'instance creation' stamp: 'lk 7/4/2022 21:10:01'!
+fromPoint: aPoint toPoint: aPoint2 fromFloor: aSmallInteger to: aSmallInteger4 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeFromPoint: aPoint toPoint: aPoint2 fromFloor: aSmallInteger to: aSmallInteger4 ! !
+!Slide class methodsFor: 'instance creation' stamp: 'lk 7/4/2022 21:10:06' prior: 50575625!
+fromPoint: aPoint toPoint: aPoint2 fromFloor: aSmallInteger to: aSmallInteger4
+	^self new initializeFromPoint: aPoint toPoint: aPoint2 fromFloor: aSmallInteger to: aSmallInteger4 ! !
+!Slide class methodsFor: 'instance creation' stamp: 'lk 7/4/2022 21:10:43' prior: 50575637!
+fromPoint: anStartPoint toPoint: anEndPoint fromFloor: aFromFloor to: aToFloor 
+	(aFromFloor = aToFloor or: [aFromFloor > aToFloor]) ifTrue: [self error: self invalidFromToFloorErrorDescription ].
+	^self new initializeFromPoint: anStartPoint toPoint: anEndPoint fromFloor: aFromFloor to: aToFloor ! !
+!Slide class methodsFor: 'nil' stamp: 'lk 7/4/2022 21:10:57'!
+invalidFromToFloorErrorDescription
+	^'invalid from to Floor'! !
+!Slide class methodsFor: 'instance creation' stamp: 'lk 7/4/2022 21:11:10' prior: 50575646!
+fromPoint: anStartPoint toPoint: anEndPoint fromFloor: aFromFloor to: aToFloor 
+	(aFromFloor = aToFloor) ifTrue: [self error: self invalidFromToFloorErrorDescription ].
+	^self new initializeFromPoint: anStartPoint toPoint: anEndPoint fromFloor: aFromFloor to: aToFloor ! !
+
+!testRun: #ShortcutsTests #test01CantCreateAStairFromToSameFloor stamp: 'lk 7/4/2022 21:11:11'!
+PASSED!
+
+!testRun: #ShortcutsTests #test02CantCreateAStairFromAFloorToAnotherBelow stamp: 'lk 7/4/2022 21:11:11'!
+PASSED!
+
+!testRun: #ShortcutsTests #test03CantCreateASlideFromToSameFloor stamp: 'lk 7/4/2022 21:11:11'!
+PASSED!
+!ShortcutsTests methodsFor: 'tests' stamp: 'lk 7/4/2022 21:11:30'!
+test04CantCreateASlideFromAFloorToAnotherBelow
+	self should: [Stair fromPoint: 1@1 toPoint: 1@1 fromFloor: 1 to: 2]  raise: Error- MessageNotUnderstood withMessageText: Stair invalidFromToFloorErrorDescription ! !
+
+!testRun: #ShortcutsTests #test04CantCreateASlideFromAFloorToAnotherBelow stamp: 'lk 7/4/2022 21:11:31'!
+FAILURE!
+!Slide class methodsFor: 'instance creation' stamp: 'lk 7/4/2022 21:11:54' prior: 50575663!
+fromPoint: anStartPoint toPoint: anEndPoint fromFloor: aFromFloor to: aToFloor 
+	(aFromFloor = aToFloor or: [aFromFloor < aToFloor]) ifTrue: [self error: self invalidFromToFloorErrorDescription ].
+	^self new initializeFromPoint: anStartPoint toPoint: anEndPoint fromFloor: aFromFloor to: aToFloor ! !
+
+!classDefinition: #Slide category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 21:12:09'!
+Shortcuts subclass: #Slide
+	instanceVariableNames: 'startPoint'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #Slide category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 21:12:10'!
+Shortcuts subclass: #Slide
+	instanceVariableNames: 'startPoint endPoint'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #Slide category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 21:12:11'!
+Shortcuts subclass: #Slide
+	instanceVariableNames: 'startPoint endPoint fromFloor'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #Slide category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 21:12:12'!
+Shortcuts subclass: #Slide
+	instanceVariableNames: 'startPoint endPoint fromFloor toFloor'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+!Slide methodsFor: 'no messages' stamp: 'lk 7/4/2022 21:12:07'!
+initializeFromPoint: aStartPoint toPoint: anEndPoint fromFloor: aFromFloor to: aToFloor 
+
+	startPoint := aStartPoint.
+	endPoint := anEndPoint.
+	fromFloor := aFromFloor.
+	toFloor:= aToFloor.! !
+
+!testRun: #ShortcutsTests #test04CantCreateASlideFromAFloorToAnotherBelow stamp: 'lk 7/4/2022 21:12:23'!
+FAILURE!
+
+!testRun: #ShortcutsTests #test04CantCreateASlideFromAFloorToAnotherBelow stamp: 'lk 7/4/2022 21:12:23'!
+FAILURE!
+
+!testRun: #ShortcutsTests #test01CantCreateAStairFromToSameFloor stamp: 'lk 7/4/2022 21:12:29'!
+PASSED!
+
+!testRun: #ShortcutsTests #test02CantCreateAStairFromAFloorToAnotherBelow stamp: 'lk 7/4/2022 21:12:29'!
+PASSED!
+
+!testRun: #ShortcutsTests #test03CantCreateASlideFromToSameFloor stamp: 'lk 7/4/2022 21:12:29'!
+PASSED!
+
+!testRun: #ShortcutsTests #test04CantCreateASlideFromAFloorToAnotherBelow stamp: 'lk 7/4/2022 21:12:29'!
+FAILURE!
+
+!testRun: #ShortcutsTests #test04CantCreateASlideFromAFloorToAnotherBelow stamp: 'lk 7/4/2022 21:12:29'!
+FAILURE!
+!ShortcutsTests methodsFor: 'tests' stamp: 'lk 7/4/2022 21:12:49' prior: 50575684!
+test04CantCreateASlideFromAFloorToAnotherBelow
+	self should: [Stair fromPoint: 1@1 toPoint: 1@1 fromFloor: 1 to: 2]  raise: Error- MessageNotUnderstood withMessageText: Slide invalidFromToFloorErrorDescription ! !
+!ShortcutsTests methodsFor: 'tests' stamp: 'lk 7/4/2022 21:12:54' prior: 50575601!
+test03CantCreateASlideFromToSameFloor
+	self should: [Slide fromPoint: 1@1 toPoint: 1@1 fromFloor: 1 to: 1]  raise: Error- MessageNotUnderstood withMessageText: Slide invalidFromToFloorErrorDescription ! !
+
+!testRun: #ShortcutsTests #test03CantCreateASlideFromToSameFloor stamp: 'lk 7/4/2022 21:12:55'!
+PASSED!
+
+!testRun: #ShortcutsTests #test01CantCreateAStairFromToSameFloor stamp: 'lk 7/4/2022 21:12:55'!
+PASSED!
+
+!testRun: #ShortcutsTests #test02CantCreateAStairFromAFloorToAnotherBelow stamp: 'lk 7/4/2022 21:12:55'!
+PASSED!
+
+!testRun: #ShortcutsTests #test03CantCreateASlideFromToSameFloor stamp: 'lk 7/4/2022 21:12:55'!
+PASSED!
+
+!testRun: #ShortcutsTests #test04CantCreateASlideFromAFloorToAnotherBelow stamp: 'lk 7/4/2022 21:12:55'!
+FAILURE!
+
+!testRun: #ShortcutsTests #test04CantCreateASlideFromAFloorToAnotherBelow stamp: 'lk 7/4/2022 21:12:55'!
+FAILURE!
+!ShortcutsTests methodsFor: 'tests' stamp: 'lk 7/4/2022 21:13:13' prior: 50575776!
+test04CantCreateASlideFromAFloorToAnotherBelow
+	self should: [Slide fromPoint: 1@1 toPoint: 1@1 fromFloor: 1 to: 2]  raise: Error- MessageNotUnderstood withMessageText: Slide invalidFromToFloorErrorDescription ! !
+
+!testRun: #ShortcutsTests #test04CantCreateASlideFromAFloorToAnotherBelow stamp: 'lk 7/4/2022 21:13:14'!
+PASSED!
+
+!testRun: #ShortcutsTests #test01CantCreateAStairFromToSameFloor stamp: 'lk 7/4/2022 21:13:14'!
+PASSED!
+
+!testRun: #ShortcutsTests #test02CantCreateAStairFromAFloorToAnotherBelow stamp: 'lk 7/4/2022 21:13:14'!
+PASSED!
+
+!testRun: #ShortcutsTests #test03CantCreateASlideFromToSameFloor stamp: 'lk 7/4/2022 21:13:14'!
+PASSED!
+
+!testRun: #ShortcutsTests #test04CantCreateASlideFromAFloorToAnotherBelow stamp: 'lk 7/4/2022 21:13:14'!
+PASSED!
+
+Shortcuts subclass: #Slide
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #Slide category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 21:13:31'!
+Shortcuts subclass: #Slide
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+Shortcuts subclass: #Stair
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #Stair category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 21:13:37'!
+Shortcuts subclass: #Stair
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+Object subclass: #Shortcuts
+	instanceVariableNames: 'startPoint endPoint fromFloor toFloor'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+
+!classDefinition: #Shortcuts category: 'ISW1-2022-1C-2doParcial' stamp: 'lk 7/4/2022 21:13:41'!
+Object subclass: #Shortcuts
+	instanceVariableNames: 'startPoint endPoint fromFloor toFloor'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'ISW1-2022-1C-2doParcial'!
+!Shortcuts methodsFor: 'as yet unclassified' stamp: 'lk 7/4/2022 21:13:50'!
+initializeFromPoint: aStartPoint toPoint: anEndPoint fromFloor: aFromFloor to: aToFloor 
+
+	startPoint := aStartPoint.
+	endPoint := anEndPoint.
+	fromFloor := aFromFloor.
+	toFloor:= aToFloor.! !
+
+!methodRemoval: Slide #initializeFromPoint:toPoint:fromFloor:to: stamp: 'lk 7/4/2022 21:13:50'!
+initializeFromPoint: aStartPoint toPoint: anEndPoint fromFloor: aFromFloor to: aToFloor 
+
+	startPoint := aStartPoint.
+	endPoint := anEndPoint.
+	fromFloor := aFromFloor.
+	toFloor:= aToFloor.!
+
+!methodRemoval: Stair #initializeFromPoint:toPoint:fromFloor:to: stamp: 'lk 7/4/2022 21:13:55'!
+initializeFromPoint: aStartPoint toPoint: anEndPoint fromFloor: aFromFloor to: aToFloor 
+
+	startPoint := aStartPoint.
+	endPoint := anEndPoint.
+	fromFloor := aFromFloor.
+	toFloor:= aToFloor.!
+
+!testRun: #ShortcutsTests #test01CantCreateAStairFromToSameFloor stamp: 'lk 7/4/2022 21:14:03'!
+PASSED!
+
+!testRun: #ShortcutsTests #test02CantCreateAStairFromAFloorToAnotherBelow stamp: 'lk 7/4/2022 21:14:03'!
+PASSED!
+
+!testRun: #ShortcutsTests #test03CantCreateASlideFromToSameFloor stamp: 'lk 7/4/2022 21:14:03'!
+PASSED!
+
+!testRun: #ShortcutsTests #test04CantCreateASlideFromAFloorToAnotherBelow stamp: 'lk 7/4/2022 21:14:03'!
+PASSED!
+!GameTest methodsFor: 'tests' stamp: 'lk 7/4/2022 21:17:55'!
+test04CantCreateGameIfShortCutStartsOnEndPositionAndEndFloor
+
+	| floorOne floorTwo playerOne playerTwo game |
+	floorOne := StartFloor  withFloor:(Floor withExtension: 3@3 withShortcut: {}) andStartPosition: self startPosition .
+	floorTwo := EndFloor withFloor: (Floor withExtension: 3@3 withShortcut: {}) andEndPosition: self endPosition .
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	game := Game withFloors: {floorOne. floorTwo} andPlayers: {playerOne. playerTwo}.
+	
+	
+	! !
+!GameTest methodsFor: 'tests' stamp: 'lk 7/4/2022 21:18:31' prior: 50575920!
+test04CantCreateGameIfShortCutStartsOnEndPositionAndEndFloor
+
+	| floorOne floorTwo playerOne playerTwo game floorThree |
+	floorOne := StartFloor  withFloor:(Floor withExtension: 3@3 withShortcut: {}) andStartPosition: self startPosition .
+	floorTwo:= StartFloor  withFloor:(Floor withExtension: 3@3 withShortcut: {}) andStartPosition: self startPosition .
+	floorThree := EndFloor withFloor: (Floor withExtension: 3@3 withShortcut: {}) andEndPosition: self endPosition .
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	game := Game withFloors: {floorOne. floorTwo. floorThree} andPlayers: {playerOne. playerTwo}.
+	
+	
+	! !
+!GameTest methodsFor: 'tests' stamp: 'lk 7/4/2022 21:18:57' prior: 50575938!
+test04CantCreateGameIfShortCutStartsOnEndPositionAndEndFloor
+
+	| floorOne floorTwo playerOne playerTwo floorThree |
+	floorOne := StartFloor  withFloor:(Floor withExtension: 3@3 withShortcut: {}) andStartPosition: self startPosition .
+	floorTwo:= StartFloor  withFloor:(Floor withExtension: 3@3 withShortcut: {}) andStartPosition: self startPosition .
+	floorThree := EndFloor withFloor: (Floor withExtension: 3@3 withShortcut: {}) andEndPosition: self endPosition .
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	
+	self should: [Game withFloors: {floorOne. floorTwo. floorThree} andPlayers: {playerOne. playerTwo}.]
+	raise: Error - MessageNotUnderstood 
+	withMessageText: Game noStartFloorErrorDescription. 
+	
+	
+	! !
+
+!testRun: #GameTest #test04CantCreateGameIfShortCutStartsOnEndPositionAndEndFloor stamp: 'lk 7/4/2022 21:19:00'!
+FAILURE!
+!GameTest methodsFor: 'tests' stamp: 'lk 7/4/2022 21:19:16' prior: 50575961!
+test04CantCreateGameIfShortCutStartsOnEndPositionAndEndFloor
+
+	| floorOne floorTwo playerOne playerTwo floorThree |
+	floorOne := StartFloor  withFloor:(Floor withExtension: 3@3 withShortcut: {}) andStartPosition: self startPosition .
+	floorTwo:= StartFloor  withFloor:(Floor withExtension: 3@3 withShortcut: {}) andStartPosition: self startPosition .
+	floorThree := EndFloor withFloor: (Floor withExtension: 3@3 withShortcut: {}) andEndPosition: self endPosition .
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	
+	self should: [Game withFloors: {floorOne. floorTwo. floorThree} andPlayers: {playerOne. playerTwo}.]
+	raise: Error - MessageNotUnderstood 
+	withMessageText: Game invalidShortcutErrorDescription. 
+	
+	
+	! !
+!GameTest methodsFor: 'tests' stamp: 'lk 7/4/2022 21:21:01' prior: 50575990!
+test04CantCreateGameIfShortCutStartsOnEndPositionAndEndFloor
+
+	| floorOne floorTwo playerOne playerTwo floorThree |
+	floorOne := StartFloor  withFloor:(Floor withExtension: 3@3 withShortcut: {}) andStartPosition: self startPosition .
+	floorTwo:= Floor withExtension: 3@3 withShortcut: {Slide fromPoint: self endPosition toPoint: 1@1 fromFloor: 3 to: 1}.
+	floorThree := EndFloor withFloor: (Floor withExtension: 3@3 withShortcut: {}) andEndPosition: self endPosition .
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	
+	self should: [Game withFloors: {floorOne. floorTwo. floorThree} andPlayers: {playerOne. playerTwo}.]
+	raise: Error - MessageNotUnderstood 
+	withMessageText: Game invalidShortcutErrorDescription. 
+	
+	
+	! !
+
+!testRun: #GameTest #test04CantCreateGameIfShortCutStartsOnEndPositionAndEndFloor stamp: 'lk 7/4/2022 21:21:04'!
+ERROR!
+!Game class methodsFor: 'error' stamp: 'lk 7/4/2022 21:21:09'!
+invalidShortcutErrorDescription
+	self shouldBeImplemented.! !
+!Game class methodsFor: 'error' stamp: 'lk 7/4/2022 21:21:20' prior: 50576045!
+invalidShortcutErrorDescription
+	^ 'invalid shortcut'! !
+
+!testRun: #GameTest #test04CantCreateGameIfShortCutStartsOnEndPositionAndEndFloor stamp: 'lk 7/4/2022 21:21:23'!
+FAILURE!
+!EndFloor class methodsFor: 'instance creation' stamp: 'lk 7/4/2022 21:25:34' prior: 50575170!
+withFloor: aFloor andEndPosition: anEndPoint 
+	
+	^self new initializeWithFloor: aFloor andEndPosition: anEndPoint ! !
+!Game class methodsFor: 'instance creation' stamp: 'lk 7/4/2022 21:26:12' prior: 50575276!
+withFloors: aCollectionOfFloors andPlayers: aCollectionOfPlayers
+	
+	(aCollectionOfFloors anySatisfy: [:floor| floor isStartFloor]) ifFalse: [(self error: self noStartFloorErrorDescription)].
+	(aCollectionOfFloors anySatisfy: [:floor| floor isEndFloor]) ifFalse: [(self error: self noEndFloorErrorDescription)].
+	
+	^self new initializeWithFloors: aCollectionOfFloors andPlayers: aCollectionOfPlayers ! !
+
+!testRun: #GameTest #test04CantCreateGameIfShortCutStartsOnEndPositionAndEndFloor stamp: 'lk 7/4/2022 21:26:19'!
+FAILURE!
+
+!testRun: #GameTest #test04CantCreateGameIfShortCutStartsOnEndPositionAndEndFloor stamp: 'lk 7/4/2022 21:26:19'!
+FAILURE!
+
+!methodRemoval: GameTest #test04CantCreateGameIfShortCutStartsOnEndPositionAndEndFloor stamp: 'lk 7/4/2022 21:26:23'!
+test04CantCreateGameIfShortCutStartsOnEndPositionAndEndFloor
+
+	| floorOne floorTwo playerOne playerTwo floorThree |
+	floorOne := StartFloor  withFloor:(Floor withExtension: 3@3 withShortcut: {}) andStartPosition: self startPosition .
+	floorTwo:= Floor withExtension: 3@3 withShortcut: {Slide fromPoint: self endPosition toPoint: 1@1 fromFloor: 3 to: 1}.
+	floorThree := EndFloor withFloor: (Floor withExtension: 3@3 withShortcut: {}) andEndPosition: self endPosition .
+	playerOne := Player new.
+	playerTwo := Player new.
+	
+	
+	
+	self should: [Game withFloors: {floorOne. floorTwo. floorThree} andPlayers: {playerOne. playerTwo}.]
+	raise: Error - MessageNotUnderstood 
+	withMessageText: Game invalidShortcutErrorDescription. 
+	
+	
+	!
+
+!testRun: #GameTest #test01CantCreateGameIfThereIsNotAnStartFloor stamp: 'lk 7/4/2022 21:26:26'!
+PASSED!
+
+!testRun: #GameTest #test02CantCreateGameIfThereIsNotAnEndFloor stamp: 'lk 7/4/2022 21:26:26'!
+PASSED!
+
+!testRun: #GameTest #test03CanCreateGame stamp: 'lk 7/4/2022 21:26:26'!
+PASSED!
+
+!testRun: #ShortcutsTests #test01CantCreateAStairFromToSameFloor stamp: 'lk 7/4/2022 21:26:28'!
+PASSED!
+
+!testRun: #ShortcutsTests #test02CantCreateAStairFromAFloorToAnotherBelow stamp: 'lk 7/4/2022 21:26:28'!
+PASSED!
+
+!testRun: #ShortcutsTests #test03CantCreateASlideFromToSameFloor stamp: 'lk 7/4/2022 21:26:28'!
+PASSED!
+
+!testRun: #ShortcutsTests #test04CantCreateASlideFromAFloorToAnotherBelow stamp: 'lk 7/4/2022 21:26:28'!
+PASSED!
+
+----SNAPSHOT----(4 July 2022 21:26:38) CuisUniversity-5324.image priorSource: 7783065!
